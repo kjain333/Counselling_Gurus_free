@@ -11,7 +11,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 3),
-        () => Navigator.of(context).pushReplacementNamed('/LoginPage'));
+        () => Navigator.of(context).pushReplacementNamed('/MainPage'));
   }
 
   @override
@@ -20,7 +20,6 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Colors.white,
       body: Center(
         child: Image.asset('assets/images/splashpic.png'),
-        
       ),
     );
   }
