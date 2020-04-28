@@ -1,22 +1,27 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'LoginPage.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return StartState();
-  }
+  _SplashScreenState createState() => new _SplashScreenState();
 }
 
-class StartState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () => Navigator.pushReplacement(context, MaterialPageRoute(
-      builder: (context) => LoginPage()
-    )));
+    WidgetsFlutterBinding.ensureInitialized();
+    startTime();
+  }
+
+  startTime() async {
+    var _duration = new Duration(seconds: 4);
+    return new Timer(_duration, navigationPage);
+  }
+
+  void navigationPage() {
+    Navigator.of(context).pushReplacementNamed('/LoginPage');
   }
 
   @override

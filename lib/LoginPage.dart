@@ -11,7 +11,10 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Center(
         child: Center(
-          child: Text("Login"),
+          child: RaisedButton(
+            child: Text("Go"),
+            onPressed: () => Navigator.of(context).pushReplacementNamed('/MainPage')
+          ),
         ),
       ),
     );
