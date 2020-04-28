@@ -1,7 +1,8 @@
-import 'package:counselling_gurus/MainPage.dart';
 import 'package:flutter/material.dart';
-import 'LoginPage.dart';
-import 'SplashScreen.dart';
+import 'Pages/LoginPage.dart';
+import 'Pages/SplashScreen.dart';
+import 'Pages/MainPage.dart';
+import 'Fragments/HomePage.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -17,7 +19,8 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
       routes: <String, WidgetBuilder>{
         '/LoginPage': (BuildContext context) => new LoginPage(),
-        '/MainPage': (BuildContext context) => new MainPage()
+        '/MainPage': (BuildContext context) => new MainPage(),
+        '/HomePage': (BuildContext context) => new HomePage(),
       },
     );
   }
