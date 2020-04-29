@@ -1,3 +1,4 @@
+import 'package:counselling_gurus/Pages/SlideNav.dart';
 import 'package:flutter/material.dart';
 import 'Pages/LoginPage.dart';
 import 'Pages/SplashScreen.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         '/LoginPage': (BuildContext context) => new LoginPage(),
         '/MainPage': (BuildContext context) => new MainPage(),
         '/HomePage': (BuildContext context) => new HomePage(),
+        '/SlideNav': (BuildContext context) => new SlideNav(),
       },
     );
   }
