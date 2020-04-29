@@ -202,7 +202,7 @@ class _IntroSliderState extends State<IntroSlider> {
               color: Colors.white,
               child: GestureDetector(
                 onTap: () =>
-                    Navigator.of(context).pushReplacementNamed('/ProfilePage'),
+                    Navigator.of(context).pushReplacementNamed('/MainPage'),
                 child: Center(
                   child: Padding(
                     padding: EdgeInsets.all(0),

@@ -26,7 +26,7 @@ class _MainPageState extends State<MainPage> {
   ];
   var _pageController = new PageController();
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
