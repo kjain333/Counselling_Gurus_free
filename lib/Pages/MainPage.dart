@@ -1,4 +1,5 @@
 import 'package:counselling_gurus/Fragments/HomePage.dart';
+import 'package:counselling_gurus/Pages/SlideNav.dart';
 import 'package:flutter/material.dart';
 import '../Fragments/HomePage.dart';
 import '../Fragments/NewsPage.dart';
