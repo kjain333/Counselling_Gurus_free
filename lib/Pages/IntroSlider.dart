@@ -36,6 +36,7 @@ class _IntroSliderState extends State<IntroSlider> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: Container(
@@ -60,7 +61,8 @@ class _IntroSliderState extends State<IntroSlider> {
                 Container(
                   alignment: Alignment.centerRight,
                   child: FlatButton(
-                    onPressed: () => Navigator.of(context).pushReplacementNamed('/MainPage'),
+                    onPressed: () =>
+                        Navigator.of(context).pushReplacementNamed('/MainPage'),
                     child: Text(
                       'Skip',
                       style: TextStyle(
@@ -100,11 +102,6 @@ class _IntroSliderState extends State<IntroSlider> {
                               'Connect people\naround the world',
                               style: kTitleStyle,
                             ),
-                            SizedBox(height: 15.0),
-                            Text(
-                              'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-                              style: kSubtitleStyle,
-                            ),
                           ],
                         ),
                       ),
@@ -127,11 +124,6 @@ class _IntroSliderState extends State<IntroSlider> {
                               'Live your life smarter\nwith us!',
                               style: kTitleStyle,
                             ),
-                            SizedBox(height: 15.0),
-                            Text(
-                              'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-                              style: kSubtitleStyle,
-                            ),
                           ],
                         ),
                       ),
@@ -153,11 +145,6 @@ class _IntroSliderState extends State<IntroSlider> {
                             Text(
                               'Get a new experience\nof imagination',
                               style: kTitleStyle,
-                            ),
-                            SizedBox(height: 15.0),
-                            Text(
-                              'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-                              style: kSubtitleStyle,
                             ),
                           ],
                         ),
@@ -214,7 +201,8 @@ class _IntroSliderState extends State<IntroSlider> {
               width: double.infinity,
               color: Colors.white,
               child: GestureDetector(
-                onTap: () => Navigator.of(context).pushReplacementNamed('/MainPage'),
+                onTap: () =>
+                    Navigator.of(context).pushReplacementNamed('/ProfilePage'),
                 child: Center(
                   child: Padding(
                     padding: EdgeInsets.all(0),

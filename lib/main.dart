@@ -1,3 +1,4 @@
+import 'package:counselling_gurus/Fragments/ProfilePage.dart';
 import 'package:counselling_gurus/Pages/IntroSlider.dart';
 import 'package:counselling_gurus/Pages/SlideNav.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       home: SplashScreen(),
       routes: <String, WidgetBuilder>{
+        '/ProfilePage': (BuildContext context) => new ProfilePage(),
         '/LoginPage': (BuildContext context) => new LoginPage(),
         '/MainPage': (BuildContext context) => new MainPage(),
         '/HomePage': (BuildContext context) => new HomePage(),
@@ -29,4 +31,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
