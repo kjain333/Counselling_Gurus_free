@@ -1,7 +1,6 @@
-import 'package:counselling_gurus/Fragments/HomePage.dart';
-import 'package:counselling_gurus/Pages/SlideNav.dart';
-import 'package:flutter/material.dart';
 import '../Fragments/HomePage.dart';
+import '../Fragments/MorePage.dart';
+import 'package:flutter/material.dart';
 import '../Fragments/NewsPage.dart';
 import '../Fragments/ProfilePage.dart';
 
@@ -25,6 +24,7 @@ class _MainPageState extends State<MainPage> {
     ProfilePage(),
     HomePage(),
     NewsPage(),
+    MorePage(),
   ];
   var _pageController = new PageController();
 
@@ -45,6 +45,8 @@ class _MainPageState extends State<MainPage> {
         controller: _pageController,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.orangeAccent,
+        unselectedItemColor: Colors.black26,
         currentIndex: _selectedPage,
         onTap: (int index){
           setState(() {
@@ -64,6 +66,10 @@ class _MainPageState extends State<MainPage> {
           BottomNavigationBarItem(
               icon: Icon(Icons.call),
               title: Text("News")
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.more),
+              title: Text("More")
           ),
         ]
       ),
