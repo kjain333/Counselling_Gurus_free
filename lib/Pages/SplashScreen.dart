@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:counselling_gurus/Pages/LoginOptionsPage.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -11,7 +12,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 3),
-        () => Navigator.of(context).pushReplacementNamed('/IntroSlider'));
+        () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginOptionsPage()))
+    );
   }
 
   @override

@@ -1,7 +1,7 @@
 import 'package:counselling_gurus/models/navigation_model.dart';
 import 'package:counselling_gurus/models/themes.dart';
 import 'package:flutter/material.dart';
-import '../Pages/SlideNav.dart';
+import '../Pages/Student/SlideNav.dart';
 
 import 'collapsing_list_tile.dart';
 

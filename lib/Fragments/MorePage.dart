@@ -18,7 +18,6 @@ class _MorePageState extends State<MorePage> {
           child: const SizedBox(
             height: 160,
           ),
-
         ),
         Container(
           child: ListTile(

@@ -1,8 +1,8 @@
-import '../Fragments/HomePage.dart';
-import '../Fragments/MorePage.dart';
+import '../../Fragments/HomePage.dart';
+import '../../Fragments/MorePage.dart';
 import 'package:flutter/material.dart';
-import '../Fragments/NewsPage.dart';
-import '../Fragments/ProfilePage.dart';
+import '../../Fragments/NewsPage.dart';
+import '../../Fragments/ProfilePage.dart';
 
 class DrawerItem {
   String title;

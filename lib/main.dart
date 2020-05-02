@@ -1,10 +1,12 @@
 import 'package:counselling_gurus/Fragments/ProfilePage.dart';
-import 'package:counselling_gurus/Pages/IntroSlider.dart';
-import 'package:counselling_gurus/Pages/SlideNav.dart';
+import 'package:counselling_gurus/Pages/Student/IntroSlider.dart';
+import 'package:counselling_gurus/Pages/Student/OTPVerificationPage.dart';
+import 'package:counselling_gurus/Pages/Student/SignUpPage.dart';
+import 'package:counselling_gurus/Pages/Student/SlideNav.dart';
 import 'package:flutter/material.dart';
-import 'Pages/LoginPage.dart';
+import 'Pages/Student/LoginPage.dart';
 import 'Pages/SplashScreen.dart';
-import 'Pages/MainPage.dart';
+import 'Pages/Student/MainPage.dart';
 import 'Fragments/HomePage.dart';
 
 void main() => runApp(MyApp());
@@ -27,6 +29,8 @@ class MyApp extends StatelessWidget {
         '/HomePage': (BuildContext context) => new HomePage(),
         '/SlideNav': (BuildContext context) => new SlideNav(),
         '/IntroSlider': (BuildContext context) => new IntroSlider(),
+        '/SignUpPage': (BuildContext context) => new SignUpPage(),
+        '/OTPVerificationPage': (BuildContext context) => new OTPVerificationPage(),
       },
     );
   }
