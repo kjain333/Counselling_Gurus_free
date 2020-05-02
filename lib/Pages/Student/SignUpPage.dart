@@ -8,6 +8,14 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
 
+  bool passwordVisible;
+
+  @override
+  void initState() {
+    super.initState();
+    passwordVisible = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -86,7 +94,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   ),
                                   child: TextField(
                                     decoration: InputDecoration(
-                                        hintText: "Email or Phone number",
+                                        hintText: "Full Name",
                                         hintStyle: TextStyle(color: Colors.grey),
                                         border: InputBorder.none
                                     ),
@@ -99,9 +107,49 @@ class _SignUpPageState extends State<SignUpPage> {
                                   ),
                                   child: TextField(
                                     decoration: InputDecoration(
-                                        hintText: "Password",
+                                        hintText: "Contact Number",
                                         hintStyle: TextStyle(color: Colors.grey),
                                         border: InputBorder.none
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                  ),
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                        hintText: "Email",
+                                        hintStyle: TextStyle(color: Colors.grey),
+                                        border: InputBorder.none
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                  ),
+                                  child: TextField(
+                                    obscureText: !passwordVisible,
+                                    decoration: InputDecoration(
+                                        hintText: "Password",
+                                        hintStyle: TextStyle(color: Colors.grey),
+                                        border: InputBorder.none,
+                                        suffixIcon: IconButton(
+                                          icon: Icon(
+                                            passwordVisible?
+                                            Icons.visibility:
+                                            Icons.visibility_off,
+                                            color: Theme.of(context).primaryColorDark,
+                                          ),
+                                          onPressed: (){
+                                            setState(() {
+                                              passwordVisible = !passwordVisible;
+                                            });
+                                          },
+                                        )
                                     ),
                                   ),
                                 ),

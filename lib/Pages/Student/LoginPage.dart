@@ -91,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 child: TextField(
                                   decoration: InputDecoration(
-                                      hintText: "Email or Phone number",
+                                      hintText: "Email",
                                       hintStyle: TextStyle(color: Colors.grey),
                                       border: InputBorder.none
                                   ),
