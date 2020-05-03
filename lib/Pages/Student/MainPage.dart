@@ -30,31 +30,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              IconButton(
-                  icon: Icon(
-                    Icons.calendar_today,
-                    color: Colors.white,
-                  ),
-                  onPressed: null),
-              IconButton(
-                  icon: Icon(
-                    Icons.notifications,
-                    color: Colors.white,
-                  ),
-                  onPressed: null),
-              IconButton(
-                  icon: Icon(
-                    Icons.settings,
-                    color: Colors.white,
-                  ),
-                  onPressed: null),
-            ],
-          )
-        ],
+        
         backgroundColor: Colors.black87,
         title: Text("Counselling Gurus"),
       ),

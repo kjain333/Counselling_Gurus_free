@@ -8,6 +8,7 @@ import 'Pages/Student/LoginPage.dart';
 import 'Pages/SplashScreen.dart';
 import 'Pages/Student/MainPage.dart';
 import 'Fragments/HomePage.dart';
+import 'Pages/feedback.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/SlideNav': (BuildContext context) => new SlideNav(),
         '/IntroSlider': (BuildContext context) => new IntroSlider(),
         '/SignUpPage': (BuildContext context) => new SignUpPage(),
+        '/FeedbackPage': (BuildContext context) => new FeedbackPage(),
         '/OTPVerificationPage': (BuildContext context) => new OTPVerificationPage(),
       },
     );

@@ -11,113 +11,145 @@ class _MorePageState extends State<MorePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-    child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Container(
-          child: const SizedBox(
-            height: 160,
-          ),
-        ),
-        Container(
-          child: ListTile(
-            contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
-            title: Center(
-              child:  Text("Edit Profile",style: GoogleFonts.aBeeZee()),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              child: const SizedBox(
+                height: 160,
+              ),
             ),
-            leading: Icon(Icons.account_circle,color: Colors.black,),
-            trailing: Icon(Icons.arrow_forward,color: Colors.black,),
-            onTap: (){
-              return null;
-            },
-          ),
-          decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(color: Colors.grey),top: BorderSide(color: Colors.grey ))
-          ),
-        ),
-        Container(
-          child: ListTile(
-            contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
-            title: Center(
-              child:  Text("Change Password",style: GoogleFonts.aBeeZee()),
+            Container(
+              child: ListTile(
+                contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
+                title: Center(
+                  child: Text("Edit Profile", style: GoogleFonts.aBeeZee()),
+                ),
+                leading: Icon(
+                  Icons.account_circle,
+                  color: Colors.black,
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward,
+                  color: Colors.black,
+                ),
+                onTap: () {
+                  return null;
+                },
+              ),
+              decoration: BoxDecoration(
+                  border: Border(
+                      bottom: BorderSide(color: Colors.grey),
+                      top: BorderSide(color: Colors.grey))),
             ),
-            leading: Icon(Icons.lock,color: Colors.black,),
-            trailing: Icon(Icons.arrow_forward,color: Colors.black,),
-            onTap: (){
-              return null;
-            },
-          ),
-          decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(color: Colors.grey))
-          ),
-        ),
-        Container(
-          child: ListTile(
-            contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
-            title: Center(
-              child:  Text("Share App",style: GoogleFonts.aBeeZee()),
+            Container(
+              child: ListTile(
+                contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
+                title: Center(
+                  child: Text("Change Password", style: GoogleFonts.aBeeZee()),
+                ),
+                leading: Icon(
+                  Icons.lock,
+                  color: Colors.black,
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward,
+                  color: Colors.black,
+                ),
+                onTap: () {
+                  return null;
+                },
+              ),
+              decoration: BoxDecoration(
+                  border: Border(bottom: BorderSide(color: Colors.grey))),
             ),
-            leading: Icon(Icons.share,color: Colors.black,),
-            trailing: Icon(Icons.arrow_forward,color: Colors.black,),
-            onTap: (){
-              return null;
-            },
-          ),
-          decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(color: Colors.grey))
-          ),
-        ),
-        Container(
-          child: ListTile(
-            contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
-            title: Center(
-              child:  Text("Feedback",style: GoogleFonts.aBeeZee()),
+            Container(
+              child: ListTile(
+                contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
+                title: Center(
+                  child: Text("Share App", style: GoogleFonts.aBeeZee()),
+                ),
+                leading: Icon(
+                  Icons.share,
+                  color: Colors.black,
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward,
+                  color: Colors.black,
+                ),
+                onTap: () {
+                  return null;
+                },
+              ),
+              decoration: BoxDecoration(
+                  border: Border(bottom: BorderSide(color: Colors.grey))),
             ),
-            leading: Icon(Icons.add_comment,color: Colors.black,),
-            trailing: Icon(Icons.arrow_forward,color: Colors.black,),
-            onTap: (){
-              return null;
-            },
-          ),
-          decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(color: Colors.grey))
-          ),
-        ),
-        Container(
-          child: ListTile(
-            contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
-            title: Center(
-              child:  Text("Rate Us",style: GoogleFonts.aBeeZee()),
+            Container(
+              child: ListTile(
+                contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
+                title: Center(
+                  child: Text("Feedback", style: GoogleFonts.aBeeZee()),
+                ),
+                leading: Icon(
+                  Icons.add_comment,
+                  color: Colors.black,
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward,
+                  color: Colors.black,
+                ),
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, "/FeedbackPage");
+                },
+              ),
+              decoration: BoxDecoration(
+                  border: Border(bottom: BorderSide(color: Colors.grey))),
             ),
-            leading: Icon(Icons.star,color: Colors.black,),
-            trailing: Icon(Icons.arrow_forward,color: Colors.black,),
-            onTap: (){
-              return null;
-            },
-          ),
-          decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(color: Colors.grey))
-          ),
-        ),
-        Container(
-          child: ListTile(
-            contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
-            title: Center(
-              child:  Text("Log Out",style: GoogleFonts.aBeeZee()),
+            Container(
+              child: ListTile(
+                contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
+                title: Center(
+                  child: Text("Rate Us", style: GoogleFonts.aBeeZee()),
+                ),
+                leading: Icon(
+                  Icons.star,
+                  color: Colors.black,
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward,
+                  color: Colors.black,
+                ),
+                onTap: () {
+                  return null;
+                },
+              ),
+              decoration: BoxDecoration(
+                  border: Border(bottom: BorderSide(color: Colors.grey))),
             ),
-            leading: Icon(Icons.exit_to_app,color: Colors.black,),
-            trailing: Icon(Icons.arrow_forward,color: Colors.black,),
-            onTap: (){
-              return null;
-            },
-          ),
-          decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(color: Colors.grey))
-          ),
+            Container(
+              child: ListTile(
+                contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
+                title: Center(
+                  child: Text("Log Out", style: GoogleFonts.aBeeZee()),
+                ),
+                leading: Icon(
+                  Icons.exit_to_app,
+                  color: Colors.black,
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward,
+                  color: Colors.black,
+                ),
+                onTap: () {
+                  return null;
+                },
+              ),
+              decoration: BoxDecoration(
+                  border: Border(bottom: BorderSide(color: Colors.grey))),
+            ),
+          ],
         ),
-      ],
-    ),
-    ),
+      ),
     );
   }
 }
