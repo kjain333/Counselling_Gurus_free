@@ -8,7 +8,7 @@ import 'Pages/Student/LoginPage.dart';
 import 'Pages/SplashScreen.dart';
 import 'Pages/Student/MainPage.dart';
 import 'Fragments/HomePage.dart';
-import 'Pages/feedback.dart';
+import 'Pages/Student/feedback.dart';
 
 void main() => runApp(MyApp());
 

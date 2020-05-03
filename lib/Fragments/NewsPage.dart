@@ -24,7 +24,7 @@ final string =['assets/images/background.png','assets/images/background2.png'];
 class _NewsPageState extends State<NewsPage> {
 
 
-  Timer _timer = new Timer.periodic(new Duration(milliseconds: 20000), _incrementTimerCounter);
+  Timer _timer = new Timer.periodic(new Duration(milliseconds: 5000), _incrementTimerCounter);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,6 @@ class _NewsPageState extends State<NewsPage> {
             title: Text("HOT NEWS",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.lightBlue),),
           );
         if(index==1) {
-
           return SizedBox(
             height: 180,
             child: ListView.builder(
