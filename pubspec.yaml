@@ -19,6 +19,8 @@ environment:
 dependencies:
   google_fonts: ^1.0.0
   share: ^0.6.4
+  assorted_layout_widgets: ^1.0.18
+  url_launcher: ^5.4.5
   flutter:
     sdk: flutter
   simple_animations: ^2.1.0

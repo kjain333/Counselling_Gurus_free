@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:counselling_gurus/Pages/Student/CompleteNews.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,15 +11,17 @@ class NewsPage extends StatefulWidget {
   _NewsPageState createState() => _NewsPageState();
 }
 int _timerCounter=0;
-ScrollController controller = ScrollController();
+ScrollController controller = ScrollController(initialScrollOffset: 0);
 void _incrementTimerCounter(Timer t)
 {
   _timerCounter++;
   if(_timerCounter==6)
     _timerCounter=0;
+  if(controller.hasClients)
   controller.jumpTo(_timerCounter.toDouble()*410);
 
 }
+final string2 = 'NEWS HEADING';
 final string =['assets/images/background.png','assets/images/background2.png'];
 class _NewsPageState extends State<NewsPage> {
 
@@ -66,6 +68,9 @@ class _NewsPageState extends State<NewsPage> {
                           child: Text('TRENDING NEWS HEADING '+index.toString(),style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.white) ,),
 
                         ),
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => CompleteNews(string2)));
+                        },
                       ),
                     ),
                   ),
@@ -78,7 +83,7 @@ class _NewsPageState extends State<NewsPage> {
           return InkWell(
               splashColor: Colors.white,
               onTap: (){
-                print(index);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => CompleteNews(string2)));
               },
               child: Padding(
                 padding: EdgeInsets.all(20),
@@ -102,6 +107,7 @@ class _NewsPageState extends State<NewsPage> {
                         ),
                         ListTile(
                             title: Text("NEWS HEADING",style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),),
+
                             subtitle: Text("DATE\nThis is news Sub-heading",style: GoogleFonts.aBeeZee(fontSize: 10,color: Colors.black),),
                             trailing: Wrap(
 
