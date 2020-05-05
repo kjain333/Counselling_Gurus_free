@@ -6,7 +6,6 @@ class MorePage extends StatefulWidget {
   _MorePageState createState() => _MorePageState();
 }
 
-//More
 class _MorePageState extends State<MorePage> {
   @override
   Widget build(BuildContext context) {
