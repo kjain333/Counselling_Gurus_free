@@ -1,14 +1,26 @@
+import 'dart:convert';
+import 'package:counselling_gurus/Pages/Student/IntroSlider.dart';
 import 'package:flutter/material.dart';
 import '../../Animations/FadeAnimation.dart';
+import 'package:http/http.dart' as http;
+import '../../models/UserModelSignUp.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMixin {
 
-  bool passwordVisible;
+  TextEditingController nameController = new TextEditingController();
+  TextEditingController contactController = new TextEditingController();
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
+
+  bool passwordVisible, isLoading;
+  String name, email, password, contact;
+  UserSignUp user;
+  JsonDecoder jsonDecoder = new JsonDecoder();
 
   @override
   void initState() {
@@ -16,8 +28,28 @@ class _SignUpPageState extends State<SignUpPage> {
     passwordVisible = false;
   }
 
-  putUsers(){
+   signUpUser() async{
+    print(user.toJson());
+    await http.post('http://192.168.43.70:3008/signup', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
+      final String res = response.body;
+      final int statusCode = response.statusCode;
+      if (statusCode < 200 || statusCode > 400 || json == null) {
+        throw new Exception("Error while fetching data");
+      }else{
+        Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+      }
+      print(jsonDecoder.convert(res));
+      return jsonDecoder.convert(res);
+    });
+  }
 
+  @override
+  void dispose() {
+    super.dispose();
+    nameController.dispose();
+    contactController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
   }
 
   @override
@@ -97,6 +129,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       border: Border(bottom: BorderSide(color: Colors.grey[200]))
                                   ),
                                   child: TextField(
+                                    controller: nameController,
                                     decoration: InputDecoration(
                                         hintText: "Full Name",
                                         hintStyle: TextStyle(color: Colors.grey),
@@ -110,6 +143,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       border: Border(bottom: BorderSide(color: Colors.grey[200]))
                                   ),
                                   child: TextField(
+                                    controller: contactController,
                                     decoration: InputDecoration(
                                         hintText: "Contact Number",
                                         hintStyle: TextStyle(color: Colors.grey),
@@ -123,6 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       border: Border(bottom: BorderSide(color: Colors.grey[200]))
                                   ),
                                   child: TextField(
+                                    controller: emailController,
                                     decoration: InputDecoration(
                                         hintText: "Email",
                                         hintStyle: TextStyle(color: Colors.grey),
@@ -136,6 +171,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       border: Border(bottom: BorderSide(color: Colors.grey[200]))
                                   ),
                                   child: TextField(
+                                    controller: passwordController,
                                     obscureText: !passwordVisible,
                                     decoration: InputDecoration(
                                         hintText: "Password",
@@ -171,7 +207,24 @@ class _SignUpPageState extends State<SignUpPage> {
                                       color: Colors.orange[900]
                                   ),
                                   child: InkWell(
-                                    onTap: () => Navigator.of(context).pushReplacementNamed('/IntroSlider'),
+                                    onTap: () {
+                                      setState(() {
+                                        isLoading = true;
+                                      });
+                                      isLoading ? Center(
+                                          child: CircularProgressIndicator()
+                                      ): Container();
+                                      setState(() {
+                                        name = nameController.text.toString();
+                                        email = emailController.text.toString();
+                                        password = passwordController.text.toString();
+                                        contact = contactController.text.toString();
+                                        user = new UserSignUp( name: name, email: email, password: password,
+                                            contact: contact
+                                        );
+                                      });
+                                      signUpUser();
+                                    },
                                     child: Center(
                                       child: Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),

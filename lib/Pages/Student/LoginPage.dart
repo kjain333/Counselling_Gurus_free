@@ -1,6 +1,10 @@
+import 'dart:convert';
+import 'package:counselling_gurus/Pages/Student/IntroSlider.dart';
 import 'package:counselling_gurus/Pages/Student/OTPVerificationPage.dart';
 import 'package:counselling_gurus/Pages/Student/SignUpPage.dart';
+import 'package:counselling_gurus/models/UserModelSignIn.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import '../../Animations/FadeAnimation.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,11 +15,33 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
 
   bool passwordVisible;
+  String email, password;
+
+  UserSignIn user;
+  JsonDecoder jsonDecoder = new JsonDecoder();
+
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
 
   @override
   void initState() {
     super.initState();
     passwordVisible = false;
+  }
+
+  loginUser() async{
+    print(user.toJson());
+    await http.post('http://192.168.43.70:3008/login', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
+      final String res = response.body;
+      final int statusCode = response.statusCode;
+      if (statusCode < 200 || statusCode > 400 || json == null) {
+        throw new Exception("Error while fetching data");
+      }else{
+        Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+      }
+      print(jsonDecoder.convert(res));
+      return jsonDecoder.convert(res);
+    });
   }
 
   @override
@@ -90,6 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                                     border: Border(bottom: BorderSide(color: Colors.grey[200]))
                                 ),
                                 child: TextField(
+                                  controller: emailController,
                                   decoration: InputDecoration(
                                       hintText: "Email",
                                       hintStyle: TextStyle(color: Colors.grey),
@@ -103,6 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                                     border: Border(bottom: BorderSide(color: Colors.grey[200]))
                                 ),
                                 child: TextField(
+                                  controller: passwordController,
                                   obscureText: !passwordVisible,
                                   decoration: InputDecoration(
                                       hintText: "Password",
@@ -145,7 +173,14 @@ class _LoginPageState extends State<LoginPage> {
                                           color: Colors.orange[900]
                                       ),
                                       child: InkWell(
-                                        onTap: () => Navigator.of(context).pushReplacementNamed('/IntroSlider'),
+                                        onTap: () {
+                                          setState(() {
+                                            email = emailController.text.toString();
+                                            password = passwordController.text.toString();
+                                            user = new UserSignIn(email: email, password: password);
+                                          });
+                                          loginUser();
+                                        },
                                         child: Center(
                                           child: Text("Log In", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                         ),

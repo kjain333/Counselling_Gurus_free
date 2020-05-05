@@ -6,6 +6,7 @@ class MorePage extends StatefulWidget {
   _MorePageState createState() => _MorePageState();
 }
 
+//More
 class _MorePageState extends State<MorePage> {
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,9 @@ class _MorePageState extends State<MorePage> {
               decoration: BoxDecoration(
                   border: Border(
                       bottom: BorderSide(color: Colors.grey),
-                      top: BorderSide(color: Colors.grey))),
+                      top: BorderSide(color: Colors.grey)),
+
+              ),
             ),
             Container(
               child: ListTile(
@@ -61,7 +64,9 @@ class _MorePageState extends State<MorePage> {
                 },
               ),
               decoration: BoxDecoration(
-                  border: Border(bottom: BorderSide(color: Colors.grey))),
+                  border: Border(bottom: BorderSide(color: Colors.grey)),
+
+              ),
             ),
             Container(
               child: ListTile(
@@ -82,7 +87,9 @@ class _MorePageState extends State<MorePage> {
                 },
               ),
               decoration: BoxDecoration(
-                  border: Border(bottom: BorderSide(color: Colors.grey))),
+                  border: Border(bottom: BorderSide(color: Colors.grey)),
+
+              ),
             ),
             Container(
               child: ListTile(
@@ -103,7 +110,9 @@ class _MorePageState extends State<MorePage> {
                 },
               ),
               decoration: BoxDecoration(
-                  border: Border(bottom: BorderSide(color: Colors.grey))),
+                  border: Border(bottom: BorderSide(color: Colors.grey)),
+
+              ),
             ),
             Container(
               child: ListTile(
@@ -124,7 +133,9 @@ class _MorePageState extends State<MorePage> {
                 },
               ),
               decoration: BoxDecoration(
-                  border: Border(bottom: BorderSide(color: Colors.grey))),
+                  border: Border(bottom: BorderSide(color: Colors.grey)),
+
+              ),
             ),
             Container(
               child: ListTile(
@@ -145,7 +156,9 @@ class _MorePageState extends State<MorePage> {
                 },
               ),
               decoration: BoxDecoration(
-                  border: Border(bottom: BorderSide(color: Colors.grey))),
+                  border: Border(bottom: BorderSide(color: Colors.grey)),
+
+              ),
             ),
           ],
         ),

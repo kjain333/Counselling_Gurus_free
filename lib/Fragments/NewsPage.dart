@@ -21,7 +21,6 @@ void _incrementTimerCounter(Timer t)
   controller.jumpTo(_timerCounter.toDouble()*410);
 
 }
-final string2 = 'NEWS HEADING';
 final string =['assets/images/background.png','assets/images/background2.png'];
 class _NewsPageState extends State<NewsPage> {
 
@@ -69,7 +68,7 @@ class _NewsPageState extends State<NewsPage> {
 
                         ),
                         onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => CompleteNews(string2)));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => CompleteNews(string[0])));
                         },
                       ),
                     ),
@@ -83,7 +82,7 @@ class _NewsPageState extends State<NewsPage> {
           return InkWell(
               splashColor: Colors.white,
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => CompleteNews(string2)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => CompleteNews(string[1])));
               },
               child: Padding(
                 padding: EdgeInsets.all(20),
@@ -91,10 +90,8 @@ class _NewsPageState extends State<NewsPage> {
                     elevation: 20,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                     child: Column(
-
                       children: <Widget>[
                         Container(
-
                           height: 120,
                           decoration: BoxDecoration(
                               shape: BoxShape.rectangle,
@@ -110,7 +107,6 @@ class _NewsPageState extends State<NewsPage> {
 
                             subtitle: Text("DATE\nThis is news Sub-heading",style: GoogleFonts.aBeeZee(fontSize: 10,color: Colors.black),),
                             trailing: Wrap(
-
                               children: <Widget>[
                                 IconButton(
                                     icon: new Icon(Icons.content_copy),
@@ -126,12 +122,9 @@ class _NewsPageState extends State<NewsPage> {
                                       Share.share('NEWS HEADING\nDOWNLOAD OUR APP',subject: 'NEWS HEADING');
                                     }
                                 )
-
                               ],
                             )
-
                         ),
-
                       ],
                     )
                 ),
