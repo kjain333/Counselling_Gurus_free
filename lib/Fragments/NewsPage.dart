@@ -22,22 +22,19 @@ void _incrementTimerCounter(Timer t)
 
 }
 final string =['assets/images/background.png','assets/images/background2.png'];
+final bgcolor = [Colors.purpleAccent,Colors.indigoAccent,Colors.lightBlueAccent,Colors.greenAccent,Colors.yellowAccent,Colors.orangeAccent,Colors.redAccent];
 class _NewsPageState extends State<NewsPage> {
 
 
   Timer _timer = new Timer.periodic(new Duration(milliseconds: 5000), _incrementTimerCounter);
-
+ // final _scrollViewcontroller = ScrollController(initialScrollOffset: 0.0);
   @override
   Widget build(BuildContext context) {
     _timerCounter=0;
     return ListView.builder(
-      itemCount: 20,
+      itemCount: 10,
       itemBuilder: (context,index){
-        if(index==0)
-          return ListTile(
-            title: Text("HOT NEWS",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.lightBlue),),
-          );
-        if(index==1) {
+        if(index==0) {
           return SizedBox(
             height: 180,
             child: ListView.builder(
@@ -45,93 +42,122 @@ class _NewsPageState extends State<NewsPage> {
               controller: controller,
               itemCount: 6,
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: EdgeInsets.all(15),
-                  child: Material(
-                    elevation: 10,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          image: DecorationImage(
-                              image: new AssetImage(string[index%2]),
-                              fit: BoxFit.fill,
-                              colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.hue)
-                          )
+                return  Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors:[bgcolor[0],bgcolor[1]],
+                    )
+                  ),
+                  width: 410.5,
+                  height: 200,
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        width: 20,
                       ),
-                      width: 380,
-                      child: ListTile(
-                        title: Center(
-                          child: Text('TRENDING NEWS HEADING '+index.toString(),style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.white) ,),
+                      Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            image: AssetImage(string[index%2]),
+                            fit: BoxFit.fill,
+                          )
 
                         ),
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => CompleteNews(string[0])));
-                        },
                       ),
-                    ),
-                  ),
+                      Container(
+                        width: 290.5,
+                        child: ListTile(
+                          title: Text('TRENDING NEWS HEADING '+index.toString(),style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
+                          subtitle: Text('News subheading can come here',style: GoogleFonts.aBeeZee(fontSize: 15,color: Colors.white),),
+                          onTap:(){  Navigator.push(context, MaterialPageRoute(builder: (context) => CompleteNews(string[1])));},
+                        ),
+                      )
+                    ],
+                  )
                 );
               },
             ),
           );
         }
         else
-          return InkWell(
-              splashColor: Colors.white,
-              onTap: (){
+          return Container(
+
+             /* onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => CompleteNews(string[1])));
-              },
+              },*/
+              decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [bgcolor[index%7],bgcolor[(index%7+1==7)?0:(index%7+1)]],
+                  )
+              ),
               child: Padding(
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.only(left: 30,right: 30,top: 20,bottom: 20),
                 child: Material(
                     elevation: 20,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: 120,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10)),
-                              image: DecorationImage(
-                                  image: new AssetImage('assets/images/background.png'),
-                                  fit: BoxFit.fill
-                              )
-                          ),
-                        ),
-                        ListTile(
-                            title: Text("NEWS HEADING",style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),),
-
-                            subtitle: Text("DATE\nThis is news Sub-heading",style: GoogleFonts.aBeeZee(fontSize: 10,color: Colors.black),),
-                            trailing: Wrap(
-                              children: <Widget>[
-                                IconButton(
-                                    icon: new Icon(Icons.content_copy),
-                                    onPressed: (){
-                                      Clipboard.setData(ClipboardData(text: 'NEWS HEADING\nThis is news Sub-Heading'));
-                                      final snackBar = SnackBar(content: Text("Content Copied to Clipboard"));
-                                      Scaffold.of(context).showSnackBar(snackBar);
-                                    }
-                                ),
-                                IconButton(
-                                    icon: new Icon(Icons.share),
-                                    onPressed: (){
-                                      Share.share('NEWS HEADING\nDOWNLOAD OUR APP',subject: 'NEWS HEADING');
-                                    }
+                    child: InkWell(
+                      onTap:(){  Navigator.push(context, MaterialPageRoute(builder: (context) => CompleteNews(string[1])));},
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            height: 300,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10)),
+                                image: DecorationImage(
+                                    image: new AssetImage('assets/images/background.png'),
+                                    fit: BoxFit.fill
                                 )
-                              ],
-                            )
-                        ),
-                      ],
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),bottomRight: Radius.circular(10)),
+                              color: Colors.black,
+
+                            ),
+                            child: ListTile(
+
+                                title: Text("NEWS HEADING",style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.white),),
+
+                                subtitle: Text("DATE\nThis is news Sub-heading",style: GoogleFonts.aBeeZee(fontSize: 10,color: Colors.white),),
+                                trailing: Wrap(
+                                  children: <Widget>[
+                                    IconButton(
+                                        icon: new Icon(Icons.content_copy,color: Colors.yellowAccent,),
+                                        onPressed: (){
+                                          Clipboard.setData(ClipboardData(text: 'NEWS HEADING\nThis is news Sub-Heading'));
+                                          final snackBar = SnackBar(content: Text("Content Copied to Clipboard"));
+                                          Scaffold.of(context).showSnackBar(snackBar);
+                                        }
+                                    ),
+                                    IconButton(
+                                        icon: new Icon(Icons.share,color: Colors.yellowAccent,),
+                                        onPressed: (){
+                                          Share.share('NEWS HEADING\nDOWNLOAD OUR APP',subject: 'NEWS HEADING');
+                                        }
+                                    )
+                                  ],
+                                )
+                            ),
+                          )
+                        ],
+                      ),
                     )
                 ),
               )
+
           );
       },
     );
-
   }
 }
