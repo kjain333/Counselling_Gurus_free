@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -9,10 +11,126 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      body: Column(
+        children: <Widget>[
+          Container(
+            height: 420,
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  height: 300,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          Colors.deepOrangeAccent,
+                          Colors.orange,
+                          Colors.orangeAccent,
+                        ],
+                        stops: [0.2,0.7,1],
+                      )
+                  ),
+                ),
+                Positioned(
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width / 1.2,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height / 3,
+                  top: MediaQuery
+                      .of(context)
+                      .size
+                      .height / 7,
+                  left: MediaQuery
+                      .of(context)
+                      .size
+                      .width / 11,
+                  child: Material(
+                    elevation: 30,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 70,
+                        ),
+                        ListTile(
+                          title:Center(
+                            child: Text('NAME',style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.bold),),
+                             ),
+                           subtitle: Center(
+                             child: Text('City,State',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300),),
+                           ),
+
+                        ),
+                        ListTile(
+                          title: Text('This is where we can put a few lines of bio which user will input.',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300),),
+                          contentPadding: EdgeInsets.only(left: 50,right: 50),
+
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Positioned(
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width / 3,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .width / 3,
+                  top: MediaQuery
+                      .of(context)
+                      .size
+                      .height / 16,
+                  left: MediaQuery
+                      .of(context)
+                      .size
+                      .width / 3 ,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: AssetImage('assets/images/splashpic.png')),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.only(left: 50,right: 50),
+            leading: Icon(Icons.email,color: Colors.black,),
+            title: Text('mynameis@gmail.com',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.only(left: 50,right: 50),
+            leading: Icon(Icons.phone_android,color: Colors.black,),
+            title: Text('9876543210',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+          )
+        ],
+      ),
+    );
+  }
+}/*Scaffold(
         body: new Stack(
       children: <Widget>[
         ClipPath(
-          child: Container(color: Colors.black87.withOpacity(0.9)),
+          child: Container(
+            decoration: BoxDecoration(
+            gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.orange,Colors.white],
+            )
+          ),
+          ),
           clipper: GetClipper(),
         ),
         Positioned(
@@ -24,7 +142,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     width: 150.0,
                     height: 150.0,
                     decoration: new BoxDecoration(
-                        color: Colors.black87,
+                        gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [Colors.red,Colors.orange,Colors.orangeAccent,Colors.yellowAccent],
+                        ),
                         image: DecorationImage(
                             image:
                                 new AssetImage('assets/images/splashpic.png')),
@@ -34,9 +156,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             fit: BoxFit.cover),
                         */
                         borderRadius: BorderRadius.all(Radius.circular(75.0)),
-                        boxShadow: [
-                          BoxShadow(blurRadius: 7.0, color: Colors.black)
-                        ])),
+                       )),
                 SizedBox(height: 20.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -201,3 +321,4 @@ class GetClipper extends CustomClipper<Path> {
 }
 
 //Trying Push
+*/
