@@ -1,3 +1,4 @@
+import 'package:counselling_gurus/Pages/Student/CompleteNews.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,7 +15,7 @@ class _ProfilePageState extends State<ProfilePage> {
       body: Column(
         children: <Widget>[
           Container(
-            height: 420,
+            height: 380,
             child: Stack(
               children: <Widget>[
                 Container(
@@ -40,7 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   height: MediaQuery
                       .of(context)
                       .size
-                      .height / 3,
+                      .height / 3.5,
                   top: MediaQuery
                       .of(context)
                       .size
@@ -87,7 +88,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   top: MediaQuery
                       .of(context)
                       .size
-                      .height / 16,
+                      .height / 15,
                   left: MediaQuery
                       .of(context)
                       .size
@@ -104,15 +105,62 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
-          ListTile(
-            contentPadding: EdgeInsets.only(left: 50,right: 50),
-            leading: Icon(Icons.email,color: Colors.black,),
-            title: Text('mynameis@gmail.com',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+          Material(
+            child: ListTile(
+              leading: Icon(Icons.email,color: Colors.black,),
+              title: Text('mynameis@gmail.com',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+            ),
+            elevation: 10,
           ),
-          ListTile(
-            contentPadding: EdgeInsets.only(left: 50,right: 50),
-            leading: Icon(Icons.phone_android,color: Colors.black,),
-            title: Text('9876543210',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+          Material(
+            child: ListTile(
+              leading: Icon(Icons.phone_android,color: Colors.black,),
+              title: Text('9876543210',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+            ),
+            elevation: 10,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+            height: 150,
+            child: Stack(
+              children: <Widget>[
+
+                Positioned(
+                  left: 80,
+                  top: 20,
+                  child: Container(
+                    height: 80,
+                    width: 250,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      gradient: LinearGradient(
+                        colors: [Colors.blueAccent,Colors.greenAccent]
+                      )
+                    ),
+                    child: SizedBox(
+                      child: Center(child: Text('MENTOR NAME\nCollege Name\nQualification',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w400,color: Colors.yellowAccent) ),
+                    )),
+                  ),
+                ),
+                Positioned(
+                  left: 20,
+                  child:  Container(
+
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/splashpic.png'),
+                          fit: BoxFit.fill,
+                        )
+                    ),
+                    width: 120,
+                    height: 120,
+                  ),
+                ),
+              ],
+            ),
           )
         ],
       ),
