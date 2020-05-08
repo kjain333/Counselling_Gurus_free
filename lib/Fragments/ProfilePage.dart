@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:counselling_gurus/Pages/Student/CompleteNews.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -9,9 +13,64 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+
+  String email, name, contact;
+  JsonDecoder jsonDecoder = new JsonDecoder();
+  Map<String, dynamic> jsonData;
+  bool loaderHidden = false;
+
+  getUserData() async{
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    email = prefs.getString('email');
+    if(prefs.getString('name') == null || prefs.getString('name').isEmpty ||
+        prefs.getString('email') == null || prefs.getString('email').isEmpty ||
+        prefs.getString('contact') == null || prefs.getString('contact').isEmpty){
+
+      Uri uri = Uri.parse('http://192.168.43.70:3060/getuserdataapp/$email');
+      http.Response response = await http.get(uri, headers: {"Accept": "application/json"});
+      print(response.body);
+      if(response.statusCode == 200){
+        setState(() {
+          jsonData = jsonDecoder.convert(response.body);
+          prefs.setString('name', name);
+          prefs.setString('email', email);
+          prefs.setString('contact', contact);
+          setState(() {
+            email = jsonData['email'];
+            name = jsonData['name'];
+            contact = jsonData['contact'];
+            loaderHidden = false;
+          });
+        });
+      }else{
+        throw Exception('Failed to load data');
+      }
+    }else{
+      setState(() {
+        name = prefs.getString('name');
+        email = prefs.getString('email');
+        contact = prefs.getString('contact');
+        loaderHidden = false;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    loaderHidden = true;
+    getUserData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return loaderHidden ? Center(
+      child: CircularProgressIndicator(
+        backgroundColor: Colors.orangeAccent,
+      ),
+    ):
+    new Scaffold(
       body: Column(
         children: <Widget>[
           Container(
@@ -60,7 +119,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         ListTile(
                           title:Center(
-                            child: Text('NAME',style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.bold),),
+                            child: Text(name ,style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.bold),),
                              ),
                            subtitle: Center(
                              child: Text('City,State',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300),),
@@ -88,7 +147,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   top: MediaQuery
                       .of(context)
                       .size
-                      .height / 15,
+                      .height / 16,
                   left: MediaQuery
                       .of(context)
                       .size
@@ -105,61 +164,26 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
-          Material(
-            child: ListTile(
-              leading: Icon(Icons.email,color: Colors.black,),
-              title: Text('mynameis@gmail.com',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+            child: Card(
+              elevation: 10,
+              child: ListTile(
+                contentPadding: EdgeInsets.only(left: 50,right: 50),
+                leading: Icon(Icons.email,color: Colors.black,),
+                title: Text(email ,style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+              ),
             ),
-            elevation: 10,
           ),
-          Material(
-            child: ListTile(
-              leading: Icon(Icons.phone_android,color: Colors.black,),
-              title: Text('9876543210',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
-            ),
-            elevation: 10,
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            height: 150,
-            child: Stack(
-              children: <Widget>[
-
-                Positioned(
-                  left: 80,
-                  top: 20,
-                  child: Container(
-                    height: 80,
-                    width: 250,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
-                        colors: [Colors.blueAccent,Colors.greenAccent]
-                      )
-                    ),
-                    child: SizedBox(
-                      child: Center(child: Text('MENTOR NAME\nCollege Name\nQualification',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w400,color: Colors.yellowAccent) ),
-                    )),
-                  ),
-                ),
-                Positioned(
-                  left: 20,
-                  child:  Container(
-
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/splashpic.png'),
-                          fit: BoxFit.fill,
-                        )
-                    ),
-                    width: 120,
-                    height: 120,
-                  ),
-                ),
-              ],
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+            child: Card(
+              elevation: 10,
+              child: ListTile(
+                contentPadding: EdgeInsets.only(left: 50,right: 50),
+                leading: Icon(Icons.phone_android,color: Colors.black,),
+                title: Text(contact ,style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+              ),
             ),
           )
         ],

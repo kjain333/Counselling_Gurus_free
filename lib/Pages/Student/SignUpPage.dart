@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:counselling_gurus/Pages/Student/IntroSlider.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../Animations/FadeAnimation.dart';
 import 'package:http/http.dart' as http;
 import '../../models/UserModelSignUp.dart';
@@ -30,7 +31,7 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
 
    signUpUser() async{
     print(user.toJson());
-    await http.post('http://192.168.43.70:3008/signup', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
+    await http.post('http://192.168.43.70:3060/postsignupapp', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
       final String res = response.body;
       final int statusCode = response.statusCode;
       if (statusCode < 200 || statusCode > 400 || json == null) {
@@ -41,6 +42,14 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
       print(jsonDecoder.convert(res));
       return jsonDecoder.convert(res);
     });
+  }
+
+  addToSF() async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString("email", emailController.text.toString());
+    pref.setString("password", passwordController.text.toString());
+    pref.setString("name", nameController.text.toString());
+    pref.setString("contact", contactController.text.toString());
   }
 
   @override
@@ -223,6 +232,7 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
                                             contact: contact
                                         );
                                       });
+                                      addToSF();
                                       signUpUser();
                                     },
                                     child: Center(

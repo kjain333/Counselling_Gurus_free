@@ -5,6 +5,7 @@ import 'package:counselling_gurus/Pages/Student/SignUpPage.dart';
 import 'package:counselling_gurus/models/UserModelSignIn.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../Animations/FadeAnimation.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,7 +15,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
-  bool passwordVisible;
+  bool passwordVisible, validateEmail = false, validatePassword = false;
   String email, password;
 
   UserSignIn user;
@@ -31,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
 
   loginUser() async{
     print(user.toJson());
-    await http.post('http://192.168.43.70:3008/login', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
+    await http.post('http://192.168.43.70:3060/postloginapp', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
       final String res = response.body;
       final int statusCode = response.statusCode;
       if (statusCode < 200 || statusCode > 400 || json == null) {
@@ -42,6 +43,12 @@ class _LoginPageState extends State<LoginPage> {
       print(jsonDecoder.convert(res));
       return jsonDecoder.convert(res);
     });
+  }
+
+  addToSF() async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString("email", emailController.text.toString());
+    pref.setString("password", passwordController.text.toString());
   }
 
   @override
@@ -118,6 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                                 child: TextField(
                                   controller: emailController,
                                   decoration: InputDecoration(
+                                      errorText: validateEmail ? "Email can't be empty": null,
                                       hintText: "Email",
                                       hintStyle: TextStyle(color: Colors.grey),
                                       border: InputBorder.none
@@ -133,6 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                                   controller: passwordController,
                                   obscureText: !passwordVisible,
                                   decoration: InputDecoration(
+                                      errorText: validatePassword ? "Password can't be empty": null,
                                       hintText: "Password",
                                       hintStyle: TextStyle(color: Colors.grey),
                                       border: InputBorder.none,
@@ -175,10 +184,13 @@ class _LoginPageState extends State<LoginPage> {
                                       child: InkWell(
                                         onTap: () {
                                           setState(() {
+                                            emailController.text.isEmpty ? validateEmail = true: validateEmail = false;
+                                            passwordController.text.isEmpty ? validatePassword = true: validatePassword = false;
                                             email = emailController.text.toString();
                                             password = passwordController.text.toString();
                                             user = new UserSignIn(email: email, password: password);
                                           });
+                                          addToSF();
                                           loginUser();
                                         },
                                         child: Center(
