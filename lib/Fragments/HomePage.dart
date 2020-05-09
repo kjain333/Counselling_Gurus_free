@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:counselling_gurus/Pages/Student/Branchblog.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -150,7 +151,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                         ),
                         color: Colors.purpleAccent,
                         child: Text('MORE DETAILS',style: GoogleFonts.aBeeZee(color: Colors.white,fontSize: 10),),
-                        onPressed: (){return null;}
+                        onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context) => Branchblog()));}
                       ),
 
                   )
