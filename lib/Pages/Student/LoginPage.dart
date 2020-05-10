@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:counselling_gurus/Pages/Student/IntroSlider.dart';
+
 import 'package:counselling_gurus/Pages/Student/OTPVerificationPage.dart';
 import 'package:counselling_gurus/Pages/Student/SignUpPage.dart';
 import 'package:counselling_gurus/models/UserModelSignIn.dart';
@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Animations/FadeAnimation.dart';
+import 'IntroSlider.dart';
 
 class LoginPage extends StatefulWidget {
   @override

@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
     var size = MediaQuery.of(context).size;
     /*24 is for notification bar on Android*/
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
+    final double itemHeight = ((size.height - kToolbarHeight - 24) / 2) - 20;
     final double itemWidth = size.width / 2;
 
     return Scaffold(
@@ -129,6 +129,30 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                       colors: [Colors.blueAccent,Colors.lightBlueAccent]
                   )
               ),
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
+                child: Stack(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 30
+                    ),
+                    SizedBox(
+                        child: Text(para,style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15,color: Colors.white),),
+                      ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                        child: RaisedButton(
+                          elevation: 10,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)
+                          ),
+                          color: Colors.purpleAccent,
+                          child: Text('MORE DETAILS',style: GoogleFonts.aBeeZee(color: Colors.white,fontSize: 10),),
+                          onPressed: (){ return null; }
+                        ),
+                    )
+                  ],
+                ),
               child: Column(
                 children: <Widget>[
                   SizedBox(

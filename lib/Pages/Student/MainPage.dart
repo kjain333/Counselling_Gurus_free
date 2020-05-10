@@ -61,37 +61,6 @@ class _MainPageState extends State<MainPage> {
               TitledNavigationBarItem(title: Text('More'), icon: Icons.more),
             ]
         )
-//        bottomNavigationBar: BottomNavyBar(
-//          selectedIndex: _selectedPage,
-//          showElevation: true, // use this to remove appBar's elevation
-//          onItemSelected: (index) => setState(() {
-//            _selectedPage = index;
-//            _pageController.animateToPage(index,
-//                duration: Duration(milliseconds: 300), curve: Curves.ease);
-//          }),
-//          items: [
-//            BottomNavyBarItem(
-//              icon: Icon(Icons.person),
-//              title: Text('Profile'),
-//              activeColor: Colors.red,
-//            ),
-//            BottomNavyBarItem(
-//                icon: Icon(Icons.home),
-//                title: Text('Home'),
-//                activeColor: Colors.purpleAccent
-//            ),
-//            BottomNavyBarItem(
-//                icon: Icon(Icons.call),
-//                title: Text('News'),
-//                activeColor: Colors.pink
-//            ),
-//            BottomNavyBarItem(
-//                icon: Icon(Icons.more),
-//                title: Text('More'),
-//                activeColor: Colors.blue
-//            ),
-//          ],
-//        ),
 //      bottomNavigationBar: BottomNavigationBar(
 //          selectedItemColor: Colors.orangeAccent,
 //          unselectedItemColor: Colors.black26,

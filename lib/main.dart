@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: email == null ? SplashScreen(): MainPage(),
-
       routes: <String, WidgetBuilder>{
         '/ProfilePage': (BuildContext context) => new ProfilePage(),
         '/LoginPage': (BuildContext context) => new LoginPage(),

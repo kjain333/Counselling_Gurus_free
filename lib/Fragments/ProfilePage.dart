@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:counselling_gurus/Pages/Student/CompleteNews.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +16,7 @@ class _ProfilePageState extends State<ProfilePage> {
   String email, name, contact;
   JsonDecoder jsonDecoder = new JsonDecoder();
   Map<String, dynamic> jsonData;
-  bool loaderHidden = false;
+  bool loader = false;
 
   getUserData() async{
 
@@ -40,7 +39,7 @@ class _ProfilePageState extends State<ProfilePage> {
             email = jsonData['email'];
             name = jsonData['name'];
             contact = jsonData['contact'];
-            loaderHidden = false;
+            loader = false;
           });
         });
       }else{
@@ -51,21 +50,21 @@ class _ProfilePageState extends State<ProfilePage> {
         name = prefs.getString('name');
         email = prefs.getString('email');
         contact = prefs.getString('contact');
-        loaderHidden = false;
+        loader = false;
       });
     }
   }
 
   @override
   void initState() {
-    loaderHidden = true;
+    loader = true;
     getUserData();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return loaderHidden ? Center(
+    return loader ? Center(
       child: CircularProgressIndicator(
         backgroundColor: Colors.orangeAccent,
       ),
