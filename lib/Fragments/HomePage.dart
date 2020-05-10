@@ -1,4 +1,4 @@
-import 'dart:math';
+
 
 import 'package:counselling_gurus/Pages/Student/Branchblog.dart';
 import 'package:flip_card/flip_card.dart';
@@ -148,45 +148,16 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                           ),
                           color: Colors.purpleAccent,
                           child: Text('MORE DETAILS',style: GoogleFonts.aBeeZee(color: Colors.white,fontSize: 10),),
-                          onPressed: (){ return null; }
+                          onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context) => Branchblog())); }
                         ),
                     )
                   ],
                 ),
-              child: Column(
-                children: <Widget>[
-                  SizedBox(
-                    height: 30
-                  ),
-
-                  Padding(
-                    padding: EdgeInsets.only(left:20,right: 20),
-                    child: SizedBox(
-                      // title: Center(child: Text(cardHeading,style: GoogleFonts.aBeeZee(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.white),),),
-                      child: Text(para,style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15,color: Colors.white),),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(30),
-                      child: RaisedButton(
-                        elevation: 10,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)
-                        ),
-                        color: Colors.purpleAccent,
-                        child: Text('MORE DETAILS',style: GoogleFonts.aBeeZee(color: Colors.white,fontSize: 10),),
-                        onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context) => Branchblog()));}
-                      ),
-
-                  )
-
-
-                ],
-              ),
 
             )
         ),
       ),
+    )
     );
   }
 

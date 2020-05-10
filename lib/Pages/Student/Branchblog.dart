@@ -1,11 +1,21 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:math';
+
 import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
-import 'package:vector_math/vector_math.dart' show radians;
 
+
+import 'BranchName.dart';
+final string1 = ['CHEMICAL\nENGINEERING','CHEMISTRY','ENGINNERING\nPHYSICS','ENVIRONMENT','OIL','PETROLEUM'];
+final string2 = ['MECHANICAL','MECHATRONICS','TEXTILE\nand\nCHEMISTRY','TEXTILE\nENGINEERING','TEXTILE\nTECHNOLGY'];
+final string3 = ['INDUSTRIAL\nENGINEERING','INDUSTRIAL\nand\nPRODUCTION','MANUFACTURING','METALLURGY','MINING','PRODUCTION'];
+final string4 = ['INSTRUMENTATION','LEATHER\nTECHNOLOGY','MAN MADE\nFIBRE','MARINE','NAVAL\nand\nOCEAN','PLASTIC','PAINT'];
+final string5 = ['AGRICULTURAL','FOOD','BIOCHEMICAL','BIOMEDICAL','BIOTECHNOLOGY'];
+final string6 = ['COMMUNICATION','ELECTRICAL','ELECTRONICS\nand\nCOMMUNICATION','ELECTRONICS\nand\nINSTRUMENTATION','ELECTRONICS\nand\nTELE\nCOMMUNICATIONS'];
+final string7 = ['COMPUTER\nSCIENCE\nENGINEERING','INFORMATION\nTECHNOLOGY','ROBOTICS','AERONAUTICAL','AEROSPACE','AUTOMOBILE','TRANSPORT'];
+final string8 = ['CERAMIC','CIVIL','CONSTRUCTION','STRUCTURAL\nENGINEERING'];
 class Branchblog extends StatelessWidget{
   @override
   Widget build(BuildContext context){
@@ -63,90 +73,181 @@ class RadialAnimation extends StatelessWidget{
             builder: (context,child,value){
               return Container(
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      value.get(_BgProps.color1),
-                      value.get(_BgProps.color2)
-                    ]
-                  )
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          value.get(_BgProps.color1),
+                          value.get(_BgProps.color2)
+                        ]
+                    )
                 ),
               );
             },
           ),
         ),
+       Positioned(
+         left: 20,
+         top: 50,
+         child: InkWell(
+         onTap: (){ Navigator.push(context, MaterialPageRoute(builder: (context) => BranchName(string1)));},
+         child: Container(
+           height: 150,
+           width: 150,
+           decoration: BoxDecoration(
+             shape: BoxShape.circle,
+             color: Colors.red,
+           ),
+           child: Padding(
+             padding: EdgeInsets.all(20),
+             child: Center(child: Text('CHEMISTRY and PHYSICS',style: GoogleFonts.aBeeZee(fontSize: 12,color: Colors.white),),)
+           ),
+         ),
+         )
+
+       ),
         Positioned(
-          top: 400,
-          left: 150,
-          child: AnimatedBuilder(
-            animation: controller,
-            builder: (context,builder){
-              return Transform.rotate(angle: radians(rotation.value),
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: <Widget>[
-                      _buildButton(0,color1: Colors.green,color2: Colors.lightGreenAccent,name: 'COMPUTER SCIENCE'),
-                      _buildButton(60,color1: Colors.deepPurple,color2: Colors.purpleAccent,name: 'ELECTRONICS'),
-                      _buildButton(120,color1: Colors.indigo,color2: Colors.lightBlueAccent,name: 'MECHANICAL'),
-                      _buildButton(180,color1: Colors.deepOrange,color2: Colors.orangeAccent,name: 'CHEMICAL'),
-                      _buildButton(240,color1: Colors.red,color2: Colors.pinkAccent,name: 'BIOTECHNOLOGY'),
-                      _buildButton(300,color1: Colors.black,color2: Colors.grey,name: 'MATHS AND COMPUTING'),
-
-                      Transform.scale(
-                        scale: scale.value+0.5,
-                        child: FloatingActionButton(
-
-                          heroTag: 'btn1',
-                          child: Icon(Icons.clear),
-                          onPressed: _close,
-                          backgroundColor: Colors.red,
-                        ),
-                      ),
-                      Transform.scale(
-                        scale: scale.value+1.8,
-                        child: FloatingActionButton(
-                          child: Icon(Icons.add),
-                          heroTag: 'btn2',
-                          onPressed: _open,
-                          backgroundColor: Colors.red,
-                        ),
-                      ),
-                    ],
-                  )
-              );
-            },
+          left: 260,
+          top: 50,
+          child: InkWell(
+            onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => BranchName(string2)));},
+            child: Container(
+            height: 150,
+            width: 150,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.red,
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child:Center(child: Text('MECHANICAL and TEXTILE',style: GoogleFonts.aBeeZee(fontSize: 12,color: Colors.white),),)
+            ),
           ),
+          )
+
+        ),
+        Positioned(
+          left: 140,
+          top: 200,
+          child: InkWell(
+            onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => BranchName(string3)));},
+            child: Container(
+            height: 150,
+            width: 150,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.red,
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child:Center(child: Text('INDUSTRIAL and PRODUCTION',style: GoogleFonts.aBeeZee(fontSize: 12,color: Colors.white),),)
+            ),
+          ),
+          )
+
+        ),
+        Positioned(
+          left: 20,
+          top: 350,
+          child: InkWell(
+            onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => BranchName(string5)));} ,
+            child: Container(
+            height: 150,
+            width: 150,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.red,
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child:Center(child: Text('AGRICULTURE and BIOLOGY',style: GoogleFonts.aBeeZee(fontSize: 12,color: Colors.white),),)
+            ),
+          ),
+          )
+
+        ),
+        Positioned(
+          left: 260,
+          top: 350,
+          child:InkWell(
+            onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => BranchName(string8)));},
+            child: Container(
+            height: 150,
+            width: 150,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.red,
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child:Center(child: Text('CONSTRUCTION',style: GoogleFonts.aBeeZee(fontSize: 12,color: Colors.white),),)
+            ),
+          ),
+          )
+
+        ),
+        Positioned(
+          left: 140,
+          top: 500,
+          child: InkWell(
+            onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => BranchName(string4)));},
+            child: Container(
+            height: 150,
+            width: 150,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.red,
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child:Center(child: Text('OTHERS',style: GoogleFonts.aBeeZee(fontSize: 12,color: Colors.white),),)
+            ),
+          ),
+          )
+
+        ),
+        Positioned(
+          left: 20,
+          top: 650,
+          child: InkWell(
+            onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => BranchName(string6)));},
+            child: Container(
+            height: 150,
+            width: 150,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.red,
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child:Center(child: Text('ELECTRONICS',style: GoogleFonts.aBeeZee(fontSize: 12,color: Colors.white),),)
+            ),
+          ),
+          )
+
+        ),
+        Positioned(
+          left: 260,
+          top: 650,
+          child:InkWell(
+            onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => BranchName(string7)));},
+            child: Container(
+            height: 150,
+            width: 150,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.red,
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child:Center(child: Text('TECHNICAL and TRANSPORT',style: GoogleFonts.aBeeZee(fontSize: 12,color: Colors.white),),)
+            ),
+          ),
+
+        ),
         )
       ],
     );
-  }
-  _buildButton(double angle,{Color color1,Color color2,String name}){
-    final double rad = radians(angle);
-    return Transform(
-      transform: Matrix4.identity()..translate(
-          (translation.value)*cos(rad),
-          (translation.value)*sin(rad),
-    ),
-      child: Container(
-        height: 60,
-        width: 120,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          gradient: LinearGradient(
-            colors: [color1,color2],
-          ),
-        ),
-        child: Padding(padding: EdgeInsets.all(15),child: Text(name,style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 10,color: Colors.white),),)
-      ),
-    );
-
-  }
-  _open(){
-    controller.forward();
-  }
-  _close(){
-    controller.reverse();
   }
 
 }
