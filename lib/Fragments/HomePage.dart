@@ -1,6 +1,7 @@
 
 
 import 'package:counselling_gurus/Pages/Student/Branchblog.dart';
+import 'package:counselling_gurus/Pages/Student/Collegeblog.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -55,10 +56,10 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 child: GridView(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: (itemWidth / itemHeight),),
                   children: <Widget>[
-                    gridCard(cardHeadings[0],icon[0],paragraph),
-                    gridCard(cardHeadings[1],icon[1],paragraph),
-                    gridCard(cardHeadings[2],icon[2],paragraph),
-                    gridCard(cardHeadings[3],icon[3],paragraph),
+                    gridCard(cardHeadings[0],icon[0],paragraph,0),
+                    gridCard(cardHeadings[1],icon[1],paragraph,1),
+                    gridCard(cardHeadings[2],icon[2],paragraph,2),
+                    gridCard(cardHeadings[3],icon[3],paragraph,3),
                   ],
                 ),
               ),
@@ -69,7 +70,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     );
   }
 
-  Widget gridCard(cardHeading,icon,para){
+  Widget gridCard(cardHeading,icon,para,index){
 
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
@@ -148,7 +149,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                           ),
                           color: Colors.purpleAccent,
                           child: Text('MORE DETAILS',style: GoogleFonts.aBeeZee(color: Colors.white,fontSize: 10),),
-                          onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context) => Branchblog())); }
+                          onPressed: (){
+                            if(index==1)
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Branchblog()));
+                            else if(index==0)
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => Collegeblog()));
+                          }
                         ),
                     )
                   ],
