@@ -2,6 +2,7 @@
 
 import 'package:counselling_gurus/Pages/Student/Branchblog.dart';
 import 'package:counselling_gurus/Pages/Student/Collegeblog.dart';
+import 'package:counselling_gurus/Pages/Student/MapPage.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -154,6 +155,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                             Navigator.push(context, MaterialPageRoute(builder: (context) => Branchblog()));
                             else if(index==0)
                               Navigator.push(context, MaterialPageRoute(builder: (context) => Collegeblog()));
+                            else if(index==2)
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => MapPage()));
                           }
                         ),
                     )
