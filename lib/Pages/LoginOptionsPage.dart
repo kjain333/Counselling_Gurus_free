@@ -1,6 +1,7 @@
 import 'package:counselling_gurus/Pages/Student/LoginPage.dart';
 import 'package:flutter/material.dart';
 import '../Animations/FadeAnimation.dart';
+import 'Mentor/LogInMentor.dart';
 
 class LoginOptionsPage extends StatefulWidget {
   @override
@@ -96,7 +97,7 @@ class _LoginOptionsPageState extends State<LoginOptionsPage> {
                                       color: Colors.orange[900]
                                   ),
                                   child: InkWell(
-                                  //  onTap: () => Navigator.of(context).pushReplacementNamed('/IntroSlider'),
+                                    onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=> LogInMentor())),
                                     child: Center(
                                       child: Text("As a Mentor", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
