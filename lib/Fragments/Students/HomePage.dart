@@ -3,18 +3,33 @@
 import 'package:counselling_gurus/Pages/Student/Branchblog.dart';
 import 'package:counselling_gurus/Pages/Student/CollegePredictor.dart';
 import 'package:counselling_gurus/Pages/Student/Collegeblog.dart';
+import 'package:counselling_gurus/Pages/Student/CompleteNews.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'dart:async';
 
+final string = [
+  'assets/images/background.png',
+  'assets/images/background2.png'
+];
+int _timerCounter = 0;
+ScrollController controller = ScrollController(initialScrollOffset: 0);
+void _incrementTimerCounter(Timer t) {
+  _timerCounter++;
+  if (_timerCounter == 6) _timerCounter = 0;
+  // if (controller.hasClients) controller.jumpTo(_timerCounter.toDouble() * 410);
+  if (controller.hasClients) controller.animateTo(_timerCounter.toDouble()*410, duration: Duration(milliseconds: 1000), curve: Curves.easeOut);
+}
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
-
+  Timer _timer = new Timer.periodic(
+      new Duration(milliseconds: 5000), _incrementTimerCounter);
   List<String> cardHeadings = ["College Predictor", "Get your Rank", "Colleges", "Branches", "Mock Counselling", "Aptitude Test"];
   List<IconData> icon = [Icons.school, Icons.score, Icons.home,Icons.library_books,Icons.supervisor_account,Icons.edit];
   String paragraph = "These are few lines describing each card to be displayed on the back.\nHere is some more random text so that the button can reach the botttom";
@@ -61,7 +76,80 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   padding: EdgeInsets.all(2.0),
                   child: CircleImages(),
                 )),
-            SizedBox(height: 40,),
+            SizedBox(height: 20,),
+          SizedBox(
+            height: 180,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              controller: controller,
+              itemCount: 6,
+              itemBuilder: (context, index) {
+                return Container(
+                  width: 410.5,
+                  height: 210,
+                  color: Colors.white,
+                  child: Center(
+                    child: Material(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      elevation: 20,
+                      child: Container(
+                        
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [Colors.deepOrange,Colors.orangeAccent],
+                              )),
+                          width: 395,
+                          height: 150,
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                width: 20,
+                              ),
+                              Container(
+                                width: 80,
+                                height: 80,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                      image: AssetImage(string[index % 2]),
+                                      fit: BoxFit.fill,
+                                    )),
+                              ),
+                              Container(
+                                width: 290.5,
+                                child: ListTile(
+                                  title: Text(
+                                    'TRENDING NEWS HEADING' + index.toString(),
+                                    style: GoogleFonts.aBeeZee(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                  subtitle: Text(
+                                    'News subheading can come here',
+                                    style: GoogleFonts.aBeeZee(
+                                        fontSize: 15, color: Colors.white),
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                CompleteNews(string[1])));
+                                  },
+                                ),
+                              )
+                            ],
+                          )),
+                    ),
+                  )
+                );
+              },
+            ),
+          ),
             Expanded(
               child: Padding(
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
