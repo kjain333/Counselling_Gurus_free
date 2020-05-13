@@ -1,20 +1,18 @@
-import 'package:counselling_gurus/Fragments/ProfilePage.dart';
-import 'package:counselling_gurus/Pages/Student/CollegePredictor.dart';
+import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Fragments/Students/ProfilePage.dart';
 import 'package:counselling_gurus/Pages/Student/IntroSlider.dart';
 import 'package:counselling_gurus/Pages/Student/OTPVerificationPage.dart';
-import 'package:counselling_gurus/Pages/Student/PercentileCalculator.dart';
 import 'package:counselling_gurus/Pages/Student/SignUpPage.dart';
 import 'package:counselling_gurus/Pages/Student/SlideNav.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Pages/Student/LoginPage.dart';
-import 'Pages/SplashScreen.dart';
 import 'Pages/Student/MainPage.dart';
-import 'Fragments/HomePage.dart';
+import 'Fragments/Students/HomePage.dart';
 import 'Pages/Student/feedback.dart';
 import 'Pages/Student/ChatBoxPage.dart';
 
 var email;
+
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -32,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: email == null ? MainPage(): MainPage(),
+      home: email == null ? LoginPage(): MainPage(),
       routes: <String, WidgetBuilder>{
         '/ProfilePage': (BuildContext context) => new ProfilePage(),
         '/LoginPage': (BuildContext context) => new LoginPage(),

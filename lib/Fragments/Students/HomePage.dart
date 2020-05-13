@@ -1,6 +1,8 @@
+
+
 import 'package:counselling_gurus/Pages/Student/Branchblog.dart';
+import 'package:counselling_gurus/Pages/Student/CollegePredictor.dart';
 import 'package:counselling_gurus/Pages/Student/Collegeblog.dart';
-import 'package:counselling_gurus/Pages/Student/MapPage.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,8 +15,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
 
-  List<String> cardHeadings = ["Colleges", "Branches", "Mock Counselling", "Aptitude Test"];
-  List<IconData> icon = [Icons.home,Icons.library_books,Icons.supervisor_account,Icons.edit];
+  List<String> cardHeadings = ["College Predictor", "Get your Rank", "Colleges", "Branches", "Mock Counselling", "Aptitude Test"];
+  List<IconData> icon = [Icons.school, Icons.score, Icons.home,Icons.library_books,Icons.supervisor_account,Icons.edit];
   String paragraph = "These are few lines describing each card to be displayed on the back.\nHere is some more random text so that the button can reach the botttom";
   @override
   Widget build(BuildContext context) {
@@ -70,6 +72,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                     gridCard(cardHeadings[1],icon[1],paragraph,1),
                     gridCard(cardHeadings[2],icon[2],paragraph,2),
                     gridCard(cardHeadings[3],icon[3],paragraph,3),
+                    gridCard(cardHeadings[4],icon[4],paragraph,4),
+                    gridCard(cardHeadings[5],icon[5],paragraph,5),
                   ],
                 ),
               ),
@@ -114,14 +118,11 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                     height: 30,
                   ),
                   ListTile(
-                    title: Center(child: Text(cardHeading,style: GoogleFonts.aBeeZee(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.white),),),
+                    title: Center(child: Text(cardHeading, style: GoogleFonts.aBeeZee(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.white),),),
                     subtitle: Text('Here we will put some lines of predefined text',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 13,color: Colors.white),),
                   ),
-
-
                 ],
               ),
-
             )
           ),
           back: Card(
@@ -160,47 +161,26 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                           color: Colors.purpleAccent,
                           child: Text('MORE DETAILS',style: GoogleFonts.aBeeZee(color: Colors.white,fontSize: 10),),
                           onPressed: (){
-                            if(index==1)
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Branchblog()));
-                            else if(index==0)
+                            if(index == 0)
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => CollegePredictor()));
+                            else if(index == 1)
+                              {}
+                            else if(index == 2)
                               Navigator.push(context, MaterialPageRoute(builder: (context) => Collegeblog()));
-                            else if(index==2)
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => MapPage()));
+                            else if(index == 3)
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => Branchblog()));
                           }
                         ),
                     )
                   ],
                 ),
-
             )
         ),
       ),
     )
     );
   }
-
 }
-/*Padding(
-padding: EdgeInsets.fromLTRB(15, 15, 15, 8),
-child: Stack(
-children: <Widget>[
-Center(
-child: Text(cardHeading, style: TextStyle(
-fontSize: 20,
-color: Colors.black,
-fontWeight: FontWeight.bold
-),)
-),
-Align(
-alignment: Alignment.bottomRight,
-child: Text("Tap to get more info", style: TextStyle(
-fontSize: 10,
-color: Colors.grey
-),),
-)
-],
-),
-),*/
 
 class CircleImages extends StatefulWidget {
   @override

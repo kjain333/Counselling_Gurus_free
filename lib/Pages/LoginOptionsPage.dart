@@ -81,7 +81,7 @@ class _LoginOptionsPageState extends State<LoginOptionsPage> {
                                   child: InkWell(
                                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
                                     child: Center(
-                                      child: Text("As a Student", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                      child: Text("I am a Student", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
                                   ),
                                 ),
@@ -99,7 +99,7 @@ class _LoginOptionsPageState extends State<LoginOptionsPage> {
                                   child: InkWell(
                                     onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=> LogInMentor())),
                                     child: Center(
-                                      child: Text("As a Mentor", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                      child: Text("I am a Mentor", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
                                   ),
                                 ),

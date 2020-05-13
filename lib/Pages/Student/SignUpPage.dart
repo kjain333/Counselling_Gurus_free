@@ -13,6 +13,7 @@ class  SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMixin {
 
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   TextEditingController nameController = new TextEditingController();
   TextEditingController contactController = new TextEditingController();
   TextEditingController emailController = new TextEditingController();
@@ -29,37 +30,84 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
     passwordVisible = false;
   }
 
-   signUpUser() async{
-    print(user.toJson());
-    await http.post('http://192.168.43.70:3060/postsignupapp', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
-      final String res = response.body;
-      final int statusCode = response.statusCode;
-      if (statusCode < 200 || statusCode > 400 || json == null) {
-        throw new Exception("Error while fetching data");
-      }else{
-        Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
-      }
-      print(jsonDecoder.convert(res));
-      return jsonDecoder.convert(res);
-    });
+  String emailValidator(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    if(value.isEmpty){
+      return "Email can't be empty";
+    }
+    if (!regex.hasMatch(value)) {
+      return 'Email format is invalid';
+    } else {
+      return null;
+    }
   }
 
-  addToSF() async{
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setString("email", emailController.text.toString());
-    pref.setString("password", passwordController.text.toString());
-    pref.setString("name", nameController.text.toString());
-    pref.setString("contact", contactController.text.toString());
+  String pwdValidator(String value) {
+    if(value.isEmpty){
+      return "Password can't be empty";
+    }
+    if (value.length < 8) {
+      return 'Password must be longer than 8 characters';
+    } else {
+      return null;
+    }
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    nameController.dispose();
-    contactController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
+  String contactValidator(String value) {
+    if(value.isEmpty){
+      return "Contact can't be empty";
+    }
+    if (value.length < 10) {
+      return 'Enter a valid contact number';
+    } else {
+      return null;
+    }
   }
+
+  String nameValidator(String value) {
+    if(value.isEmpty){
+      return "Username can't be empty";
+    }
+    if (value.length < 3) {
+      return 'Enter a valid username';
+    } else {
+      return null;
+    }
+  }
+
+//   signUpUser() async{
+//    print(user.toJson());
+//    await http.post('http://192.168.43.70:3060/postsignupapp', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
+//      final String res = response.body;
+//      final int statusCode = response.statusCode;
+//      if (statusCode < 200 || statusCode > 400 || json == null) {
+//        throw new Exception("Error while fetching data");
+//      }else{
+//        Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+//      }
+//      print(jsonDecoder.convert(res));
+//      return jsonDecoder.convert(res);
+//    });
+//  }
+
+//  addToSF() async{
+//    SharedPreferences pref = await SharedPreferences.getInstance();
+//    pref.setString("email", emailController.text.toString());
+//    pref.setString("password", passwordController.text.toString());
+//    pref.setString("name", nameController.text.toString());
+//    pref.setString("contact", contactController.text.toString());
+//  }
+
+//  @override
+//  void dispose() {
+//    super.dispose();
+//    nameController.dispose();
+//    contactController.dispose();
+//    emailController.dispose();
+//    passwordController.dispose();
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,79 +178,90 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
                                     offset: Offset(0, 10)
                                 )]
                             ),
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.grey[200]))
-                                  ),
-                                  child: TextField(
-                                    controller: nameController,
-                                    decoration: InputDecoration(
-                                        hintText: "Full Name",
-                                        hintStyle: TextStyle(color: Colors.grey),
-                                        border: InputBorder.none
+                            child: Form(
+                              key: _formkey,
+                              child: Column(
+                                children: <Widget>[
+                                  Container(
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                        border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                    ),
+                                    child: TextFormField(
+                                      validator: nameValidator,
+                                      controller: nameController,
+                                      decoration: InputDecoration(
+                                          prefixIcon: Icon(Icons.person_outline),
+                                          hintText: "Full Name",
+                                          hintStyle: TextStyle(color: Colors.grey),
+                                          border: InputBorder.none
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.grey[200]))
-                                  ),
-                                  child: TextField(
-                                    controller: contactController,
-                                    decoration: InputDecoration(
-                                        hintText: "Contact Number",
-                                        hintStyle: TextStyle(color: Colors.grey),
-                                        border: InputBorder.none
+                                  Container(
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                        border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                    ),
+                                    child: TextFormField(
+                                      validator: contactValidator,
+                                      controller: contactController,
+                                      decoration: InputDecoration(
+                                          prefixIcon: Icon(Icons.contacts),
+                                          hintText: "Contact Number",
+                                          hintStyle: TextStyle(color: Colors.grey),
+                                          border: InputBorder.none
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.grey[200]))
-                                  ),
-                                  child: TextField(
-                                    controller: emailController,
-                                    decoration: InputDecoration(
-                                        hintText: "Email",
-                                        hintStyle: TextStyle(color: Colors.grey),
-                                        border: InputBorder.none
+                                  Container(
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                        border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                    ),
+                                    child: TextFormField(
+                                      validator: emailValidator,
+                                      controller: emailController,
+                                      decoration: InputDecoration(
+                                          prefixIcon: Icon(Icons.email),
+                                          hintText: "Email",
+                                          hintStyle: TextStyle(color: Colors.grey),
+                                          border: InputBorder.none
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.grey[200]))
-                                  ),
-                                  child: TextField(
-                                    controller: passwordController,
-                                    obscureText: !passwordVisible,
-                                    decoration: InputDecoration(
-                                        hintText: "Password",
-                                        hintStyle: TextStyle(color: Colors.grey),
-                                        border: InputBorder.none,
-                                        suffixIcon: IconButton(
-                                          icon: Icon(
-                                            passwordVisible?
-                                            Icons.visibility:
-                                            Icons.visibility_off,
-                                            color: Theme.of(context).primaryColorDark,
-                                          ),
-                                          onPressed: (){
-                                            setState(() {
-                                              passwordVisible = !passwordVisible;
-                                            });
-                                          },
-                                        )
+                                  Container(
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                        border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                    ),
+                                    child: TextFormField(
+                                      validator: pwdValidator,
+                                      controller: passwordController,
+                                      obscureText: !passwordVisible,
+                                      decoration: InputDecoration(
+                                          prefixIcon: Icon(Icons.lock_outline),
+                                          hintText: "Password",
+                                          hintStyle: TextStyle(color: Colors.grey),
+                                          border: InputBorder.none,
+                                          suffixIcon: IconButton(
+                                            icon: Icon(
+                                              passwordVisible?
+                                              Icons.visibility:
+                                              Icons.visibility_off,
+                                              color: Theme.of(context).primaryColorDark,
+                                            ),
+                                            onPressed: (){
+                                              setState(() {
+                                                passwordVisible = !passwordVisible;
+                                              });
+                                            },
+                                          )
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           )),
                           SizedBox(height: 40,),
@@ -217,23 +276,26 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
                                   ),
                                   child: InkWell(
                                     onTap: () {
-                                      setState(() {
-                                        isLoading = true;
-                                      });
-                                      isLoading ? Center(
-                                          child: CircularProgressIndicator()
-                                      ): Container();
-                                      setState(() {
-                                        name = nameController.text.toString();
-                                        email = emailController.text.toString();
-                                        password = passwordController.text.toString();
-                                        contact = contactController.text.toString();
-                                        user = new UserSignUp( name: name, email: email, password: password,
-                                            contact: contact
-                                        );
-                                      });
-                                      addToSF();
-                                      signUpUser();
+                                      FormState formState = _formkey.currentState;
+                                      formState.validate();
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+//                                      setState(() {
+//                                        isLoading = true;
+//                                      });
+//                                      isLoading ? Center(
+//                                          child: CircularProgressIndicator()
+//                                      ): Container();
+//                                      setState(() {
+//                                        name = nameController.text.toString();
+//                                        email = emailController.text.toString();
+//                                        password = passwordController.text.toString();
+//                                        contact = contactController.text.toString();
+//                                        user = new UserSignUp( name: name, email: email, password: password,
+//                                            contact: contact
+//                                        );
+//                                      });
+//                                      addToSF();
+//                                      signUpUser();
                                     },
                                     child: Center(
                                       child: Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,11 +17,15 @@ final string6 = ['COMMUNICATION','ELECTRICAL','ELECTRONICS\nand\nCOMMUNICATION',
 final string7 = ['COMPUTER\nSCIENCE\nENGINEERING','INFORMATION\nTECHNOLOGY','ROBOTICS','AERONAUTICAL','AEROSPACE','AUTOMOBILE','TRANSPORT'];
 final string8 = ['CERAMIC','CIVIL','CONSTRUCTION','STRUCTURAL\nENGINEERING'];
 enum _BgProps{color1,color2}
+
 class Branchblog extends StatelessWidget{
+
   @override
   Widget build(BuildContext context){
+
     final tween = MultiTween<_BgProps>()..add(_BgProps.color1,Color(0xffD38312).tweenTo(Colors.lightBlue.shade900))
       ..add(_BgProps.color2,Color(0xffA83279).tweenTo(Colors.blue.shade600));
+
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -210,4 +215,5 @@ class Branchblog extends StatelessWidget{
       ),
     );
   }
+
 }

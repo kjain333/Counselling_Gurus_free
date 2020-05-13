@@ -1,10 +1,10 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:titled_navigation_bar/titled_navigation_bar.dart';
-import '../../Fragments/HomePage.dart';
-import '../../Fragments/MorePage.dart';
+import '../../Fragments/Students/HomePage.dart';
+import '../../Fragments/Students/MorePage.dart';
 import 'package:flutter/material.dart';
-import '../../Fragments/NewsPage.dart';
-import '../../Fragments/ProfilePage.dart';
+import '../../Fragments/Students/NewsPage.dart';
+import '../../Fragments/Students/ProfilePage.dart';
 
 class DrawerItem {
   String title;

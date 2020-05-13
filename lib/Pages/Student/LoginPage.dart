@@ -16,6 +16,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   bool passwordVisible, validateEmail = false, validatePassword = false;
   String email, password;
 
@@ -31,26 +32,51 @@ class _LoginPageState extends State<LoginPage> {
     passwordVisible = false;
   }
 
-  loginUser() async{
-    print(user.toJson());
-    await http.post('http://192.168.43.70:3060/postloginapp', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
-      final String res = response.body;
-      final int statusCode = response.statusCode;
-      if (statusCode < 200 || statusCode > 400 || json == null) {
-        throw new Exception("Error while fetching data");
-      }else{
-        Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
-      }
-      print(jsonDecoder.convert(res));
-      return jsonDecoder.convert(res);
-    });
+  String emailValidator(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    if(value.isEmpty){
+      return "Email can't be empty";
+    }
+    if (!regex.hasMatch(value)) {
+      return 'Email format is invalid';
+    } else {
+      return null;
+    }
   }
 
-  addToSF() async{
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setString("email", emailController.text.toString());
-    pref.setString("password", passwordController.text.toString());
+  String pwdValidator(String value) {
+    if(value.isEmpty){
+      return "Password can't be empty";
+    }
+    if (value.length < 8) {
+      return 'Password must be longer than 8 characters';
+    } else {
+      return null;
+    }
   }
+
+//  loginUser() async{
+//    print(user.toJson());
+//    await http.post('http://192.168.43.70:3060/postloginapp', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
+//      final String res = response.body;
+//      final int statusCode = response.statusCode;
+//      if (statusCode < 200 || statusCode > 400 || json == null) {
+//        throw new Exception("Error while fetching data");
+//      }else{
+//        Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+//      }
+//      print(jsonDecoder.convert(res));
+//      return jsonDecoder.convert(res);
+//    });
+//  }
+//
+//  addToSF() async{
+//    SharedPreferences pref = await SharedPreferences.getInstance();
+//    pref.setString("email", emailController.text.toString());
+//    pref.setString("password", passwordController.text.toString());
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,53 +142,60 @@ class _LoginPageState extends State<LoginPage> {
                                   offset: Offset(0, 10)
                               )]
                           ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    border: Border(bottom: BorderSide(color: Colors.grey[200]))
-                                ),
-                                child: TextField(
-                                  controller: emailController,
-                                  decoration: InputDecoration(
-                                      errorText: validateEmail ? "Email can't be empty": null,
-                                      hintText: "Email",
-                                      hintStyle: TextStyle(color: Colors.grey),
-                                      border: InputBorder.none
+                          child: Form(
+                            key: _formkey,
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                  ),
+                                  child: TextFormField(
+                                    validator: emailValidator,
+                                    controller: emailController,
+                                    decoration: InputDecoration(
+                                        prefixIcon: Icon(Icons.email),
+                                        errorText: validateEmail ? "Email can't be empty": null,
+                                        hintText: "Email",
+                                        hintStyle: TextStyle(color: Colors.grey),
+                                        border: InputBorder.none
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    border: Border(bottom: BorderSide(color: Colors.grey[200]))
-                                ),
-                                child: TextField(
-                                  controller: passwordController,
-                                  obscureText: !passwordVisible,
-                                  decoration: InputDecoration(
-                                      errorText: validatePassword ? "Password can't be empty": null,
-                                      hintText: "Password",
-                                      hintStyle: TextStyle(color: Colors.grey),
-                                      border: InputBorder.none,
-                                    suffixIcon: IconButton(
-                                      icon: Icon(
-                                        passwordVisible?
-                                            Icons.visibility:
-                                            Icons.visibility_off,
-                                        color: Theme.of(context).primaryColorDark,
-                                      ),
-                                      onPressed: (){
-                                        setState(() {
-                                          passwordVisible = !passwordVisible;
-                                        });
-                                      },
-                                    )
+                                Container(
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                  ),
+                                  child: TextFormField(
+                                    validator: pwdValidator,
+                                    controller: passwordController,
+                                    obscureText: !passwordVisible,
+                                    decoration: InputDecoration(
+                                        prefixIcon: Icon(Icons.lock_outline),
+                                        errorText: validatePassword ? "Password can't be empty": null,
+                                        hintText: "Password",
+                                        hintStyle: TextStyle(color: Colors.grey),
+                                        border: InputBorder.none,
+                                      suffixIcon: IconButton(
+                                        icon: Icon(
+                                          passwordVisible?
+                                              Icons.visibility:
+                                              Icons.visibility_off,
+                                          color: Theme.of(context).primaryColorDark,
+                                        ),
+                                        onPressed: (){
+                                          setState(() {
+                                            passwordVisible = !passwordVisible;
+                                          });
+                                        },
+                                      )
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         )),
                         SizedBox(height: 40,),
@@ -184,15 +217,18 @@ class _LoginPageState extends State<LoginPage> {
                                       ),
                                       child: InkWell(
                                         onTap: () {
-                                          setState(() {
-                                            emailController.text.isEmpty ? validateEmail = true: validateEmail = false;
-                                            passwordController.text.isEmpty ? validatePassword = true: validatePassword = false;
-                                            email = emailController.text.toString();
-                                            password = passwordController.text.toString();
-                                            user = new UserSignIn(email: email, password: password);
-                                          });
-                                          addToSF();
-                                          loginUser();
+                                          FormState formState = _formkey.currentState;
+                                          formState.validate();
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+//                                          setState(() {
+//                                            emailController.text.isEmpty ? validateEmail = true: validateEmail = false;
+//                                            passwordController.text.isEmpty ? validatePassword = true: validatePassword = false;
+//                                            email = emailController.text.toString();
+//                                            password = passwordController.text.toString();
+//                                            user = new UserSignIn(email: email, password: password);
+//                                          });
+//                                          addToSF();
+//                                          loginUser();
                                         },
                                         child: Center(
                                           child: Text("Log In", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
@@ -213,7 +249,6 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                     child: InkWell(
                                       onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()),),
-                                         // Navigator.of(context).pushReplacementNamed('/SignUpPage'),
                                       child: Center(
                                         child: Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                       ),

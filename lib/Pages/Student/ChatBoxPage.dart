@@ -1,26 +1,6 @@
 
 import 'package:flutter/material.dart';
 
-//void main() {
-//  runApp(Home());
-//}
-//
-//
-//class Home extends StatelessWidget {
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return MaterialApp(
-//      title: 'Dynamic Card List',
-//      theme: ThemeData(
-//        primarySwatch: Colors.teal,
-//      ),
-//      home: MyHomePage(),
-//    );
-//  }
-//}
-
-
 class ChatBoxPage extends StatefulWidget {
   @override
   _ChatBoxPageState createState() => _ChatBoxPageState();
@@ -144,7 +124,6 @@ class _ChatBoxPageState extends State<ChatBoxPage> {
           ),
           subtitle: Text(subtitle),
           trailing: Icon(Icons.question_answer),
-
         ),
       ),
     );

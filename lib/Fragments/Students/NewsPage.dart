@@ -43,30 +43,38 @@ ScrollController controller = ScrollController(initialScrollOffset: 0);
   JsonDecoder jsonDecoder = new JsonDecoder();
   bool loader = false;
   Map<String, dynamic> jsonData;
-  List<String> heading, subheading;
+  List<String> heading = new List(20);
+  List<String> subheading = new List(20);
   int news;
 
 class _NewsPageState extends State<NewsPage> {
-  getNews() async {
 
-    Uri uri = Uri.parse('http://192.168.43.70:3060/getnews');
-    http.Response response =
-        await http.get(uri, headers: {"Accept": "application/json"});
-    print(response.body);
-    if (response.statusCode == 200) {
-      setState(() {
-        jsonData = jsonDecoder.convert(response.body);
-        news = jsonData['count'];
-        for(int i=0;i<news;i++){
-          heading[i] = jsonData['item'][i].heading;
-          subheading[i] = jsonData['item'][i].subheading;
-        }
-        loader = false;
-      });
-    } else {
-      throw Exception('Failed to load data');
-    }
+  @override
+  void initState() {
+//    loader = true;
+//    getNews();
+    super.initState();
   }
+
+//  getNews() async {
+//    Uri uri = Uri.parse('http://192.168.43.70:3060/getnews');
+//    http.Response response =
+//        await http.get(uri, headers: {"Accept": "application/json"});
+//    print(response.body);
+//    if (response.statusCode == 200) {
+//      setState(() {
+//        jsonData = jsonDecoder.convert(response.body);
+//        news = jsonData['count'];
+//        for(int i=0; i<news; i++){
+//          heading[i] = jsonData['item'][i]['heading'];
+//          subheading[i] = jsonData['item'][i]['subheading'];
+//        }
+//        loader = false;
+//      });
+//    } else {
+//      throw Exception('Failed to load data');
+//    }
+//  }
 
   Timer _timer = new Timer.periodic(
       new Duration(milliseconds: 5000), _incrementTimerCounter);
@@ -74,8 +82,13 @@ class _NewsPageState extends State<NewsPage> {
   @override
   Widget build(BuildContext context) {
     _timerCounter = 0;
-    return ListView.builder(
-      itemCount: 10,
+    return loader ? Center(
+      child: CircularProgressIndicator(
+        backgroundColor: Colors.orangeAccent,
+      ),
+    ):
+    ListView.builder(
+      itemCount: 10,  //news + 1
       itemBuilder: (context, index) {
         if (index == 0) {
           return SizedBox(
@@ -88,9 +101,9 @@ class _NewsPageState extends State<NewsPage> {
                 return Container(
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [bgcolor[0], bgcolor[1]],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [bgcolor[0], bgcolor[1]],
                     )),
                     width: 410.5,
                     height: 200,
@@ -191,14 +204,14 @@ class _NewsPageState extends State<NewsPage> {
                             ),
                             child: ListTile(
                                 title: Text(
-                                  "NEWS HEADING",
+                                  "Heading", //heading[index-1]
                                   style: GoogleFonts.aBeeZee(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white),
                                 ),
                                 subtitle: Text(
-                                  "DATE\nThis is news Sub-heading",
+                                  "Subheading", //subheading[index-1]
                                   style: GoogleFonts.aBeeZee(
                                       fontSize: 10, color: Colors.white),
                                 ),

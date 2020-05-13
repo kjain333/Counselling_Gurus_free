@@ -57,11 +57,11 @@ class FeedbackPage extends StatelessWidget {
               SizedBox(
                 height: 5.0,
               ),
-              BuildForm(),
+              buildForm(),
               SizedBox(
                 height: 5.0,
               ),
-              BuildMobileField(),
+              buildMobileField(),
               SizedBox(
                 height: 5.0,
               ),
@@ -87,7 +87,7 @@ class FeedbackPage extends StatelessWidget {
     );
   }
 
-  BuildMobileField() {
+  buildMobileField() {
     return TextField(
       style: TextStyle(
         color: Colors.black87,
@@ -136,7 +136,7 @@ class FeedbackPage extends StatelessWidget {
     );
   }
 
-  BuildForm() {
+  buildForm() {
     return Container(
       height: 120.0,
       child: Stack(

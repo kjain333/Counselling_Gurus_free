@@ -17,47 +17,47 @@ class _ProfilePageState extends State<ProfilePage> {
   Map<String, dynamic> jsonData;
   bool loader = false;
 
-  getUserData() async{
-
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    email = prefs.getString('email');
-    if(prefs.getString('name') == null || prefs.getString('name').isEmpty ||
-        prefs.getString('email') == null || prefs.getString('email').isEmpty ||
-        prefs.getString('contact') == null || prefs.getString('contact').isEmpty){
-
-      Uri uri = Uri.parse('http://192.168.43.70:3060/getuserdataapp/$email');
-      http.Response response = await http.get(uri, headers: {"Accept": "application/json"});
-      print(response.body);
-      if(response.statusCode == 200){
-        setState(() {
-          jsonData = jsonDecoder.convert(response.body);
-          prefs.setString('name', name);
-          prefs.setString('email', email);
-          prefs.setString('contact', contact);
-          setState(() {
-            email = jsonData['email'];
-            name = jsonData['name'];
-            contact = jsonData['contact'];
-            loader = false;
-          });
-        });
-      }else{
-        throw Exception('Failed to load data');
-      }
-    }else{
-      setState(() {
-        name = prefs.getString('name');
-        email = prefs.getString('email');
-        contact = prefs.getString('contact');
-        loader = false;
-      });
-    }
-  }
+//  getUserData() async{
+//
+//    SharedPreferences prefs = await SharedPreferences.getInstance();
+//    email = prefs.getString('email');
+//    if(prefs.getString('name') == null || prefs.getString('name').isEmpty ||
+//        prefs.getString('email') == null || prefs.getString('email').isEmpty ||
+//        prefs.getString('contact') == null || prefs.getString('contact').isEmpty){
+//
+//      Uri uri = Uri.parse('http://192.168.43.70:3060/getuserdataapp/$email');
+//      http.Response response = await http.get(uri, headers: {"Accept": "application/json"});
+//      print(response.body);
+//      if(response.statusCode == 200){
+//        setState(() {
+//          jsonData = jsonDecoder.convert(response.body);
+//          prefs.setString('name', name);
+//          prefs.setString('email', email);
+//          prefs.setString('contact', contact);
+//          setState(() {
+//            email = jsonData['email'];
+//            name = jsonData['name'];
+//            contact = jsonData['contact'];
+//            loader = false;
+//          });
+//        });
+//      }else{
+//        throw Exception('Failed to load data');
+//      }
+//    }else{
+//      setState(() {
+//        name = prefs.getString('name');
+//        email = prefs.getString('email');
+//        contact = prefs.getString('contact');
+//        loader = false;
+//      });
+//    }
+//  }
 
   @override
   void initState() {
-    loader = true;
-    getUserData();
+//    loader = true;
+//    getUserData();
     super.initState();
   }
 
@@ -117,7 +117,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         ListTile(
                           title:Center(
-                            child: Text(name ,style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.bold),),
+                            child: Text("name" ,style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.bold),),
                              ),
                            subtitle: Center(
                              child: Text('City,State',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300),),
@@ -169,7 +169,7 @@ class _ProfilePageState extends State<ProfilePage> {
               child: ListTile(
                 contentPadding: EdgeInsets.only(left: 50,right: 50),
                 leading: Icon(Icons.email,color: Colors.black,),
-                title: Text(email ,style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+                title: Text("email" ,style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
               ),
             ),
           ),
@@ -180,8 +180,8 @@ class _ProfilePageState extends State<ProfilePage> {
               child: ListTile(
                 contentPadding: EdgeInsets.only(left: 50,right: 50),
                 leading: Icon(Icons.phone_android,color: Colors.black,),
-                title: Text(contact ,style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
-              ),
+                title: Text( "contact",style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+            ),
             ),
           )
         ],
