@@ -12,6 +12,7 @@ import 'Pages/SplashScreen.dart';
 import 'Pages/Student/MainPage.dart';
 import 'Fragments/HomePage.dart';
 import 'Pages/Student/feedback.dart';
+import 'Pages/Student/ChatBoxPage.dart';
 
 var email;
 Future<void> main() async{
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: email == null ? SplashScreen(): MainPage(),
+      home: email == null ? MainPage(): MainPage(),
       routes: <String, WidgetBuilder>{
         '/ProfilePage': (BuildContext context) => new ProfilePage(),
         '/LoginPage': (BuildContext context) => new LoginPage(),
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         '/SignUpPage': (BuildContext context) => new SignUpPage(),
         '/FeedbackPage': (BuildContext context) => new FeedbackPage(),
         '/OTPVerificationPage': (BuildContext context) => new OTPVerificationPage(),
+        '/ChatBoxPage': (BuildContext context) => new ChatBoxPage(),
       },
     );
   }

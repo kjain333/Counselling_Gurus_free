@@ -1,5 +1,3 @@
-
-
 import 'package:counselling_gurus/Pages/Student/Branchblog.dart';
 import 'package:counselling_gurus/Pages/Student/Collegeblog.dart';
 import 'package:counselling_gurus/Pages/Student/MapPage.dart';
@@ -27,6 +25,17 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     final double itemWidth = size.width / 2;
 
     return Scaffold(
+
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.pushNamed(context, '/ChatBoxPage');
+        },
+        icon: Icon(Icons.question_answer),
+        label: Text("ChatBox"),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8.0))),
+        backgroundColor: Colors.blue,
+      ),
+
       body: Container(
         child: Column(
           children: <Widget>[

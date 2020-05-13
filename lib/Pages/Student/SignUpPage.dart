@@ -6,7 +6,7 @@ import '../../Animations/FadeAnimation.dart';
 import 'package:http/http.dart' as http;
 import '../../models/UserModelSignUp.dart';
 
-class SignUpPage extends StatefulWidget {
+class  SignUpPage extends StatefulWidget {
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
