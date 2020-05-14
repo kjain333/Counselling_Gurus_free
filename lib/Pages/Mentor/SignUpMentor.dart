@@ -6,6 +6,7 @@ import '../../Animations/FadeAnimation.dart';
 //import 'package:http/http.dart' as http;
 //import '../../models/UserModelSignUp.dart';
 import 'MentorInfo.dart';
+import '../../Resources/Colors.dart' as color;
 
 class SignUpMentor extends StatefulWidget {
   @override
@@ -74,9 +75,10 @@ class _SignUpMentorState extends State<SignUpMentor> with SingleTickerProviderSt
           width: double.infinity,
           decoration: BoxDecoration(
               gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-                Colors.orange[900],
-                Colors.orange[800],
-                Colors.orange[400]
+                color.bgGrad,
+                color.bgGrad1,
+                color.bgGrad2,
+                color.bgGrad3
               ])),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -214,7 +216,7 @@ class _SignUpMentorState extends State<SignUpMentor> with SingleTickerProviderSt
                                   margin: EdgeInsets.symmetric(horizontal: 50),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
-                                      color: Colors.orange[900]
+                                      color: color.buttonsMain
                                   ),
                                   child: InkWell(
                                     onTap: () {

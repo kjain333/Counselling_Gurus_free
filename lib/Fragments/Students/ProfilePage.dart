@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../Resources/Colors.dart' as color;
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -82,11 +83,12 @@ class _ProfilePageState extends State<ProfilePage> {
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                         colors: [
-                          Colors.deepOrangeAccent,
-                          Colors.orange,
-                          Colors.orangeAccent,
+                          color.bgGrad,
+                          color.bgGrad1,
+                          color.bgGrad2,
+                          color.bgGrad3
                         ],
-                        stops: [0.2,0.7,1],
+                        stops: [0.2,0.5,0.7,1],
                       )
                   ),
                 ),
@@ -152,10 +154,11 @@ class _ProfilePageState extends State<ProfilePage> {
                       .width / 3 ,
                   child: Container(
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
                       shape: BoxShape.rectangle,
                       image: DecorationImage(
                           fit: BoxFit.fill,
-                          image: AssetImage('assets/images/splashpic.png')),
+                          image: AssetImage('assets/images/profile.png')),
                     ),
                   ),
                 )

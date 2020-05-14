@@ -2,12 +2,14 @@ import 'dart:convert';
 
 import 'package:counselling_gurus/Pages/Student/OTPVerificationPage.dart';
 import 'package:counselling_gurus/Pages/Student/SignUpPage.dart';
+import 'package:counselling_gurus/Resources/Colors.dart';
 import 'package:counselling_gurus/models/UserModelSignIn.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Animations/FadeAnimation.dart';
 import 'IntroSlider.dart';
+import '../../Resources/Colors.dart' as color;
 
 class LoginPage extends StatefulWidget {
   @override
@@ -85,9 +87,10 @@ class _LoginPageState extends State<LoginPage> {
         width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-          Colors.orange[900],
-          Colors.orange[800],
-          Colors.orange[400]
+              color.bgGrad,
+              color.bgGrad1,
+              color.bgGrad2,
+              color.bgGrad3
         ])),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -213,13 +216,14 @@ class _LoginPageState extends State<LoginPage> {
                                       height: 50,
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(50),
-                                          color: Colors.orange[900]
+                                          color: color.buttonsMain
                                       ),
                                       child: InkWell(
                                         onTap: () {
                                           FormState formState = _formkey.currentState;
-                                          formState.validate();
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+                                          if(formState.validate()){
+                                            Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+                                          }
 //                                          setState(() {
 //                                            emailController.text.isEmpty ? validateEmail = true: validateEmail = false;
 //                                            passwordController.text.isEmpty ? validatePassword = true: validatePassword = false;
@@ -245,7 +249,7 @@ class _LoginPageState extends State<LoginPage> {
                                     height: 50,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(50),
-                                        color: Colors.orange[900]
+                                        color: color.buttonsMain
                                     ),
                                     child: InkWell(
                                       onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()),),
@@ -258,52 +262,6 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             ],
                         ),
-                        SizedBox(height: 40,),
-                        FadeAnimation(1.5, Text("Continue with social media", style: TextStyle(color: Colors.grey),)),
-                        SizedBox(height: 30,),
-                        Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: FadeAnimation(
-                                  1.8,
-                                  Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Colors.blue),
-                                    child: Center(
-                                      child: Text(
-                                        "Facebook",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  )),
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            Expanded(
-                              child: FadeAnimation(
-                                  1.9,
-                                  Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Colors.black),
-                                    child: Center(
-                                      child: Text(
-                                        "Github",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  )),
-                            )
-                          ],
-                        )
                       ],
                     ),
                   ),

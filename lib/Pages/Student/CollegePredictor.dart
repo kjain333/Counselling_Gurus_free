@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../Resources/Colors.dart' as color;
 
 class CollegePredictor extends StatefulWidget{
   @override
@@ -61,9 +62,10 @@ class _CollegePredictorState extends State<CollegePredictor>{
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          Colors.orange[900],
-                          Colors.orange[800],
-                          Colors.orange[400]
+                          color.bgGrad,
+                          color.bgGrad1,
+                          color.bgGrad2,
+                          color.bgGrad3
                         ]
                       )
                   ),

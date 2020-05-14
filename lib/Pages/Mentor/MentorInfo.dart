@@ -2,6 +2,7 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:counselling_gurus/Pages/Student/IntroSlider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../Resources/Colors.dart' as color;
 
 class MentorInfo extends StatelessWidget{
   @override
@@ -15,9 +16,10 @@ class MentorInfo extends StatelessWidget{
             height: 180,
             decoration: BoxDecoration(
                 gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-                  Colors.orange[900],
-                  Colors.orange[800],
-                  Colors.orange[400]
+                  color.bgGrad,
+                  color.bgGrad1,
+                  color.bgGrad2,
+                  color.bgGrad3
                 ])),
             child: Text('\n\n\n  WELCOME BACK',style: TextStyle(color: Colors.white,fontSize: 18),),
           ),
@@ -101,7 +103,7 @@ class MentorInfo extends StatelessWidget{
                 ),
                 RaisedButton(
                   child: Text('SUBMIT',style: TextStyle(color: Colors.white),),
-                  color: Colors.pinkAccent,
+                  color: color.buttonsMain,
                   onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
                   },

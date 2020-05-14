@@ -1,6 +1,7 @@
 import 'package:counselling_gurus/models/intro_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../Resources/Colors.dart' as color;
 
 class IntroSlider extends StatefulWidget {
   @override
@@ -27,7 +28,7 @@ class _IntroSliderState extends State<IntroSlider> {
       height: 8.0,
       width: isActive ? 24.0 : 16.0,
       decoration: BoxDecoration(
-        color: isActive ? Colors.white : Colors.orange[900],
+        color: isActive ? Colors.white : color.orange5,
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
@@ -44,12 +45,11 @@ class _IntroSliderState extends State<IntroSlider> {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              stops: [0.1, 0.4, 0.7, 0.9],
+              stops: [0.4, 0.7, 0.9],
               colors: [
-                Colors.orange[900],
-                Colors.orange[800],
-                Colors.orange[400],
-                Colors.orange[100]
+                color.orange7,
+                color.orange8,
+                color.orange10
               ],
             ),
           ),
@@ -210,7 +210,7 @@ class _IntroSliderState extends State<IntroSlider> {
                       child: Text(
                         'Get started',
                         style: TextStyle(
-                          color: Colors.orange[900],
+                          color: color.orange5,
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                         ),

@@ -1,6 +1,7 @@
 import 'package:counselling_gurus/Pages/Student/LoginPage.dart';
 import 'package:flutter/material.dart';
 import '../../Animations/FadeAnimation.dart';
+import '../../Resources/Colors.dart' as color;
 
 class ForgetPasswordPage extends StatefulWidget {
   @override
@@ -22,9 +23,10 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
           width: double.infinity,
           decoration: BoxDecoration(
               gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-                Colors.orange[900],
-                Colors.orange[800],
-                Colors.orange[400]
+                color.bgGrad,
+                color.bgGrad1,
+                color.bgGrad2,
+                color.bgGrad3
               ])),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,7 +120,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                                   margin: EdgeInsets.symmetric(horizontal: 50),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
-                                      color: Colors.orange[900]
+                                      color: color.buttonsMain
                                   ),
                                   child: InkWell(
                                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),),

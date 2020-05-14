@@ -5,13 +5,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Animations/FadeAnimation.dart';
 import 'package:http/http.dart' as http;
 import '../../models/UserModelSignUp.dart';
+import '../../Resources/Colors.dart' as color;
 
-class  SignUpPage extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateMixin {
+class _SignUpPageState extends State<SignUpPage>
+    with SingleTickerProviderStateMixin {
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   TextEditingController nameController = new TextEditingController();
@@ -34,7 +36,7 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = new RegExp(pattern);
-    if(value.isEmpty){
+    if (value.isEmpty) {
       return "Email can't be empty";
     }
     if (!regex.hasMatch(value)) {
@@ -45,7 +47,7 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
   }
 
   String pwdValidator(String value) {
-    if(value.isEmpty){
+    if (value.isEmpty) {
       return "Password can't be empty";
     }
     if (value.length < 8) {
@@ -56,7 +58,7 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
   }
 
   String contactValidator(String value) {
-    if(value.isEmpty){
+    if (value.isEmpty) {
       return "Contact can't be empty";
     }
     if (value.length < 10) {
@@ -67,7 +69,7 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
   }
 
   String nameValidator(String value) {
-    if(value.isEmpty){
+    if (value.isEmpty) {
       return "Username can't be empty";
     }
     if (value.length < 3) {
@@ -112,7 +114,7 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async{
+      onWillPop: () async {
         Navigator.of(context).pop();
         return false;
       },
@@ -121,9 +123,10 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
           width: double.infinity,
           decoration: BoxDecoration(
               gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-                Colors.orange[900],
-                Colors.orange[800],
-                Colors.orange[400]
+                color.bgGrad,
+                color.bgGrad1,
+                color.bgGrad2,
+                color.bgGrad3
               ])),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,7 +179,8 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
                                     color: Color.fromRGBO(225, 95, 27, .3),
                                     blurRadius: 20,
                                     offset: Offset(0, 10)
-                                )]
+                                )
+                                ]
                             ),
                             child: Form(
                               key: _formkey,
@@ -185,15 +189,18 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
                                   Container(
                                     padding: EdgeInsets.all(10),
                                     decoration: BoxDecoration(
-                                        border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                        border: Border(bottom: BorderSide(
+                                            color: Colors.grey[200]))
                                     ),
                                     child: TextFormField(
                                       validator: nameValidator,
                                       controller: nameController,
                                       decoration: InputDecoration(
-                                          prefixIcon: Icon(Icons.person_outline),
+                                          prefixIcon: Icon(
+                                              Icons.person_outline),
                                           hintText: "Full Name",
-                                          hintStyle: TextStyle(color: Colors.grey),
+                                          hintStyle: TextStyle(
+                                              color: Colors.grey),
                                           border: InputBorder.none
                                       ),
                                     ),
@@ -201,15 +208,18 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
                                   Container(
                                     padding: EdgeInsets.all(10),
                                     decoration: BoxDecoration(
-                                        border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                        border: Border(bottom: BorderSide(
+                                            color: Colors.grey[200]))
                                     ),
                                     child: TextFormField(
+                                      keyboardType: TextInputType.number,
                                       validator: contactValidator,
                                       controller: contactController,
                                       decoration: InputDecoration(
                                           prefixIcon: Icon(Icons.contacts),
                                           hintText: "Contact Number",
-                                          hintStyle: TextStyle(color: Colors.grey),
+                                          hintStyle: TextStyle(
+                                              color: Colors.grey),
                                           border: InputBorder.none
                                       ),
                                     ),
@@ -217,7 +227,8 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
                                   Container(
                                     padding: EdgeInsets.all(10),
                                     decoration: BoxDecoration(
-                                        border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                        border: Border(bottom: BorderSide(
+                                            color: Colors.grey[200]))
                                     ),
                                     child: TextFormField(
                                       validator: emailValidator,
@@ -225,7 +236,8 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
                                       decoration: InputDecoration(
                                           prefixIcon: Icon(Icons.email),
                                           hintText: "Email",
-                                          hintStyle: TextStyle(color: Colors.grey),
+                                          hintStyle: TextStyle(
+                                              color: Colors.grey),
                                           border: InputBorder.none
                                       ),
                                     ),
@@ -233,7 +245,8 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
                                   Container(
                                     padding: EdgeInsets.all(10),
                                     decoration: BoxDecoration(
-                                        border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                                        border: Border(bottom: BorderSide(
+                                            color: Colors.grey[200]))
                                     ),
                                     child: TextFormField(
                                       validator: pwdValidator,
@@ -242,18 +255,22 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
                                       decoration: InputDecoration(
                                           prefixIcon: Icon(Icons.lock_outline),
                                           hintText: "Password",
-                                          hintStyle: TextStyle(color: Colors.grey),
+                                          hintStyle: TextStyle(
+                                              color: Colors.grey),
                                           border: InputBorder.none,
                                           suffixIcon: IconButton(
                                             icon: Icon(
-                                              passwordVisible?
-                                              Icons.visibility:
+                                              passwordVisible ?
+                                              Icons.visibility :
                                               Icons.visibility_off,
-                                              color: Theme.of(context).primaryColorDark,
+                                              color: Theme
+                                                  .of(context)
+                                                  .primaryColorDark,
                                             ),
-                                            onPressed: (){
+                                            onPressed: () {
                                               setState(() {
-                                                passwordVisible = !passwordVisible;
+                                                passwordVisible =
+                                                !passwordVisible;
                                               });
                                             },
                                           )
@@ -272,13 +289,18 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
                                   margin: EdgeInsets.symmetric(horizontal: 50),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
-                                      color: Colors.orange[900]
+                                      color: color.buttonsMain
                                   ),
                                   child: InkWell(
                                     onTap: () {
-                                      FormState formState = _formkey.currentState;
-                                      formState.validate();
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+                                      FormState formState = _formkey
+                                          .currentState;
+                                      if (formState.validate()) {
+                                        Navigator.push(context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    IntroSlider()));
+                                      }
 //                                      setState(() {
 //                                        isLoading = true;
 //                                      });
@@ -298,57 +320,13 @@ class _SignUpPageState extends State<SignUpPage> with SingleTickerProviderStateM
 //                                      signUpUser();
                                     },
                                     child: Center(
-                                      child: Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                      child: Text("Sign Up", style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),),
                                     ),
                                   ),
                                 ),
                               )),
-                          SizedBox(height: 50,),
-                          FadeAnimation(1.5, Text("Continue with social media", style: TextStyle(color: Colors.grey),)),
-                          SizedBox(height: 30,),
-                          Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: FadeAnimation(
-                                    1.8,
-                                    Container(
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(50),
-                                          color: Colors.blue),
-                                      child: Center(
-                                        child: Text(
-                                          "Facebook",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    )),
-                              ),
-                              SizedBox(
-                                width: 30,
-                              ),
-                              Expanded(
-                                child: FadeAnimation(
-                                    1.9,
-                                    Container(
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(50),
-                                          color: Colors.black),
-                                      child: Center(
-                                        child: Text(
-                                          "Github",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    )),
-                              )
-                            ],
-                          )
                         ],
                       ),
                     ),

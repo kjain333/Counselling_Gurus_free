@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import '../../Animations/FadeAnimation.dart';
 //import 'MentorInfo.dart';
 import 'SignUpMentor.dart';
+import '../../Resources/Colors.dart' as color;
 
 class LogInMentor extends StatefulWidget {
   @override
@@ -61,9 +62,10 @@ class _LoginMentorState extends State<LogInMentor> {
         width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-              Colors.orange[900],
-              Colors.orange[800],
-              Colors.orange[400]
+              color.bgGrad,
+              color.bgGrad1,
+              color.bgGrad2,
+              color.bgGrad3
             ])),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,7 +184,7 @@ class _LoginMentorState extends State<LogInMentor> {
                                       height: 50,
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(50),
-                                          color: Colors.orange[900]
+                                          color: color.buttonsMain
                                       ),
                                       child: InkWell(
                                         onTap: () {
@@ -213,7 +215,7 @@ class _LoginMentorState extends State<LogInMentor> {
                                       height: 50,
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(50),
-                                          color: Colors.orange[900]
+                                          color: color.buttonsMain
                                       ),
                                       child: InkWell(
                                         onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpMentor()),),
@@ -227,52 +229,6 @@ class _LoginMentorState extends State<LogInMentor> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 40,),
-                        FadeAnimation(1.5, Text("Continue with social media", style: TextStyle(color: Colors.grey),)),
-                        SizedBox(height: 30,),
-                        Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: FadeAnimation(
-                                  1.8,
-                                  Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Colors.blue),
-                                    child: Center(
-                                      child: Text(
-                                        "Facebook",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  )),
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            Expanded(
-                              child: FadeAnimation(
-                                  1.9,
-                                  Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Colors.black),
-                                    child: Center(
-                                      child: Text(
-                                        "Github",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  )),
-                            )
-                          ],
-                        )
                       ],
                     ),
                   ),

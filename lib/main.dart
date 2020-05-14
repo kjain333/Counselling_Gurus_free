@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: email == null ? LoginPage(): MainPage(),
+      home: email == null ? MainPage(): MainPage(),
       routes: <String, WidgetBuilder>{
         '/ProfilePage': (BuildContext context) => new ProfilePage(),
         '/LoginPage': (BuildContext context) => new LoginPage(),

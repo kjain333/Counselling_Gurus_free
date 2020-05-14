@@ -1,5 +1,4 @@
-
-
+import 'dart:math';
 import 'package:counselling_gurus/Pages/Student/Branchblog.dart';
 import 'package:counselling_gurus/Pages/Student/CollegePredictor.dart';
 import 'package:counselling_gurus/Pages/Student/Collegeblog.dart';
@@ -9,13 +8,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:async';
+import '../../Resources/Colors.dart' as color;
 
 final string = [
   'assets/images/background.png',
   'assets/images/background2.png'
 ];
+
 int _timerCounter = 0;
 ScrollController controller = ScrollController(initialScrollOffset: 0);
+List<Color> colorList = [color.yellow, color.orange, color.orange10, color.orange3, color.yellow6, color.pink4, color.purple, color.blue7];
+
 void _incrementTimerCounter(Timer t) {
   _timerCounter++;
   if (_timerCounter == 6) _timerCounter = 0;
@@ -28,14 +31,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
+
   Timer _timer = new Timer.periodic(
       new Duration(milliseconds: 5000), _incrementTimerCounter);
+
   List<String> cardHeadings = ["College Predictor", "Get your Rank", "Colleges", "Branches", "Mock Counselling", "Aptitude Test"];
   List<IconData> icon = [Icons.school, Icons.score, Icons.home,Icons.library_books,Icons.supervisor_account,Icons.edit];
   String paragraph = "These are few lines describing each card to be displayed on the back.\nHere is some more random text so that the button can reach the botttom";
+  
   @override
   Widget build(BuildContext context) {
 
+    
     var size = MediaQuery.of(context).size;
     /*24 is for notification bar on Android*/
     final double itemHeight = ((size.height - kToolbarHeight - 24) / 2) - 20;
@@ -64,7 +71,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   'Trending Experts',
                   textDirection: TextDirection.ltr,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 12,
                     color: Colors.deepPurple,
                   ),
                 ),
@@ -78,39 +85,36 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 )),
             SizedBox(height: 20,),
           SizedBox(
-            height: 180,
+            height: 150,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               controller: controller,
               itemCount: 6,
               itemBuilder: (context, index) {
                 return Container(
-                  width: 410.5,
-                  height: 210,
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  height: 120,
                   color: Colors.white,
                   child: Center(
                     child: Material(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                       elevation: 20,
                       child: Container(
-                        
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.all(Radius.circular(20)),
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [Colors.deepOrange,Colors.orangeAccent],
-                              )),
-                          width: 395,
-                          height: 150,
+                              color: colorList[Random().nextInt(8)]
+                          ),
+                          width: MediaQuery.of(context).size.width,
+                          height: 100,
                           child: Row(
                             children: <Widget>[
                               Container(
                                 width: 20,
                               ),
                               Container(
-                                width: 80,
-                                height: 80,
+                                width: 60,
+                                height: 60,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     image: DecorationImage(
@@ -118,28 +122,29 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                                       fit: BoxFit.fill,
                                     )),
                               ),
-                              Container(
-                                width: 290.5,
-                                child: ListTile(
-                                  title: Text(
-                                    'TRENDING NEWS HEADING' + index.toString(),
-                                    style: GoogleFonts.aBeeZee(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                              Expanded(
+                                child: Container(
+                                  child: ListTile(
+                                    title: Text(
+                                      'TRENDING NEWS HEADING' + index.toString(),
+                                      style: GoogleFonts.aBeeZee(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                    subtitle: Text(
+                                      'News subheading can come here',
+                                      style: GoogleFonts.aBeeZee(
+                                          fontSize: 12, color: Colors.white),
+                                    ),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  CompleteNews(string[1])));
+                                    },
                                   ),
-                                  subtitle: Text(
-                                    'News subheading can come here',
-                                    style: GoogleFonts.aBeeZee(
-                                        fontSize: 15, color: Colors.white),
-                                  ),
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                CompleteNews(string[1])));
-                                  },
                                 ),
                               )
                             ],
@@ -188,11 +193,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Colors.deepOrangeAccent,Colors.orangeAccent]
-                )
+//                gradient: LinearGradient(
+//                  begin: Alignment.topCenter,
+//                  end: Alignment.bottomCenter,
+//                  colors: [Colors.deepOrangeAccent,Colors.orangeAccent]
+//                ),
+                color: colorList[Random().nextInt(8)]
               ),
               child: Column(
                 children: <Widget>[
