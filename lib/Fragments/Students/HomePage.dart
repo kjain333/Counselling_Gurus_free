@@ -14,7 +14,7 @@ final string = [
   'assets/images/background.png',
   'assets/images/background2.png'
 ];
-
+double width;
 int _timerCounter = 0;
 ScrollController controller = ScrollController(initialScrollOffset: 0);
 List<Color> colorList = [color.yellow, color.orange, color.orange10, color.orange3, color.yellow6, color.pink4, color.purple, color.blue7];
@@ -23,7 +23,7 @@ void _incrementTimerCounter(Timer t) {
   _timerCounter++;
   if (_timerCounter == 6) _timerCounter = 0;
   // if (controller.hasClients) controller.jumpTo(_timerCounter.toDouble() * 410);
-  if (controller.hasClients) controller.animateTo(_timerCounter.toDouble()*410, duration: Duration(milliseconds: 1000), curve: Curves.easeOut);
+  if (controller.hasClients) controller.animateTo(_timerCounter.toDouble()*width, duration: Duration(milliseconds: 1000), curve: Curves.easeOut);
 }
 class HomePage extends StatefulWidget {
   @override
@@ -32,22 +32,28 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
 
-  Timer _timer = new Timer.periodic(
-      new Duration(milliseconds: 5000), _incrementTimerCounter);
+  Timer _timer;
 
   List<String> cardHeadings = ["College Predictor", "Get your Rank", "Colleges", "Branches", "Mock Counselling", "Aptitude Test"];
   List<IconData> icon = [Icons.school, Icons.score, Icons.home,Icons.library_books,Icons.supervisor_account,Icons.edit];
   String paragraph = "These are few lines describing each card to be displayed on the back.\nHere is some more random text so that the button can reach the botttom";
-  
+  @override
+  void dispose(){
+    super.dispose();
+    _timer.cancel();
+    _timerCounter = 0;
+  }
   @override
   Widget build(BuildContext context) {
 
-    
+
     var size = MediaQuery.of(context).size;
     /*24 is for notification bar on Android*/
     final double itemHeight = ((size.height - kToolbarHeight - 24) / 2) - 20;
     final double itemWidth = size.width / 2;
-
+    width = size.width;
+    _timer = new Timer.periodic(
+        new Duration(milliseconds: 5000), _incrementTimerCounter);
     return Scaffold(
 
       floatingActionButton: FloatingActionButton.extended(
