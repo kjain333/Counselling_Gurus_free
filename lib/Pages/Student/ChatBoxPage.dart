@@ -15,6 +15,7 @@ class _ChatBoxPageState extends State<ChatBoxPage> {
   String userName = '';
   String quesTitle = '';
   String ques = 'user will display full ques here';
+  Color _iconColor = Colors.yellow;
 
   @override
   void initState() {
@@ -65,14 +66,10 @@ class _ChatBoxPageState extends State<ChatBoxPage> {
 
 
   Card listSectionMethod(String title, String subtitle, String ques) {
+
     return Card(
       child: ListTile(
-        title: Text(
-          title,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        subtitle: Text(subtitle),
-        trailing: IconButton(
+        leading: IconButton(
           icon: Icon(Icons.question_answer),
           onPressed: (){
             Navigator.push(
@@ -80,6 +77,31 @@ class _ChatBoxPageState extends State<ChatBoxPage> {
               MaterialPageRoute(builder: (context) => QuesAnsPage()),
             );
           },
+        ),
+        isThreeLine: true,
+        dense: false,
+
+        title: Text(
+          title,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(subtitle),
+        trailing: GestureDetector(
+          onTap: (){
+            print("Hello");
+            // increase no. of likes
+            setState(() {
+              print("Hey");
+              _iconColor = Colors.red;
+            });
+
+          },
+          child: IconButton(
+            icon: Icon(Icons.thumb_up),
+            color: _iconColor,
+            onPressed: (){
+            },
+          ),
         ),
       ),
     );
