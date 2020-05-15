@@ -1,16 +1,10 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:counselling_gurus/Pages/Student/ChatBoxPage.dart';
 import 'package:titled_navigation_bar/titled_navigation_bar.dart';
 import '../../Fragments/Students/HomePage.dart';
-import '../../Fragments/Students/MorePage.dart';
 import 'package:flutter/material.dart';
 import '../../Fragments/Students/NewsPage.dart';
 import '../../Fragments/Students/ProfilePage.dart';
-
-class DrawerItem {
-  String title;
-  IconData icon;
-  DrawerItem(this.title, this.icon);
-}
 
 class MainPage extends StatefulWidget {
   @override
@@ -24,17 +18,13 @@ class _MainPageState extends State<MainPage> {
     ProfilePage(),
     HomePage(),
     NewsPage(),
-    MorePage(),
+    ChatBoxPage(),
   ];
   var _pageController = new PageController();
 
   @override 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black87,
-        title: Text("Counselling Gurus"),
-      ),
       body: PageView(
         children: _pageOptions,
         onPageChanged: (index) {
@@ -58,7 +48,7 @@ class _MainPageState extends State<MainPage> {
               TitledNavigationBarItem(title: Text('Profile'), icon: Icons.person),
               TitledNavigationBarItem(title: Text('Home'), icon: Icons.home),
               TitledNavigationBarItem(title: Text('News'), icon: Icons.call),
-              TitledNavigationBarItem(title: Text('More'), icon: Icons.more),
+              TitledNavigationBarItem(title: Text('Chat'), icon: Icons.question_answer),
             ]
         )
 //      bottomNavigationBar: BottomNavigationBar(

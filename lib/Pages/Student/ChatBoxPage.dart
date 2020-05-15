@@ -32,10 +32,6 @@ class _ChatBoxPageState extends State<ChatBoxPage> {
   Widget build(BuildContext context) {
     mContext = context;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black87,
-        title: Text("Counselling Gurus"),
-      ),
       body: listSection(),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
