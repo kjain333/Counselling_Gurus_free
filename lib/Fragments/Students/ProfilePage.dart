@@ -19,7 +19,6 @@ class _ProfilePageState extends State<ProfilePage> {
   bool loader = false;
 
 //  getUserData() async{
-//
 //    SharedPreferences prefs = await SharedPreferences.getInstance();
 //    email = prefs.getString('email');
 //    if(prefs.getString('name') == null || prefs.getString('name').isEmpty ||

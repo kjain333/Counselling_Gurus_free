@@ -15,6 +15,7 @@ final string = [
   'assets/images/background.png',
   'assets/images/background2.png'
 ];
+
 double width;
 int _timerCounter = 0;
 ScrollController controller = ScrollController(initialScrollOffset: 0);
