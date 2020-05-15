@@ -50,6 +50,9 @@ class _ChatBoxPageState extends State<ChatBoxPage> {
   Widget build(BuildContext context) {
     mContext = context;
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Chat Box"),
+      ),
       body: listSection(),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
@@ -84,6 +87,10 @@ class _ChatBoxPageState extends State<ChatBoxPage> {
 
   Card listSectionMethod(String title, String subtitle, String ques) {
     return Card(
+      margin: EdgeInsets.all(16.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
       child: ListTile(
         leading: IconButton(
           icon: Icon(Icons.question_answer),
