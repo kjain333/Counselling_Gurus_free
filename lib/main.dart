@@ -1,3 +1,6 @@
+import 'package:counselling_gurus/Pages/Student/CollegeName.dart';
+import 'package:counselling_gurus/Pages/Student/SelectStreamPage.dart';
+
 import 'Fragments/Students/ProfilePage.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Fragments/Students/ProfilePage.dart';
 import 'package:counselling_gurus/Pages/Student/IntroSlider.dart';

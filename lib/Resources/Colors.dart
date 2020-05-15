@@ -68,3 +68,6 @@ Color orange7 = Color(0xffffbbbb);
 Color orange8 = Color(0xffffb6b6);
 Color orange9 = Color(0xfff38181);
 Color orange10 = Color(0xffffa3ac);
+
+final primary = Color(0xff696b9e);
+final secondary = Color(0xfff29a94);

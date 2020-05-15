@@ -1,15 +1,15 @@
+import 'package:counselling_gurus/Animations/FadeAnimation.dart';
+import 'package:counselling_gurus/Pages/Mentor/LogInMentor.dart';
 import 'package:counselling_gurus/Pages/Student/LoginPage.dart';
 import 'package:flutter/material.dart';
-import '../Animations/FadeAnimation.dart';
-import 'Mentor/LogInMentor.dart';
-import '../Resources/Colors.dart' as color;
+import '../../Resources/Colors.dart' as color;
 
-class LoginOptionsPage extends StatefulWidget {
+class StreamSelectPage extends StatefulWidget {
   @override
-  _LoginOptionsPageState createState() => _LoginOptionsPageState();
+  _StreamSelectPageState createState() => _StreamSelectPageState();
 }
 
-class _LoginOptionsPageState extends State<LoginOptionsPage> {
+class _StreamSelectPageState extends State<StreamSelectPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class _LoginOptionsPageState extends State<LoginOptionsPage> {
                     FadeAnimation(
                         1,
                         Text(
-                          "Login Options",
+                          "Select Stream",
                           style: TextStyle(color: Colors.white, fontSize: 40),
                         )),
                     SizedBox(
@@ -81,9 +81,9 @@ class _LoginOptionsPageState extends State<LoginOptionsPage> {
                                       color: color.buttonsMain
                                   ),
                                   child: InkWell(
-                                  //  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
+                                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
                                     child: Center(
-                                      child: Text("I am a Student", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                      child: Text("As an Engineering Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
                                   ),
                                 ),
@@ -99,9 +99,9 @@ class _LoginOptionsPageState extends State<LoginOptionsPage> {
                                       color: color.buttonsMain
                                   ),
                                   child: InkWell(
-                                   // onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=> LogInMentor())),
+                                    onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=> LogInMentor())),
                                     child: Center(
-                                      child: Text("I am a Mentor", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                      child: Text("As a Medical Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
                                   ),
                                 ),

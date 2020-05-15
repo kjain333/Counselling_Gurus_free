@@ -112,8 +112,8 @@ class _NewsPageState extends State<NewsPage> {
                             width: 20,
                           ),
                           Container(
-                            width: 100,
-                            height: 100,
+                            width: 80,
+                            height: 80,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 image: DecorationImage(
@@ -127,14 +127,14 @@ class _NewsPageState extends State<NewsPage> {
                               title: Text(
                                 'NEWS HEADING ' + index.toString(),//heading[index-1]
                                 style: GoogleFonts.aBeeZee(
-                                    fontSize: 20,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white),
                               ),
                               subtitle: Text(
                                 'Here we can put the news sub-heading.',//subheading[index-1]
                                 style: GoogleFonts.aBeeZee(
-                                    fontSize: 15, color: Colors.white),
+                                    fontSize: 12, color: Colors.white),
                               ),
                               onTap: () {
                                 Navigator.push(

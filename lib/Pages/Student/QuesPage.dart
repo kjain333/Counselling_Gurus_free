@@ -77,14 +77,11 @@ class _QuesPageState extends State<QuesPage> {
                 children: <Widget>[
                   RaisedButton(
                     onPressed: (){
-
                       // code for submitting all details to server database
-
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => ChatBoxPage()),
                       );
-
                       Fluttertoast.showToast(
                           msg: "Your Ques will be answered soon!!",
                           toastLength: Toast.LENGTH_SHORT,
@@ -94,8 +91,6 @@ class _QuesPageState extends State<QuesPage> {
                           textColor: Colors.white,
                           fontSize: 16.0
                       );
-
-
                     },
                     child: Text('Submit', style: TextStyle(fontSize: 20)),
                   ),

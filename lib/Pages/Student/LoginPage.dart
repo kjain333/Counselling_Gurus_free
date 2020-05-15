@@ -17,7 +17,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   bool passwordVisible, validateEmail = false, validatePassword = false;
   String email, password;
@@ -38,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = new RegExp(pattern);
-    if(value.isEmpty){
+    if (value.isEmpty) {
       return "Email can't be empty";
     }
     if (!regex.hasMatch(value)) {
@@ -49,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   String pwdValidator(String value) {
-    if(value.isEmpty){
+    if (value.isEmpty) {
       return "Password can't be empty";
     }
     if (value.length < 8) {
@@ -87,10 +86,10 @@ class _LoginPageState extends State<LoginPage> {
         width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-              color.bgGrad,
-              color.bgGrad1,
-              color.bgGrad2,
-              color.bgGrad3
+          color.bgGrad,
+          color.bgGrad1,
+          color.bgGrad2,
+          color.bgGrad3
         ])),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -134,95 +133,127 @@ class _LoginPageState extends State<LoginPage> {
                     padding: EdgeInsets.all(30),
                     child: Column(
                       children: <Widget>[
-                        SizedBox(height: 60,),
-                        FadeAnimation(1.2, Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [BoxShadow(
-                                  color: Color.fromRGBO(225, 95, 27, .3),
-                                  blurRadius: 20,
-                                  offset: Offset(0, 10)
-                              )]
-                          ),
-                          child: Form(
-                            key: _formkey,
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.grey[200]))
-                                  ),
-                                  child: TextFormField(
-                                    validator: emailValidator,
-                                    controller: emailController,
-                                    decoration: InputDecoration(
-                                        prefixIcon: Icon(Icons.email),
-                                        errorText: validateEmail ? "Email can't be empty": null,
-                                        hintText: "Email",
-                                        hintStyle: TextStyle(color: Colors.grey),
-                                        border: InputBorder.none
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.grey[200]))
-                                  ),
-                                  child: TextFormField(
-                                    validator: pwdValidator,
-                                    controller: passwordController,
-                                    obscureText: !passwordVisible,
-                                    decoration: InputDecoration(
-                                        prefixIcon: Icon(Icons.lock_outline),
-                                        errorText: validatePassword ? "Password can't be empty": null,
-                                        hintText: "Password",
-                                        hintStyle: TextStyle(color: Colors.grey),
-                                        border: InputBorder.none,
-                                      suffixIcon: IconButton(
-                                        icon: Icon(
-                                          passwordVisible?
-                                              Icons.visibility:
-                                              Icons.visibility_off,
-                                          color: Theme.of(context).primaryColorDark,
-                                        ),
-                                        onPressed: (){
-                                          setState(() {
-                                            passwordVisible = !passwordVisible;
-                                          });
-                                        },
-                                      )
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        )),
-                        SizedBox(height: 40,),
-                        InkWell(
-                          child: FadeAnimation(1.3, Text("Forgot Password?", style: TextStyle(color: Colors.grey),)),
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => OTPVerificationPage()),),
+                        SizedBox(
+                          height: 60,
                         ),
-                        SizedBox(height: 40,),
+                        FadeAnimation(
+                            1.2,
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Color.fromRGBO(225, 95, 27, .3),
+                                        blurRadius: 20,
+                                        offset: Offset(0, 10))
+                                  ]),
+                              child: Form(
+                                key: _formkey,
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      padding: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                          border: Border(
+                                              bottom: BorderSide(
+                                                  color: Colors.grey[200]))),
+                                      child: TextFormField(
+                                        validator: emailValidator,
+                                        controller: emailController,
+                                        decoration: InputDecoration(
+                                            prefixIcon: Icon(Icons.email),
+                                            errorText: validateEmail
+                                                ? "Email can't be empty"
+                                                : null,
+                                            hintText: "Email",
+                                            hintStyle:
+                                                TextStyle(color: Colors.grey),
+                                            border: InputBorder.none),
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                          border: Border(
+                                              bottom: BorderSide(
+                                                  color: Colors.grey[200]))),
+                                      child: TextFormField(
+                                        validator: pwdValidator,
+                                        controller: passwordController,
+                                        obscureText: !passwordVisible,
+                                        decoration: InputDecoration(
+                                            prefixIcon:
+                                                Icon(Icons.lock_outline),
+                                            errorText: validatePassword
+                                                ? "Password can't be empty"
+                                                : null,
+                                            hintText: "Password",
+                                            hintStyle:
+                                                TextStyle(color: Colors.grey),
+                                            border: InputBorder.none,
+                                            suffixIcon: IconButton(
+                                              icon: Icon(
+                                                passwordVisible
+                                                    ? Icons.visibility
+                                                    : Icons.visibility_off,
+                                                color: Theme.of(context)
+                                                    .primaryColorDark,
+                                              ),
+                                              onPressed: () {
+                                                setState(() {
+                                                  passwordVisible =
+                                                      !passwordVisible;
+                                                });
+                                              },
+                                            )),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )),
+                        SizedBox(
+                          height: 40,
+                        ),
+                        InkWell(
+                          child: FadeAnimation(
+                              1.3,
+                              Text(
+                                "Forgot Password?",
+                                style: TextStyle(color: Colors.grey),
+                              )),
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => OTPVerificationPage()),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 40,
+                        ),
                         Row(
                           children: <Widget>[
                             Expanded(
-                              child: FadeAnimation(1.4,
+                              child: FadeAnimation(
+                                  1.4,
                                   InkWell(
                                     child: Container(
                                       height: 50,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(50),
-                                          color: color.buttonsMain
-                                      ),
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          color: color.buttonsMain),
                                       child: InkWell(
                                         onTap: () {
-                                          FormState formState = _formkey.currentState;
-                                          if(formState.validate()){
-                                            Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+                                          FormState formState =
+                                              _formkey.currentState;
+                                          if (formState.validate()) {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        IntroSlider()));
                                           }
 //                                          setState(() {
 //                                            emailController.text.isEmpty ? validateEmail = true: validateEmail = false;
@@ -235,39 +266,81 @@ class _LoginPageState extends State<LoginPage> {
 //                                          loginUser();
                                         },
                                         child: Center(
-                                          child: Text("Log In", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                          child: Text(
+                                            "Log In",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold),
+                                          ),
                                         ),
                                       ),
                                     ),
                                   )),
                             ),
-                            SizedBox(width: 30,),
+                            SizedBox(
+                              width: 30,
+                            ),
                             Expanded(
-                              child: FadeAnimation(1.6,
-                                InkWell(
-                                  child: Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: color.buttonsMain
-                                    ),
-                                    child: InkWell(
-                                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()),),
-                                      child: Center(
-                                        child: Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                              child: FadeAnimation(
+                                  1.6,
+                                  InkWell(
+                                    child: Container(
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          color: color.buttonsMain),
+                                      child: InkWell(
+                                        onTap: () => Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SignUpPage()),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            "Sign Up",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                )),
+                                  )),
                             ),
-                            ],
+                          ],
                         ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        FadeAnimation(
+                            1.4,
+                            InkWell(
+                              child: Container(
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: color.buttonsMain),
+                                child: InkWell(
+                                  onTap: () {},
+                                  child: Center(
+                                    child: Text(
+                                      "Sign In with Google",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )),
                       ],
                     ),
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
