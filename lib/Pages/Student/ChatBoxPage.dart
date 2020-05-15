@@ -2,20 +2,6 @@ import 'package:flutter/material.dart';
 import 'QuesPage.dart';
 import 'QuesAnsPage.dart';
 
-//void main() {
-//  runApp(MyApp());
-//}
-
-//class MyApp extends StatelessWidget {
-//  @override
-//  Widget build(BuildContext context) {
-//    return MaterialApp(
-//      debugShowCheckedModeBanner: false,
-//      title: 'Image Picker Demo',
-//      home: ChatBoxPage(),
-//    );
-//  }
-//}
 
 class ChatBoxPage extends StatefulWidget {
   @override
@@ -35,10 +21,10 @@ class _ChatBoxPageState extends State<ChatBoxPage> {
     super.initState();
     // Here initialize the list in case it is required
     _listSection.add(
-      listSectionMethod("Username", "One line Ques Title", "ques and answer"),
+      listSectionMethod("One line Ques Title", "Username", "ques and answer"),
     );
     _listSection.add(
-      listSectionMethod("Naman Agarwal", "Date of JEE counselling", ""),
+      listSectionMethod("Date of JEE counselling", "Naman Agarwal", ""),
     );
   }
 
@@ -84,21 +70,20 @@ class _ChatBoxPageState extends State<ChatBoxPage> {
 
   Card listSectionMethod(String title, String subtitle, String ques) {
     return Card(
-      child: GestureDetector(
-        onTap: () {
-          //_ackAlert(mContext);
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => QuesAnsPage()),
-          );
-        } ,
-        child: ListTile(
-          title: Text(
-            title,
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          subtitle: Text(subtitle),
-          trailing: Icon(Icons.question_answer),
+      child: ListTile(
+        title: Text(
+          title,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(subtitle),
+        trailing: IconButton(
+          icon: Icon(Icons.question_answer),
+          onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => QuesAnsPage()),
+            );
+          },
         ),
       ),
     );
