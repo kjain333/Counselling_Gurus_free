@@ -232,6 +232,8 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget trendingNews() {
+    if(_timer!=null)
+    _timer.cancel();
     var size = MediaQuery.of(context).size;
     /*24 is for notification bar on Android*/
     final double itemHeight = ((size.height - kToolbarHeight - 24) / 2) - 20;
@@ -407,6 +409,7 @@ class _HomePageState extends State<HomePage>
                                         builder: (context) =>
                                             CollegePredictor()));
                               else if (index == 1) {
+
                               } else if (index == 2)
                                 Navigator.push(
                                     context,
