@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../Resources/Colors.dart' as color;
+import 'StudentPlanPopup.dart';
 
 class CollegePredictor extends StatefulWidget{
   @override
@@ -311,71 +312,7 @@ class Colleges extends StatelessWidget{
                  title: Text('READ MORE'),
                  contentPadding: EdgeInsets.only(left: 100, right: 100),
                  onTap: () {
-                   showDialog(
-                       context: context,
-                       builder: (BuildContext context) {
-                         return AlertDialog(
-                           content: Container(
-                             height: 400,
-                             color: Colors.black,
-                             child: Column(
-                               children: <Widget>[
-                                 const SizedBox(
-                                   height: 30,
-                                 ),
-                                 ListTile(
-                                   title: Center(
-                                     child: Text('PREMIUM PASS',style: GoogleFonts.aBeeZee(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
-                                   )
-                                 ),
-                                 SizedBox(
-                                   height: 50,
-                                   width: 50,
-                                   child: IconButton(
-                                     icon: Icon(Icons.sentiment_very_satisfied,color: Colors.yellow,size: 50,),
-                                     onPressed: (){
-                                       return null;
-                                     },
-                                   ),
-                                 ),
-                                 SizedBox(
-                                   height: 10,
-                                 ),
-                                 ListTile(
-                                   leading: Icon(Icons.arrow_right,color: Colors.lightGreenAccent,),
-                                   title: Text('FEATURE 1',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300,color: Colors.white),),
-
-                                 ),
-                                 ListTile(
-                                   leading: Icon(Icons.arrow_right,color: Colors.lightGreenAccent,),
-                                   title: Text('FEATURE 2',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300,color: Colors.white),),
-
-                                 ),
-                                 ListTile(
-                                   leading: Icon(Icons.arrow_right,color: Colors.lightGreenAccent,),
-                                   title: Text('FEATURE 3',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300,color: Colors.white),),
-
-                                 ),
-                                 SizedBox(
-                                   height: 20,
-                                 ),
-                                 RaisedButton(
-                                   shape: RoundedRectangleBorder(
-                                     borderRadius: BorderRadius.circular(20),
-                                   ),
-                                   onPressed: (){
-                                     return null;
-                                   },
-                                   color: Colors.pinkAccent,
-                                   textColor: Colors.white,
-                                   child: Text('UPGRADE',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w500,fontSize: 20),),
-                                 )
-                               ],
-                             ),
-                           )
-                         );
-                       }
-                   );
+                   popup(context);
                  },
                ),
              )

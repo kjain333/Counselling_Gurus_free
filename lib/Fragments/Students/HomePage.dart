@@ -233,7 +233,7 @@ class _HomePageState extends State<HomePage>
 
   Widget trendingNews() {
     if(_timer!=null)
-    _timer.cancel();
+      _timer.cancel();
     var size = MediaQuery.of(context).size;
     /*24 is for notification bar on Android*/
     final double itemHeight = ((size.height - kToolbarHeight - 24) / 2) - 20;
@@ -241,7 +241,6 @@ class _HomePageState extends State<HomePage>
     width = size.width;
     _timer = new Timer.periodic(
         new Duration(milliseconds: 5000), _incrementTimerCounter);
-
     return Container(
         color: Colors.transparent,
         height: 120,
