@@ -3,6 +3,8 @@ import 'package:counselling_gurus/Pages/Student/Branchblog.dart';
 import 'package:counselling_gurus/Pages/Student/CollegePredictor.dart';
 import 'package:counselling_gurus/Pages/Student/Collegeblog.dart';
 import 'package:counselling_gurus/Pages/Student/CompleteNews.dart';
+import 'package:counselling_gurus/Pages/Student/EditProfile.dart';
+import 'package:counselling_gurus/Pages/Student/feedback.dart';
 import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
@@ -183,20 +185,20 @@ class _HomePageState extends State<HomePage>
                     style: TextStyle(color: active, fontSize: 16.0),
                   ),
                   SizedBox(height: 30.0),
-                  _buildRow(Icons.home, "Home"),
+                  _buildRow(Icons.home, "Home",1),
                   _buildDivider(),
-                  _buildRow(Icons.person_pin, "My profile"),
+                  _buildRow(Icons.person_pin, "My profile",2),
                   _buildDivider(),
-                  _buildRow(Icons.message, "Messages", showBadge: true),
+                  _buildRow(Icons.message, "Feedback",3, showBadge: true),
                   _buildDivider(),
-                  _buildRow(Icons.notifications, "Notifications",
+                  _buildRow(Icons.notifications, "Notifications",4,
                       showBadge: true),
                   _buildDivider(),
-                  _buildRow(Icons.settings, "Settings"),
+                  _buildRow(Icons.settings, "Settings",5),
                   _buildDivider(),
-                  _buildRow(Icons.email, "Contact us"),
+                  _buildRow(Icons.email,"Contact us",6),
                   _buildDivider(),
-                  _buildRow(Icons.info_outline, "Help"),
+                  _buildRow(Icons.info_outline,"Help",7),
                   _buildDivider(),
                 ],
               ),
@@ -213,21 +215,29 @@ class _HomePageState extends State<HomePage>
     );
   }
 
-  Widget _buildRow(IconData icon, String title, {bool showBadge = false}) {
+  Widget _buildRow(IconData icon, String title,int index, {bool showBadge = false}) {
     final TextStyle tStyle = TextStyle(color: active, fontSize: 16.0);
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
-      child: Row(children: [
-        Icon(
-          icon,
-          color: active,
-        ),
-        SizedBox(width: 10.0),
-        Text(
-          title,
-          style: tStyle,
-        ),
-      ]),
+    return GestureDetector(
+      onTap: (){
+        if(index==2)
+        Navigator.push(context,MaterialPageRoute(builder: (context)=>EditProfile()));
+        else if(index==3)
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>FeedbackPage()));
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 5.0),
+        child: Row(children: [
+          Icon(
+            icon,
+            color: active,
+          ),
+          SizedBox(width: 10.0),
+          Text(
+            title,
+            style: tStyle,
+          ),
+        ]),
+      ),
     );
   }
 

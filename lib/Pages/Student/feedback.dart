@@ -1,38 +1,95 @@
-import 'package:flutter/material.dart';
 
-class FeedbackPage extends StatelessWidget {
+
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+final elevation = [0,0,0,0,0];
+final color = [Colors.grey,Colors.white];
+final colorindex = [0,0,0,0,0];
+final icons = [Icons.sentiment_very_satisfied,Icons.sentiment_satisfied,Icons.sentiment_neutral,Icons.sentiment_dissatisfied,Icons.sentiment_very_dissatisfied];
+final text = ['It was GREAT','It was FINE','It did the job','It was DISAPPOINTING','It was FRUSTRATING'];
+final text2 = ['GREAT','SATISFACTORY','OK','DISAPPOINTING','FRUSTRATING'];
+class FeedbackPage extends StatefulWidget{
+  @override
+  _FeedbackPage createState() {
+    return _FeedbackPage();
+  }
+
+}
+class _FeedbackPage extends State<FeedbackPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: Text(
-          "FeedBack",
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-        ),
-        leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
+      backgroundColor: Colors.blueGrey,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 50,
             ),
-            onPressed: () {}),
-        backgroundColor: Colors.black87,
-        centerTitle: true,
-        actions: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              IconButton(
-                  icon: Icon(
-                    Icons.settings,
-                    color: Colors.white,
-                  ),
-                  onPressed: null),
-            ],
-          )
-        ],
-      ),
-      body: Padding(
+            SizedBox(
+              height: 50,
+              child:Center(child: Text('Feedback',style: GoogleFonts.aBeeZee(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              height: 100,
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: Center(
+                  child: Text('How do you feel about the support you received from us?',style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w300,color: Colors.white),),
+
+                ),
+              )
+            ),
+            buildFeedbackTile(0),
+            SizedBox(
+              height: 30,
+            ),
+            buildFeedbackTile(1),
+            SizedBox(
+              height: 30,
+            ),
+            buildFeedbackTile(2),
+            SizedBox(
+              height: 30,
+            ),
+            buildFeedbackTile(3),
+            SizedBox(
+              height: 30,
+            ),
+            buildFeedbackTile(4),
+            SizedBox(
+              height: 80,
+            ),
+            RaisedButton(
+              onPressed: (){
+                int flag=0;
+                for(int i=0;i<5;i++)
+                  {
+                    if(elevation[i]==30)
+                      {
+                        flag=1;
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>feedback(i)));
+                      }
+                  }
+                if(flag==0)
+                  {
+                    showAlertDialog(context);
+                  }
+              },
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text('CONTINUE',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w100,color: Colors.blueGrey,fontSize: 20),),
+            )
+          ],
+        ),
+      )
+     /* body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Container(
           child: Column(
@@ -83,10 +140,56 @@ class FeedbackPage extends StatelessWidget {
             ],
           ),
         ),
-      ),
+      ),*/
     );
   }
-
+  showAlertDialog(context){
+    Widget okButton = FlatButton(
+      child: Text('OK'),
+      onPressed: (){
+        Navigator.pop(context);
+      },
+    );
+    AlertDialog alert= AlertDialog(
+      content: Text('Please select one of the above to continue your feedback'),
+      actions: <Widget>[
+        okButton,
+      ],
+    );
+    showDialog(context: context,
+      builder: (context){
+        return alert;
+      },
+    );
+  }
+  buildFeedbackTile(index){
+    return GestureDetector(
+        onTap: (){
+          setState(() {
+            for(int i=0;i<5;i++)
+              {
+                elevation[i]=0;
+                colorindex[i]=0;
+              }
+            elevation[index]=30;
+            colorindex[index]=1;
+          });
+        },
+        child: Material(
+          elevation: elevation[index].toDouble(),
+          color: Colors.blueGrey,
+          child: Container(
+            height: 50,
+            width: 400,
+            child: ListTile(
+              leading: Icon(Icons.arrow_right,color: Colors.lightBlueAccent,),
+              title: Text(text[index],style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 20,color: color[colorindex[index]]),),
+              trailing: Icon(icons[index],color: color[colorindex[index]],),
+            ),
+          ),
+        )
+    );
+  }
   buildMobileField() {
     return TextField(
       style: TextStyle(
@@ -135,77 +238,152 @@ class FeedbackPage extends StatelessWidget {
       ),
     );
   }
+}
 
-  buildForm() {
-    return Container(
-      height: 120.0,
-      child: Stack(
-        children: <Widget>[
-          TextField(
-            maxLines: 10,
-            decoration: InputDecoration(
-                hintText: "Please Describe your Issue in Detail Here",
-                hintStyle: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 13.0,
-                ),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.grey,
-                  ),
-                )),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              decoration: BoxDecoration(
-                  border: Border(
-                      top: BorderSide(
-                width: 1.0,
-                color: Colors.grey,
-              ))),
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xffe5e5e5),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Icon(Icons.add, color: Color(0xffa5a5a5))),
-                  ),
-                  SizedBox(
-                    width: 10.0,
-                  ),
-                  Text(
-                    "Upload ScreenShots (Optional)",
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ],
+final issues = [0,0,0,0,0];
+class feedback extends StatefulWidget{
+  feedback(this.index);
+  int index;
+
+  @override
+  _feedback createState() {
+    return _feedback(index);
+  }
+
+
+}
+class _feedback extends State<feedback>{
+  _feedback(this.index);
+  int index;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.blueGrey,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 70,
+            ),
+            SizedBox(
+                height: 100,
+                width: MediaQuery.of(context).size.width,
+                child: Stack(
+
+                  children: <Widget>[
+                    Positioned(
+                      left: MediaQuery.of(context).size.width/2-50,
+                      child: IconButton(
+                        icon: Icon(icons[index],color: Colors.white,size: 100,),
+                        onPressed: (){
+                          return null;
+                        },
+                      ),
+                    )
+                  ],
+                )
+            ),
+            SizedBox(
+              height: 50,
+              child: Center(
+                child: Text(text2[index],style: GoogleFonts.aBeeZee(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
               ),
             ),
+            SizedBox(
+              height: 50,
+              child: Center(
+                child: Text('Help us know where we can improve',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w100,fontSize: 18,color: Colors.white),),
+              ),
+            ),
+            checkitemwidget("Login Issue",0),
+            checkitemwidget("Mentor Allotment Issue",1),
+            checkitemwidget("Profile-Related Issues",2),
+            checkitemwidget("Other Issues",3),
+            checkitemwidget("Suggestions",4),
+            SizedBox(
+              height: 10,
+            ),
+            buildForm(),
+            SizedBox(
+              height: 40,
+            ),
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              onPressed: (){
+                return null;
+              },
+              color: Colors.white,
+              child: Text('SUBMIT',style: GoogleFonts.aBeeZee(color: Colors.blueGrey,fontSize: 15,fontWeight: FontWeight.w300),),
+            )
+          ],
+        ),
+      )
+    );
+  }
+  checkitemwidget(String IssueType,int index) {
+    return GestureDetector(
+      onTap: (){
+        setState(() {
+          for(int i=0;i<5;i++)
+            {
+              issues[i]=0;
+            }
+          issues[index]=1;
+        });
+      },
+      child: Row(
+        children: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.radio_button_unchecked,
+                color: color[issues[index]],
+              ),
+              onPressed: () {
+                  setState(() {
+                    for(int i=0;i<5;i++)
+                    {
+                      issues[i]=0;
+                    }
+                    issues[index]=1;
+                  });
+              }),
+          Text(
+            IssueType,
+            style: GoogleFonts.aBeeZee(color: color[issues[index]], fontWeight: FontWeight.w300,fontSize: 15),
           )
         ],
       ),
     );
   }
-
-  checkitemwidget(String IssueType) {
-    return Row(
-      children: <Widget>[
-        IconButton(
-            icon: Icon(
-              Icons.radio_button_unchecked,
-              color: Colors.black87,
+  buildForm() {
+    return Padding(
+      padding: EdgeInsets.only(left: 20,right: 20),
+      child: Material(
+        elevation: 20,
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+        child: TextField(
+          maxLines: 5,
+          decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.white,
+              ),
+              borderRadius: BorderRadius.circular(20),
             ),
-            onPressed: () {}),
-        Text(
-          IssueType,
-          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
-        )
-      ],
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.white
+              ),
+              borderRadius: BorderRadius.circular(20)
+            ),
+            hintText: 'Please describe your problem in detail over here.\n\n\n\n',
+            hintStyle: TextStyle(color: Colors.grey),
+          )
+        ),
+      ),
     );
   }
 }
