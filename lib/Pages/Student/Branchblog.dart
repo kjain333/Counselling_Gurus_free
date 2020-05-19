@@ -76,17 +76,17 @@ Widget gridcard(int index,BuildContext context){
   if(index==0)
   Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string1)));
   if(index==1)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string1)));
-  if(index==2)
   Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string2)));
-  if(index==3)
+  if(index==2)
   Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string3)));
-  if(index==4)
+  if(index==3)
   Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string7)));
-  if(index==5)
+  if(index==4)
   Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string6)));
-  if(index==6)
+  if(index==5)
   Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string5)));
+  if(index==6)
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string8)));
   if(index==7)
   Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string4)));
 
