@@ -1,9 +1,11 @@
 import 'dart:math';
 import 'package:counselling_gurus/Pages/Student/Branchblog.dart';
+import 'package:counselling_gurus/Pages/Student/ChangePassword.dart';
 import 'package:counselling_gurus/Pages/Student/CollegePredictor.dart';
 import 'package:counselling_gurus/Pages/Student/Collegeblog.dart';
 import 'package:counselling_gurus/Pages/Student/CompleteNews.dart';
 import 'package:counselling_gurus/Pages/Student/EditProfile.dart';
+import 'package:counselling_gurus/Pages/Student/ScheduleMeeting.dart';
 import 'package:counselling_gurus/Pages/Student/feedback.dart';
 import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:flip_card/flip_card.dart';
@@ -185,20 +187,20 @@ class _HomePageState extends State<HomePage>
                     style: TextStyle(color: active, fontSize: 16.0),
                   ),
                   SizedBox(height: 30.0),
-                  _buildRow(Icons.home, "Home",1),
+                  _buildRow(Icons.schedule, "Schedule Meeting",1),
                   _buildDivider(),
-                  _buildRow(Icons.person_pin, "My profile",2),
+                  _buildRow(Icons.person_pin, "Edit profile",2),
                   _buildDivider(),
                   _buildRow(Icons.message, "Feedback",3, showBadge: true),
                   _buildDivider(),
-                  _buildRow(Icons.notifications, "Notifications",4,
+                  _buildRow(Icons.notifications, "Change Password",4,
                       showBadge: true),
                   _buildDivider(),
-                  _buildRow(Icons.settings, "Settings",5),
+                  _buildRow(Icons.person, "Mentor",5),
                   _buildDivider(),
-                  _buildRow(Icons.email,"Contact us",6),
+                  _buildRow(Icons.email,"About us",6),
                   _buildDivider(),
-                  _buildRow(Icons.info_outline,"Help",7),
+                  _buildRow(Icons.info_outline,"Terms and Conditions",7),
                   _buildDivider(),
                 ],
               ),
@@ -219,10 +221,14 @@ class _HomePageState extends State<HomePage>
     final TextStyle tStyle = TextStyle(color: active, fontSize: 16.0);
     return GestureDetector(
       onTap: (){
-        if(index==2)
+        if(index==1)
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>ScheduleMeeting()));
+        else if(index==2)
         Navigator.push(context,MaterialPageRoute(builder: (context)=>EditProfile()));
         else if(index==3)
           Navigator.push(context, MaterialPageRoute(builder: (context)=>FeedbackPage()));
+        else if(index==4)
+          Navigator.push(context,MaterialPageRoute(builder: (context)=>ChangePassword()));
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 5.0),
