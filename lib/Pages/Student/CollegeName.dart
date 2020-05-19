@@ -60,7 +60,7 @@ class CollegeName extends StatelessWidget {
         color: Colors.white,
       ),
       width: double.infinity,
-      height: 120,
+      height: 140,
       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: Padding(

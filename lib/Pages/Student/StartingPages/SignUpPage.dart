@@ -1,11 +1,11 @@
 import 'dart:convert';
-import 'package:counselling_gurus/Pages/Student/IntroSlider.dart';
+import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/IntroSlider.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../Animations/FadeAnimation.dart';
+import '../../../Animations/FadeAnimation.dart';
 import 'package:http/http.dart' as http;
-import '../../models/UserModelSignUp.dart';
-import '../../Resources/Colors.dart' as color;
+import '../../../models/UserModelSignUp.dart';
+import '../../../Resources/Colors.dart' as color;
 
 class SignUpPage extends StatefulWidget {
   @override

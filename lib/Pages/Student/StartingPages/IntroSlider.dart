@@ -1,7 +1,8 @@
+import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/SelectStreamPage.dart';
 import 'package:counselling_gurus/models/intro_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../Resources/Colors.dart' as color;
+import '../../../Resources/Colors.dart' as color;
 
 class IntroSlider extends StatefulWidget {
   @override
@@ -62,7 +63,7 @@ class _IntroSliderState extends State<IntroSlider> {
                   alignment: Alignment.centerRight,
                   child: FlatButton(
                     onPressed: () =>
-                        Navigator.of(context).pushReplacementNamed('/MainPage'),
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => StreamSelectPage())),
                     child: Text(
                       'Skip',
                       style: TextStyle(
@@ -202,7 +203,7 @@ class _IntroSliderState extends State<IntroSlider> {
               color: Colors.white,
               child: GestureDetector(
                 onTap: () =>
-                    Navigator.of(context).pushReplacementNamed('/MainPage'),
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => StreamSelectPage())),
                 child: Center(
                   child: Padding(
                     padding: EdgeInsets.all(0),

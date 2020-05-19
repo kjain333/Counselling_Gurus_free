@@ -1,22 +1,15 @@
-import '../../Animations/FadeAnimation.dart';
+import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/LoginPage.dart';
 import 'package:flutter/material.dart';
-import './ForgetPasswordPage.dart';
-import '../../Resources/Colors.dart' as color;
+import '../../../Animations/FadeAnimation.dart';
+import '../../../Resources/Colors.dart' as color;
 
-class OTPVerificationPage extends StatefulWidget {
+class ForgetPasswordPage extends StatefulWidget {
   @override
-  _OTPVerificationPageState createState() => _OTPVerificationPageState();
+  _ForgetPasswordPageState createState() => _ForgetPasswordPageState();
 }
 
-class _OTPVerificationPageState extends State<OTPVerificationPage> {
+class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
 
-  bool numberEntered;
-
-  @override
-  void initState() {
-    super.initState();
-    numberEntered = false;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +42,7 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                     FadeAnimation(
                         1,
                         Text(
-                          "OTP Verification",
+                          "Reset Password",
                           style: TextStyle(color: Colors.white, fontSize: 40),
                         )),
                     SizedBox(
@@ -90,7 +83,6 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                             ),
                             child: Column(
                               children: <Widget>[
-                                !numberEntered ?
                                 Container(
                                   padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(
@@ -98,14 +90,12 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                                   ),
                                   child: TextField(
                                     decoration: InputDecoration(
-                                        hintText: "Enter Phone number",
+                                        hintText: "New Password",
                                         hintStyle: TextStyle(color: Colors.grey),
                                         border: InputBorder.none
                                     ),
                                   ),
-                                ): Container(),
-                                !numberEntered ?
-                                Container():
+                                ),
                                 Container(
                                   padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(
@@ -113,7 +103,7 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                                   ),
                                   child: TextField(
                                     decoration: InputDecoration(
-                                        hintText: "Enter OTP",
+                                        hintText: "Confirm Password",
                                         hintStyle: TextStyle(color: Colors.grey),
                                         border: InputBorder.none
                                     ),
@@ -132,25 +122,12 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                                       borderRadius: BorderRadius.circular(50),
                                       color: color.buttonsMain
                                   ),
-                                  child: !numberEntered?
-                                    InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          numberEntered = true;
-                                        });
-                                      },
-                                      child: Center(
-                                        child: Text("Get OTP", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                                      ),
-                                    ):
-                                    InkWell(
-                                      onTap: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPasswordPage()),);
-                                      },
-                                      child: Center(
-                                        child: Text("Verify OTP", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                                      ),
+                                  child: InkWell(
+                                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),),
+                                    child: Center(
+                                      child: Text("Reset Password", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
+                                  ),
                                 ),
                               )),
                         ],

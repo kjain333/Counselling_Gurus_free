@@ -1,19 +1,20 @@
 import 'package:counselling_gurus/Pages/Student/CollegeName.dart';
-import 'package:counselling_gurus/Pages/Student/SelectStreamPage.dart';
+import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/SelectStreamPage.dart';
 
 import 'Fragments/Students/ProfilePage.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Fragments/Students/ProfilePage.dart';
-import 'package:counselling_gurus/Pages/Student/IntroSlider.dart';
-import 'package:counselling_gurus/Pages/Student/OTPVerificationPage.dart';
-import 'package:counselling_gurus/Pages/Student/SignUpPage.dart';
+import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/IntroSlider.dart';
+import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/OTPVerificationPage.dart';
+import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/SignUpPage.dart';
 import 'package:counselling_gurus/Pages/Student/SlideNav.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Pages/Student/LoginPage.dart';
+import 'Pages/SplashScreen.dart';
+import 'Pages/Student/StartingPages/LoginPage.dart';
 import 'Pages/Student/MainPage.dart';
 import 'Fragments/Students/HomePage.dart';
-import 'Pages/Student/feedback.dart';
-import 'Pages/Student/ChatBoxPage.dart';
+import 'Pages/Student/SideNav/feedback.dart';
+import 'Fragments/ChatBoxPage.dart';
 
 var email;
 
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: email == null ? MainPage(): MainPage(),
+      // email == null ?
+      home: SplashScreen(),
       routes: <String, WidgetBuilder>{
         '/ProfilePage': (BuildContext context) => new ProfilePage(),
         '/LoginPage': (BuildContext context) => new LoginPage(),

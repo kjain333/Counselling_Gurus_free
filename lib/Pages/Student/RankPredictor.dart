@@ -1,8 +1,9 @@
-import 'package:counselling_gurus/Pages/Student/CollegePredictor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+
+import 'HomePageSources/CollegePredictor.dart';
 class RankPredictor extends StatefulWidget{
 
   _Rankpredictor createState() => _Rankpredictor();
@@ -15,7 +16,7 @@ class _Rankpredictor extends State<RankPredictor>{
        floatingActionButton: FloatingActionButton(
          backgroundColor: Colors.lightBlueAccent,
          onPressed: (){
-           Navigator.push(context, MaterialPageRoute(builder: (context)=>CollegePredictor()));
+           Navigator.push(context, MaterialPageRoute(builder: (context)=> CollegePredictor()));
          },
          child: Icon(
            Icons.arrow_forward,

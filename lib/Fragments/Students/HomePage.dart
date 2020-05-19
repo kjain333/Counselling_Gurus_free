@@ -1,13 +1,13 @@
 import 'dart:math';
 import 'package:counselling_gurus/Pages/Student/Branchblog.dart';
 import 'package:counselling_gurus/Pages/Student/ChangePassword.dart';
-import 'package:counselling_gurus/Pages/Student/CollegePredictor.dart';
 import 'package:counselling_gurus/Pages/Student/Collegeblog.dart';
-import 'package:counselling_gurus/Pages/Student/CompleteNews.dart';
-import 'package:counselling_gurus/Pages/Student/EditProfile.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/CollegePredictor.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/CompleteNews.dart';
 import 'package:counselling_gurus/Pages/Student/RankPredictor.dart';
 import 'package:counselling_gurus/Pages/Student/ScheduleMeeting.dart';
-import 'package:counselling_gurus/Pages/Student/feedback.dart';
+import 'package:counselling_gurus/Pages/Student/SideNav/EditProfile.dart';
+import 'package:counselling_gurus/Pages/Student/SideNav/feedback.dart';
 import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';

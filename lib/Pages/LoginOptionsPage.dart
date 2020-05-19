@@ -1,4 +1,4 @@
-import 'package:counselling_gurus/Pages/Student/LoginPage.dart';
+import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/LoginPage.dart';
 import 'package:flutter/material.dart';
 import '../Animations/FadeAnimation.dart';
 import 'Mentor/LogInMentor.dart';
@@ -81,7 +81,7 @@ class _LoginOptionsPageState extends State<LoginOptionsPage> {
                                       color: color.buttonsMain
                                   ),
                                   child: InkWell(
-                                  //  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
+                                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
                                     child: Center(
                                       child: Text("I am a Student", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
@@ -99,7 +99,7 @@ class _LoginOptionsPageState extends State<LoginOptionsPage> {
                                       color: color.buttonsMain
                                   ),
                                   child: InkWell(
-                                   // onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=> LogInMentor())),
+                                    onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=> LogInMentor())),
                                     child: Center(
                                       child: Text("I am a Mentor", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),

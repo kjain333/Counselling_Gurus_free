@@ -1,8 +1,9 @@
 import 'package:counselling_gurus/Animations/FadeAnimation.dart';
 import 'package:counselling_gurus/Pages/Mentor/LogInMentor.dart';
-import 'package:counselling_gurus/Pages/Student/LoginPage.dart';
+import 'package:counselling_gurus/Pages/Student/MainPage.dart';
+import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/LoginPage.dart';
 import 'package:flutter/material.dart';
-import '../../Resources/Colors.dart' as color;
+import '../../../Resources/Colors.dart' as color;
 
 class StreamSelectPage extends StatefulWidget {
   @override
@@ -81,7 +82,7 @@ class _StreamSelectPageState extends State<StreamSelectPage> {
                                       color: color.buttonsMain
                                   ),
                                   child: InkWell(
-                                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
+                                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage())),
                                     child: Center(
                                       child: Text("As an Engineering Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
@@ -99,7 +100,7 @@ class _StreamSelectPageState extends State<StreamSelectPage> {
                                       color: color.buttonsMain
                                   ),
                                   child: InkWell(
-                                    onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=> LogInMentor())),
+                                    onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=> MainPage())),
                                     child: Center(
                                       child: Text("As a Medical Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
