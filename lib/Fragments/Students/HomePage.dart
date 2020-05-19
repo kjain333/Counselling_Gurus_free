@@ -5,6 +5,7 @@ import 'package:counselling_gurus/Pages/Student/CollegePredictor.dart';
 import 'package:counselling_gurus/Pages/Student/Collegeblog.dart';
 import 'package:counselling_gurus/Pages/Student/CompleteNews.dart';
 import 'package:counselling_gurus/Pages/Student/EditProfile.dart';
+import 'package:counselling_gurus/Pages/Student/RankPredictor.dart';
 import 'package:counselling_gurus/Pages/Student/ScheduleMeeting.dart';
 import 'package:counselling_gurus/Pages/Student/feedback.dart';
 import 'package:counselling_gurus/components/oval_right_clipper.dart';
@@ -252,8 +253,8 @@ class _HomePageState extends State<HomePage>
       _timer.cancel();
     var size = MediaQuery.of(context).size;
     /*24 is for notification bar on Android*/
-    final double itemHeight = ((size.height - kToolbarHeight - 24) / 2) - 20;
-    final double itemWidth = size.width / 2;
+    //final double itemHeight = ((size.height - kToolbarHeight - 24) / 2) - 20;
+    //final double itemWidth = size.width / 2;
     width = size.width;
     _timer = new Timer.periodic(
         new Duration(milliseconds: 5000), _incrementTimerCounter);
@@ -423,9 +424,7 @@ class _HomePageState extends State<HomePage>
                                     MaterialPageRoute(
                                         builder: (context) =>
                                             CollegePredictor()));
-                              else if (index == 1) {
-
-                              } else if (index == 2)
+                               else if (index == 2)
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -435,6 +434,8 @@ class _HomePageState extends State<HomePage>
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => Branchblog()));
+                              else if (index == 1)
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => RankPredictor()));
                             }),
                       ),
                     ),
