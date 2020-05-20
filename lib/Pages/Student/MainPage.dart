@@ -1,5 +1,5 @@
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Fragments/ChatBoxPage.dart';
+//import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:counselling_gurus/Fragments/ChatBoxPage.dart';
 import 'package:titled_navigation_bar/titled_navigation_bar.dart';
 import '../../Fragments/Students/HomePage.dart';
 import 'package:flutter/material.dart';

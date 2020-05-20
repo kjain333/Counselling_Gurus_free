@@ -1,9 +1,9 @@
 //import 'dart:convert';
 
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/IntroSlider.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/OTPVerificationPage.dart';
 //import 'package:counselling_gurus/Pages/Student/SignUpPage.dart';
 //import 'package:counselling_gurus/models/UserModelSignIn.dart';
+import 'package:counselling_gurus/Pages/Student/StartingPages/IntroSlider.dart';
+import 'package:counselling_gurus/Pages/Student/StartingPages/OTPVerificationPage.dart';
 import 'package:flutter/material.dart';
 //import 'package:http/http.dart' as http;
 //import 'package:shared_preferences/shared_preferences.dart';

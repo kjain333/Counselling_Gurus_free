@@ -1,8 +1,9 @@
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/LoginPage.dart';
+
 import 'package:flutter/material.dart';
 import '../Animations/FadeAnimation.dart';
 import 'Mentor/LogInMentor.dart';
 import '../Resources/Colors.dart' as color;
+import 'Student/StartingPages/LoginPage.dart';
 
 class LoginOptionsPage extends StatefulWidget {
   @override

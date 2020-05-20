@@ -1,20 +1,19 @@
-import 'package:counselling_gurus/Pages/Student/CollegeName.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/SelectStreamPage.dart';
+//import 'package:counselling_gurus/Pages/Student/CollegeName.dart';
 
 import 'Fragments/Students/ProfilePage.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Fragments/Students/ProfilePage.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/IntroSlider.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/OTPVerificationPage.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/SignUpPage.dart';
 import 'package:counselling_gurus/Pages/Student/SlideNav.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Pages/SplashScreen.dart';
+import 'Pages/Student/StartingPages/IntroSlider.dart';
 import 'Pages/Student/StartingPages/LoginPage.dart';
 import 'Pages/Student/MainPage.dart';
 import 'Fragments/Students/HomePage.dart';
 import 'Pages/Student/SideNav/feedback.dart';
 import 'Fragments/ChatBoxPage.dart';
+import 'Pages/Student/StartingPages/OTPVerificationPage.dart';
+import 'Pages/Student/StartingPages/SignUpPage.dart';
 
 var email;
 

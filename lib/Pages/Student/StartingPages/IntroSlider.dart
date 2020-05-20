@@ -1,8 +1,9 @@
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/SelectStreamPage.dart';
+
 import 'package:counselling_gurus/models/intro_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../Resources/Colors.dart' as color;
+import 'SelectStreamPage.dart';
 
 class IntroSlider extends StatefulWidget {
   @override

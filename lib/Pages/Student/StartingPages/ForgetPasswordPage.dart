@@ -1,7 +1,8 @@
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/LoginPage.dart';
+
 import 'package:flutter/material.dart';
 import '../../../Animations/FadeAnimation.dart';
 import '../../../Resources/Colors.dart' as color;
+import 'LoginPage.dart';
 
 class ForgetPasswordPage extends StatefulWidget {
   @override
