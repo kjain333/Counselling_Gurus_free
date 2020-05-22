@@ -1,16 +1,24 @@
 import 'dart:math';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/Branchblog.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/ChangePassword.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/Collegeblog.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/SideNav/ContactUs.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/FAQ.dart';
+//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/Branchblog.dart';
+//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/StartingPages/ChangePassword.dart';
+//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/Collegeblog.dart';
+//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/SideNav/ContactUs.dart';
+//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/FAQ.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/Branchblog.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/CollegePredictor.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/Collegeblog.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/CompleteNews.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/RankPredictor.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/FAQ.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/RankPredictor.dart';
+//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/RankPredictor.dart';
 import 'package:counselling_gurus/Pages/Student/ScheduleMeeting.dart';
+import 'package:counselling_gurus/Pages/Student/SideNav/ContactUs.dart';
 import 'package:counselling_gurus/Pages/Student/SideNav/EditProfile.dart';
+import 'package:counselling_gurus/Pages/Student/SideNav/TermsAndConditions.dart';
+import 'package:counselling_gurus/Pages/Student/SideNav/TopMentors.dart';
 import 'package:counselling_gurus/Pages/Student/SideNav/feedback.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/SideNav/TermsAndConditions.dart';
+import 'package:counselling_gurus/Pages/Student/StartingPages/ChangePassword.dart';
+//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/SideNav/TermsAndConditions.dart';
 import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
@@ -239,6 +247,8 @@ class _HomePageState extends State<HomePage>
           Navigator.push(context, MaterialPageRoute(builder: (context)=>FeedbackPage()));
         else if(index==4)
           Navigator.push(context,MaterialPageRoute(builder: (context)=>ChangePassword()));
+        else if(index==5)
+          Navigator.push(context,MaterialPageRoute(builder: (context)=>TopMentors()));
         else if(index==6)
           Navigator.push(context,MaterialPageRoute(builder: (context)=>ContactUs()));
         else if(index==7)
