@@ -16,6 +16,7 @@ List<Color> colorList = [
   color.purple,
   color.blue7
 ];
+Set<int> a ={};
 final heading = ['IIT','NIT','IIIT','PC'];
 final colleges = ['Indian Institute of Technology','National Institute of Technology','Indian Institute of Information Technology','Private colleges'];
 final iit = ['IIT Jammu','IIT Mandi','IIT Ropar','IIT Roorkee','IIT Delhi','IIT Kanpur','IIT Varanasi','IIT Jodhpur','IIT Patna','IIT Guwahati','ISM Dhanbad','IIT Kharagpur','IIT Gandhinagar','IIT Indore','IIT Bhilai','IIT Bhubaneshwar','IIT Hyderabad','IIT Bombay','IIT Panjim','IIT Dharwad','IIT Tirupati','IIT Madras','IIT Pallakad'];
@@ -26,6 +27,7 @@ class Collegeblog extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    a.clear();
     var size = MediaQuery.of(context).size;
     final double itemHeight = ((size.height - kToolbarHeight - 24) / 2) - 50;
     final double itemWidth = size.width / 1;
@@ -58,6 +60,16 @@ class Collegeblog extends StatelessWidget{
 }
 Widget CollegeCard(index,context)
 {
+  int random;
+  random = Random().nextInt(8);
+  if(a.contains(random)&&a.length<=8)
+  {
+    while(a.contains(random))
+    {
+      random=Random().nextInt(8);
+    }
+  }
+  a.add(random);
   return Padding(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
       child: Card(
@@ -71,7 +83,7 @@ Widget CollegeCard(index,context)
       height: 350,
       decoration: BoxDecoration(
       borderRadius: BorderRadius.all(Radius.circular(20)),
-      color: colorList[Random().nextInt(8)]),
+      color: colorList[random]),
       child: Column(
       children: <Widget>[
       SizedBox(

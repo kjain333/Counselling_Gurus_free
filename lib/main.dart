@@ -6,6 +6,7 @@ import 'package:counselling_gurus/Pages/Student/SlideNav.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Pages/SplashScreen.dart';
+import 'Pages/Student/FAQ.dart';
 import 'Pages/Student/StartingPages/IntroSlider.dart';
 import 'Pages/Student/StartingPages/LoginPage.dart';
 import 'Pages/Student/MainPage.dart';

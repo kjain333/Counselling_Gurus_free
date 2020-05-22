@@ -2,12 +2,15 @@ import 'dart:math';
 import 'package:counselling_gurus/Pages/Student/Branchblog.dart';
 import 'package:counselling_gurus/Pages/Student/ChangePassword.dart';
 import 'package:counselling_gurus/Pages/Student/Collegeblog.dart';
+import 'package:counselling_gurus/Pages/Student/ContactUs.dart';
+import 'package:counselling_gurus/Pages/Student/FAQ.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/CollegePredictor.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/CompleteNews.dart';
 import 'package:counselling_gurus/Pages/Student/RankPredictor.dart';
 import 'package:counselling_gurus/Pages/Student/ScheduleMeeting.dart';
 import 'package:counselling_gurus/Pages/Student/SideNav/EditProfile.dart';
 import 'package:counselling_gurus/Pages/Student/SideNav/feedback.dart';
+import 'package:counselling_gurus/Pages/Student/TermsAndConditions.dart';
 import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +26,8 @@ final string = [
 
 double width;
 int _timerCounter = 0;
+Set<int> a= {};
+Set<int> b= {};
 ScrollController controller = ScrollController(initialScrollOffset: 0);
 List<Color> colorList = [
   color.yellow,
@@ -41,7 +46,8 @@ List<String> cardHeadings = [
   "Colleges",
   "Branches",
   "Mock Counselling",
-  "Aptitude Test"
+  "Aptitude Test",
+  "Frequently Asked Questions"
 ];
 
 List<IconData> icon = [
@@ -50,7 +56,8 @@ List<IconData> icon = [
   Icons.home,
   Icons.library_books,
   Icons.supervisor_account,
-  Icons.edit
+  Icons.edit,
+  Icons.question_answer,
 ];
 
 final Color primary = Colors.white;
@@ -89,6 +96,8 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+    a.clear();
+    b.clear();
     return Scaffold(
       key: _key,
       drawer: buildDrawer(),
@@ -133,7 +142,7 @@ class _HomePageState extends State<HomePage>
             delegate:
                 SliverChildBuilderDelegate((BuildContext context, int index) {
               return gridCard(index);
-            }, childCount: 6),
+            }, childCount: 7),
           )
         ],
       ),
@@ -199,7 +208,7 @@ class _HomePageState extends State<HomePage>
                   _buildDivider(),
                   _buildRow(Icons.person, "Mentor",5),
                   _buildDivider(),
-                  _buildRow(Icons.email,"About us",6),
+                  _buildRow(Icons.email,"Contact us",6),
                   _buildDivider(),
                   _buildRow(Icons.info_outline,"Terms and Conditions",7),
                   _buildDivider(),
@@ -230,6 +239,10 @@ class _HomePageState extends State<HomePage>
           Navigator.push(context, MaterialPageRoute(builder: (context)=>FeedbackPage()));
         else if(index==4)
           Navigator.push(context,MaterialPageRoute(builder: (context)=>ChangePassword()));
+        else if(index==6)
+          Navigator.push(context,MaterialPageRoute(builder: (context)=>ContactUs()));
+        else if(index==7)
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>TermsAndConditions()));
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -249,6 +262,7 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget trendingNews() {
+
     if(_timer!=null)
       _timer.cancel();
     var size = MediaQuery.of(context).size;
@@ -266,6 +280,16 @@ class _HomePageState extends State<HomePage>
           controller: controller,
           itemCount: 6,
           itemBuilder: (context, index) {
+            int random;
+            random = Random().nextInt(8);
+            if(b.contains(random)&&b.length<=8)
+            {
+              while(b.contains(random))
+              {
+                random=Random().nextInt(8);
+              }
+            }
+            b.add(random);
             return Container(
                 width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.only(left: 20, right: 20),
@@ -275,7 +299,7 @@ class _HomePageState extends State<HomePage>
                   child: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(20)),
-                          color: colorList[Random().nextInt(8)]),
+                          color: colorList[random]),
                       width: MediaQuery.of(context).size.width,
                       height: 100,
                       child: Row(
@@ -326,6 +350,16 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget gridCard(index) {
+    int random;
+    random = Random().nextInt(8);
+    if(a.contains(random)&&a.length<=8)
+      {
+        while(a.contains(random))
+          {
+            random=Random().nextInt(8);
+          }
+      }
+    a.add(random);
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
         child: FlipCard(
@@ -341,7 +375,7 @@ class _HomePageState extends State<HomePage>
                 height: 250,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: colorList[Random().nextInt(8)]),
+                    color: colorList[random]),
                 child: Column(
                   children: <Widget>[
                     SizedBox(
@@ -434,6 +468,8 @@ class _HomePageState extends State<HomePage>
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => Branchblog()));
+                              else if (index==6)
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQ()));
                               else if (index == 1)
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => RankPredictor()));
                             }),
