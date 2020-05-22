@@ -2,7 +2,7 @@ import 'package:counselling_gurus/Pages/Student/FAQAnswer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-final questions = ['What is Question 1?','What is Question 2?','What is Question 3?','What is Question 4?','What is Question 5?'];
+final questions = ['What is Question 1 ?','What is Question 2?','What is Question 3?','What is Question 4?','What is Question 5?'];
 final answer = 'This is the the detailed answer to the question. This can be multiline and very long as well';
 class FAQ extends StatelessWidget{
   @override
