@@ -10,16 +10,21 @@ import 'package:counselling_gurus/Pages/Student/HomePageSources/Collegeblog.dart
 import 'package:counselling_gurus/Pages/Student/HomePageSources/CompleteNews.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/FAQ.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/RankPredictor.dart';
+import 'package:counselling_gurus/Pages/Student/Medical/MedicalBranchblog.dart';
+import 'package:counselling_gurus/Pages/Student/Medical/MedicalCollegeBlog.dart';
+import 'package:counselling_gurus/Pages/Student/Medical/MedicalCollegePredictor.dart';
+import 'package:counselling_gurus/Pages/Student/Medical/MedicalRankPredictor.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/RankPredictor.dart';
-import 'package:counselling_gurus/Pages/Student/ScheduleMeeting.dart';
-import 'package:counselling_gurus/Pages/Student/SideNav/ContactUs.dart';
-import 'package:counselling_gurus/Pages/Student/SideNav/EditProfile.dart';
-import 'package:counselling_gurus/Pages/Student/SideNav/TermsAndConditions.dart';
-import 'package:counselling_gurus/Pages/Student/SideNav/TopMentors.dart';
-import 'package:counselling_gurus/Pages/Student/SideNav/feedback.dart';
-import 'package:counselling_gurus/Pages/Student/StartingPages/ChangePassword.dart';
+//import 'package:counselling_gurus/Pages/Student/ScheduleMeeting.dart';
+//import 'package:counselling_gurus/Pages/Student/SideNav/ContactUs.dart';
+//import 'package:counselling_gurus/Pages/Student/SideNav/EditProfile.dart';
+//import 'package:counselling_gurus/Pages/Student/SideNav/TermsAndConditions.dart';
+//import 'package:counselling_gurus/Pages/Student/SideNav/TopMentors.dart';
+//import 'package:counselling_gurus/Pages/Student/SideNav/feedback.dart';
+//import 'package:counselling_gurus/Pages/Student/StartingPages/ChangePassword.dart';
+import 'package:counselling_gurus/Pages/Student/StartingPages/Stream.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/SideNav/TermsAndConditions.dart';
-import 'package:counselling_gurus/components/oval_right_clipper.dart';
+//import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -108,13 +113,13 @@ class _HomePageState extends State<HomePage>
     b.clear();
     return Scaffold(
       key: _key,
-      drawer: buildDrawer(),
+
+     // drawer: buildDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverAppBar(
-            expandedHeight: 180.0,
-            backgroundColor: color.bgGrad,
-            leading: IconButton(
+          SliverToBoxAdapter(
+          //  leading: null,
+        /*    IconButton(
               icon: Icon(
                 Icons.menu,
                 color: Colors.white,
@@ -122,21 +127,26 @@ class _HomePageState extends State<HomePage>
               onPressed: () {
                 _key.currentState.openDrawer();
               },
-            ),
-            floating: true,
-            flexibleSpace: ListView(
-              children: <Widget>[
-                SizedBox(height: 70,),
-                Text(
-                  "Home Page",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0),
-                )
-              ],
-            ),
+            ),*/
+           // floating: true,
+            child: Container(
+              height: 180,
+              width: MediaQuery.of(context).size.width,
+              color: color.bgGrad,
+              child: ListView(
+                children: <Widget>[
+                  SizedBox(height: 70,),
+                  Text(
+                    "Home Page",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0),
+                  )
+                ],
+              ),
+            )
           ),
           SliverToBoxAdapter(
             child: SizedBox(
@@ -157,7 +167,7 @@ class _HomePageState extends State<HomePage>
     );
   }
 
-  buildDrawer(){
+/*  buildDrawer(){
     return ClipPath(
       clipper: OvalRightBorderClipper(),
       child: Drawer(
@@ -270,7 +280,7 @@ class _HomePageState extends State<HomePage>
       ),
     );
   }
-
+*/
   Widget trendingNews() {
 
     if(_timer!=null)
@@ -467,21 +477,21 @@ class _HomePageState extends State<HomePage>
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            CollegePredictor()));
+                                        (GetStream()==0?CollegePredictor():MedicalCollegePredictor())));
                                else if (index == 2)
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Collegeblog()));
+                                        builder: (context) => (GetStream()==0)?Collegeblog():MedicalCollegeblog()));
                               else if (index == 3)
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Branchblog()));
+                                        builder: (context) => (GetStream()==0?Branchblog():MedicalBranchblog())));
                               else if (index==6)
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQ()));
                               else if (index == 1)
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => RankPredictor()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => (GetStream()==0?RankPredictor():MedicalRankPredictor())));
                             }),
                       ),
                     ),

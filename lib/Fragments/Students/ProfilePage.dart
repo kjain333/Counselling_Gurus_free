@@ -69,9 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     ):
     new Scaffold(
-      appBar: AppBar(
-        title: Text("My Profile"),
-      ),
+
       body: Column(
         children: <Widget>[
           Container(
