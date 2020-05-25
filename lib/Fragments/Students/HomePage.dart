@@ -10,6 +10,10 @@ import 'package:counselling_gurus/Pages/Student/HomePageSources/Collegeblog.dart
 import 'package:counselling_gurus/Pages/Student/HomePageSources/CompleteNews.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/FAQ.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/RankPredictor.dart';
+import 'package:counselling_gurus/Pages/Student/Medical/MedicalBranchblog.dart';
+import 'package:counselling_gurus/Pages/Student/Medical/MedicalCollegeBlog.dart';
+import 'package:counselling_gurus/Pages/Student/Medical/MedicalCollegePredictor.dart';
+import 'package:counselling_gurus/Pages/Student/Medical/MedicalRankPredictor.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/RankPredictor.dart';
 import 'package:counselling_gurus/Pages/Student/ScheduleMeeting.dart';
 import 'package:counselling_gurus/Pages/Student/SideNav/ContactUs.dart';
@@ -18,6 +22,7 @@ import 'package:counselling_gurus/Pages/Student/SideNav/TermsAndConditions.dart'
 import 'package:counselling_gurus/Pages/Student/SideNav/TopMentors.dart';
 import 'package:counselling_gurus/Pages/Student/SideNav/feedback.dart';
 import 'package:counselling_gurus/Pages/Student/StartingPages/ChangePassword.dart';
+import 'package:counselling_gurus/Pages/Student/StartingPages/Stream.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/SideNav/TermsAndConditions.dart';
 import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:flip_card/flip_card.dart';
@@ -467,21 +472,21 @@ class _HomePageState extends State<HomePage>
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            CollegePredictor()));
+                                        (GetStream()==0?CollegePredictor():MedicalCollegePredictor())));
                                else if (index == 2)
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Collegeblog()));
+                                        builder: (context) => (GetStream()==0)?Collegeblog():MedicalCollegeblog()));
                               else if (index == 3)
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Branchblog()));
+                                        builder: (context) => (GetStream()==0?Branchblog():MedicalBranchblog())));
                               else if (index==6)
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQ()));
                               else if (index == 1)
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => RankPredictor()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => (GetStream()==0?RankPredictor():MedicalRankPredictor())));
                             }),
                       ),
                     ),

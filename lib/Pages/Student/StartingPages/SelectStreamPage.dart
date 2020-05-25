@@ -3,14 +3,12 @@ import 'package:counselling_gurus/Animations/FadeAnimation.dart';
 import 'package:counselling_gurus/Pages/Student/MainPage.dart';
 import 'package:flutter/material.dart';
 import '../../../Resources/Colors.dart' as color;
-
+import 'package:counselling_gurus/Pages/Student/StartingPages/Stream.dart';
 class StreamSelectPage extends StatefulWidget {
   @override
   _StreamSelectPageState createState() => _StreamSelectPageState();
 }
-
 class _StreamSelectPageState extends State<StreamSelectPage> {
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -81,7 +79,11 @@ class _StreamSelectPageState extends State<StreamSelectPage> {
                                       color: color.buttonsMain
                                   ),
                                   child: InkWell(
-                                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage())),
+                                    onTap: () {
+                                      SetStream(0);
+                                      Navigator.push(context, MaterialPageRoute(
+                                          builder: (context) => MainPage()));
+                                    },
                                     child: Center(
                                       child: Text("As an Engineering Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
@@ -99,7 +101,10 @@ class _StreamSelectPageState extends State<StreamSelectPage> {
                                       color: color.buttonsMain
                                   ),
                                   child: InkWell(
-                                    onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=> MainPage())),
+                                    onTap: (){
+                                      SetStream(1);
+                                      Navigator.push(context,MaterialPageRoute(builder: (context)=> MainPage()));
+                                    },
                                     child: Center(
                                       child: Text("As a Medical Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
