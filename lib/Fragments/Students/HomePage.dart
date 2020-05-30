@@ -4,12 +4,14 @@ import 'dart:math';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/Collegeblog.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/SideNav/ContactUs.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/FAQ.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/BranchName.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/Branchblog.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/CollegePredictor.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/Collegeblog.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/CompleteNews.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/FAQ.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/RankPredictor.dart';
+import 'package:counselling_gurus/Pages/Student/Medical/MedicalBranchName.dart';
 import 'package:counselling_gurus/Pages/Student/Medical/MedicalBranchblog.dart';
 import 'package:counselling_gurus/Pages/Student/Medical/MedicalCollegeBlog.dart';
 import 'package:counselling_gurus/Pages/Student/Medical/MedicalCollegePredictor.dart';
@@ -487,7 +489,7 @@ class _HomePageState extends State<HomePage>
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => (GetStream()==0?Branchblog():MedicalBranchblog())));
+                                        builder: (context) => (GetStream()==0?BranchName():MedicalBranchName())));
                               else if (index==6)
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQ()));
                               else if (index == 1)

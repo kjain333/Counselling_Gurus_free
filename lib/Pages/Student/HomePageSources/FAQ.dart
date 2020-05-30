@@ -6,7 +6,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'FAQAnswer.dart';
 final questions = ['What is Question 1 ?','What is Question 2?','What is Question 3?','What is Question 4?','What is Question 5?'];
 final answer = 'This is the the detailed answer to the question. This can be multiline and very long as well';
-class FAQ extends StatelessWidget{
+final expanded=[false,false,false,false,false];
+class FAQ extends StatefulWidget{
+  static _FAQ of(BuildContext context) => context.ancestorStateOfType(const TypeMatcher<_FAQ>());
+  @override
+  State<StatefulWidget> createState() {
+    return _FAQ();
+  }
+
+}
+class _FAQ extends State<FAQ>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,20 +62,51 @@ class FAQ extends StatelessWidget{
     );
   }
 
-}
-Widget QuestionCard(int index,BuildContext context){
 
+Widget QuestionCard(int index,BuildContext context){
   return Padding(
     padding: EdgeInsets.all(20),
     child: Material(
       elevation: 30,
-      child: ListTile(
+      child: ExpansionPanelList(
+
+        children: [
+          new ExpansionPanel(
+              isExpanded: expanded[index],
+              headerBuilder: (BuildContext context,bool isExpanded)=>new ListTile(
+                contentPadding: EdgeInsets.all(15),
+               // trailing: Icon(Icons.arrow_forward),
+                title: Text(questions[index],style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w300),),
+                onTap: (){
+                  setState(() {
+                    if(expanded[index]==true)
+                      expanded[index]=false;
+                    else
+                      {
+                        for(int i=0;i<questions.length;i++)
+                          expanded[i]=false;
+                        expanded[index]=true;
+                      }
+
+                  });
+                },
+              ),
+              body: ListTile(
+                contentPadding: EdgeInsets.all(15),
+                title: Text(answer,style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w300),),
+              )
+          )
+        ],
+      )/* ListTile(
         trailing: Icon(Icons.arrow_forward),
         title: Text(questions[index],style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w300),),
         onTap: (){
+          FAQ.of(context).create();
           Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQAnswer(questions[index],answer)));
         },
-      ),
+      ),*/
     ),
   );
+}
+
 }

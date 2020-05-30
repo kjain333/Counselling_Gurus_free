@@ -74,21 +74,21 @@ Widget gridcard(int index,BuildContext context){
       child:GestureDetector(
       onTap:(){
   if(index==0)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName(string1)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName()));
   if(index==1)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName(string2)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName()));
   if(index==2)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName(string3)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName()));
   if(index==3)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName(string7)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName()));
   if(index==4)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName(string6)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName()));
   if(index==5)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName(string5)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName()));
   if(index==6)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName(string8)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName()));
   if(index==7)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName(string4)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>MedicalBranchName()));
 
 
   },

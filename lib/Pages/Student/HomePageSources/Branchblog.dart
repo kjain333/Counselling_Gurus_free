@@ -74,21 +74,21 @@ Widget gridcard(int index,BuildContext context){
       child:GestureDetector(
       onTap:(){
   if(index==0)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string1)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
   if(index==1)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string2)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
   if(index==2)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string3)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
   if(index==3)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string7)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
   if(index==4)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string6)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
   if(index==5)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string5)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
   if(index==6)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string8)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
   if(index==7)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName(string4)));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
 
 
   },
