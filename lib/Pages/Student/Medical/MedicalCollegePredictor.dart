@@ -17,12 +17,17 @@ final myController = TextEditingController();
 class _MedicalCollegePredictorState extends State<MedicalCollegePredictor>{
 
   List<String> categoryList = ["General", "St Sc", "OBC", "Minorities", "Girls"];
+  List<String> genderList = ["Male","Female","Others"];
   List<DropdownMenuItem<String>> categoryDropDown;
+  List<DropdownMenuItem<String>> genderDropDown;
   String selectedItem;
+  String selectedItem1;
   bool submitClicked = false;
+  bool checkbox;
 
   @override
   void initState() {
+    checkbox = false;
     categoryDropDown = buildDropDownMenuItems(categoryList);
     super.initState();
   }
@@ -38,6 +43,11 @@ class _MedicalCollegePredictorState extends State<MedicalCollegePredictor>{
   onChangeDropDownItem(String item){
     setState(() {
       selectedItem = item;
+    });
+  }
+  onChangeDropDownItem1(String item){
+    setState(() {
+      selectedItem1 = item;
     });
   }
 
@@ -56,7 +66,7 @@ class _MedicalCollegePredictorState extends State<MedicalCollegePredictor>{
               innerDistance: -50,
               children: <Widget>[
                 Container(
-                  height: 430,
+                  height: 560,
                   decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       gradient: LinearGradient(
@@ -128,6 +138,42 @@ class _MedicalCollegePredictorState extends State<MedicalCollegePredictor>{
                                       onChanged: onChangeDropDownItem,
                                         ),
                                   ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15),
+                                    border: Border.all(color: Colors.orangeAccent),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.only(left: 40, right: 40),
+                                    child: DropdownButton(
+                                      iconEnabledColor: Colors.black,
+                                      iconDisabledColor: Colors.black,
+                                      hint: Text("Select Gender"),
+                                      isExpanded: true,
+                                      value: selectedItem1,
+                                      items: genderDropDown,
+                                      onChanged: onChangeDropDownItem1,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width/4,vertical: 10),
+                                child: CheckboxListTile(
+                                  title: Text('PWD',style: GoogleFonts.aBeeZee(color: Colors.white,fontSize: 15,fontWeight: FontWeight.w400),),
+                                  value: checkbox,
+                                  activeColor: Colors.orangeAccent,
+                                  checkColor: Colors.white,
+                                  onChanged: (bool value){
+                                    setState(() {
+                                      checkbox=!checkbox;
+                                    });
+                                  },
                                 ),
                               ),
                               Padding(

@@ -1,4 +1,6 @@
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/FAQAnswer.dart';
+//import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -69,7 +71,18 @@ Widget QuestionCard(int index,BuildContext context){
     child: Material(
       elevation: 30,
       child: ExpansionPanelList(
-
+        expansionCallback: (int ind,bool status){
+          setState(() {
+            if(expanded[index]==true)
+              expanded[index]=false;
+            else
+            {
+              for(int i=0;i<questions.length;i++)
+                expanded[i]=false;
+              expanded[index]=true;
+            }
+          });
+        },
         children: [
           new ExpansionPanel(
               isExpanded: expanded[index],
