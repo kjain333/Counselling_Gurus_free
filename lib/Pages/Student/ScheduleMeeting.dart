@@ -11,6 +11,8 @@ class ScheduleMeeting extends StatefulWidget{
   }
 
 }
+final value = [0,0];
+final icon=[Icon(Icons.radio_button_unchecked,color: Colors.blue,),Icon(Icons.radio_button_checked,color: Colors.blue,)];
 class _ScheduleMeeting extends State<ScheduleMeeting>{
   var date = new DateTime.now();
   @override
@@ -98,7 +100,7 @@ class _ScheduleMeeting extends State<ScheduleMeeting>{
             ),
             Container(
 
-              height: MediaQuery.of(context).size.height/2,
+              height: MediaQuery.of(context).size.height/2 + 250,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
                 color: Colors.white,
@@ -107,6 +109,113 @@ class _ScheduleMeeting extends State<ScheduleMeeting>{
                 children: <Widget>[
                   SizedBox(
                     height: 30,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text('Attend Meeting as',style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w100),),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Container(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width-20,
+                      child: Row(
+                        children: <Widget>[
+                          SizedBox(
+                            height: 50,
+                            width: MediaQuery.of(context).size.width/2-120,
+                          ),
+                          GestureDetector(
+                            onTap: (){
+                              setState(() {
+                                value[0]=0;
+                                value[1]=1;
+                              });
+                            },
+                            child: Container(
+                              height: 50,
+                              width: 81,
+                              child: Row(
+                                children: <Widget>[
+                                  icon[value[1]],
+                                  SizedBox(
+                                    height: 50,
+                                    width: 10,
+                                  ),
+                                  Text('Parent',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 50,
+                            width: 30,
+                          ),
+                          GestureDetector(
+                            onTap: (){
+                              print('0');
+                              setState(() {
+                                value[1]=0;
+                                value[0]=1;
+                              });
+                            },
+                            child: Container(
+                              height: 50,
+                              width: 90,
+                              child: Row(
+                                children: <Widget>[
+                                  icon[value[0]],
+                                  SizedBox(
+                                    height: 50,
+                                    width: 10,
+                                  ),
+                                  Text('Student',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+                                ],
+                              ),
+                            ),
+                          ),
+                        /*  ListTile(
+                            leading: icon[value[1]],
+                            title: Text('Parent',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+                            onTap: (){
+                              setState(() {
+                                value[0]=0;
+                                value[1]=1;
+                              });
+                            },
+                          ),*/
+                        ],
+                      ),
+                    )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text('Purpose of Meeting',style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w100),),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Material(
+                      elevation: 30,
+                      borderRadius: BorderRadius.circular(30),
+                      child: TextField(
+                        maxLines: 5,
+                        decoration: InputDecoration(
+                          hintText: 'Help us know more about what you want from us.',
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(
+                                color: Colors.white,
+                              )
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(
+                                color: Colors.white,
+                              )
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.all(10),
@@ -120,7 +229,7 @@ class _ScheduleMeeting extends State<ScheduleMeeting>{
                       child: TextField(
                         maxLines: 5,
                         decoration: InputDecoration(
-                          hintText: 'Help us know more about what you want from us.',
+                          hintText: 'Please describe in detail your question so that we can assign the perfect person to you.',
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide(
