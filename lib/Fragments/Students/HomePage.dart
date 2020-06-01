@@ -5,14 +5,14 @@ import 'dart:math';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/SideNav/ContactUs.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/FAQ.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/BranchName.dart';
-import 'package:counselling_gurus/Pages/Student/HomePageSources/Branchblog.dart';
+//import 'package:counselling_gurus/Pages/Student/HomePageSources/Branchblog.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/CollegePredictor.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/Collegeblog.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/CompleteNews.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/FAQ.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/RankPredictor.dart';
 import 'package:counselling_gurus/Pages/Student/Medical/MedicalBranchName.dart';
-import 'package:counselling_gurus/Pages/Student/Medical/MedicalBranchblog.dart';
+//import 'package:counselling_gurus/Pages/Student/Medical/MedicalBranchblog.dart';
 import 'package:counselling_gurus/Pages/Student/Medical/MedicalCollegeBlog.dart';
 import 'package:counselling_gurus/Pages/Student/Medical/MedicalCollegePredictor.dart';
 import 'package:counselling_gurus/Pages/Student/Medical/MedicalRankPredictor.dart';
@@ -62,7 +62,8 @@ List<String> cardHeadings = [
   "Branches",
   "Mock Counselling",
   "Aptitude Test",
-  "Frequently Asked Questions"
+  "Frequently Asked Questions",
+  "Document Verification",
 ];
 
 List<IconData> icon = [
@@ -73,14 +74,15 @@ List<IconData> icon = [
   Icons.supervisor_account,
   Icons.edit,
   Icons.question_answer,
+  Icons.note_add,
 ];
 
 final Color primary = Colors.white;
 final Color active = Colors.grey.shade800;
 final Color divider = Colors.grey.shade600;
 
-String paragraph =
-    "These are few lines describing each card to be displayed on the back.\nHere is some more random text so that the button can reach the botttom";
+final paragraph =
+    ["These are few lines describing each card to be displayed on the back. Here is some more random text so that the button can reach the botttom.","These are few lines describing each card to be displayed on the back."];
 
 Timer _timer;
 
@@ -162,7 +164,7 @@ class _HomePageState extends State<HomePage>
             delegate:
                 SliverChildBuilderDelegate((BuildContext context, int index) {
               return gridCard(index);
-            }, childCount: 7),
+            }, childCount: 8),
           )
         ],
       ),
@@ -394,7 +396,7 @@ class _HomePageState extends State<HomePage>
               color: Colors.white,
               elevation: 10,
               child: Container(
-                height: 250,
+                height: 220+paragraph[index%2].length/55*13,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     color: colorList[random]),
@@ -422,7 +424,8 @@ class _HomePageState extends State<HomePage>
                         ),
                       ),
                       subtitle: Text(
-                        'Here we will put some lines of predefined text',
+                        paragraph[index%2],
+                        //'Here we will put some lines of predefined text',
                         style: GoogleFonts.aBeeZee(
                             fontWeight: FontWeight.w300,
                             fontSize: 13,
@@ -440,7 +443,7 @@ class _HomePageState extends State<HomePage>
               color: Colors.white,
               elevation: 10,
               child: Container(
-                height: 250,
+                height: 220+paragraph[index%2].length/55*13,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     color: colorList[Random().nextInt(8)]),
@@ -450,6 +453,7 @@ class _HomePageState extends State<HomePage>
                       height: 60,
                     ),
                     Text(
+
                       "More Details",
                       style: GoogleFonts.aBeeZee(
                           fontWeight: FontWeight.bold,
