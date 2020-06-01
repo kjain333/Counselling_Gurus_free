@@ -34,7 +34,7 @@ Widget InfoCard(int index,BuildContext context){
     padding: EdgeInsets.all(20),
     child: Material(
       elevation: 30,
-      color: Colors.blueGrey,
+      color: Colors.blueGrey[900],
       child: Container(
         height: 160,
         width: MediaQuery.of(context).size.width-100,

@@ -1,6 +1,7 @@
 //import 'package:counselling_gurus/Pages/Student/CollegeName.dart';
 
 import 'package:counselling_gurus/Pages/referralpage.dart';
+import 'package:wiredash/wiredash.dart';
 
 import 'Fragments/Students/ProfilePage.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Fragments/Students/ProfilePage.dart';
@@ -27,32 +28,46 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final _navigatorKey = GlobalKey<NavigatorState>();
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Counselling Gurus',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Wiredash(
+      projectId: "counsellinggurusapp-fhexrwn",
+      secret: "fsiy94mak9nrbc30wdzyxkjg8ty5f3mj",
+      navigatorKey: _navigatorKey,
+      options: WiredashOptionsData(showDebugFloatingEntryPoint: false),
+      child: MaterialApp(
+        navigatorKey: _navigatorKey,
+        debugShowCheckedModeBanner: false,
+        title: 'Counselling Gurus',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        // email == null ?
+        home: SplashScreen(),
+        routes: <String, WidgetBuilder>{
+          '/ProfilePage': (BuildContext context) => new ProfilePage(),
+          '/LoginPage': (BuildContext context) => new LoginPage(),
+          '/MainPage': (BuildContext context) => new MainPage(),
+          '/HomePage': (BuildContext context) => new HomePage(),
+          '/SlideNav': (BuildContext context) => new SlideNav(),
+          '/IntroSlider': (BuildContext context) => new IntroSlider(),
+          '/SignUpPage': (BuildContext context) => new SignUpPage(),
+          '/FeedbackPage': (BuildContext context) => new FeedbackPage(),
+          '/OTPVerificationPage': (BuildContext context) =>
+              new OTPVerificationPage(),
+          '/ChatBoxPage': (BuildContext context) => new ChatBoxPage(),
+          '/ReferralPage': (BuildContext context) => new ReferralPage(),
+        },
       ),
-      // email == null ?
-      home: SplashScreen(),
-      routes: <String, WidgetBuilder>{
-        '/ProfilePage': (BuildContext context) => new ProfilePage(),
-        '/LoginPage': (BuildContext context) => new LoginPage(),
-        '/MainPage': (BuildContext context) => new MainPage(),
-        '/HomePage': (BuildContext context) => new HomePage(),
-        '/SlideNav': (BuildContext context) => new SlideNav(),
-        '/IntroSlider': (BuildContext context) => new IntroSlider(),
-        '/SignUpPage': (BuildContext context) => new SignUpPage(),
-        '/FeedbackPage': (BuildContext context) => new FeedbackPage(),
-        '/OTPVerificationPage': (BuildContext context) =>
-            new OTPVerificationPage(),
-        '/ChatBoxPage': (BuildContext context) => new ChatBoxPage(),
-        '/ReferralPage': (BuildContext context) => new ReferralPage(),
-      },
     );
   }
 }
