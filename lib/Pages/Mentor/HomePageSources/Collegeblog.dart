@@ -1,6 +1,7 @@
 
 
 import 'dart:math';
+import 'package:counselling_gurus/Fragments/Mentor/HomePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,19 +18,21 @@ List<Color> colorList = [
   color.blue7
 ];
 Set<int> a ={};
-final heading = ['IIT','NIT','IIIT','PC'];
-final colleges = ['Indian Institute of Technology','National Institute of Technology','Indian Institute of Information Technology','Private colleges'];
+final heading = ['IIT','NIT','IIIT','PC',"State"];
+final colleges = ['Indian Institute of Technology','National Institute of Technology','Indian Institute of Information Technology','Private colleges','State Colleges'];
 final iit = ['IIT Jammu','IIT Mandi','IIT Ropar','IIT Roorkee','IIT Delhi','IIT Kanpur','IIT Varanasi','IIT Jodhpur','IIT Patna','IIT Guwahati','ISM Dhanbad','IIT Kharagpur','IIT Gandhinagar','IIT Indore','IIT Bhilai','IIT Bhubaneshwar','IIT Hyderabad','IIT Bombay','IIT Panjim','IIT Dharwad','IIT Tirupati','IIT Madras','IIT Pallakad'];
 final nit = ['NIT Tiruchirapalli','NIT Rourkela','NIT Surathkal','NIT Warangal','Motil Lal Nehru National Institute of Technology','Visvesvaraya NIT','NIT Calicut','NIT Silchar','NIT Durgapur','NIT Hamirpur','NIT Kurushetra','Maulana Azad NIT','Malaviya National Institute of Technology','NIT Manipur','NIT Meghalaya','NIT Agartala','NIT Tadepalligudem','NIT Yupia','NIT Raipur','NIT Delhi','Dr. B.R. Ambedkar NIT Jalandhar','NIT Goa','NIT Jamshedpur','NIT Mizoram','NIT Dimapur','NIT Patna','NIT Sikkim','NIT Puducherry','NIT Srinagar','NIT Uttarakhand'];
 final iiit = ['IIIT Gwalior','IIIT Kanchipuram','IIIT Guwahati','IIIT Allahabad','IIIT Kottayam','IIIT Jabalpur','IIIT Kota','IIIT Chittoor','IIIT Vadodara','IIIT Una','IIIT Kalyani','IIIT Kilohrad','IIIT Sonepat','IIIT Srirangam','IIIT Lucknow','IIIT Manipur','IIIT Dharwad','IIIT Ranchi','IIIT Kurnool','IIIT Nagpur','IIIT Pune','IIIT Bhagalpur','IIIT Bhopal','IIIT Surat'];
 final private = ['BITS Pilani','BITS Goa','BITS Hyderabad','VIT Vellore','VIT Chennai'];
+final state = ['State 1','State 2','State 3'];
+final String paragraph = "lets check what happens when paragraph becomes veryvery long ldegnjmdj.This contains few lines about each type of college category. Replace this with your own type of string list";
 class Collegeblog extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
     a.clear();
     var size = MediaQuery.of(context).size;
-    final double itemHeight = ((size.height - kToolbarHeight - 24) / 2) - 50;
+    final double itemHeight = ((size.height - kToolbarHeight - 24) / 2) - 50+(paragraph.length/55)*13;
     final double itemWidth = size.width / 1;
     return Scaffold(
       body: Column(
@@ -47,7 +50,7 @@ class Collegeblog extends StatelessWidget{
                     CollegeCard(1,context),
                     CollegeCard(2,context),
                     CollegeCard(3,context),
-
+                    CollegeCard(4, context),
                 ],
               ),
             ),
@@ -80,7 +83,7 @@ Widget CollegeCard(index,context)
       color: Colors.white,
       elevation: 10,
       child: Container(
-      height: 350,
+      height: 330+(paragraph.length/55)*13,
       decoration: BoxDecoration(
       borderRadius: BorderRadius.all(Radius.circular(20)),
       color: colorList[random]),
@@ -106,7 +109,7 @@ Widget CollegeCard(index,context)
           ),
           ),
           subtitle: Text(
-                    'Here we will put some lines of predefined text',
+                    paragraph,
                      style: GoogleFonts.aBeeZee(
                       fontWeight: FontWeight.w300,
                       fontSize: 13,
@@ -131,6 +134,8 @@ Widget CollegeCard(index,context)
                 Navigator.push(context, MaterialPageRoute(builder: (context) => CollegeName(iiit)));
               else if(index==3)
                 Navigator.push(context, MaterialPageRoute(builder: (context) => CollegeName(private)));
+              else if(index==4)
+                Navigator.push(context, MaterialPageRoute(builder: (context) => CollegeName(state)));
             },
           ),
         )

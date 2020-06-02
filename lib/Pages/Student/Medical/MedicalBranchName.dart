@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:simple_animations/simple_animations.dart';
+import 'package:supercharged/supercharged.dart';
 import '../PdfViewer.dart';
 final string1 = ['Chemical\nEngineering','Chemistry','Engineering\nPhysics','Environment','Oil','Petroleum'];
 final string2 = ['Mechanical','Mechatronics','Textile\nand\nChemistry','Textile\nEngineering','Textile\nTechnology'];
@@ -12,6 +13,7 @@ final string6 = ['Communication','Electrical','Electronics\nand\nCommunication',
 final string7 = ['Computer\nScience\nEngineering','Information\nTechnology','Robotics','Aeronautical','Aerospace','Automobile','Transport'];
 final string8 = ['Ceramic','Civil','Construction','Structural\nEngineering'];
 final string = string1+string2+string3+string4+string5+string6+string7+string8;
+enum _BgProps{color1,color2}
 
 class MedicalBranchName extends StatefulWidget{
 
@@ -23,16 +25,31 @@ class MedicalBranchName extends StatefulWidget{
 class _MedicalBranchNameState extends State<MedicalBranchName> {
   @override
   Widget build(BuildContext context) {
+    final tween = MultiTween<_BgProps>()..add(_BgProps.color1,Color(0xffD38312).tweenTo(Colors.lightBlue.shade900))
+      ..add(_BgProps.color2,Color(0xffA83279).tweenTo(Colors.blue.shade600));
     return Scaffold(
       body: Stack(
           children: <Widget>[
             Container(
               height: double.infinity,
               width: double.infinity,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.indigo,Colors.lightBlueAccent]
-                  )
+              child: MirrorAnimation<MultiTweenValues<_BgProps>>(
+                tween: tween,
+                duration: 3.seconds,
+                builder: (context,child,value){
+                  return Container(
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              value.get(_BgProps.color1),
+                              value.get(_BgProps.color2)
+                            ]
+                        )
+                    ),
+                  );
+                },
               ),
             ),
             ListView.builder(
