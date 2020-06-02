@@ -1,5 +1,5 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:counselling_gurus/Pages/Student/StartingPages/IntroSlider.dart';
+import 'package:counselling_gurus/Pages/Mentor/StartingPages/IntroSlider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../Resources/Colors.dart' as color;

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../Resources/Colors.dart' as color;
-import '../StudentPlanPopup.dart';
+import 'package:counselling_gurus/Pages/Mentor/StudentPlanPopup.dart';
 
 class MedicalCollegePredictor extends StatefulWidget{
   @override

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../Animations/FadeAnimation.dart';
 //import 'package:http/http.dart' as http;
 //import '../../models/UserModelSignUp.dart';
-import 'MentorInfo.dart';
+import 'package:counselling_gurus/Pages/Mentor/MentorInfo.dart';
 import '../../Resources/Colors.dart' as color;
 
 class SignUpMentor extends StatefulWidget {

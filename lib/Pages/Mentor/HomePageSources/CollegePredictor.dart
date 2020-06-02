@@ -3,31 +3,30 @@ import 'package:flutter/material.dart';
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../Resources/Colors.dart' as color;
-import '../StudentPlanPopup.dart';
+import 'package:counselling_gurus/Pages/Mentor/StudentPlanPopup.dart';
 
-class MedicalCollegePredictor extends StatefulWidget{
+class CollegePredictor extends StatefulWidget{
   @override
   State<StatefulWidget> createState(){
-    return _MedicalCollegePredictorState();
+    return _CollegePredictorState();
   }
 }
 
 final myController = TextEditingController();
 
-class _MedicalCollegePredictorState extends State<MedicalCollegePredictor>{
+class _CollegePredictorState extends State<CollegePredictor>{
 
   List<String> categoryList = ["General", "St Sc", "OBC","EWS"];
   List<String> genderList = ["Male","Female","Others"];
   List<DropdownMenuItem<String>> categoryDropDown;
   List<DropdownMenuItem<String>> genderDropDown;
-  String selectedItem;
-  String selectedItem1;
+  String selectedItem,selectedItem1;
   bool submitClicked = false;
-  bool checkbox;
+  bool checkbox = false;
 
   @override
   void initState() {
-    checkbox = false;
+    checkbox=false;
     categoryDropDown = buildDropDownMenuItems(categoryList);
     genderDropDown = buildDropDownMenuItems(genderList);
     super.initState();
@@ -40,6 +39,7 @@ class _MedicalCollegePredictorState extends State<MedicalCollegePredictor>{
     }
     return items;
   }
+
 
   onChangeDropDownItem(String item){
     setState(() {
@@ -67,7 +67,7 @@ class _MedicalCollegePredictorState extends State<MedicalCollegePredictor>{
               innerDistance: -50,
               children: <Widget>[
                 Container(
-                  height: 560,
+                  height: 550,
                   decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       gradient: LinearGradient(
@@ -103,7 +103,7 @@ class _MedicalCollegePredictorState extends State<MedicalCollegePredictor>{
                                     autofocus: false,
                                     style: GoogleFonts.aBeeZee(fontSize: 15),
                                     decoration: InputDecoration(
-                                      hintText: "Enter Your Rank Here",
+                                      hintText: "Enter Your JEE Mains Rank Here",
                                       filled: true,
                                       fillColor: Colors.white,
                                       contentPadding: EdgeInsets.only(left: 40,right: 40),

@@ -4,18 +4,18 @@ import 'dart:math';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/Collegeblog.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/SideNav/ContactUs.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/FAQ.dart';
-import 'package:counselling_gurus/Pages/Student/HomePageSources/BranchName.dart';
+import 'package:counselling_gurus/Pages/Mentor/HomePageSources/BranchName.dart';
 //import 'package:counselling_gurus/Pages/Student/HomePageSources/Branchblog.dart';
-import 'package:counselling_gurus/Pages/Student/HomePageSources/CollegePredictor.dart';
-import 'package:counselling_gurus/Pages/Student/HomePageSources/Collegeblog.dart';
-import 'package:counselling_gurus/Pages/Student/HomePageSources/CompleteNews.dart';
-import 'package:counselling_gurus/Pages/Student/HomePageSources/FAQ.dart';
-import 'package:counselling_gurus/Pages/Student/HomePageSources/RankPredictor.dart';
-import 'package:counselling_gurus/Pages/Student/Medical/MedicalBranchName.dart';
+import 'package:counselling_gurus/Pages/Mentor/HomePageSources/CollegePredictor.dart';
+import 'package:counselling_gurus/Pages/Mentor/HomePageSources/Collegeblog.dart';
+import 'package:counselling_gurus/Pages/Mentor/HomePageSources/CompleteNews.dart';
+import 'package:counselling_gurus/Pages/Mentor/HomePageSources/FAQ.dart';
+import 'package:counselling_gurus/Pages/Mentor/HomePageSources/RankPredictor.dart';
+import 'package:counselling_gurus/Pages/Mentor/Medical/MedicalBranchName.dart';
 //import 'package:counselling_gurus/Pages/Student/Medical/MedicalBranchblog.dart';
-import 'package:counselling_gurus/Pages/Student/Medical/MedicalCollegeBlog.dart';
-import 'package:counselling_gurus/Pages/Student/Medical/MedicalCollegePredictor.dart';
-import 'package:counselling_gurus/Pages/Student/Medical/MedicalRankPredictor.dart';
+import 'package:counselling_gurus/Pages/Mentor/Medical/MedicalCollegeBlog.dart';
+import 'package:counselling_gurus/Pages/Mentor/Medical/MedicalCollegePredictor.dart';
+import 'package:counselling_gurus/Pages/Mentor/Medical/MedicalRankPredictor.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/RankPredictor.dart';
 //import 'package:counselling_gurus/Pages/Student/ScheduleMeeting.dart';
 //import 'package:counselling_gurus/Pages/Student/SideNav/ContactUs.dart';
@@ -24,7 +24,7 @@ import 'package:counselling_gurus/Pages/Student/Medical/MedicalRankPredictor.dar
 //import 'package:counselling_gurus/Pages/Student/SideNav/TopMentors.dart';
 //import 'package:counselling_gurus/Pages/Student/SideNav/feedback.dart';
 //import 'package:counselling_gurus/Pages/Student/StartingPages/ChangePassword.dart';
-import 'package:counselling_gurus/Pages/Student/StartingPages/Stream.dart';
+import 'package:counselling_gurus/Pages/Mentor/StartingPages/Stream.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/SideNav/TermsAndConditions.dart';
 //import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:flip_card/flip_card.dart';
@@ -61,7 +61,7 @@ List<String> cardHeadings = [
   "Colleges",
   "Branches",
   "Mock Counselling",
-  "Aptitude Test",
+  "Mentor Test",
   "Frequently Asked Questions",
   "Document Verification",
 ];
