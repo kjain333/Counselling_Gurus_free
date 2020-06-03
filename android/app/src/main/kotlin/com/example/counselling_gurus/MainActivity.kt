@@ -12,3 +12,17 @@ class MainActivity: FlutterActivity() {
         getWindow().addFlags(LayoutParams.FLAG_SECURE);
     }
 }
+
+//class MainActivity: FlutterActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState);
+//        GeneratedPluginRegistrant.registerWith(this);
+//    }
+//}
+
+
+//class MainActivity: FlutterActivity() {
+//    override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
+//        GeneratedPluginRegistrant.registerWith(flutterEngine);
+//    }
+//}

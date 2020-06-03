@@ -126,41 +126,9 @@ class _HomePageState extends State<HomePage>
     b.clear();
     return Scaffold(
       key: _key,
-
      // drawer: buildDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverToBoxAdapter(
-          //  leading: null,
-        /*    IconButton(
-              icon: Icon(
-                Icons.menu,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                _key.currentState.openDrawer();
-              },
-            ),*/
-           // floating: true,
-            child: Container(
-              height: 180,
-              width: MediaQuery.of(context).size.width,
-              color: color.bgGrad,
-              child: ListView(
-                children: <Widget>[
-                  SizedBox(height: 70,),
-                  Text(
-                    "Home Page",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0),
-                  )
-                ],
-              ),
-            )
-          ),
           SliverToBoxAdapter(
             child: SizedBox(
               height: 10,
