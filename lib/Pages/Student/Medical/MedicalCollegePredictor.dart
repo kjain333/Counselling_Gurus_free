@@ -239,117 +239,267 @@ class Colleges extends StatelessWidget{
                ),
              ),
              Padding(
-               padding: EdgeInsets.all(30),
+               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                child: Material(
-                   elevation: 20,
-                   shape: RoundedRectangleBorder(
-                       borderRadius: BorderRadius.all(Radius.circular(10))
+                 elevation: 30,
+                 borderRadius: BorderRadius.circular(25),
+                 color: Colors.white,
+                 child: Container(
+                   decoration: BoxDecoration(
+                     borderRadius: BorderRadius.circular(25),
+                     color: Colors.white,
                    ),
-                   child: Column(
-                     children: <Widget>[
-                       Container(
-                         height: 200,
-                         decoration: BoxDecoration(
-                             shape: BoxShape.rectangle,
-                             borderRadius: BorderRadius.only(
-                                 topLeft: Radius.circular(10),
-                                 topRight: Radius.circular(10)),
+                   width: double.infinity,
+                   height: 120,
+                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                   child: Padding(
+                     padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
+                     child: Row(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: <Widget>[
+                         Container(
+                           width: 80,
+                           height: 80,
+                           margin: EdgeInsets.only(right: 15,),
+                           decoration: BoxDecoration(
+                             borderRadius: BorderRadius.circular(50),
+                             border: Border.all(width: 3, color: color.secondary),
                              image: DecorationImage(
-                                 image: new AssetImage(
-                                     'assets/images/college.png'),
-                                 fit: BoxFit.fill
-                             )
+                                 image: AssetImage("assets/images/app_logo.png",),
+                                 fit: BoxFit.fill),
+                           ),
                          ),
-                       ),
-                       ListTile(
-                           title: Text("COLLEGE NAME",
-                             style: GoogleFonts.aBeeZee(fontSize: 15,
-                                 fontWeight: FontWeight.bold,
-                                 color: Colors.black),),
-                           subtitle: Text("BRANCH NAME",
-                             style: GoogleFonts.aBeeZee(
-                                 fontSize: 10, color: Colors.black),)
-                       ),
-                     ],
-                   )
+                         Expanded(
+                           child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: <Widget>[
+                               Text(
+                                 'College Name',
+                                 style: TextStyle(
+                                     color: color.primary,
+                                     fontWeight: FontWeight.bold,
+                                     fontSize: 18),
+                               ),
+                               SizedBox(
+                                 height: 6,
+                               ),
+                               Row(
+                                 children: <Widget>[
+                                   Icon(
+                                     Icons.location_on,
+                                     color: color.secondary,
+                                     size: 20,
+                                   ),
+                                   SizedBox(
+                                     width: 5,
+                                   ),
+                                   Text("Location",
+                                       style: TextStyle(
+                                           color: color.primary, fontSize: 13, letterSpacing: .3)),
+                                 ],
+                               ),
+                               SizedBox(
+                                 height: 6,
+                               ),
+                               Row(
+                                 children: <Widget>[
+                                   Icon(
+                                     Icons.school,
+                                     color: color.secondary,
+                                     size: 20,
+                                   ),
+                                   SizedBox(
+                                     width: 5,
+                                   ),
+                                   Text("Branch Name",
+                                       style: TextStyle(
+                                           color: color.primary, fontSize: 13, letterSpacing: .3)),
+                                 ],
+                               ),
+                             ],
+                           ),
+                         )
+                       ],
+                     ),
+                   ),
+                 ),
                ),
              ),
              Padding(
-               padding: EdgeInsets.all(20),
+               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                child: Material(
-                   elevation: 20,
-                   shape: RoundedRectangleBorder(
-                       borderRadius: BorderRadius.all(Radius.circular(10))),
-                   child: Column(
-
-                     children: <Widget>[
-                       Container(
-                         height: 200,
-                         decoration: BoxDecoration(
-                             shape: BoxShape.rectangle,
-                             borderRadius: BorderRadius.only(
-                                 topLeft: Radius.circular(10),
-                                 topRight: Radius.circular(10)),
+                 elevation: 30,
+                 borderRadius: BorderRadius.circular(25),
+                 color: Colors.white,
+                 child: Container(
+                   decoration: BoxDecoration(
+                     borderRadius: BorderRadius.circular(25),
+                     color: Colors.white,
+                   ),
+                   width: double.infinity,
+                   height: 120,
+                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                   child: Padding(
+                     padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
+                     child: Row(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: <Widget>[
+                         Container(
+                           width: 80,
+                           height: 80,
+                           margin: EdgeInsets.only(right: 15,),
+                           decoration: BoxDecoration(
+                             borderRadius: BorderRadius.circular(50),
+                             border: Border.all(width: 3, color: color.secondary),
                              image: DecorationImage(
-                                 image: new AssetImage(
-                                     'assets/images/college.png'),
-                                 fit: BoxFit.fill
-                             )
+                                 image: AssetImage("assets/images/app_logo.png",),
+                                 fit: BoxFit.fill),
+                           ),
                          ),
-                       ),
-                       ListTile(
-                           title: Text("COLLEGE NAME",
-                             style: GoogleFonts.aBeeZee(fontSize: 15,
-                                 fontWeight: FontWeight.bold,
-                                 color: Colors.black),),
-
-                           subtitle: Text("BRANCH NAME",
-                             style: GoogleFonts.aBeeZee(
-                                 fontSize: 10, color: Colors.black),)
-
-                       ),
-
-                     ],
-                   )
+                         Expanded(
+                           child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: <Widget>[
+                               Text(
+                                 'College Name',
+                                 style: TextStyle(
+                                     color: color.primary,
+                                     fontWeight: FontWeight.bold,
+                                     fontSize: 18),
+                               ),
+                               SizedBox(
+                                 height: 6,
+                               ),
+                               Row(
+                                 children: <Widget>[
+                                   Icon(
+                                     Icons.location_on,
+                                     color: color.secondary,
+                                     size: 20,
+                                   ),
+                                   SizedBox(
+                                     width: 5,
+                                   ),
+                                   Text("Location",
+                                       style: TextStyle(
+                                           color: color.primary, fontSize: 13, letterSpacing: .3)),
+                                 ],
+                               ),
+                               SizedBox(
+                                 height: 6,
+                               ),
+                               Row(
+                                 children: <Widget>[
+                                   Icon(
+                                     Icons.school,
+                                     color: color.secondary,
+                                     size: 20,
+                                   ),
+                                   SizedBox(
+                                     width: 5,
+                                   ),
+                                   Text("Branch Name",
+                                       style: TextStyle(
+                                           color: color.primary, fontSize: 13, letterSpacing: .3)),
+                                 ],
+                               ),
+                             ],
+                           ),
+                         )
+                       ],
+                     ),
+                   ),
+                 ),
                ),
              ),
              Padding(
-               padding: EdgeInsets.all(20),
+               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                child: Material(
-                   elevation: 20,
-                   shape: RoundedRectangleBorder(
-                       borderRadius: BorderRadius.all(Radius.circular(10))),
-                   child: Column(
-
-                     children: <Widget>[
-                       Container(
-                         height: 200,
-                         decoration: BoxDecoration(
-                             shape: BoxShape.rectangle,
-                             borderRadius: BorderRadius.only(
-                                 topLeft: Radius.circular(10),
-                                 topRight: Radius.circular(10)),
+                 elevation: 30,
+                 borderRadius: BorderRadius.circular(25),
+                 color: Colors.white,
+                 child: Container(
+                   decoration: BoxDecoration(
+                     borderRadius: BorderRadius.circular(25),
+                     color: Colors.white,
+                   ),
+                   width: double.infinity,
+                   height: 120,
+                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                   child: Padding(
+                     padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
+                     child: Row(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: <Widget>[
+                         Container(
+                           width: 80,
+                           height: 80,
+                           margin: EdgeInsets.only(right: 15,),
+                           decoration: BoxDecoration(
+                             borderRadius: BorderRadius.circular(50),
+                             border: Border.all(width: 3, color: color.secondary),
                              image: DecorationImage(
-                                 image: new AssetImage(
-                                     'assets/images/college.png'),
-                                 fit: BoxFit.fill
-                             )
+                                 image: AssetImage("assets/images/app_logo.png",),
+                                 fit: BoxFit.fill),
+                           ),
                          ),
-                       ),
-                       ListTile(
-                           title: Text("COLLEGE NAME",
-                             style: GoogleFonts.aBeeZee(fontSize: 15,
-                                 fontWeight: FontWeight.bold,
-                                 color: Colors.black),),
-
-                           subtitle: Text("BRANCH NAME",
-                             style: GoogleFonts.aBeeZee(
-                                 fontSize: 10, color: Colors.black),)
-
-                       ),
-
-                     ],
-                   )
+                         Expanded(
+                           child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: <Widget>[
+                               Text(
+                                 'College Name',
+                                 style: TextStyle(
+                                     color: color.primary,
+                                     fontWeight: FontWeight.bold,
+                                     fontSize: 18),
+                               ),
+                               SizedBox(
+                                 height: 6,
+                               ),
+                               Row(
+                                 children: <Widget>[
+                                   Icon(
+                                     Icons.location_on,
+                                     color: color.secondary,
+                                     size: 20,
+                                   ),
+                                   SizedBox(
+                                     width: 5,
+                                   ),
+                                   Text("Location",
+                                       style: TextStyle(
+                                           color: color.primary, fontSize: 13, letterSpacing: .3)),
+                                 ],
+                               ),
+                               SizedBox(
+                                 height: 6,
+                               ),
+                               Row(
+                                 children: <Widget>[
+                                   Icon(
+                                     Icons.school,
+                                     color: color.secondary,
+                                     size: 20,
+                                   ),
+                                   SizedBox(
+                                     width: 5,
+                                   ),
+                                   Text("Branch Name",
+                                       style: TextStyle(
+                                           color: color.primary, fontSize: 13, letterSpacing: .3)),
+                                 ],
+                               ),
+                             ],
+                           ),
+                         )
+                       ],
+                     ),
+                   ),
+                 ),
                ),
              ),
              SizedBox(
