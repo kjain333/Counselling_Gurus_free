@@ -46,7 +46,8 @@ class _MedicalRankpredictor extends State<MedicalRankPredictor>{
                     color: Colors.white,
                     borderRadius: BorderRadius.only(bottomRight: Radius.circular(100)),
                   ),
-                  child: Column(
+                  child: SingleChildScrollView(
+                    child: Column(
                     children: <Widget>[
                       SizedBox(
                         height: 80,
@@ -118,6 +119,7 @@ class _MedicalRankpredictor extends State<MedicalRankPredictor>{
                     ],
                   ),
                 ),
+              ),
               ),
             ],
           ),

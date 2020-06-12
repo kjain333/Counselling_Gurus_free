@@ -6,7 +6,10 @@ class ChangePassword extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+        body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
+      child: Column(
         children: <Widget>[
           SizedBox(
             height: 100,
@@ -138,7 +141,8 @@ class ChangePassword extends StatelessWidget{
           )
         ],
       ),
-    );
+    )
+    ));
   }
 
 }

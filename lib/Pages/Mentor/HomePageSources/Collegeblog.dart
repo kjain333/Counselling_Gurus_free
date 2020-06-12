@@ -25,14 +25,14 @@ final nit = ['NIT Tiruchirapalli','NIT Rourkela','NIT Surathkal','NIT Warangal',
 final iiit = ['IIIT Gwalior','IIIT Kanchipuram','IIIT Guwahati','IIIT Allahabad','IIIT Kottayam','IIIT Jabalpur','IIIT Kota','IIIT Chittoor','IIIT Vadodara','IIIT Una','IIIT Kalyani','IIIT Kilohrad','IIIT Sonepat','IIIT Srirangam','IIIT Lucknow','IIIT Manipur','IIIT Dharwad','IIIT Ranchi','IIIT Kurnool','IIIT Nagpur','IIIT Pune','IIIT Bhagalpur','IIIT Bhopal','IIIT Surat'];
 final private = ['BITS Pilani','BITS Goa','BITS Hyderabad','VIT Vellore','VIT Chennai'];
 final state = ['State 1','State 2','State 3'];
-final String paragraph = "lets check what happens when paragraph becomes veryvery long ldegnjmdj.This contains few lines about each type of college category. Replace this with your own type of string list";
+final String paragraph = "This contains few lines about each type of college category. Replace this with your own type of string list.This contains few lines about each type of college category. Replace this with your own type of string list.This contains few lines about each type of college category";
 class Collegeblog extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
     a.clear();
     var size = MediaQuery.of(context).size;
-    final double itemHeight = ((size.height - kToolbarHeight - 24) / 2) - 50+(paragraph.length/55)*13;
+    final double itemHeight = 310+(paragraph.length/55)*15;
     final double itemWidth = size.width / 1;
     return Scaffold(
       body: Column(
@@ -104,7 +104,7 @@ Widget CollegeCard(index,context)
                   colleges[index],
                   style: GoogleFonts.aBeeZee(
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: (index==2)?15:18,
                   color: Colors.white),
           ),
           ),

@@ -100,7 +100,7 @@ class _ScheduleMeeting extends State<ScheduleMeeting>{
             ),
             Container(
 
-              height: MediaQuery.of(context).size.height/2 + 250,
+              height: 670,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
                 color: Colors.white,

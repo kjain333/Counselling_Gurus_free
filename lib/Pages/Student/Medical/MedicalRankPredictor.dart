@@ -46,10 +46,11 @@ class _MedicalRankpredictor extends State<MedicalRankPredictor>{
                     color: Colors.white,
                     borderRadius: BorderRadius.only(bottomRight: Radius.circular(100)),
                   ),
-                  child: Column(
+                  child: SingleChildScrollView(
+                    child: Column(
                     children: <Widget>[
                       SizedBox(
-                        height: 80,
+                        height: MediaQuery.of(context).size.height/6,
                       ),
                       Text('Welcome to Rank Prediction Software',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w900,fontSize: 20),),
                       SizedBox(
@@ -94,7 +95,7 @@ class _MedicalRankpredictor extends State<MedicalRankPredictor>{
                         ),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 10,
                       ),
                       Text('Choose your Category',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300),),
                       RadioGroup(),
@@ -118,6 +119,7 @@ class _MedicalRankpredictor extends State<MedicalRankPredictor>{
                     ],
                   ),
                 ),
+              ),
               ),
             ],
           ),

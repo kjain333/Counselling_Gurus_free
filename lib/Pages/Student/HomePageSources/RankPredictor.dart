@@ -46,6 +46,8 @@ class _Rankpredictor extends State<RankPredictor>{
                     color: Colors.white,
                     borderRadius: BorderRadius.only(bottomRight: Radius.circular(100)),
                   ),
+                  child: SingleChildScrollView(
+
                   child: Column(
                     children: <Widget>[
                       SizedBox(
@@ -118,6 +120,7 @@ class _Rankpredictor extends State<RankPredictor>{
                     ],
                   ),
                 ),
+              ),
               ),
             ],
           ),
