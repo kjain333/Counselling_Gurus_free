@@ -1,122 +1,193 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:counselling_gurus/Animations/FadeAnimation.dart';
 import 'package:counselling_gurus/Pages/Mentor/StartingPages/IntroSlider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../Resources/Colors.dart' as color;
-
-class MentorInfo extends StatelessWidget{
+List<String> _years = ['Fresher','Sophomore','Pre-final Year','Final Year'];
+String Selectedyear;
+class MentorInfo extends StatefulWidget{
+  @override
+  _MentorInfo createState()=>_MentorInfo();
+}
+class _MentorInfo extends State<MentorInfo>{
+  TextEditingController _controller = new TextEditingController();
+  TextEditingController _controller1 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ColumnSuper(
-        innerDistance: -50,
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            height: 180,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-                  color.bgGrad,
-                  color.bgGrad1,
-                  color.bgGrad2,
-                  color.bgGrad3
-                ])),
-            child: Text('\n\n\n  WELCOME BACK',style: TextStyle(color: Colors.white,fontSize: 18),),
-          ),
-          Material(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(50),topRight: Radius.circular(50))),
-            child: Column(
-              children: <Widget>[
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+          child: ColumnSuper(
+          innerDistance: -50,
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              height: 270,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+                    color.bgGrad,
+                    color.bgGrad1,
+                    color.bgGrad2,
+                    color.bgGrad3
+                  ])),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
                 SizedBox(
-                  height: 50,
-                ),
-                SizedBox(
-                  height: 50,
-                  child: Text('PLEASE FILL IN THESE EXTRA DETAILS AS WELL',style: TextStyle(color: Colors.amber),),
+                height: 80,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 30,right: 30),
-                  child: Material(
-                    borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20)),
-                    elevation: 20,
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                         // borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10)),
-                          border: Border(bottom: BorderSide(color: Colors.grey[200]))
-                      ),
-                      child: TextField(
-                        decoration: InputDecoration(
-                            hintText: "COLLEGE",
-                            hintStyle: TextStyle(color: Colors.grey),
-                            border: InputBorder.none
-                        ),
-                      ),
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    FadeAnimation(
+                        1,
+                        Text(
+                          "Sign Up",
+                          style: TextStyle(color: Colors.white, fontSize: 40),
+                        )),
+                    SizedBox(
+                      height: 10,
                     ),
-                  ),
+                    FadeAnimation(
+                        1.3,
+                        Text(
+                          "Welcome Back",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        )),
+                  ],
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: 30,right: 30),
-                  child: Material(
-                    elevation: 20,
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          border: Border(bottom: BorderSide(color: Colors.grey[200]))
-                      ),
-                      child: TextField(
-                        decoration: InputDecoration(
-                            hintText: "BRANCH",
-                            hintStyle: TextStyle(color: Colors.grey),
-                            border: InputBorder.none
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 30,right: 30),
-                  child: Material(
-                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),bottomLeft: Radius.circular(20)),
-                    elevation: 20,
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        //  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),bottomRight: Radius.circular(10)),
-                          border: Border(bottom: BorderSide(color: Colors.grey[200]))
-                      ),
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            width: double.infinity,
-                            height: 50,
-                            child: Text('STUDYING YEAR',style: TextStyle(color: Colors.grey),),
-                          ),
-                          RadioGroup()
-                        ],
-                      )
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                RaisedButton(
-                  child: Text('SUBMIT',style: TextStyle(color: Colors.white),),
-                  color: color.buttonsMain,
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
-                  },
-                )
+              ),
+              SizedBox(height: 20),
               ],
             ),
-          )
-        ],
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 520,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.white,
+              ),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 0),
+                    child: Text("College Name",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w300),),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 40,top: 20,right: 40),
+                    child: TextField(
+                      controller: _controller1,
+                      decoration: InputDecoration(
+                        hintText: "Enter College Name",
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(color: Colors.blue),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(30),
+                        )
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 0),
+                    child: Text("Branch Name",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w300),),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 40,top: 20,right: 40),
+                    child: TextField(
+                      controller: _controller,
+                      decoration: InputDecoration(
+                          hintText: "Enter Branch Name",
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide: BorderSide(color: Colors.blue),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(30),
+                          )
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 0),
+                    child: Text("College Year",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w300),),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  DropdownButton(
+                    onTap: (){
+                      FocusScope.of(context).requestFocus(new FocusNode());
+                    },
+                    isExpanded: false,
+                    hint: Text('Please choose your college year'),
+                    value: Selectedyear,
+                    onChanged: (val){
+                      setState(() {
+                        Selectedyear = val;
+
+                      });
+                    },
+                    items: _years.map((String val){
+                      return DropdownMenuItem<String>(
+                        child: Column(
+                          children: <Widget>[
+                            Text(val,style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 18),),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              height: 1,
+                              color: Colors.grey,
+                            ),
+                          ],
+                        ),
+                        value: val,
+                      );
+                    }).toList(),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  RaisedButton(
+                    color: Colors.redAccent,
+                    onPressed: (){
+                      Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  IntroSlider()));
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      ),
+                    child: Text("SUBMIT",style: GoogleFonts.aBeeZee(color: Colors.white,fontSize: 22,fontWeight: FontWeight.bold),),
+                  )
+                ],
+              ),
+            ),
+          ],
+      ),
       ),
     );
   }
-
-
 }
 class RadioGroup extends StatefulWidget{
   @override
