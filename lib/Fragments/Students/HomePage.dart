@@ -54,7 +54,8 @@ List<Color> colorList = [
   color.purple,
   color.blue7
 ];
-
+List<Color> background1 = [Colors.indigoAccent,Colors.deepOrangeAccent,Colors.greenAccent,Colors.purpleAccent,Colors.red,Colors.amber,Colors.brown,Colors.black,Colors.blueGrey];
+List<Color> background=[Colors.lightBlueAccent,Colors.orangeAccent,Colors.lightGreenAccent,Colors.deepPurpleAccent,Colors.pinkAccent,Colors.cyan,Colors.amberAccent,Colors.grey,Colors.blueAccent];
 List<String> cardHeadings = [
   "College Predictor",
   "Get your Rank",
@@ -354,133 +355,205 @@ class _HomePageState extends State<HomePage>
     int random;
     random = Random().nextInt(8);
     if(a.contains(random)&&a.length<=8)
+    {
+      while(a.contains(random))
       {
-        while(a.contains(random))
-          {
-            random=Random().nextInt(8);
-          }
+        random=Random().nextInt(8);
       }
+    }
     a.add(random);
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
         child: FlipCard(
-          direction: FlipDirection.VERTICAL,
-          front: Card(
+            direction: FlipDirection.VERTICAL,
+            front: Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 //side: BorderSide(width: 1, color: Colors.black),
               ),
-              color: Colors.white,
+              color: background[random],
+
               elevation: 10,
-              child: Container(
-                height: 220+paragraph[index%2].length/55*13,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: colorList[random]),
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(
-                      height: 60,
+              child: Stack(
+                children: <Widget>[
+                  ClipPath(
+                    clipper: CustomClipperPath(),
+                    child: Container(
+                      height: 220+paragraph[index%2].length/55*13,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        color: background1[random],
+
+                      ),
                     ),
-                    Icon(
-                      icon[index],
-                      size: 60,
-                      color: Colors.white,
+                  ),
+                  Container(
+                    height: 220+paragraph[index%2].length/55*13,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      color: Colors.transparent,
+
                     ),
-                    SizedBox(
-                      height: 30,
+                    //color: colorList[random]),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 60,
+                        ),
+                        Icon(
+                          icon[index],
+                          size: 60,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        ListTile(
+                          title: Center(
+                            child: Text(
+                              cardHeadings[index],
+                              style: GoogleFonts.aBeeZee(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: Colors.white),
+                            ),
+                          ),
+                          subtitle: Text(
+                            paragraph[index%2],
+                            //'Here we will put some lines of predefined text',
+                            style: GoogleFonts.aBeeZee(
+                                fontWeight: FontWeight.w300,
+                                fontSize: 13,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ],
                     ),
-                    ListTile(
-                      title: Center(
-                        child: Text(
-                          cardHeadings[index],
+                  ),
+                ],
+              ),
+            ),
+            back: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                //side: BorderSide(width: 1, color: Colors.black),
+              ),
+              color: background[8-random],
+              elevation: 10,
+              child: Stack(
+                children: <Widget>[
+                  ClipPath(
+                    clipper: CustomClipperPath1(),
+                    child: Container(
+                      height: 220+paragraph[index%2].length/55*13,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        color: background1[8-random],
+
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 220+paragraph[index%2].length/55*13,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      color:Colors.transparent,
+                    ),
+                    //color: colorList[Random().nextInt(8)]),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 60,
+                        ),
+                        Text(
+
+                          "More Details",
                           style: GoogleFonts.aBeeZee(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
                               color: Colors.white),
                         ),
-                      ),
-                      subtitle: Text(
-                        paragraph[index%2],
-                        //'Here we will put some lines of predefined text',
-                        style: GoogleFonts.aBeeZee(
-                            fontWeight: FontWeight.w300,
-                            fontSize: 13,
-                            color: Colors.white),
-                      ),
+                        SizedBox(
+                          height: 60,
+                        ),
+                        ListTile(
+                          title: Center(
+                            child: RaisedButton(
+                              //elevation: 10,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                color: Colors.white,
+                                child: Text(
+                                  buttonHeadings[index],
+                                  style: GoogleFonts.aBeeZee(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13),
+                                ),
+                                onPressed: () {
+                                  if (index == 0)
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                            (GetStream()==0?CollegePredictor():MedicalCollegePredictor())));
+                                  else if (index == 2)
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => (GetStream()==0)?Collegeblog():MedicalCollegeblog()));
+                                  else if (index == 3)
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => (GetStream()==0?BranchName():MedicalBranchName())));
+                                  else if (index==6)
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQ()));
+                                  else if (index == 1)
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => (GetStream()==0?RankPredictor():MedicalRankPredictor())));
+                                }),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              )),
-          back: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                //side: BorderSide(width: 1, color: Colors.black),
-              ),
-              color: Colors.white,
-              elevation: 10,
-              child: Container(
-                height: 220+paragraph[index%2].length/55*13,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: colorList[Random().nextInt(8)]),
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(
-                      height: 60,
-                    ),
-                    Text(
+                  )
+                ],),
+            )));
+  }
+}
+class CustomClipperPath extends CustomClipper<Path>{
 
-                      "More Details",
-                      style: GoogleFonts.aBeeZee(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Colors.white),
-                    ),
-                    SizedBox(
-                      height: 60,
-                    ),
-                    ListTile(
-                      title: Center(
-                        child: RaisedButton(
-                            //elevation: 10,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            color: Colors.purpleAccent,
-                            child: Text(
-                              buttonHeadings[index],
-                              style: GoogleFonts.aBeeZee(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13),
-                            ),
-                            onPressed: () {
-                              if (index == 0)
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                        (GetStream()==0?CollegePredictor():MedicalCollegePredictor())));
-                               else if (index == 2)
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => (GetStream()==0)?Collegeblog():MedicalCollegeblog()));
-                              else if (index == 3)
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => (GetStream()==0?BranchName():MedicalBranchName())));
-                              else if (index==6)
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQ()));
-                              else if (index == 1)
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => (GetStream()==0?RankPredictor():MedicalRankPredictor())));
-                            }),
-                      ),
-                    ),
-                  ],
-                ),
-              )),
-        ));
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
+  }
+
+  @override
+  Path getClip(Size size) {
+    var path = new Path();
+    path.lineTo(0.0,0.0);
+    path.lineTo(0.0, size.height);
+    path.lineTo(size.width, size.height);
+    path.quadraticBezierTo(size.width/2, size.height, size.width/2, 0);
+    path.close();
+    return path;
+  }
+}
+class CustomClipperPath1 extends CustomClipper<Path>{
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
+  }
+
+  @override
+  Path getClip(Size size) {
+    var path = new Path();
+    path.lineTo(0.0,0.0);
+    path.lineTo(0.0, size.height);
+    path.lineTo(size.width-30, size.height);
+    path.lineTo(size.width/2, 0.0);
+    path.close();
+    return path;
   }
 }
