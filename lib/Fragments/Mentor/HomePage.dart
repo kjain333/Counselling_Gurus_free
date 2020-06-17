@@ -55,8 +55,8 @@ List<Color> colorList = [
   color.blue7
 ];
 
-List<Color> background1 = [Colors.indigoAccent,Colors.deepOrangeAccent,Colors.greenAccent,Colors.purpleAccent,Colors.red,Colors.amber,Colors.brown,Colors.black,Colors.blueGrey];
-List<Color> background=[Colors.lightBlueAccent,Colors.orangeAccent,Colors.lightGreenAccent,Colors.deepPurpleAccent,Colors.pinkAccent,Colors.cyan,Colors.amberAccent,Colors.grey,Colors.blueAccent];
+List<Color> background1 = [Colors.indigoAccent,Colors.deepOrangeAccent,Colors.greenAccent,Colors.deepPurpleAccent,Colors.blueAccent,Colors.redAccent,Colors.brown,Colors.black,Colors.blueGrey];
+List<Color> background=[Colors.lightBlueAccent,Colors.orangeAccent,Colors.lightGreenAccent,Colors.purpleAccent,Colors.greenAccent,Colors.tealAccent,Colors.amberAccent,Colors.grey,Colors.blueAccent];
 List<String> cardHeadings = [
   "College Predictor",
   "Get your Rank",
@@ -471,17 +471,17 @@ class _HomePageState extends State<HomePage>
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 //side: BorderSide(width: 1, color: Colors.black),
               ),
-              color: background[8-random],
+              color: background[random],
               elevation: 10,
               child: Stack(
               children: <Widget>[
                 ClipPath(
-                  clipper: CustomClipperPath1(),
+                  clipper: CustomClipperPath(),
                   child: Container(
                     height: 220+paragraph[index%2].length/55*13,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
-                      color: background1[8-random],
+                      color: background1[random],
 
                     ),
                   ),
@@ -568,24 +568,6 @@ class CustomClipperPath extends CustomClipper<Path>{
     path.lineTo(0.0, size.height);
     path.lineTo(size.width, size.height);
     path.quadraticBezierTo(size.width/2, size.height, size.width/2, 0);
-    path.close();
-    return path;
-  }
-}
-class CustomClipperPath1 extends CustomClipper<Path>{
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return false;
-  }
-
-  @override
-  Path getClip(Size size) {
-    var path = new Path();
-    path.lineTo(0.0,0.0);
-    path.lineTo(0.0, size.height);
-    path.lineTo(size.width-30, size.height);
-    path.lineTo(size.width/2, 0.0);
     path.close();
     return path;
   }
