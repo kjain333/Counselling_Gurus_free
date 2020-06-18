@@ -42,7 +42,7 @@ class _ChatBoxPageState extends State<ChatBoxPage> {
   //  getQuestions();
     super.initState();
     // Here initialize the list in case it is required
-    _listSection.add(listSectionMethod("Anubhav", "Best IIT", "Which is the best IIT?"));
+    _listSection.add(listSectionMethod("Anubhav", "Best IIT", "Which is best IIT?"));
   }
 
   @override

@@ -46,80 +46,82 @@ class _Rankpredictor extends State<RankPredictor>{
                     color: Colors.white,
                     borderRadius: BorderRadius.only(bottomRight: Radius.circular(100)),
                   ),
-                  child: SingleChildScrollView(
-
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 80,
-                      ),
-                      Text('Welcome to Rank Prediction Software',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w900,fontSize: 20),),
-                      SizedBox(
-                        height: 25,
-                      ),
-                      CircularPercentIndicator(
-                        radius: 150.0,
-                        lineWidth: 5.0,
-                        percent: 0.8,
-                        center: Padding(
-                          padding: EdgeInsets.all(30),
-                          child: new Text('Surveys show our rank predictor to be 80% accurate',style: GoogleFonts.aBeeZee(fontSize: 12,),),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(20, 10, 0, 20),
+                    child: SingleChildScrollView(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 80,
                         ),
-                        progressColor: Colors.purple,
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text('Enter Your Percentile',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300),),
-                      Padding(
-                        padding: EdgeInsets.only(left: 40,right: 40,top: 5),
-                        child: TextField(
-                          decoration: InputDecoration(
-                              hintText: 'PERCENTILE',
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: (
-                                    BorderRadius.circular(30)
+                        Text('Welcome to Rank Prediction',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w900,fontSize: 20),),
+                        SizedBox(
+                          height: 25,
+                        ),
+                        CircularPercentIndicator(
+                          radius: 150.0,
+                          lineWidth: 5.0,
+                          percent: 0.8,
+                          center: Padding(
+                            padding: EdgeInsets.all(30),
+                            child: new Text('Surveys show our rank predictor to be 80% accurate',style: GoogleFonts.aBeeZee(fontSize: 12,),),
+                          ),
+                          progressColor: Colors.purple,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text('Enter Your Percentile',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300),),
+                        Padding(
+                          padding: EdgeInsets.only(left: 40,right: 40,top: 5),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                hintText: 'PERCENTILE',
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: (
+                                      BorderRadius.circular(15)
+                                  ),
+                                  borderSide: BorderSide(
+                                      color: Colors.grey
+                                  ),
                                 ),
-                                borderSide: BorderSide(
-                                    color: Colors.grey
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: (
-                                    BorderRadius.circular(30)
-                                ),
-                                borderSide: BorderSide(
-                                    color: Colors.grey
-                                ),
-                              )
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: (
+                                      BorderRadius.circular(15)
+                                  ),
+                                  borderSide: BorderSide(
+                                      color: Colors.grey
+                                  ),
+                                )
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Text('Choose your Category',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300),),
-                      RadioGroup(),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      RaisedButton(
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                        SizedBox(
+                          height: 30,
                         ),
-                        color: Colors.blue,
-                        onPressed: (){
-                          setState(() {
-                            rank = 5087;
-                          });
-                            //Assign Rank Here
-                        },
-                        child: Text('SUBMIT',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w900,fontSize: 18,color: Colors.white),),
-                      ),
-                    ],
-                  ),
+                        Text('Choose your Category',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300),),
+                        RadioGroup(),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        RaisedButton(
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          color: Colors.blue,
+                          onPressed: (){
+                            setState(() {
+                              rank = 5087;
+                            });
+                              //Assign Rank Here
+                          },
+                          child: Text('Get Your Rank',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w900,fontSize: 15,color: Colors.white),),
+                        ),
+                      ],
+                    ),
                 ),
+                  ),
               ),
               ),
             ],
