@@ -31,13 +31,13 @@ class Collegeblog extends StatelessWidget{
   Widget build(BuildContext context) {
     a.clear();
     var size = MediaQuery.of(context).size;
-    final double itemHeight = 310+(paragraph.length/55)*15;
+    final double itemHeight = 220+(paragraph.length/55)*15;
     final double itemWidth = size.width / 1;
     return Scaffold(
       body: Column(
         children: <Widget>[
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           Expanded(
             child: Padding(
@@ -82,20 +82,16 @@ Widget CollegeCard(index,context)
       color: Colors.white,
       elevation: 10,
       child: Container(
-      height: 330+(paragraph.length/55)*13,
       decoration: BoxDecoration(
       borderRadius: BorderRadius.all(Radius.circular(20)),
       color: colorList[random]),
       child: Column(
       children: <Widget>[
       SizedBox(
-      height: 40,
+      height: 20,
       ),
       Center(
-      child: Text(heading[index],style: TextStyle(fontFamily: 'icons',fontSize: 60,color: Colors.white,fontWeight: FontWeight.w900),),
-      ),
-      SizedBox(
-        height: 30,
+      child: Text(heading[index],style: TextStyle(fontFamily: 'icons',fontSize: 30,color: Colors.white,fontWeight: FontWeight.w900),),
       ),
       ListTile(
           title: Center(
@@ -103,7 +99,7 @@ Widget CollegeCard(index,context)
                   colleges[index],
                   style: GoogleFonts.aBeeZee(
                   fontWeight: FontWeight.bold,
-                  fontSize: (index==2)?15:18,
+                  fontSize: 12,
                   color: Colors.white),
           ),
           ),
@@ -111,7 +107,7 @@ Widget CollegeCard(index,context)
                     paragraph,
                      style: GoogleFonts.aBeeZee(
                       fontWeight: FontWeight.w300,
-                      fontSize: 13,
+                      fontSize: 10,
                       color: Colors.white),
           ),
         ),
@@ -137,7 +133,8 @@ Widget CollegeCard(index,context)
                 Navigator.push(context, MaterialPageRoute(builder: (context) => CollegeName(state)));
             },
           ),
-        )
+        ),
+        SizedBox(height: 10,),
       ],
       ),
   )));

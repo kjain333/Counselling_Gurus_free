@@ -86,15 +86,12 @@ class _BranchNameState extends State<BranchName> {
                       padding: EdgeInsets.all(30),
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(15),
                           color: Colors.white,
                         ),
                         child: AutoCompleteTextField<String>(
                           key: key,
                           controller: controller,
-                          /*     textChanged: (stringfinal){
-                          controller.text=stringfinal;
-                        },*/
                           clearOnSubmit: false,
                           suggestions: stringfinal,
                           itemFilter: (item,query){
@@ -124,13 +121,13 @@ class _BranchNameState extends State<BranchName> {
                             focusColor: Colors.white,
                             hoverColor: Colors.white,
                             prefixIcon: Icon(Icons.search),
-                            hintText: 'Search',
+                            hintText: 'Search Branch Name',
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(15),
                               borderSide: BorderSide(color: Colors.black),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(15),
                               borderSide: BorderSide(color: Colors.black),
                             ),
                           ),

@@ -15,7 +15,6 @@ class FAQ extends StatefulWidget{
   State<StatefulWidget> createState() {
     return _FAQ();
   }
-
 }
 class _FAQ extends State<FAQ>{
   @override
@@ -25,32 +24,26 @@ class _FAQ extends State<FAQ>{
         slivers: <Widget>[
           SliverToBoxAdapter(
             child: Container(
-              height: 220,
+              height: 180,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: Colors.purple,
-                borderRadius: BorderRadius.only(bottomRight: Radius.circular(MediaQuery.of(context).size.width/4),bottomLeft: Radius.circular(MediaQuery.of(context).size.width/4)),
+                borderRadius: BorderRadius.only(bottomRight: Radius.circular(50),bottomLeft: Radius.circular(50)),
               ),
               child: Center(
                 child: Column(
                   children: <Widget>[
                     SizedBox(
-                      height: 60,
+                      height: 40,
                     ),
                     Text('FAQ',style: TextStyle(fontFamily: 'icons',fontWeight: FontWeight.w900,fontSize: 30,color: Colors.white),),
                     Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Text('Here you will find the Frequently asked Questions. Feel free to contact us if you have any another question not mentioned here.',style: GoogleFonts.aBeeZee(fontSize: 15,color: Colors.white,fontWeight: FontWeight.w100),),
+                      padding: EdgeInsets.all(15),
+                      child: Text('Here you will find the Frequently asked Questions. Feel free to contact us if you have any another question not mentioned here.',style: GoogleFonts.aBeeZee(fontSize: 12,color: Colors.white,fontWeight: FontWeight.w100),),
                     )
-
                   ],
                 ),
               ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 50,
             ),
           ),
           SliverList(
@@ -69,7 +62,7 @@ Widget QuestionCard(int index,BuildContext context){
   return Padding(
     padding: EdgeInsets.all(20),
     child: Material(
-      elevation: 30,
+      elevation: 10,
       child: ExpansionPanelList(
         expansionCallback: (int ind,bool status){
           setState(() {
@@ -87,9 +80,9 @@ Widget QuestionCard(int index,BuildContext context){
           new ExpansionPanel(
               isExpanded: expanded[index],
               headerBuilder: (BuildContext context,bool isExpanded)=>new ListTile(
-                contentPadding: EdgeInsets.all(15),
+                contentPadding: EdgeInsets.all(10),
                // trailing: Icon(Icons.arrow_forward),
-                title: Text(questions[index],style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w300),),
+                title: Text(questions[index],style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300),),
                 onTap: (){
                   setState(() {
                     if(expanded[index]==true)
@@ -105,8 +98,8 @@ Widget QuestionCard(int index,BuildContext context){
                 },
               ),
               body: ListTile(
-                contentPadding: EdgeInsets.all(15),
-                title: Text(answer,style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w300),),
+                contentPadding: EdgeInsets.all(10),
+                title: Text(answer,style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300),),
               )
           )
         ],

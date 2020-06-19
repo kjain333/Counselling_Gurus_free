@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class FAQAnswer extends StatelessWidget{
   FAQAnswer(this.question,this.answer);
-  String question,answer;
+  String question, answer;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,4 +1,7 @@
 //import 'package:counselling_gurus/Pages/Student/CollegeName.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/BranchName.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/Branchblog.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/Collegeblog.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/RankPredictor.dart';
 import 'package:counselling_gurus/Pages/referralpage.dart';
 import 'package:wiredash/wiredash.dart';
@@ -52,7 +55,7 @@ class _MyAppState extends State<MyApp> {
           primarySwatch: Colors.blue,
         ),
         // email == null ?
-        home: RankPredictor(),
+        home: HomePage(),
         routes: <String, WidgetBuilder>{
           '/ProfilePage': (BuildContext context) => new ProfilePage(),
           '/LoginPage': (BuildContext context) => new LoginPage(),

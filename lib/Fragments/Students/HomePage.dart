@@ -61,32 +61,31 @@ List<String> cardHeadings = [
   "Get your Rank",
   "Colleges",
   "Branches",
-  "Mock Counselling",
-  "Aptitude Test",
-  "Frequently Asked Questions",
-  "Document Verification",
+  "Frequently Asked Questions"
 ];
+//   "Mock Counselling",
+//  "Aptitude Test",
+// "Document Verification",
 List<String> buttonHeadings = [
   "Get Your College",
   "Get Your Rank",
   "Know About Your College",
   "Explore Branches",
-  "Experience Counselling",
-  "Take the Test",
   "Know More",
-  "Verify Documents"
 ];
+//   "Experience Counselling",
+//  "Take the Test",
+//  "Verify Documents"
 List<IconData> icon = [
   Icons.school,
   Icons.score,
   Icons.home,
   Icons.library_books,
-  Icons.supervisor_account,
-  Icons.edit,
   Icons.question_answer,
-  Icons.note_add,
 ];
-
+//   Icons.note_add,
+//   Icons.supervisor_account,
+//  Icons.edit,
 final Color primary = Colors.white;
 final Color active = Colors.grey.shade800;
 final Color divider = Colors.grey.shade600;
@@ -142,7 +141,7 @@ class _HomePageState extends State<HomePage>
             delegate:
                 SliverChildBuilderDelegate((BuildContext context, int index) {
               return gridCard(index);
-            }, childCount: 8),
+            }, childCount: 5),
           )
         ],
       ),
@@ -372,7 +371,6 @@ class _HomePageState extends State<HomePage>
                 //side: BorderSide(width: 1, color: Colors.black),
               ),
               color: background[random],
-
               elevation: 10,
               child: Stack(
                 children: <Widget>[
@@ -383,7 +381,6 @@ class _HomePageState extends State<HomePage>
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         color: background1[random],
-
                       ),
                     ),
                   ),
@@ -392,7 +389,6 @@ class _HomePageState extends State<HomePage>
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                       color: Colors.transparent,
-
                     ),
                     //color: colorList[random]),
                     child: Column(
@@ -449,7 +445,6 @@ class _HomePageState extends State<HomePage>
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         color: background1[random],
-
                       ),
                     ),
                   ),
@@ -466,7 +461,6 @@ class _HomePageState extends State<HomePage>
                           height: 60,
                         ),
                         Text(
-
                           "More Details",
                           style: GoogleFonts.aBeeZee(
                               fontWeight: FontWeight.bold,
@@ -521,6 +515,7 @@ class _HomePageState extends State<HomePage>
             )));
   }
 }
+
 class CustomClipperPath extends CustomClipper<Path>{
 
   @override
