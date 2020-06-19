@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
           primarySwatch: Colors.blue,
         ),
         // email == null ?
-        home: HomePage(),
+        home: SplashScreen(),
         routes: <String, WidgetBuilder>{
           '/ProfilePage': (BuildContext context) => new ProfilePage(),
           '/LoginPage': (BuildContext context) => new LoginPage(),

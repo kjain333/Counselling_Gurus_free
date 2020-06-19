@@ -122,7 +122,7 @@ class _NewsPageState extends State<NewsPage> {
                                 )),
                           ),
                           Container(
-                            width: 290.5,
+                            width: MediaQuery.of(context).size.width-120,
                             child: ListTile(
                               title: Text(
                                 'NEWS HEADING ' + index.toString(),//heading[index-1]

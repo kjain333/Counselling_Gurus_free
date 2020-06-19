@@ -40,7 +40,7 @@ class _IntroSliderState extends State<IntroSlider> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
+      body:AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: Container(
           decoration: BoxDecoration(
@@ -75,7 +75,7 @@ class _IntroSliderState extends State<IntroSlider> {
                   ),
                 ),
                 Container(
-                  height: 600.0,
+                  height: MediaQuery.of(context).size.height-180,
                   child: PageView(
                     physics: ClampingScrollPhysics(),
                     controller: _pageController,
@@ -197,6 +197,7 @@ class _IntroSliderState extends State<IntroSlider> {
           ),
         ),
       ),
+
       bottomSheet: _currentPage == _numPages - 1
           ? Container(
               height: 60.0,

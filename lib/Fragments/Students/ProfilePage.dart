@@ -70,7 +70,8 @@ class _ProfilePageState extends State<ProfilePage> {
     ):
     new Scaffold(
 
-      body: Column(
+      body:SingleChildScrollView(
+        child: Column(
         children: <Widget>[
           Container(
             height: 380,
@@ -190,6 +191,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
       ),
 
+    ),
     );
   }
 }/*Scaffold(

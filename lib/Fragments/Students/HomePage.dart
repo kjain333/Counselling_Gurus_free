@@ -377,7 +377,7 @@ class _HomePageState extends State<HomePage>
                   ClipPath(
                     clipper: CustomClipperPath(),
                     child: Container(
-                      height: 220+paragraph[index%2].length/55*13,
+                      height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         color: background1[random],
@@ -385,7 +385,7 @@ class _HomePageState extends State<HomePage>
                     ),
                   ),
                   Container(
-                    height: 220+paragraph[index%2].length/55*13,
+                    height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                       color: Colors.transparent,
@@ -441,7 +441,7 @@ class _HomePageState extends State<HomePage>
                   ClipPath(
                     clipper: CustomClipperPath(),
                     child: Container(
-                      height: 220+paragraph[index%2].length/55*13,
+                      height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         color: background1[random],
@@ -449,7 +449,7 @@ class _HomePageState extends State<HomePage>
                     ),
                   ),
                   Container(
-                    height: 220+paragraph[index%2].length/55*13,
+                    height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                       color:Colors.transparent,
@@ -501,7 +501,7 @@ class _HomePageState extends State<HomePage>
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => (GetStream()==0?BranchName():MedicalBranchName())));
-                                  else if (index==6)
+                                  else if (index==4)
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQ()));
                                   else if (index == 1)
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => (GetStream()==0?RankPredictor():MedicalRankPredictor())));

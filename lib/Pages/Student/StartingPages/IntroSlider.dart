@@ -75,7 +75,7 @@ class _IntroSliderState extends State<IntroSlider> {
                   ),
                 ),
                 Container(
-                  height: 600.0,
+                  height: MediaQuery.of(context).size.height-180,
                   child: PageView(
                     physics: ClampingScrollPhysics(),
                     controller: _pageController,

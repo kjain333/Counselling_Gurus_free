@@ -31,7 +31,7 @@ class Collegeblog extends StatelessWidget{
   Widget build(BuildContext context) {
     a.clear();
     var size = MediaQuery.of(context).size;
-    final double itemHeight = 220+(paragraph.length/55)*15;
+    final double itemHeight = 220+(paragraph.length/55)*15*410.5/MediaQuery.of(context).size.width;
     final double itemWidth = size.width / 1;
     return Scaffold(
       body: Column(
