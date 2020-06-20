@@ -33,6 +33,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:async';
 import '../../Resources/Colors.dart' as color;
+import 'News.dart';
 
 final string = [
   'assets/images/background.png',
@@ -94,6 +95,7 @@ final paragraph =
     ["These are few lines describing each card to be displayed on the back. Here is some more random text so that the button can reach the botttom.","These are few lines describing each card to be displayed on the back."];
 
 Timer _timer;
+News news = News("Trending news heading","Here we will displaying few lines about our trending news.","");
 
 void _incrementTimerCounter(Timer t) {
   _timerCounter++;
@@ -322,14 +324,14 @@ class _HomePageState extends State<HomePage>
                             child: Container(
                               child: ListTile(
                                 title: Text(
-                                  'TRENDING NEWS HEADING' + index.toString(),
+                                  news.heading + index.toString(),
                                   style: GoogleFonts.aBeeZee(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white),
                                 ),
                                 subtitle: Text(
-                                  'News subheading can come here',
+                                  news.subheading,
                                   style: GoogleFonts.aBeeZee(
                                       fontSize: 12, color: Colors.white),
                                 ),
@@ -338,7 +340,7 @@ class _HomePageState extends State<HomePage>
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              CompleteNews(string[1])));
+                                              CompleteNews(news)));
                                 },
                               ),
                             ),

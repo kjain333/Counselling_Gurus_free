@@ -2,6 +2,7 @@
 import 'package:counselling_gurus/models/intro_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../Resources/Colors.dart' as color;
 import 'SelectStreamPage.dart';
 
@@ -47,11 +48,9 @@ class _IntroSliderState extends State<IntroSlider> {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              stops: [0.4, 0.7, 0.9],
               colors: [
-                color.orange7,
-                color.orange8,
-                color.orange10
+                Color.fromARGB(100, 92, 225, 230),
+                Color.fromARGB(100, 56, 182, 255),
               ],
             ),
           ),
@@ -93,17 +92,18 @@ class _IntroSliderState extends State<IntroSlider> {
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'assets/images/splashpic.png',
+                                  'assets/images/hugo-customer-support.png',
                                 ),
-                                height: 300.0,
-                                width: 300.0,
+                                height: MediaQuery.of(context).size.height-420,
+                                width: MediaQuery.of(context).size.width-100,
                               ),
                             ),
                             SizedBox(height: 30.0),
-                            Text(
-                              'Connect people\naround the world',
-                              style: kTitleStyle,
+                            Center(
+                              child:  Text("Expert's Support",style: GoogleFonts.aBeeZee(color: Colors.indigo,fontSize: 28,fontWeight: FontWeight.bold),),
                             ),
+                            SizedBox(height: 10,),
+                            Text("Our Expert Mentors are always there for guidance that is needed by a student and parent in college admissions",style: GoogleFonts.aBeeZee(color: Colors.white,fontWeight: FontWeight.w200,fontSize: 18),),
                           ],
                         ),
                       ),
@@ -115,17 +115,18 @@ class _IntroSliderState extends State<IntroSlider> {
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'assets/images/splashpic.png',
+                                  'assets/images/hugo-waiting.png',
                                 ),
-                                height: 300.0,
-                                width: 300.0,
+                                height: MediaQuery.of(context).size.height-420,
+                                width: MediaQuery.of(context).size.width-100,
                               ),
                             ),
                             SizedBox(height: 30.0),
-                            Text(
-                              'Live your life smarter\nwith us!',
-                              style: kTitleStyle,
+                            Center(
+                              child:  Text("Relaxxxx....",style: GoogleFonts.aBeeZee(color: Colors.indigo,fontSize: 28,fontWeight: FontWeight.bold),),
                             ),
+                            SizedBox(height: 10,),
+                            Text("We are here to help you out with every minute detail that one should look for during college admissions",style: GoogleFonts.aBeeZee(color: Colors.white,fontWeight: FontWeight.w200,fontSize: 18),),
                           ],
                         ),
                       ),
@@ -137,17 +138,18 @@ class _IntroSliderState extends State<IntroSlider> {
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'assets/images/splashpic.png',
+                                  'assets/images/hugo-list-is-empty.png',
                                 ),
-                                height: 300.0,
-                                width: 300.0,
+                                height: MediaQuery.of(context).size.height-420,
+                                width: MediaQuery.of(context).size.width-100,
                               ),
                             ),
                             SizedBox(height: 30.0),
-                            Text(
-                              'Get a new experience\nof imagination',
-                              style: kTitleStyle,
+                            Center(
+                              child:  Text("Unique Features",style: GoogleFonts.aBeeZee(color: Colors.indigo,fontSize: 28,fontWeight: FontWeight.bold),),
                             ),
+                            SizedBox(height: 10,),
+                            Text("Rank Predictor, College Predictor, Document Verification, Past Analysis, Comparisons and many more.",style: GoogleFonts.aBeeZee(color: Colors.white,fontWeight: FontWeight.w200,fontSize: 18),),
                           ],
                         ),
                       ),
@@ -198,7 +200,10 @@ class _IntroSliderState extends State<IntroSlider> {
         ),
       ),
       bottomSheet: _currentPage == _numPages - 1
-          ? Container(
+          ?GestureDetector(
+          onTap: () =>
+              Navigator.push(context, MaterialPageRoute(builder: (context) => StreamSelectPage())),
+             child: Container(
               height: 60.0,
               width: double.infinity,
               color: Colors.white,
@@ -222,6 +227,7 @@ class _IntroSliderState extends State<IntroSlider> {
                 ),
               ),
             )
+      )
           : Text(''),
     );
   }
