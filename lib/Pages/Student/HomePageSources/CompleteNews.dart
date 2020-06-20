@@ -1,3 +1,4 @@
+import 'package:counselling_gurus/Fragments/Students/News.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
@@ -5,10 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 class CompleteNews extends StatelessWidget{
-  CompleteNews(this.heading);
-  final String heading;
+  CompleteNews(this.news);
+  final News news;
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -27,38 +27,46 @@ class CompleteNews extends StatelessWidget{
                     )
                 ),
               ),
-               Material(
+              Material(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(50),topRight: Radius.circular(50))),
                   elevation: 20,
                   color: Colors.blue,
                   child: Container(
-                    height: 700,
-                    width: 411,
-                    child: Column(
+                    height: 100,
+                  ),
+               ),
+               SingleChildScrollView(
+                 child: Material(
+                  //shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(50),topRight: Radius.circular(50))),
+                  elevation: 20,
+                  color: Colors.blue,
+                  child:SingleChildScrollView(
+                    child: Container(
+                    height: MediaQuery.of(context).size.height-300,
+                    width: MediaQuery.of(context).size.width,
+                    child: SingleChildScrollView(
+                      child: Column(
                       children: <Widget>[
-                        const SizedBox(
-                          height: 20,
-                        ),
                         ListTile(
                           title: Center(
-                           child: Text(heading,style: GoogleFonts.aBeeZee(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 17),),
+                           child: Text(news.heading,style: GoogleFonts.aBeeZee(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 17),),
                           ),
-                          subtitle: Text("\nDATE and TIME\n",style: GoogleFonts.aBeeZee(color: Colors.white,fontWeight: FontWeight.w300,fontSize: 13),),
+                          subtitle: Text("\n20/06/2020 10:00 IST\n",style: GoogleFonts.aBeeZee(color: Colors.white,fontWeight: FontWeight.w300,fontSize: 13),),
                             trailing: Wrap(
 
                               children: <Widget>[
-                                IconButton(
+           /*                     IconButton(
                                     icon: new Icon(Icons.content_copy,color: Colors.amber,),
                                     onPressed: (){
-                                      Clipboard.setData(ClipboardData(text: 'NEWS HEADING\nThis is news Sub-Heading'));
+                                      Clipboard.setData(ClipboardData(text: news.heading+"\n"+news.subheading));
                                       final snackBar = SnackBar(content: Text("Content Copied to Clipboard"));
                                       Scaffold.of(context).showSnackBar(snackBar);
                                     }
-                                ),
+                                ),*/
                                 IconButton(
                                     icon: new Icon(Icons.share,color: Colors.amber,),
                                     onPressed: (){
-                                      Share.share('NEWS HEADING\nDOWNLOAD OUR APP',subject: 'NEWS HEADING');
+                                      Share.share(news.heading+'\nDOWNLOAD OUR APP',subject: news.heading);
                                     }
                                 )
 
@@ -68,23 +76,29 @@ class CompleteNews extends StatelessWidget{
                         SizedBox(
                           child: Padding(
                             padding: EdgeInsets.only(left: 50,right: 50),
-                            child: Text("This is where all the content will come.This should take more than 12-13 lines.",style: GoogleFonts.aBeeZee(color: Colors.white,fontWeight: FontWeight.w300,fontSize: 13),),
+                            child: Text(news.data,style: GoogleFonts.aBeeZee(color: Colors.white,fontWeight: FontWeight.w300,fontSize: 13),),
                         )
                         ),
                         InkWell(
                           child:Padding(
                             padding: EdgeInsets.only(left: 50,right: 50),
-                            child: Text('https://www.youtube.com',style: GoogleFonts.aBeeZee(color: Colors.amber,fontWeight: FontWeight.w300,fontSize: 13),),
+                            child: Text(news.link,style: GoogleFonts.aBeeZee(color: Colors.amber,fontWeight: FontWeight.w300,fontSize: 13),),
                           ),
-                          onTap: () => launch('https://www.youtube.com'),
+                          onTap: () => launch(news.link),
+                        ),
+                        SizedBox(
+                          height: 30,
                         )
                       ],
                     ),
                     //color: Colors.blue,
                   ),
-                ),
-
+               ),
+               ),
+               ),
+               ),
             ],
+
           ),
         )
     );
