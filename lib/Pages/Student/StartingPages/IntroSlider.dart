@@ -85,7 +85,7 @@ class _IntroSliderState extends State<IntroSlider> {
                     },
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.all(40.0),
+                        padding: EdgeInsets.all(20.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -98,7 +98,7 @@ class _IntroSliderState extends State<IntroSlider> {
                                 width: MediaQuery.of(context).size.width-100,
                               ),
                             ),
-                            SizedBox(height: 30.0),
+                            SizedBox(height: 20.0),
                             Center(
                               child:  Text("Expert's Support",style: GoogleFonts.aBeeZee(color: Colors.indigo,fontSize: 28,fontWeight: FontWeight.bold),),
                             ),
@@ -108,7 +108,7 @@ class _IntroSliderState extends State<IntroSlider> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(40.0),
+                        padding: EdgeInsets.all(20.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -121,7 +121,7 @@ class _IntroSliderState extends State<IntroSlider> {
                                 width: MediaQuery.of(context).size.width-100,
                               ),
                             ),
-                            SizedBox(height: 30.0),
+                            SizedBox(height: 20.0),
                             Center(
                               child:  Text("Relaxxxx....",style: GoogleFonts.aBeeZee(color: Colors.indigo,fontSize: 28,fontWeight: FontWeight.bold),),
                             ),
@@ -131,7 +131,7 @@ class _IntroSliderState extends State<IntroSlider> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(40.0),
+                        padding: EdgeInsets.all(20.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -144,7 +144,7 @@ class _IntroSliderState extends State<IntroSlider> {
                                 width: MediaQuery.of(context).size.width-100,
                               ),
                             ),
-                            SizedBox(height: 30.0),
+                            SizedBox(height: 20.0),
                             Center(
                               child:  Text("Unique Features",style: GoogleFonts.aBeeZee(color: Colors.indigo,fontSize: 28,fontWeight: FontWeight.bold),),
                             ),

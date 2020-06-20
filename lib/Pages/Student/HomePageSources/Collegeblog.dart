@@ -1,5 +1,3 @@
-
-
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +23,7 @@ final iiit = ['IIIT Gwalior','IIIT Kanchipuram','IIIT Guwahati','IIIT Allahabad'
 final private = ['BITS Pilani','BITS Goa','BITS Hyderabad','VIT Vellore','VIT Chennai'];
 final state = ['State 1','State 2','State 3'];
 final String paragraph = "This contains few lines about each type of college category. Replace this with your own type of string list";
+
 class Collegeblog extends StatelessWidget{
 
   @override
@@ -58,7 +57,6 @@ class Collegeblog extends StatelessWidget{
       ),
     );
   }
-
 }
 Widget CollegeCard(index,context)
 {
@@ -179,7 +177,6 @@ Widget CollegeCard(index,context)
             )
           ],
         )
-
     ),
   );*/
 }

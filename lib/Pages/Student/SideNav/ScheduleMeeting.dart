@@ -99,8 +99,7 @@ class _ScheduleMeeting extends State<ScheduleMeeting>{
               ),
             ),
             Container(
-
-              height: 670,
+              height: 700,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
                 color: Colors.white,
@@ -112,7 +111,7 @@ class _ScheduleMeeting extends State<ScheduleMeeting>{
                   ),
                   Padding(
                     padding: EdgeInsets.all(10),
-                    child: Text('Attend Meeting as',style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w100),),
+                    child: Text('Attend Meeting as',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w100),),
                   ),
                   Padding(
                     padding: EdgeInsets.all(10),
@@ -142,7 +141,7 @@ class _ScheduleMeeting extends State<ScheduleMeeting>{
                                     height: 50,
                                     width: 10,
                                   ),
-                                  Text('Parent',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+                                  Text('Parent',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 13),),
                                 ],
                               ),
                             ),
@@ -169,7 +168,7 @@ class _ScheduleMeeting extends State<ScheduleMeeting>{
                                     height: 50,
                                     width: 10,
                                   ),
-                                  Text('Student',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 15),),
+                                  Text('Student',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 13),),
                                 ],
                               ),
                             ),
@@ -190,7 +189,7 @@ class _ScheduleMeeting extends State<ScheduleMeeting>{
                   ),
                   Padding(
                     padding: EdgeInsets.all(10),
-                    child: Text('Purpose of Meeting',style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w100),),
+                    child: Text('Purpose of Meeting',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w100),),
                   ),
                   Padding(
                     padding: EdgeInsets.all(20),
@@ -219,7 +218,7 @@ class _ScheduleMeeting extends State<ScheduleMeeting>{
                   ),
                   Padding(
                     padding: EdgeInsets.all(10),
-                    child: Text('Description',style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w100),),
+                    child: Text('Description',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w100),),
                   ),
                   Padding(
                     padding: EdgeInsets.all(20),
@@ -253,17 +252,17 @@ class _ScheduleMeeting extends State<ScheduleMeeting>{
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)
                     ),
-                    child: Text('SCHEDULE',style: GoogleFonts.aBeeZee(color: Colors.white,fontWeight: FontWeight.w300,fontSize: 18),),
+                    child: Text('SCHEDULE',style: GoogleFonts.aBeeZee(color: Colors.white,fontWeight: FontWeight.w300,fontSize: 15),),
                     color: Colors.purpleAccent,
                     onPressed: (){
                       showDialog(
                           context: context,
                           builder: (BuildContext context){
                             return AlertDialog(
-                                elevation: 50,
+                                elevation: 20,
                                 backgroundColor: Colors.black,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
+                                    borderRadius: BorderRadius.circular(15),
                                     side: BorderSide(
                                       color: Colors.amberAccent,
                                     )

@@ -6,8 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'FAQAnswer.dart';
-final questions = ['What is Question 1 ?','What is Question 2?','What is Question 3?','What is Question 4?','What is Question 5?'];
-final answer = 'This is the the detailed answer to the question. This can be multiline and very long as well';
+final questions = ['Q1. Which degree is superior, B.E. or B. Tech. in terms of job scope and future?',
+  'Q2. If two colleges hold equal status, then what should I prefer, B.E. or B. Tech?',
+  'Q3. What is the difference between science and engineering?',
+  'Q4. Is it possible to pursue regular B.Tech and diploma course at one time?',
+  'Q5. Can JoSAA prepare / announce JEE Main 2020 ranks?'];
+final answer = ['Ans. Both degrees have equal recognition with equal scope and future. More precisely, it’s your college and branch that matters.',
+  'Ans. If a student is interested in research-oriented work and wants to pursue higher studies then B.E. may be preferred over B. Tech. However, in the present situation analysis shows that course content is almost the same but the approach may be different.',
+  'Ans. Science is knowledge based on observed facts and tested truths arranged in an orderly system that can be validated and communicated to other people. Engineering is the creative application of scientific principles used to plan, build, direct, guide, manage, or work on systems to maintain and improve our daily lives.',
+  'Ans. Two regular courses can\'t be pursued together. One course should be regular and the other should be distance or short-term certificate course.',
+  'Ans. No. JEE Main 2020 ranks are provided by the JEE Apex Board. JoSAA 2020 uses these ranks as such without any further change.'];
 final expanded=[false,false,false,false,false];
 class FAQ extends StatefulWidget{
   static _FAQ of(BuildContext context) => context.ancestorStateOfType(const TypeMatcher<_FAQ>());
@@ -99,7 +107,7 @@ Widget QuestionCard(int index,BuildContext context){
               ),
               body: ListTile(
                 contentPadding: EdgeInsets.all(10),
-                title: Text(answer,style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300),),
+                title: Text(answer[index],style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w300),),
               )
           )
         ],

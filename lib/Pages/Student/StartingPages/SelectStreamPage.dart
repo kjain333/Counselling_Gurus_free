@@ -40,7 +40,7 @@ class _StreamSelectPageState extends State<StreamSelectPage> {
                     FadeAnimation(
                         1,
                         Text(
-                          "Select Stream",
+                          "I am",
                           style: TextStyle(color: Colors.white, fontSize: 40),
                         )),
                     SizedBox(
@@ -85,7 +85,7 @@ class _StreamSelectPageState extends State<StreamSelectPage> {
                                           builder: (context) => MainPage()));
                                     },
                                     child: Center(
-                                      child: Text("As an Engineering Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                      child: Text("An Engineering Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
                                   ),
                                 ),
@@ -106,7 +106,7 @@ class _StreamSelectPageState extends State<StreamSelectPage> {
                                       Navigator.push(context,MaterialPageRoute(builder: (context)=> MainPage()));
                                     },
                                     child: Center(
-                                      child: Text("As a Medical Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                      child: Text("A Medical Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
                                   ),
                                 ),

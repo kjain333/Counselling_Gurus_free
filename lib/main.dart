@@ -3,6 +3,7 @@ import 'package:counselling_gurus/Pages/Student/HomePageSources/BranchName.dart'
 import 'package:counselling_gurus/Pages/Student/HomePageSources/Branchblog.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/Collegeblog.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/RankPredictor.dart';
+import 'package:counselling_gurus/Pages/Student/SideNav/ScheduleMeeting.dart';
 import 'package:counselling_gurus/Pages/referralpage.dart';
 import 'package:wiredash/wiredash.dart';
 
@@ -21,8 +22,6 @@ import 'Pages/Student/SideNav/feedback.dart';
 import 'Fragments/ChatBoxPage.dart';
 import 'Pages/Student/StartingPages/OTPVerificationPage.dart';
 import 'Pages/Student/StartingPages/SignUpPage.dart';
-
-
 var email;
 
 Future<void> main() async {

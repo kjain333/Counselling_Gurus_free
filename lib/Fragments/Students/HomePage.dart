@@ -39,7 +39,6 @@ final string = [
   'assets/images/background.png',
   'assets/images/background2.png'
 ];
-
 double width;
 int _timerCounter = 0;
 Set<int> a= {};
@@ -55,6 +54,7 @@ List<Color> colorList = [
   color.purple,
   color.blue7
 ];
+
 List<Color> background1 = [Colors.indigoAccent,Colors.deepOrangeAccent,Colors.greenAccent,Colors.deepPurpleAccent,Colors.blueAccent,Colors.redAccent,Colors.brown,Colors.black,Colors.blueGrey];
 List<Color> background=[Colors.lightBlueAccent,Colors.orangeAccent,Colors.lightGreenAccent,Colors.purpleAccent,Colors.greenAccent,Colors.tealAccent,Colors.amberAccent,Colors.grey,Colors.blueAccent];
 List<String> cardHeadings = [
@@ -67,6 +67,7 @@ List<String> cardHeadings = [
 //   "Mock Counselling",
 //  "Aptitude Test",
 // "Document Verification",
+
 List<String> buttonHeadings = [
   "Get Your College",
   "Get Your Rank",
@@ -74,9 +75,11 @@ List<String> buttonHeadings = [
   "Explore Branches",
   "Know More",
 ];
+
 //   "Experience Counselling",
 //  "Take the Test",
 //  "Verify Documents"
+
 List<IconData> icon = [
   Icons.school,
   Icons.score,
@@ -92,7 +95,17 @@ final Color active = Colors.grey.shade800;
 final Color divider = Colors.grey.shade600;
 
 final paragraph =
-    ["These are few lines describing each card to be displayed on the back. Here is some more random text so that the button can reach the botttom.","These are few lines describing each card to be displayed on the back."];
+    ["Predict and know the best colleges you can get at your rank.Results are based on previous years' data, student preferences,NIRF rankings and other parameters like placements,college infrastructure and other facilities.",
+      "Get your rank calculated based on your percentile with utmost accuracy.These ranks are calculated with the help of complex formula similar to the one used by NTA to calculate AIRs and category ranks of lakhs of students.",
+    "Get quick access to desired information about thousands of colleges across India.Different facts provided about various factors like placements, campus size,student strength,routes and distances are authentic and verified.",
+    "Get each and every detail about every engineering branch that intrigues you.We have a collection of 50+ branches that are offered in colleges across India.",
+    "Tired of googling every single small question that comes to your mind? Then you are at a right place! Get answers to all the common(and uncommon :p)questions asked by aspirants and also get it answered if you have one!"];
+      // Afraid and confused about the actual counselling process? Don't worry! We will get all your problems sorted with this one of its kind 'Mock Counselling'.You will be guided about everything that is important for JoSAA and NEET counselling,from choice filling to locking, freezing and floating,you will understand them all at once!
+      // Not able to concentrate on studies?
+      // Not able to sit for long study hours?
+      // Now not a reason to worry! Get your personality test done!From your mental acumen to physical ability,We will examine everything about you and suggest some steps to improve without any help from others!
+
+      // final backparagraph = []
 
 Timer _timer;
 News news = News("Trending news heading","Here we will displaying few lines about our trending news.","");
@@ -417,7 +430,7 @@ class _HomePageState extends State<HomePage>
                             ),
                           ),
                           subtitle: Text(
-                            paragraph[index%2],
+                            paragraph[index],
                             //'Here we will put some lines of predefined text',
                             style: GoogleFonts.aBeeZee(
                                 fontWeight: FontWeight.w300,

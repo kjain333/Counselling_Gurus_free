@@ -9,7 +9,7 @@ import '../../Fragments/Students/HomePage.dart';
 import 'package:flutter/material.dart';
 import '../../Fragments/Students/NewsPage.dart';
 import '../../Fragments/Students/ProfilePage.dart';
-import 'ScheduleMeeting.dart';
+import 'SideNav/ScheduleMeeting.dart';
 import 'SideNav/ContactUs.dart';
 import 'SideNav/EditProfile.dart';
 import 'SideNav/TermsAndConditions.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-final names = ['NAME 1', 'NAME 2', 'NAME 3'];
+final names = ['Anubhav', 'Naman', 'Varun', 'Karan'];
 
 class TopMentors extends StatelessWidget {
   @override
@@ -24,7 +24,7 @@ class TopMentors extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 20,
                 )
               ],
             ),
@@ -50,14 +50,14 @@ Widget InfoCard(int index, BuildContext context) {
         child: Stack(
           children: <Widget>[
             Container(
-              height: 300,
+              height: 320,
               width: MediaQuery.of(context).size.width - 40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
             Container(
-              height: 120,
+              height: 100,
               width: MediaQuery.of(context).size.width - 40,
               decoration: BoxDecoration(
                 color: Colors.blueGrey[900],
@@ -67,9 +67,9 @@ Widget InfoCard(int index, BuildContext context) {
               ),
             ),
             Positioned(
-              top: 120,
+              top: 100,
               child: Container(
-                  height: 180,
+                  height: 220,
                   width: MediaQuery.of(context).size.width - 40,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -84,7 +84,7 @@ Widget InfoCard(int index, BuildContext context) {
                       ),
                       Center(
                         child: Container(
-                            height: 100,
+                            height: 150,
                             child: Column(
                               children: <Widget>[
                                 Center(
@@ -99,7 +99,7 @@ Widget InfoCard(int index, BuildContext context) {
                                   child: Text(
                                     'GRADUATION',
                                     style: GoogleFonts.aBeeZee(
-                                        fontSize: 15,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w100),
                                   ),
                                 ),
@@ -107,7 +107,7 @@ Widget InfoCard(int index, BuildContext context) {
                                   child: Text(
                                     'abcd1234@gmail.com',
                                     style: GoogleFonts.aBeeZee(
-                                        fontSize: 15,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w100),
                                   ),
                                 ),
@@ -115,7 +115,7 @@ Widget InfoCard(int index, BuildContext context) {
                                   child: Text(
                                     '9876543210',
                                     style: GoogleFonts.aBeeZee(
-                                        fontSize: 15,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w100),
                                   ),
                                 ),
@@ -123,7 +123,7 @@ Widget InfoCard(int index, BuildContext context) {
                                   child: Text(
                                     'COLLEGE NAME',
                                     style: GoogleFonts.aBeeZee(
-                                        fontSize: 15,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w100),
                                   ),
                                 ),
