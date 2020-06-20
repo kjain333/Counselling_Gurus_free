@@ -7,8 +7,8 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="counselling_gurus"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Counselling Gurus"
+        android:icon="@mipmap/launcher_icon">
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAkYfhnQC9t3HTspkDsKK7WsrTKHfwIM6E"/>
         <activity

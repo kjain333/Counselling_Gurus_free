@@ -22,6 +22,7 @@ import 'Fragments/ChatBoxPage.dart';
 import 'Pages/Student/StartingPages/OTPVerificationPage.dart';
 import 'Pages/Student/StartingPages/SignUpPage.dart';
 
+
 var email;
 
 Future<void> main() async {
