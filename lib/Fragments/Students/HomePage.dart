@@ -409,15 +409,15 @@ class _HomePageState extends State<HomePage>
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: 60,
+                          height: 20,
                         ),
                         Icon(
                           icon[index],
-                          size: 60,
+                          size: 40,
                           color: Colors.white,
                         ),
                         SizedBox(
-                          height: 30,
+                          height: 10,
                         ),
                         ListTile(
                           title: Center(

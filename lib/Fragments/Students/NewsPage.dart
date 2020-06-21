@@ -108,16 +108,16 @@ class _NewsPageState extends State<NewsPage> {
                   child: Column(
                     children: <Widget>[
                       SizedBox(
-                        height: 40,
+                        height: 20,
                       ),
                       Row(
                         children: <Widget>[
                           Container(
-                            width: 20,
+                            width: 15,
                           ),
                           Container(
-                            width: 80,
-                            height: 80,
+                            width: 40,
+                            height: 40,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 image: DecorationImage(
@@ -126,7 +126,7 @@ class _NewsPageState extends State<NewsPage> {
                                 )),
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width-120,
+                            width: MediaQuery.of(context).size.width-60,
                             child: ListTile(
                               title: Text(
                                 newsfinal[index-1].heading,//heading[index-1]
