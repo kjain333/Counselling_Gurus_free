@@ -3,6 +3,7 @@ class News{
   String subheading;
   String data;
   String link="";
+  String image;
   String getHeading(){
     return heading;
   }
@@ -12,11 +13,12 @@ class News{
   String getData(){
     return data;
   }
-  News(String h,String d,String link)
+  News(String h,String d,String link,String i)
   {
     this.heading=h;
     this.data=d;
     this.link=link;
+    this.image=i;
     subheading=data.substring(0,50)+"...";
   }
 }

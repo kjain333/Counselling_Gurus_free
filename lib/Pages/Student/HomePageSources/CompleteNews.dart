@@ -22,7 +22,7 @@ class CompleteNews extends StatelessWidget{
                 decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
                     image: DecorationImage(
-                      image: new AssetImage('assets/images/background.png'),
+                      image: new AssetImage(news.image),
                       fit: BoxFit.fill,
                     )
                 ),

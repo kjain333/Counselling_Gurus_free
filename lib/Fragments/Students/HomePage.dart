@@ -108,7 +108,7 @@ final paragraph =
       // final backparagraph = []
 
 Timer _timer;
-News news = News("Trending news heading","Here we will displaying few lines about our trending news.","");
+News news = News("Trending news heading","Here we will displaying few lines about our trending news.","","assets/images/background.png");
 
 void _incrementTimerCounter(Timer t) {
   _timerCounter++;
@@ -329,7 +329,7 @@ class _HomePageState extends State<HomePage>
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 image: DecorationImage(
-                                  image: AssetImage(string[index % 2]),
+                                  image: AssetImage(news.image),
                                   fit: BoxFit.fill,
                                 )),
                           ),
