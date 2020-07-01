@@ -4,19 +4,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import 'MedicalCollegePredictorMentor.dart';
-class MedicalRankPredictor extends StatefulWidget{
+class MedicalRankPredictorMentor extends StatefulWidget{
 
-  _MedicalRankpredictor createState() => _MedicalRankpredictor();
+  _MedicalRankpredictorMentor createState() => _MedicalRankpredictorMentor();
 }
 int rank =0;
-class _MedicalRankpredictor extends State<MedicalRankPredictor>{
+class _MedicalRankpredictorMentor extends State<MedicalRankPredictorMentor>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
        floatingActionButton: FloatingActionButton(
          backgroundColor: Colors.lightBlueAccent,
          onPressed: (){
-           Navigator.push(context, MaterialPageRoute(builder: (context)=> MedicalCollegePredictor()));
+           Navigator.push(context, MaterialPageRoute(builder: (context)=> MedicalCollegePredictorMentor()));
          },
          child: Icon(
            Icons.arrow_forward,

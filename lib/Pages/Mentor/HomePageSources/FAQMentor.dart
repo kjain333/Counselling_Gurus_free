@@ -9,15 +9,15 @@ import 'package:google_fonts/google_fonts.dart';
 final questions = ['What is Question 1 ?','What is Question 2?','What is Question 3?','What is Question 4?','What is Question 5?'];
 final answer = 'This is the the detailed answer to the question. This can be multiline and very long as well';
 final expanded=[false,false,false,false,false];
-class FAQ extends StatefulWidget{
-  static _FAQ of(BuildContext context) => context.ancestorStateOfType(const TypeMatcher<_FAQ>());
+class FAQMentor extends StatefulWidget{
+  static _FAQMentor of(BuildContext context) => context.ancestorStateOfType(const TypeMatcher<_FAQMentor>());
   @override
   State<StatefulWidget> createState() {
-    return _FAQ();
+    return _FAQMentor();
   }
 
 }
-class _FAQ extends State<FAQ>{
+class _FAQMentor extends State<FAQMentor>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(

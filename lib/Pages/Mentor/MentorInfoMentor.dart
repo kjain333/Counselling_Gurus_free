@@ -8,11 +8,11 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../Resources/Colors.dart' as color;
 List<String> _years = ['Fresher','Sophomore','Pre-final Year','Final Year'];
 String Selectedyear;
-class MentorInfo extends StatefulWidget{
+class MentorInfoMentor extends StatefulWidget{
   @override
-  _MentorInfo createState()=>_MentorInfo();
+  _MentorInfoMentor createState()=>_MentorInfoMentor();
 }
-class _MentorInfo extends State<MentorInfo>{
+class _MentorInfoMentor extends State<MentorInfoMentor>{
   TextEditingController _controller = new TextEditingController();
   TextEditingController _controller1 = new TextEditingController();
   @override
@@ -173,7 +173,7 @@ class _MentorInfo extends State<MentorInfo>{
                       Navigator.push(context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  IntroSlider()));
+                                  IntroSliderMentor()));
                     },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),

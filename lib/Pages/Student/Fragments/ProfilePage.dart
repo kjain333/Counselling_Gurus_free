@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../Resources/Colors.dart' as color;
+import '../../../Resources/Colors.dart' as color;
 
 class ProfilePage extends StatefulWidget {
   @override

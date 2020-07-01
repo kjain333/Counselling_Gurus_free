@@ -1,4 +1,4 @@
-import 'package:counselling_gurus/Fragments/Students/News.dart';
+import 'package:counselling_gurus/Pages/Student/Fragments/News.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';

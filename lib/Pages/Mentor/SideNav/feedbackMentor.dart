@@ -10,12 +10,12 @@ final text = ['It was GREAT','It was FINE','It did the job','It was DISAPPOINTIN
 final text2 = ['GREAT','SATISFACTORY','OK','DISAPPOINTING','FRUSTRATING'];
 class FeedbackPage extends StatefulWidget{
   @override
-  _FeedbackPage createState() {
-    return _FeedbackPage();
+  _FeedbackPageMentor createState() {
+    return _FeedbackPageMentor();
   }
 
 }
-class _FeedbackPage extends State<FeedbackPage> {
+class _FeedbackPageMentor extends State<FeedbackPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

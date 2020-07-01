@@ -1,12 +1,12 @@
 //import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:counselling_gurus/Fragments/Mentor/ChatBoxPage.dart';
+import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Mentor/Fragments/ChatBoxPageMentor.dart';
 import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:titled_navigation_bar/titled_navigation_bar.dart';
-import '../../Fragments/Mentor/HomePage.dart';
+import 'Fragments/HomePageMentor.dart';
 import 'package:flutter/material.dart';
-import '../../Fragments/Mentor/NewsPage.dart';
-import '../../Fragments/Mentor/ProfilePageMentor.dart';
+import 'Fragments/NewsPageMentor.dart';
+import 'Fragments/ProfilePageMentor.dart';
 import 'ScheduleMeetingMentor.dart';
 import 'SideNav/ContactUsMentor.dart';
 import 'SideNav/EditProfileMentor.dart';
@@ -25,9 +25,9 @@ class _MainPageMentorState extends State<MainPageMentor> {
   int _selectedPage = 0;
   var _pageOptions = [
     ProfilePageMentor(),
-    HomePage(),
-    NewsPage(),
-    ChatBoxPage(),
+    HomePageMentor(),
+    NewsPageMentor(),
+    ChatBoxPageMentor(),
   ];
   var _pageController = new PageController();
 
@@ -46,17 +46,17 @@ class _MainPageMentorState extends State<MainPageMentor> {
           if(index==1)
             Navigator.push(context, MaterialPageRoute(builder: (context)=>ScheduleMeeting()));
           else if(index==2)
-            Navigator.push(context,MaterialPageRoute(builder: (context)=>EditProfile()));
+            Navigator.push(context,MaterialPageRoute(builder: (context)=>EditProfileMentor()));
           else if(index==3)
             Navigator.push(context, MaterialPageRoute(builder: (context)=>FeedbackPage()));
           else if(index==4)
-            Navigator.push(context,MaterialPageRoute(builder: (context)=>ChangePassword()));
+            Navigator.push(context,MaterialPageRoute(builder: (context)=>ChangePasswordMentor()));
           else if(index==5)
-            Navigator.push(context,MaterialPageRoute(builder: (context)=>TopMentors()));
+            Navigator.push(context,MaterialPageRoute(builder: (context)=>TopMentorsMentor()));
           else if(index==6)
-            Navigator.push(context,MaterialPageRoute(builder: (context)=>ContactUs()));
+            Navigator.push(context,MaterialPageRoute(builder: (context)=>ContactUsMentor()));
           else if(index==7)
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>TermsAndConditions()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>TermsAndConditionsMentor()));
         },
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 5.0),

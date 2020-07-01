@@ -5,16 +5,16 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../Resources/Colors.dart' as color;
 import 'package:counselling_gurus/Pages/Mentor/StudentPlanPopupMentor.dart';
 
-class CollegePredictor extends StatefulWidget{
+class CollegePredictorMentor extends StatefulWidget{
   @override
   State<StatefulWidget> createState(){
-    return _CollegePredictorState();
+    return _CollegePredictorMentorState();
   }
 }
 
 final myController = TextEditingController();
 
-class _CollegePredictorState extends State<CollegePredictor>{
+class _CollegePredictorMentorState extends State<CollegePredictorMentor>{
 
   List<String> categoryList = ["General", "St Sc", "OBC","EWS"];
   List<String> genderList = ["Male","Female","Others"];

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:counselling_gurus/Pages/Mentor/StartingPages/ForgetPasswordPage.dart';
 import '../../../Resources/Colors.dart' as color;
 
-class OTPVerificationPage extends StatefulWidget {
+class OTPVerificationPageMentor extends StatefulWidget {
   @override
-  _OTPVerificationPageState createState() => _OTPVerificationPageState();
+  _OTPVerificationPageMentorState createState() => _OTPVerificationPageMentorState();
 }
 
-class _OTPVerificationPageState extends State<OTPVerificationPage> {
+class _OTPVerificationPageMentorState extends State<OTPVerificationPageMentor> {
 
   bool numberEntered;
 
@@ -145,7 +145,7 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                                     ):
                                     InkWell(
                                       onTap: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPasswordPage()),);
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPasswordPageMentor()),);
                                       },
                                       child: Center(
                                         child: Text("Verify OTP", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),

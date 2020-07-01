@@ -4,19 +4,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import 'CollegePredictorMentor.dart';
-class RankPredictor extends StatefulWidget{
+class RankPredictorMentor extends StatefulWidget{
 
-  _Rankpredictor createState() => _Rankpredictor();
+  _RankpredictorMentor createState() => _RankpredictorMentor();
 }
 int rank =0;
-class _Rankpredictor extends State<RankPredictor>{
+class _RankpredictorMentor extends State<RankPredictorMentor>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
        floatingActionButton: FloatingActionButton(
          backgroundColor: Colors.lightBlueAccent,
          onPressed: (){
-           Navigator.push(context, MaterialPageRoute(builder: (context)=> CollegePredictor()));
+           Navigator.push(context, MaterialPageRoute(builder: (context)=> CollegePredictorMentor()));
          },
          child: Icon(
            Icons.arrow_forward,

@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class FAQAnswer extends StatelessWidget{
-  FAQAnswer(this.question,this.answer);
+class FAQAnswerMentor extends StatelessWidget{
+  FAQAnswerMentor(this.question,this.answer);
   String question,answer;
   @override
   Widget build(BuildContext context) {

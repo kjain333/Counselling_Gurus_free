@@ -220,7 +220,7 @@ class _SignUpMentorState extends State<SignUpMentor> with SingleTickerProviderSt
                                   ),
                                   child: InkWell(
                                     onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => MentorInfo()));
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => MentorInfoMentor()));
                                       /*setState(() {
                                         isLoading = true;
                                       });

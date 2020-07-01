@@ -2,14 +2,14 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PercentileCalculator extends StatefulWidget {
+class PercentileCalculatorMentor extends StatefulWidget {
   @override
-  _PercentileCalculatorState createState() => _PercentileCalculatorState();
+  _PercentileCalculatorMentorState createState() => _PercentileCalculatorMentorState();
 }
 
 final rankController = TextEditingController();
 
-class _PercentileCalculatorState extends State<PercentileCalculator> {
+class _PercentileCalculatorMentorState extends State<PercentileCalculatorMentor> {
 
   bool submitClicked = false;
 

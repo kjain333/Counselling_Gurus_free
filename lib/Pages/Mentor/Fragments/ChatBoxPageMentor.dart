@@ -4,12 +4,12 @@ import 'package:counselling_gurus/Pages/Mentor/QuesAnsPageMentor.dart';
 import 'package:counselling_gurus/Pages/Mentor/QuesPageMentor.dart';
 import 'package:http/http.dart' as http;
 
-class ChatBoxPage extends StatefulWidget {
+class ChatBoxPageMentor extends StatefulWidget {
   @override
-  _ChatBoxPageState createState() => _ChatBoxPageState();
+  _ChatBoxPageMentorState createState() => _ChatBoxPageMentorState();
 }
 
-class _ChatBoxPageState extends State<ChatBoxPage> {
+class _ChatBoxPageMentorState extends State<ChatBoxPageMentor> {
   var _listSection = List<Widget>();
   BuildContext mContext;
   String username, questionTitle, question;

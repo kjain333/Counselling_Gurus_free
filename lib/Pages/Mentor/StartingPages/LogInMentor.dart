@@ -171,7 +171,7 @@ class _LoginMentorState extends State<LogInMentor> {
                         SizedBox(height: 40,),
                         InkWell(
                           child: FadeAnimation(1.3, Text("Forgot Password?", style: TextStyle(color: Colors.grey),)),
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => OTPVerificationPage()),),
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => OTPVerificationPageMentor()),),
                         ),
                         SizedBox(height: 40,),
                         Row(
@@ -187,7 +187,7 @@ class _LoginMentorState extends State<LogInMentor> {
                                       ),
                                       child: InkWell(
                                         onTap: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));//remove this when backend fixed
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSliderMentor()));//remove this when backend fixed
                                         },
                                           /*setState(() {
                                             emailController.text.isEmpty ? validateEmail = true: validateEmail = false;

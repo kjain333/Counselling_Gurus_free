@@ -1,4 +1,5 @@
 //import 'package:counselling_gurus/Pages/Student/CollegeNameMentor.dart';
+import 'package:counselling_gurus/Pages/Student/Fragments/ProfilePage.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/BranchName.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/Branchblog.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/Collegeblog.dart';
@@ -7,7 +8,6 @@ import 'package:counselling_gurus/Pages/Student/SideNav/ScheduleMeeting.dart';
 import 'package:counselling_gurus/Pages/referralpage.dart';
 import 'package:wiredash/wiredash.dart';
 
-import 'Fragments/Students/ProfilePage.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Fragments/Students/ProfilePage.dart';
 import 'package:counselling_gurus/Pages/Student/SlideNav.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +17,9 @@ import 'Pages/Student/HomePageSources/FAQ.dart';
 import 'Pages/Student/StartingPages/IntroSlider.dart';
 import 'Pages/Student/StartingPages/LoginPage.dart';
 import 'Pages/Student/MainPage.dart';
-import 'Fragments/Students/HomePage.dart';
+import 'Pages/Student/Fragments/HomePage.dart';
 import 'Pages/Student/SideNav/feedback.dart';
-import 'Fragments/ChatBoxPage.dart';
+import 'Pages/Student/Fragments/ChatBoxPage.dart';
 import 'Pages/Student/StartingPages/OTPVerificationPage.dart';
 import 'Pages/Student/StartingPages/SignUpPage.dart';
 var email;

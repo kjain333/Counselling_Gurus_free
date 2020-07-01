@@ -5,12 +5,12 @@ import 'package:flutter/services.dart';
 import '../../../Resources/Colors.dart' as color;
 import 'package:counselling_gurus/Pages/Mentor/StartingPages/SelectStreamPageMentor.dart';
 
-class IntroSlider extends StatefulWidget {
+class IntroSliderMentor extends StatefulWidget {
   @override
-  _IntroSliderState createState() => _IntroSliderState();
+  _IntroSliderMentorState createState() => _IntroSliderMentorState();
 }
 
-class _IntroSliderState extends State<IntroSlider> {
+class _IntroSliderMentorState extends State<IntroSliderMentor> {
   final int _numPages = 3;
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
@@ -64,7 +64,7 @@ class _IntroSliderState extends State<IntroSlider> {
                   alignment: Alignment.centerRight,
                   child: FlatButton(
                     onPressed: () =>
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => StreamSelectPage())),
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => StreamSelectPageMentor())),
                     child: Text(
                       'Skip',
                       style: TextStyle(
@@ -205,7 +205,7 @@ class _IntroSliderState extends State<IntroSlider> {
               color: Colors.white,
               child: GestureDetector(
                 onTap: () =>
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => StreamSelectPage())),
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => StreamSelectPageMentor())),
                 child: Center(
                   child: Padding(
                     padding: EdgeInsets.all(0),

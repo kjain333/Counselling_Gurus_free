@@ -6,8 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class CompleteNews extends StatelessWidget{
-  CompleteNews(this.heading);
+class CompleteNewsMentor extends StatelessWidget{
+  CompleteNewsMentor(this.heading);
   final String heading;
   @override
   Widget build(BuildContext context){

@@ -1,7 +1,7 @@
 
 
 import 'dart:math';
-import 'package:counselling_gurus/Fragments/Mentor/HomePage.dart';
+import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Mentor/Fragments/HomePageMentor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +26,7 @@ final iiit = ['IIIT Gwalior','IIIT Kanchipuram','IIIT Guwahati','IIIT Allahabad'
 final private = ['BITS Pilani','BITS Goa','BITS Hyderabad','VIT Vellore','VIT Chennai'];
 final state = ['State 1','State 2','State 3'];
 final String paragraph = "This contains few lines about each type of college category. Replace this with your own type of string list.This contains few lines about each type of college category. Replace this with your own type of string list.This contains few lines about each type of college category";
-class Collegeblog extends StatelessWidget{
+class CollegeblogMentor extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
@@ -127,15 +127,15 @@ Widget CollegeCard(index,context)
             child: Text('MORE DETAILS',style: GoogleFonts.aBeeZee(fontSize: 10,color: Colors.white),),
             onPressed: (){
               if(index==0)
-                Navigator.push(context, MaterialPageRoute(builder: (context) => CollegeName(iit)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => CollegeNameMentor(iit)));
               else if(index==1)
-                Navigator.push(context, MaterialPageRoute(builder: (context) => CollegeName(nit)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => CollegeNameMentor(nit)));
               else if(index==2)
-                Navigator.push(context, MaterialPageRoute(builder: (context) => CollegeName(iiit)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => CollegeNameMentor(iiit)));
               else if(index==3)
-                Navigator.push(context, MaterialPageRoute(builder: (context) => CollegeName(private)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => CollegeNameMentor(private)));
               else if(index==4)
-                Navigator.push(context, MaterialPageRoute(builder: (context) => CollegeName(state)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => CollegeNameMentor(state)));
             },
           ),
         )

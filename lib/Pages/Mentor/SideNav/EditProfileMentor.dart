@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 
-class EditProfile extends StatelessWidget{
+class EditProfileMentor extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(

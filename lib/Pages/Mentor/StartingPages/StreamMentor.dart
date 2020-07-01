@@ -1,9 +1,9 @@
 int stream=0;
-void SetStream(int x)
+void SetStreamMentor(int x)
 {
   stream=x;
 }
-int GetStream()
+int GetStreamMentor()
 {
   return stream;
 }

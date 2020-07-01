@@ -5,12 +5,12 @@ import '../../../Resources/Colors.dart' as color;
 import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Mentor/StartingPages/LogInMentor.dart';
 //import 'LoginPage.dart';
 
-class ForgetPasswordPage extends StatefulWidget {
+class ForgetPasswordPageMentor extends StatefulWidget {
   @override
-  _ForgetPasswordPageState createState() => _ForgetPasswordPageState();
+  _ForgetPasswordPageMentorState createState() => _ForgetPasswordPageMentorState();
 }
 
-class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
+class _ForgetPasswordPageMentorState extends State<ForgetPasswordPageMentor> {
 
 
   @override

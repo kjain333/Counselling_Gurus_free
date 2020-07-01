@@ -1,9 +1,9 @@
+import 'package:counselling_gurus/Pages/Student/Fragments/NewsPage.dart';
+import 'package:counselling_gurus/Pages/Student/Fragments/ProfilePage.dart';
 import 'package:counselling_gurus/components/navigation_drawer.dart';
 import 'package:counselling_gurus/models/themes.dart';
 import 'package:flutter/material.dart';
-import '../../Fragments/Students/ProfilePage.dart';
-import '../../Fragments/Students/HomePage.dart';
-import '../../Fragments/Students/NewsPage.dart';
+import 'Fragments/HomePage.dart';
 
 
 class SlideNav extends StatefulWidget {

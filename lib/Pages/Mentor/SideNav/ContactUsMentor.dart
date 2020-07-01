@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 final names = ['NAME 1','NAME 2','NAME 3'];
-class ContactUs extends StatelessWidget{
+class ContactUsMentor extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(

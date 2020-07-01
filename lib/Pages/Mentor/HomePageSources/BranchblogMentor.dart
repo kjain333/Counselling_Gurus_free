@@ -18,7 +18,7 @@ final string8 = ['CERAMIC','CIVIL','CONSTRUCTION','STRUCTURAL\nENGINEERING'];
 final branches = ['CHEMISTRY and PHYSICS','MECHANICAL and TEXTILE','INDUSTRIAL and PRODUCTION','TECHNICAL and TRANSPORT','ELECTRONICS','AGRICULTURE and BIOLOGY','CONSTRUCTION','OTHERS'];
 enum _BgProps{color1,color2}
 
-class Branchblog extends StatelessWidget{
+class BranchblogMentor extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
@@ -74,21 +74,21 @@ Widget gridcard(int index,BuildContext context){
       child:GestureDetector(
       onTap:(){
   if(index==0)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchNameMentor()));
   if(index==1)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchNameMentor()));
   if(index==2)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchNameMentor()));
   if(index==3)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchNameMentor()));
   if(index==4)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchNameMentor()));
   if(index==5)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchNameMentor()));
   if(index==6)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchNameMentor()));
   if(index==7)
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchName()));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>BranchNameMentor()));
 
 
   },

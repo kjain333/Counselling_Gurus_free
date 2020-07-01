@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:counselling_gurus/Resources/Colors.dart' as color;
 import 'package:google_fonts/google_fonts.dart';
-class MedicalCollegeName extends StatefulWidget{
-  MedicalCollegeName(this.collegeLists);
+class MedicalCollegeNameMentor extends StatefulWidget{
+  MedicalCollegeNameMentor(this.collegeLists);
   final List<String> collegeLists;
-  _MedicalCollegeName createState() => _MedicalCollegeName(collegeLists);
+  _MedicalCollegeNameMentor createState() => _MedicalCollegeNameMentor(collegeLists);
 }
-class _MedicalCollegeName extends State<MedicalCollegeName> {
+class _MedicalCollegeNameMentor extends State<MedicalCollegeNameMentor> {
 
-  _MedicalCollegeName(this.collegeLists);
+  _MedicalCollegeNameMentor(this.collegeLists);
   final List<String> collegeLists;
   TextEditingController controller = new TextEditingController();
   ScrollController _controller;

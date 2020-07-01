@@ -27,12 +27,12 @@ final string70 = ['Computer Science Engineering','Information Technology','Robot
 final string80 = ['Ceramic','Civil','Construction','Structural Engineering'];
 final stringfinal = string10+string20+string30+string40+string50+string60+string70+string80;
 enum _BgProps{color1,color2}
-class BranchName extends StatefulWidget{
+class BranchNameMentor extends StatefulWidget{
   @override
-  _BranchNameState createState() => _BranchNameState();
+  _BranchNameMentorState createState() => _BranchNameMentorState();
 }
 
-class _BranchNameState extends State<BranchName> {
+class _BranchNameMentorState extends State<BranchNameMentor> {
   TextEditingController controller = new TextEditingController();
   ScrollController _controller;
   final key = new GlobalKey<AutoCompleteTextFieldState<String>>();

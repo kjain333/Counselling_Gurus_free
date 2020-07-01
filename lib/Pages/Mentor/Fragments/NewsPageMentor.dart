@@ -9,9 +9,9 @@ import 'package:share/share.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-class NewsPage extends StatefulWidget {
+class NewsPageMentor extends StatefulWidget {
   @override
-  _NewsPageState createState() => _NewsPageState();
+  _NewsPageMentorState createState() => _NewsPageMentorState();
 }
 
 
@@ -33,7 +33,7 @@ class NewsPage extends StatefulWidget {
   List<String> subheading = new List(20);
   int news;
 
-class _NewsPageState extends State<NewsPage> {
+class _NewsPageMentorState extends State<NewsPageMentor> {
 
   @override
   void initState() {
@@ -99,7 +99,7 @@ class _NewsPageState extends State<NewsPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => CompleteNews('NEWS HEADING')));
+                            builder: (context) => CompleteNewsMentor('NEWS HEADING')));
                   },
                   child: Column(
                     children: <Widget>[
@@ -141,7 +141,7 @@ class _NewsPageState extends State<NewsPage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            CompleteNews('News Heading'))); //pass news as parameter and do changes in Complete News
+                                            CompleteNewsMentor('News Heading'))); //pass news as parameter and do changes in Complete News
                               },
                               trailing: Wrap(
                                 children: <Widget>[

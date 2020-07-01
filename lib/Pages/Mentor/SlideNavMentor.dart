@@ -1,25 +1,25 @@
 import 'package:counselling_gurus/components/navigation_drawer.dart';
 import 'package:counselling_gurus/models/themes.dart';
 import 'package:flutter/material.dart';
-import '../../Fragments/Mentor/ProfilePageMentor.dart';
-import '../../Fragments/Mentor/HomePage.dart';
-import '../../Fragments/Mentor/NewsPage.dart';
+import 'Fragments/ProfilePageMentor.dart';
+import 'Fragments/HomePageMentor.dart';
+import 'Fragments/NewsPageMentor.dart';
 
 
-class SlideNav extends StatefulWidget {
+class SlideNavMentor extends StatefulWidget {
 
   @override
-  _SlideNavState createState() => _SlideNavState();
+  _SlideNavMentorState createState() => _SlideNavMentorState();
 }
 
-class _SlideNavState extends State<SlideNav> {
+class _SlideNavMentorState extends State<SlideNavMentor> {
 
   //For nav
   int _selectedPage = 0;
   var _pageOptions = [
     ProfilePageMentor(),
-    HomePage(),
-    NewsPage(),
+    HomePageMentor(),
+    NewsPageMentor(),
   ];
   var _pageController = new PageController();
 

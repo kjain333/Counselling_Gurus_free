@@ -4,11 +4,11 @@ import 'package:counselling_gurus/Pages/Mentor/MainPageMentor.dart';
 import 'package:flutter/material.dart';
 import '../../../Resources/Colors.dart' as color;
 import 'package:counselling_gurus/Pages/Mentor/StartingPages/StreamMentor.dart';
-class StreamSelectPage extends StatefulWidget {
+class StreamSelectPageMentor extends StatefulWidget {
   @override
-  _StreamSelectPageState createState() => _StreamSelectPageState();
+  _StreamSelectPageMentorState createState() => _StreamSelectPageMentorState();
 }
-class _StreamSelectPageState extends State<StreamSelectPage> {
+class _StreamSelectPageMentorState extends State<StreamSelectPageMentor> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -80,7 +80,7 @@ class _StreamSelectPageState extends State<StreamSelectPage> {
                                   ),
                                   child: InkWell(
                                     onTap: () {
-                                      SetStream(0);
+                                      SetStreamMentor(0);
                                       Navigator.push(context, MaterialPageRoute(
                                           builder: (context) => MainPageMentor()));
                                     },
@@ -102,7 +102,7 @@ class _StreamSelectPageState extends State<StreamSelectPage> {
                                   ),
                                   child: InkWell(
                                     onTap: (){
-                                      SetStream(1);
+                                      SetStreamMentor(1);
                                       Navigator.push(context,MaterialPageRoute(builder: (context)=> MainPageMentor()));
                                     },
                                     child: Center(

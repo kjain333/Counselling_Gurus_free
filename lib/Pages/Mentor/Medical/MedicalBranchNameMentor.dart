@@ -26,14 +26,14 @@ final string80 = ['Ceramic','Civil','Construction','Structural Engineering'];
 final stringfinal = string10+string20+string30+string40+string50+string60+string70+string80;
 enum _BgProps{color1,color2}
 
-class MedicalBranchName extends StatefulWidget{
+class MedicalBranchNameMentor extends StatefulWidget{
 
 
   @override
-  _MedicalBranchNameState createState() => _MedicalBranchNameState();
+  _MedicalBranchNameMentorState createState() => _MedicalBranchNameMentorState();
 }
 
-class _MedicalBranchNameState extends State<MedicalBranchName> {
+class _MedicalBranchNameMentorState extends State<MedicalBranchNameMentor> {
   TextEditingController controller = new TextEditingController();
   ScrollController _controller;
   final key = new GlobalKey<AutoCompleteTextFieldState<String>>();
