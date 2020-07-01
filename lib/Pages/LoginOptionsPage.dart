@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import '../Animations/FadeAnimation.dart';
-import 'Mentor/LogInMentor.dart';
+import 'Mentor/StartingPages/LogInMentor.dart';
 import '../Resources/Colors.dart' as color;
 import 'Student/StartingPages/LoginPage.dart';
 

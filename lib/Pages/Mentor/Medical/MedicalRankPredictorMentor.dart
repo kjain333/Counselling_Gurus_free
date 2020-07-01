@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import 'MedicalCollegePredictor.dart';
+import 'MedicalCollegePredictorMentor.dart';
 class MedicalRankPredictor extends StatefulWidget{
 
   _MedicalRankpredictor createState() => _MedicalRankpredictor();

@@ -2,11 +2,11 @@
 //import 'package:counselling_gurus/Pages/Student/IntroSlider.dart';
 import 'package:flutter/material.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
-import '../../Animations/FadeAnimation.dart';
+import '../../../Animations/FadeAnimation.dart';
 //import 'package:http/http.dart' as http;
 //import '../../models/UserModelSignUp.dart';
-import 'package:counselling_gurus/Pages/Mentor/MentorInfo.dart';
-import '../../Resources/Colors.dart' as color;
+import 'package:counselling_gurus/Pages/Mentor/MentorInfoMentor.dart';
+import '../../../Resources/Colors.dart' as color;
 
 class SignUpMentor extends StatefulWidget {
   @override

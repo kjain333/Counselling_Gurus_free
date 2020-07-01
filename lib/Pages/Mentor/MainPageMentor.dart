@@ -7,20 +7,20 @@ import '../../Fragments/Mentor/HomePage.dart';
 import 'package:flutter/material.dart';
 import '../../Fragments/Mentor/NewsPage.dart';
 import '../../Fragments/Mentor/ProfilePageMentor.dart';
-import 'ScheduleMeeting.dart';
-import 'SideNav/ContactUs.dart';
-import 'SideNav/EditProfile.dart';
-import 'SideNav/TermsAndConditions.dart';
-import 'SideNav/TopMentors.dart';
-import 'SideNav/feedback.dart';
+import 'ScheduleMeetingMentor.dart';
+import 'SideNav/ContactUsMentor.dart';
+import 'SideNav/EditProfileMentor.dart';
+import 'SideNav/TermsAndConditionsMentor.dart';
+import 'SideNav/TopMentorsMentor.dart';
+import 'SideNav/feedbackMentor.dart';
 import 'StartingPages/ChangePassword.dart';
 
-class MainPage extends StatefulWidget {
+class MainPageMentor extends StatefulWidget {
   @override
-  _MainPageState createState() => _MainPageState();
+  _MainPageMentorState createState() => _MainPageMentorState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainPageMentorState extends State<MainPageMentor> {
   //For bottom nav
   int _selectedPage = 0;
   var _pageOptions = [

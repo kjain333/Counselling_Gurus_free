@@ -3,7 +3,7 @@ import 'package:counselling_gurus/models/intro_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../Resources/Colors.dart' as color;
-import 'package:counselling_gurus/Pages/Mentor/StartingPages/SelectStreamPage.dart';
+import 'package:counselling_gurus/Pages/Mentor/StartingPages/SelectStreamPageMentor.dart';
 
 class IntroSlider extends StatefulWidget {
   @override

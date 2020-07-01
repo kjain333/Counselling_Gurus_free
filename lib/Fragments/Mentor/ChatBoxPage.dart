@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:counselling_gurus/Pages/Mentor/QuesAnsPage.dart';
-import 'package:counselling_gurus/Pages/Mentor/QuesPage.dart';
+import 'package:counselling_gurus/Pages/Mentor/QuesAnsPageMentor.dart';
+import 'package:counselling_gurus/Pages/Mentor/QuesPageMentor.dart';
 import 'package:http/http.dart' as http;
 
 class ChatBoxPage extends StatefulWidget {

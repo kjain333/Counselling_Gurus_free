@@ -59,26 +59,27 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-//  loginUser() async{
-//    print(user.toJson());
-//    await http.post('http://192.168.43.70:3060/postloginapp', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
-//      final String res = response.body;
-//      final int statusCode = response.statusCode;
-//      if (statusCode < 200 || statusCode > 400 || json == null) {
-//        throw new Exception("Error while fetching data");
-//      }else{
-//        Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
-//      }
-//      print(jsonDecoder.convert(res));
-//      return jsonDecoder.convert(res);
-//    });
-//  }
-//
-//  addToSF() async{
-//    SharedPreferences pref = await SharedPreferences.getInstance();
-//    pref.setString("email", emailController.text.toString());
-//    pref.setString("password", passwordController.text.toString());
-//  }
+  loginUser() async{
+    print(user.toJson());
+    await http.post('http://134.209.158.239:4000/auth/loginapp', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
+      final String res = response.body;
+      final int statusCode = response.statusCode;
+      if (statusCode < 200 || statusCode > 400 || json == null) {
+        throw new Exception("Error while fetching data");
+      }else{
+        print("Login Entered");
+        Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+      }
+      print(jsonDecoder.convert(res));
+      return jsonDecoder.convert(res);
+    });
+  }
+
+  addToSF() async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString("email", emailController.text.toString());
+    pref.setString("password", passwordController.text.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -250,21 +251,25 @@ class _LoginPageState extends State<LoginPage> {
                                           FormState formState =
                                               _formkey.currentState;
                                           if (formState.validate()) {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        IntroSlider()));
+                                            Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+//                                            setState(() {
+//                                              emailController.text.isEmpty
+//                                                  ? validateEmail = true
+//                                                  : validateEmail = false;
+//                                              passwordController.text.isEmpty
+//                                                  ? validatePassword = true
+//                                                  : validatePassword = false;
+//                                              email = emailController.text
+//                                                  .toString();
+//                                              password = passwordController.text
+//                                                  .toString();
+//                                              user = new UserSignIn(
+//                                                  email: email,
+//                                                  password: password);
+//                                            });
+//                                            addToSF();
+//                                            loginUser();
                                           }
-//                                          setState(() {
-//                                            emailController.text.isEmpty ? validateEmail = true: validateEmail = false;
-//                                            passwordController.text.isEmpty ? validatePassword = true: validatePassword = false;
-//                                            email = emailController.text.toString();
-//                                            password = passwordController.text.toString();
-//                                            user = new UserSignIn(email: email, password: password);
-//                                          });
-//                                          addToSF();
-//                                          loginUser();
                                         },
                                         child: Center(
                                           child: Text(

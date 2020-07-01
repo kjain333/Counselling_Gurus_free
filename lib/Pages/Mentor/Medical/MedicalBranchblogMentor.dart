@@ -6,7 +6,7 @@ import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
 
 
-import 'MedicalBranchName.dart';
+import 'MedicalBranchNameMentor.dart';
 final string1 = ['CHEMICAL\nENGINEERING','CHEMISTRY','ENGINEERING\nPHYSICS','ENVIRONMENT','OIL','PETROLEUM'];
 final string2 = ['MECHANICAL','MECHATRONICS','TEXTILE\nand\nCHEMISTRY','TEXTILE\nENGINEERING','TEXTILE\nTECHNOLGY'];
 final string3 = ['INDUSTRIAL\nENGINEERING','INDUSTRIAL\nand\nPRODUCTION','MANUFACTURING','METALLURGY','MINING','PRODUCTION'];

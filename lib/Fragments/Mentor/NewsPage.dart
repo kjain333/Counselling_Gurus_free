@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:core';
-import 'package:counselling_gurus/Pages/Mentor/HomePageSources/CompleteNews.dart';
+import 'package:counselling_gurus/Pages/Mentor/HomePageSources/CompleteNewsMentor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

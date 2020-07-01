@@ -1,11 +1,11 @@
-//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/FAQAnswer.dart';
+//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/FAQAnswerMentor.dart';
 //import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-//import 'FAQAnswer.dart';
+//import 'FAQAnswerMentor.dart';
 final questions = ['What is Question 1 ?','What is Question 2?','What is Question 3?','What is Question 4?','What is Question 5?'];
 final answer = 'This is the the detailed answer to the question. This can be multiline and very long as well';
 final expanded=[false,false,false,false,false];

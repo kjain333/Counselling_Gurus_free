@@ -28,7 +28,7 @@ class _MainPageState extends State<MainPage> {
     ProfilePage(),
     HomePage(),
     NewsPage(),
-    ChatBoxPage(),
+    //ChatBoxPage(),
   ];
   var _pageController = new PageController();
 
@@ -194,8 +194,8 @@ class _MainPageState extends State<MainPage> {
                   title: Text('Profile'), icon: Icons.person),
               TitledNavigationBarItem(title: Text('Home'), icon: Icons.home),
               TitledNavigationBarItem(title: Text('News'), icon: Icons.call),
-              TitledNavigationBarItem(
-                  title: Text('Chat'), icon: Icons.question_answer),
+//              TitledNavigationBarItem(
+//                  title: Text('Chat'), icon: Icons.question_answer),
             ])
         //      bottomNavigationBar: BottomNavigationBar(
         //          selectedItemColor: Colors.orangeAccent,

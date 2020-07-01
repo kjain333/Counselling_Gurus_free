@@ -1,4 +1,4 @@
-import 'package:counselling_gurus/Pages/Mentor/PdfViewer.dart';
+import 'package:counselling_gurus/Pages/Mentor/PdfViewerMentor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,7 +6,7 @@ import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 
-//import '../PdfViewer.dart';
+//import '../PdfViewerMentor.dart';
 
 final string1 = ['Chemical\nEngineering','Chemistry','Engineering\nPhysics','Environment','Oil','Petroleum'];
 final string2 = ['Mechanical','Mechatronics','Textile\nand\nChemistry','Textile\nEngineering','Textile\nTechnology'];

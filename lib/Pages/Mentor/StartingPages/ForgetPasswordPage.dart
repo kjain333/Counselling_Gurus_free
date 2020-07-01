@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import '../../../Animations/FadeAnimation.dart';
 import '../../../Resources/Colors.dart' as color;
-import 'package:counselling_gurus/Pages/Mentor/LogInMentor.dart';
+import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Mentor/StartingPages/LogInMentor.dart';
 //import 'LoginPage.dart';
 
 class ForgetPasswordPage extends StatefulWidget {

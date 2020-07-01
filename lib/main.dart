@@ -1,4 +1,4 @@
-//import 'package:counselling_gurus/Pages/Student/CollegeName.dart';
+//import 'package:counselling_gurus/Pages/Student/CollegeNameMentor.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/BranchName.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/Branchblog.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/Collegeblog.dart';

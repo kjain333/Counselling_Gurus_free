@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:counselling_gurus/Pages/Mentor/StudentPlans.dart';
+import 'package:counselling_gurus/Pages/Mentor/StudentPlansMentor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

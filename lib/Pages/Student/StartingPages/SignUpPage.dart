@@ -79,37 +79,37 @@ class _SignUpPageState extends State<SignUpPage>
     }
   }
 
-//   signUpUser() async{
-//    print(user.toJson());
-//    await http.post('http://192.168.43.70:3060/postsignupapp', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
-//      final String res = response.body;
-//      final int statusCode = response.statusCode;
-//      if (statusCode < 200 || statusCode > 400 || json == null) {
-//        throw new Exception("Error while fetching data");
-//      }else{
-//        Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
-//      }
-//      print(jsonDecoder.convert(res));
-//      return jsonDecoder.convert(res);
-//    });
-//  }
+   signUpUser() async{
+    print(user.toJson());
+    await http.post('http://134.209.158.239:4000/auth/signupapp', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
+      final String res = response.body;
+      final int statusCode = response.statusCode;
+      if (statusCode < 200 || statusCode > 400 || json == null) {
+        throw new Exception("Error while fetching data");
+      }else{
+        Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+      }
+      print(jsonDecoder.convert(res));
+      return jsonDecoder.convert(res);
+    });
+  }
 
-//  addToSF() async{
-//    SharedPreferences pref = await SharedPreferences.getInstance();
-//    pref.setString("email", emailController.text.toString());
-//    pref.setString("password", passwordController.text.toString());
-//    pref.setString("name", nameController.text.toString());
-//    pref.setString("contact", contactController.text.toString());
-//  }
+  addToSF() async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString("email", emailController.text.toString());
+    pref.setString("password", passwordController.text.toString());
+    pref.setString("name", nameController.text.toString());
+    pref.setString("contact", contactController.text.toString());
+  }
 
-//  @override
-//  void dispose() {
-//    super.dispose();
-//    nameController.dispose();
-//    contactController.dispose();
-//    emailController.dispose();
-//    passwordController.dispose();
-//  }
+  @override
+  void dispose() {
+    super.dispose();
+    nameController.dispose();
+    contactController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -296,28 +296,30 @@ class _SignUpPageState extends State<SignUpPage>
                                       FormState formState = _formkey
                                           .currentState;
                                       if (formState.validate()) {
-                                        Navigator.push(context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    IntroSlider()));
+                                        setState(() {
+                                          isLoading = true;
+                                        });
+                                        isLoading ? Center(
+                                            child: CircularProgressIndicator()
+                                        ) : Container();
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+//                                        setState(() {
+//                                          name = nameController.text.toString();
+//                                          email =
+//                                              emailController.text.toString();
+//                                          password = passwordController.text
+//                                              .toString();
+//                                          contact =
+//                                              contactController.text.toString();
+//                                          user = new UserSignUp(name: name,
+//                                              email: email,
+//                                              password: password,
+//                                              contact: contact
+//                                          );
+//                                        });
+//                                        addToSF();
+//                                        signUpUser();
                                       }
-//                                      setState(() {
-//                                        isLoading = true;
-//                                      });
-//                                      isLoading ? Center(
-//                                          child: CircularProgressIndicator()
-//                                      ): Container();
-//                                      setState(() {
-//                                        name = nameController.text.toString();
-//                                        email = emailController.text.toString();
-//                                        password = passwordController.text.toString();
-//                                        contact = contactController.text.toString();
-//                                        user = new UserSignUp( name: name, email: email, password: password,
-//                                            contact: contact
-//                                        );
-//                                      });
-//                                      addToSF();
-//                                      signUpUser();
                                     },
                                     child: Center(
                                       child: Text("Sign Up", style: TextStyle(

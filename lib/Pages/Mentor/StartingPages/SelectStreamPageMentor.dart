@@ -1,9 +1,9 @@
 import 'package:counselling_gurus/Animations/FadeAnimation.dart';
 //import 'package:counselling_gurus/Pages/Mentor/LogInMentor.dart';
-import 'package:counselling_gurus/Pages/Mentor/MainPage.dart';
+import 'package:counselling_gurus/Pages/Mentor/MainPageMentor.dart';
 import 'package:flutter/material.dart';
 import '../../../Resources/Colors.dart' as color;
-import 'package:counselling_gurus/Pages/Mentor/StartingPages/Stream.dart';
+import 'package:counselling_gurus/Pages/Mentor/StartingPages/StreamMentor.dart';
 class StreamSelectPage extends StatefulWidget {
   @override
   _StreamSelectPageState createState() => _StreamSelectPageState();
@@ -82,7 +82,7 @@ class _StreamSelectPageState extends State<StreamSelectPage> {
                                     onTap: () {
                                       SetStream(0);
                                       Navigator.push(context, MaterialPageRoute(
-                                          builder: (context) => MainPage()));
+                                          builder: (context) => MainPageMentor()));
                                     },
                                     child: Center(
                                       child: Text("As an Engineering Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
@@ -103,7 +103,7 @@ class _StreamSelectPageState extends State<StreamSelectPage> {
                                   child: InkWell(
                                     onTap: (){
                                       SetStream(1);
-                                      Navigator.push(context,MaterialPageRoute(builder: (context)=> MainPage()));
+                                      Navigator.push(context,MaterialPageRoute(builder: (context)=> MainPageMentor()));
                                     },
                                     child: Center(
                                       child: Text("As a Medical Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
