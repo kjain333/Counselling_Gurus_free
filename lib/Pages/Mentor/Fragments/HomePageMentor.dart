@@ -4,6 +4,7 @@ import 'dart:math';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/CollegeblogMentor.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/SideNav/ContactUsMentor.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/FAQMentor.dart';
+import 'package:counselling_gurus/Pages/Mentor/Fragments/News.dart';
 import 'package:counselling_gurus/Pages/Mentor/HomePageSources/BranchNameMentor.dart';
 //import 'package:counselling_gurus/Pages/Student/HomePageSources/BranchblogMentor.dart';
 import 'package:counselling_gurus/Pages/Mentor/HomePageSources/CollegePredictorMentor.dart';
@@ -38,7 +39,6 @@ final string = [
   'assets/images/background.png',
   'assets/images/background2.png'
 ];
-
 double width;
 int _timerCounter = 0;
 Set<int> a= {};
@@ -49,53 +49,66 @@ List<Color> colorList = [
   color.orange,
   color.orange10,
   color.orange3,
-  color.yellow6,
+  color.dark2,
   color.pink4,
   color.purple,
-  color.blue7
+  color.dark6
 ];
 
-List<Color> background1 = [Colors.indigoAccent,Colors.deepOrangeAccent,Colors.greenAccent,Colors.deepPurpleAccent,Colors.blueAccent,Colors.redAccent,Colors.brown,Colors.black,Colors.blueGrey];
-List<Color> background=[Colors.lightBlueAccent,Colors.orangeAccent,Colors.lightGreenAccent,Colors.purpleAccent,Colors.greenAccent,Colors.tealAccent,Colors.amberAccent,Colors.grey,Colors.blueAccent];
+List<Color> background1 = [Colors.indigoAccent,Colors.deepOrangeAccent,Colors.greenAccent,Colors.deepPurpleAccent,Colors.blueAccent,Colors.red,Colors.brown,Colors.black,Colors.blueGrey];
+List<Color> background=[Colors.lightBlueAccent,Colors.orangeAccent,Colors.lightGreenAccent,Colors.purpleAccent,Colors.greenAccent,Colors.pinkAccent,Colors.amberAccent,Colors.grey,Colors.blueAccent];
 List<String> cardHeadings = [
   "College Predictor",
   "Get your Rank",
   "Colleges",
   "Branches",
-  "Mock Counselling",
-  "Mentor Test",
-  "Frequently Asked Questions",
-  "Document Verification",
+  "Frequently Asked Questions"
 ];
+//   "Mock Counselling",
+//  "Aptitude Test",
+// "Document Verification",
+
 List<String> buttonHeadings = [
   "Get Your College",
   "Get Your Rank",
   "Know About Your College",
   "Explore Branches",
-  "Experience Counselling",
-  "Take the Test",
   "Know More",
-  "Verify Documents"
 ];
+
+//   "Experience Counselling",
+//  "Take the Test",
+//  "Verify Documents"
+
 List<IconData> icon = [
   Icons.school,
   Icons.score,
   Icons.home,
   Icons.library_books,
-  Icons.supervisor_account,
-  Icons.edit,
   Icons.question_answer,
-  Icons.note_add,
 ];
-
+//   Icons.note_add,
+//   Icons.supervisor_account,
+//  Icons.edit,
 final Color primary = Colors.white;
 final Color active = Colors.grey.shade800;
 final Color divider = Colors.grey.shade600;
 
 final paragraph =
-    ["These are few lines describing each card to be displayed on the back. Here is some more random text so that the button can reach the botttom.","These are few lines describing each card to be displayed on the back."];
+["Predict and know the best colleges you can get at your rank.Results are based on previous years' data, student preferences,NIRF rankings and other parameters like placements,college infrastructure and other facilities.",
+  "Get your rank calculated based on your percentile with utmost accuracy.These ranks are calculated with the help of complex formula similar to the one used by NTA to calculate AIRs and category ranks of lakhs of students.",
+  "Get quick access to desired information about thousands of colleges across India.Different facts provided about various factors like placements, campus size,student strength,routes and distances are authentic and verified.",
+  "Get each and every detail about every engineering branch that intrigues you.We have a collection of 50+ branches that are offered in colleges across India.",
+  "Tired of googling every single small question that comes to your mind? Then you are at a right place! Get answers to all the common(and uncommon :p)questions asked by aspirants and also get it answered if you have one!"];
+// Afraid and confused about the actual counselling process? Don't worry! We will get all your problems sorted with this one of its kind 'Mock Counselling'.You will be guided about everything that is important for JoSAA and NEET counselling,from choice filling to locking, freezing and floating,you will understand them all at once!
+// Not able to concentrate on studies?
+// Not able to sit for long study hours?
+// Now not a reason to worry! Get your personality test done!From your mental acumen to physical ability,We will examine everything about you and suggest some steps to improve without any help from others!
+
+// final backparagraph = []
 
 Timer _timer;
+News news = News("Trending news heading","Here we will displaying few lines about our trending news.","","assets/images/background.png");
 
 void _incrementTimerCounter(Timer t) {
   _timerCounter++;
@@ -114,7 +127,17 @@ class HomePageMentor extends StatefulWidget {
 class _HomePageMentorState extends State<HomePageMentor>
     with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
+  List<GlobalKey<ScaffoldState>> keys = new List(5);
 
+  //final GlobalKey<ScaffoldState> _containerkey = GlobalKey<ScaffoldState>();
+  @override
+  void initState(){
+    super.initState();
+    for(int i=0;i<5;i++)
+    {
+      keys[i]= new GlobalKey<ScaffoldState>();
+    }
+  }
   @override
   void dispose() {
     super.dispose();
@@ -128,41 +151,9 @@ class _HomePageMentorState extends State<HomePageMentor>
     b.clear();
     return Scaffold(
       key: _key,
-
-     // drawer: buildDrawer(),
+      // drawer: buildDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverToBoxAdapter(
-          //  leading: null,
-        /*    IconButton(
-              icon: Icon(
-                Icons.menu,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                _key.currentState.openDrawer();
-              },
-            ),*/
-           // floating: true,
-            child: Container(
-              height: 180,
-              width: MediaQuery.of(context).size.width,
-              color: color.bgGrad,
-              child: ListView(
-                children: <Widget>[
-                  SizedBox(height: 70,),
-                  Text(
-                    "Home Page",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0),
-                  )
-                ],
-              ),
-            )
-          ),
           SliverToBoxAdapter(
             child: SizedBox(
               height: 10,
@@ -173,9 +164,9 @@ class _HomePageMentorState extends State<HomePageMentor>
           ),
           SliverList(
             delegate:
-                SliverChildBuilderDelegate((BuildContext context, int index) {
+            SliverChildBuilderDelegate((BuildContext context, int index) {
               return gridCard(index);
-            }, childCount: 8),
+            }, childCount: 5),
           )
         ],
       ),
@@ -348,7 +339,7 @@ class _HomePageMentorState extends State<HomePageMentor>
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 image: DecorationImage(
-                                  image: AssetImage(string[index % 2]),
+                                  image: AssetImage(news.image),
                                   fit: BoxFit.fill,
                                 )),
                           ),
@@ -356,14 +347,14 @@ class _HomePageMentorState extends State<HomePageMentor>
                             child: Container(
                               child: ListTile(
                                 title: Text(
-                                  'TRENDING NEWS HEADING' + index.toString(),
+                                  news.heading + index.toString(),
                                   style: GoogleFonts.aBeeZee(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white),
                                 ),
                                 subtitle: Text(
-                                  'News subheading can come here',
+                                  news.subheading,
                                   style: GoogleFonts.aBeeZee(
                                       fontSize: 12, color: Colors.white),
                                 ),
@@ -372,7 +363,7 @@ class _HomePageMentorState extends State<HomePageMentor>
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              CompleteNewsMentor(string[1])));
+                                              CompleteNewsMentor(news)));
                                 },
                               ),
                             ),
@@ -388,58 +379,96 @@ class _HomePageMentorState extends State<HomePageMentor>
     int random;
     random = Random().nextInt(8);
     if(a.contains(random)&&a.length<=8)
+    {
+      while(a.contains(random))
       {
-        while(a.contains(random))
-          {
-            random=Random().nextInt(8);
-          }
+        random=Random().nextInt(8);
       }
+    }
     a.add(random);
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
         child: FlipCard(
-          direction: FlipDirection.VERTICAL,
-          front: Card(
+            direction: FlipDirection.VERTICAL,
+            front: Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 //side: BorderSide(width: 1, color: Colors.black),
               ),
               color: background[random],
-
               elevation: 10,
               child: Stack(
                 children: <Widget>[
                   ClipPath(
-                     clipper: CustomClipperPath(),
-                     child: Container(
-                      height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
+                    clipper: CustomClipperPath(),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      //  height: keys[index].currentContext.size.height,
+                      //  height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         color: background1[random],
-
-                    ),
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Icon(
+                            icon[index],
+                            size: 40,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          ListTile(
+                            title: Center(
+                              child: Text(
+                                cardHeadings[index],
+                                style: GoogleFonts.aBeeZee(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                    color: Colors.white),
+                              ),
+                            ),
+                            subtitle: Text(
+                              paragraph[index],
+                              //'Here we will put some lines of predefined text',
+                              style: GoogleFonts.aBeeZee(
+                                  fontWeight: FontWeight.w300,
+                                  fontSize: 13,
+                                  color: Colors.white),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Container(
-                    height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
+                    key: keys[index],
+                    width: MediaQuery.of(context).size.width,
+                    //  height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                       color: Colors.transparent,
-
                     ),
                     //color: colorList[random]),
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: 60,
+                          height: 20,
                         ),
                         Icon(
                           icon[index],
-                          size: 60,
+                          size: 40,
                           color: Colors.white,
                         ),
                         SizedBox(
-                          height: 30,
+                          height: 10,
                         ),
                         ListTile(
                           title: Center(
@@ -452,7 +481,7 @@ class _HomePageMentorState extends State<HomePageMentor>
                             ),
                           ),
                           subtitle: Text(
-                            paragraph[index%2],
+                            paragraph[index],
                             //'Here we will put some lines of predefined text',
                             style: GoogleFonts.aBeeZee(
                                 fontWeight: FontWeight.w300,
@@ -460,13 +489,18 @@ class _HomePageMentorState extends State<HomePageMentor>
                                 color: Colors.white),
                           ),
                         ),
+                        SizedBox(
+                          height: 30,
+                        ),
                       ],
                     ),
                   ),
+
+
                 ],
               ),
-          ),
-          back: Card(
+            ),
+            back: Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 //side: BorderSide(width: 1, color: Colors.black),
@@ -474,86 +508,127 @@ class _HomePageMentorState extends State<HomePageMentor>
               color: background[random],
               elevation: 10,
               child: Stack(
-              children: <Widget>[
-                ClipPath(
-                  clipper: CustomClipperPath(),
-                  child: Container(
-                    height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                      color: background1[random],
-
+                children: <Widget>[
+                  ClipPath(
+                    clipper: CustomClipperPath(),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      //   height: keys[index].currentContext.size.height,
+                      //  height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        color: background1[random],
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Icon(
+                            icon[index],
+                            size: 40,
+                            color: Colors.transparent,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          ListTile(
+                            title: Center(
+                              child: Text(
+                                cardHeadings[index],
+                                style: GoogleFonts.aBeeZee(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                    color: Colors.transparent),
+                              ),
+                            ),
+                            subtitle: Text(
+                              paragraph[index],
+                              //'Here we will put some lines of predefined text',
+                              style: GoogleFonts.aBeeZee(
+                                  fontWeight: FontWeight.w300,
+                                  fontSize: 13,
+                                  color: Colors.transparent),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
                   Container(
-                         height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                                  color:Colors.transparent,
-                         ),
-    //color: colorList[Random().nextInt(8)]),
-                        child: Column(
-                            children: <Widget>[
-                                SizedBox(
-                                  height: 60,
-                                ),
-                                Text(
-
-                                    "More Details",
-                                     style: GoogleFonts.aBeeZee(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                      color: Colors.white),
-                                   ),
-                                  SizedBox(
-                                  height: 60,
-                                  ),
-                                   ListTile(
-                                      title: Center(
-                                         child: RaisedButton(
-    //elevation: 10,
-                                          shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(10)),
-                                                color: Colors.white,
-                                                 child: Text(
-                                                  buttonHeadings[index],
-                                                  style: GoogleFonts.aBeeZee(
-                                                   color: Colors.black,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 13),
-                                                  ),
-                                                onPressed: () {
-                                                  if (index == 0)
-                                                    Navigator.push(
-                                                        context,
-                                                         MaterialPageRoute(
-                                                        builder: (context) =>
-                                                        (GetStreamMentor()==0?CollegePredictorMentor():MedicalCollegePredictorMentor())));
-                                                   else if (index == 2)
-                                                   Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                      builder: (context) => (GetStreamMentor()==0)?CollegeblogMentor():MedicalCollegeblogMentor()));
-                                                     else if (index == 3)
-                                                     Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                      builder: (context) => (GetStreamMentor()==0?BranchNameMentor():MedicalBranchNameMentor())));
-                                                     else if (index==6)
-                                                       Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQMentor()));
-                                                     else if (index == 1)
-                                                       Navigator.push(context, MaterialPageRoute(builder: (context) => (GetStreamMentor()==0?RankPredictorMentor():MedicalRankPredictorMentor())));
-                                          }),
-                                       ),
-                                    ),
-                         ],
+                    width: MediaQuery.of(context).size.width,
+                    // height: keys[index].currentContext.size.height,
+                    //height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      color:Colors.transparent,
+                    ),
+                    //color: colorList[Random().nextInt(8)]),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 30,
                         ),
+                        Text(
+                          "More Details",
+                          style: GoogleFonts.aBeeZee(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 60,
+                        ),
+                        ListTile(
+                          title: Center(
+                            child: RaisedButton(
+                              //elevation: 10,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                color: Colors.white,
+                                child: Text(
+                                  buttonHeadings[index],
+                                  style: GoogleFonts.aBeeZee(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13),
+                                ),
+                                onPressed: () {
+                                  print(keys[index].currentContext.size.height.toString());
+                                  if (index == 0)
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                            (GetStreamMentor()==0?CollegePredictorMentor():MedicalCollegePredictorMentor())));
+                                  else if (index == 2)
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => (GetStreamMentor()==0)?CollegeblogMentor():MedicalCollegeblogMentor()));
+                                  else if (index == 3)
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => (GetStreamMentor()==0?BranchNameMentor():MedicalBranchNameMentor())));
+                                  else if (index==4)
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQMentor()));
+                                  else if (index == 1)
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => (GetStreamMentor()==0?RankPredictorMentor():MedicalRankPredictorMentor())));
+                                }),
+                          ),
+                        ),
+                      ],
+                    ),
                   )
-              ],),
-        )));
+                ],),
+            )));
   }
 }
+
 class CustomClipperPath extends CustomClipper<Path>{
 
   @override
@@ -572,3 +647,4 @@ class CustomClipperPath extends CustomClipper<Path>{
     return path;
   }
 }
+
