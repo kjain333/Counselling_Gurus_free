@@ -49,14 +49,14 @@ List<Color> colorList = [
   color.orange,
   color.orange10,
   color.orange3,
-  color.yellow6,
+  color.dark2,
   color.pink4,
   color.purple,
-  color.blue7
+  color.dark6
 ];
 
-List<Color> background1 = [Colors.indigoAccent,Colors.deepOrangeAccent,Colors.greenAccent,Colors.deepPurpleAccent,Colors.blueAccent,Colors.redAccent,Colors.brown,Colors.black,Colors.blueGrey];
-List<Color> background=[Colors.lightBlueAccent,Colors.orangeAccent,Colors.lightGreenAccent,Colors.purpleAccent,Colors.greenAccent,Colors.tealAccent,Colors.amberAccent,Colors.grey,Colors.blueAccent];
+List<Color> background1 = [Colors.indigoAccent,Colors.deepOrangeAccent,Colors.greenAccent,Colors.deepPurpleAccent,Colors.blueAccent,Colors.red,Colors.brown,Colors.black,Colors.blueGrey];
+List<Color> background=[Colors.lightBlueAccent,Colors.orangeAccent,Colors.lightGreenAccent,Colors.purpleAccent,Colors.greenAccent,Colors.pinkAccent,Colors.amberAccent,Colors.grey,Colors.blueAccent];
 List<String> cardHeadings = [
   "College Predictor",
   "Get your Rank",
@@ -127,7 +127,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
+  List<GlobalKey<ScaffoldState>> keys = new List(5);
 
+  //final GlobalKey<ScaffoldState> _containerkey = GlobalKey<ScaffoldState>();
+  @override
+  void initState(){
+    super.initState();
+    for(int i=0;i<5;i++)
+    {
+        keys[i]= new GlobalKey<ScaffoldState>();
+    }
+  }
   @override
   void dispose() {
     super.dispose();
@@ -392,15 +402,56 @@ class _HomePageState extends State<HomePage>
                   ClipPath(
                     clipper: CustomClipperPath(),
                     child: Container(
-                      height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
+                      width: MediaQuery.of(context).size.width,
+                      //  height: keys[index].currentContext.size.height,
+                    //  height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         color: background1[random],
                       ),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Icon(
+                          icon[index],
+                          size: 40,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ListTile(
+                          title: Center(
+                            child: Text(
+                              cardHeadings[index],
+                              style: GoogleFonts.aBeeZee(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: Colors.white),
+                            ),
+                          ),
+                          subtitle: Text(
+                            paragraph[index],
+                            //'Here we will put some lines of predefined text',
+                            style: GoogleFonts.aBeeZee(
+                                fontWeight: FontWeight.w300,
+                                fontSize: 13,
+                                color: Colors.white),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                      ],
+                    ),
                     ),
                   ),
                   Container(
-                    height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
+                    key: keys[index],
+                    width: MediaQuery.of(context).size.width,
+                  //  height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                       color: Colors.transparent,
@@ -438,9 +489,14 @@ class _HomePageState extends State<HomePage>
                                 color: Colors.white),
                           ),
                         ),
+                        SizedBox(
+                          height: 30,
+                        ),
                       ],
                     ),
                   ),
+
+
                 ],
               ),
             ),
@@ -456,15 +512,56 @@ class _HomePageState extends State<HomePage>
                   ClipPath(
                     clipper: CustomClipperPath(),
                     child: Container(
-                      height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
+                      width: MediaQuery.of(context).size.width,
+                   //   height: keys[index].currentContext.size.height,
+                    //  height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         color: background1[random],
                       ),
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Icon(
+                            icon[index],
+                            size: 40,
+                            color: Colors.transparent,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          ListTile(
+                            title: Center(
+                              child: Text(
+                                cardHeadings[index],
+                                style: GoogleFonts.aBeeZee(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                    color: Colors.transparent),
+                              ),
+                            ),
+                            subtitle: Text(
+                              paragraph[index],
+                              //'Here we will put some lines of predefined text',
+                              style: GoogleFonts.aBeeZee(
+                                  fontWeight: FontWeight.w300,
+                                  fontSize: 13,
+                                  color: Colors.transparent),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                        ],
+                    ),
                     ),
                   ),
                   Container(
-                    height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
+                    width: MediaQuery.of(context).size.width,
+                   // height: keys[index].currentContext.size.height,
+                    //height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                       color:Colors.transparent,
@@ -473,7 +570,7 @@ class _HomePageState extends State<HomePage>
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: 60,
+                          height: 30,
                         ),
                         Text(
                           "More Details",
@@ -500,6 +597,7 @@ class _HomePageState extends State<HomePage>
                                       fontSize: 13),
                                 ),
                                 onPressed: () {
+                                  print(keys[index].currentContext.size.height.toString());
                                   if (index == 0)
                                     Navigator.push(
                                         context,
