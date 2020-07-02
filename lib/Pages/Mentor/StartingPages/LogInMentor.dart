@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import '../../../Animations/FadeAnimation.dart';
 //import 'MentorInfoMentor.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Mentor/StartingPages/SignUpMentor.dart';
+//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Mentor/StartingPages/SignUpMentor.dart';
 import '../../../Resources/Colors.dart' as color;
 
 class LogInMentor extends StatefulWidget {
@@ -217,7 +217,7 @@ class _LoginMentorState extends State<LogInMentor> {
                                           color: color.buttonsMain
                                       ),
                                       child: InkWell(
-                                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpMentor()),),
+                                        //onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpMentor()),),
                                         // Navigator.of(context).pushReplacementNamed('/SignUpPage'),
                                         child: Center(
                                           child: Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),

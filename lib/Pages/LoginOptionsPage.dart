@@ -1,19 +1,55 @@
-
 import 'package:flutter/material.dart';
 import '../Animations/FadeAnimation.dart';
 import 'Mentor/StartingPages/LogInMentor.dart';
 import '../Resources/Colors.dart' as color;
 import 'Student/StartingPages/LoginPage.dart';
+import 'package:feature_discovery/feature_discovery.dart';
+import 'package:flutter/scheduler.dart';
 
-class LoginOptionsPage extends StatefulWidget {
+class LoginOptionsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => MaterialApp(
+    home: const FeatureDiscovery(
+      recordStepsInSharedPreferences: false,
+      child: LoginOptionsPageStful(),
+    ),
+  );
+}
+
+
+class LoginOptionsPageStful extends StatefulWidget {
+  const LoginOptionsPageStful({Key key}) : super(key: key);
+
   @override
   _LoginOptionsPageState createState() => _LoginOptionsPageState();
 }
 
-class _LoginOptionsPageState extends State<LoginOptionsPage> {
+class _LoginOptionsPageState extends State<LoginOptionsPageStful> {
+
+  @override
+  void initState() {
+    // ...
+    SchedulerBinding.instance.addPostFrameCallback((Duration duration) {
+      FeatureDiscovery.discoverFeatures(
+        context,
+        const <String>{ // Feature ids for every feature that you want to showcase in order.
+          'welcome',
+          'student',
+          'mentor',
+        },
+      );
+    });
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
+
+    var feature1OverflowMode = OverflowMode.clipContent;
+    var feature1EnablePulsingAnimation = false;
+    var feature3ItemCount = 15;
+
     return WillPopScope(
       onWillPop: () async{
         Navigator.of(context).pop();
@@ -42,18 +78,28 @@ class _LoginOptionsPageState extends State<LoginOptionsPage> {
                   children: <Widget>[
                     FadeAnimation(
                         1,
-                        Text(
-                          "Login Options",
-                          style: TextStyle(color: Colors.white, fontSize: 40),
-                        )),
+                        DescribedFeatureOverlay(
+                          featureId: "welcome",
+                          tapTarget: Icon(Icons.lightbulb_outline),
+                          backgroundColor: Colors.blue,
+                          contentLocation: ContentLocation.below,
+                          title: const Text('Hello, Counselling Gurus this side!!'),
+                          description: const Text(
+                              'This is an app tour, tap on blinking objects to continue.\nTo cancel tour, simply tap on remaining part of screen'),
+
+                          child: Text(
+                            "Welcome",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                      )),
                     SizedBox(
                       height: 10,
                     ),
                     FadeAnimation(
                         1.3,
                         Text(
-                          "Welcome Back",
-                          style: TextStyle(color: Colors.white, fontSize: 18),
+                          "Login Options",
+                          style: TextStyle(color: Colors.white, fontSize: 40),
                         )),
                   ],
                 ),
@@ -84,7 +130,16 @@ class _LoginOptionsPageState extends State<LoginOptionsPage> {
                                   child: InkWell(
                                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
                                     child: Center(
-                                      child: Text("I am a Student", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                      child: DescribedFeatureOverlay(
+                                          featureId: "student",
+                                          tapTarget: Icon(Icons.lightbulb_outline),
+                                          backgroundColor: Colors.blue,
+                                          contentLocation: ContentLocation.below,
+                                          title: const Text('I am a Student'),
+                                          description: const Text(
+                                              'If you are a Student click on this..'),
+
+                                          child: Text("I am a Student", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
                                     ),
                                   ),
                                 ),
@@ -102,7 +157,16 @@ class _LoginOptionsPageState extends State<LoginOptionsPage> {
                                   child: InkWell(
                                     onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=> LogInMentor())),
                                     child: Center(
-                                      child: Text("I am a Mentor", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                      child: DescribedFeatureOverlay(
+                                          featureId: "mentor",
+                                          tapTarget: Icon(Icons.lightbulb_outline),
+                                          backgroundColor: Colors.blue,
+                                          contentLocation: ContentLocation.below,
+                                          title: const Text('I am a Mentor'),
+                                          description: const Text(
+                                              'If you are a Mentor click on this..'),
+
+                                          child: Text("I am a Mentor", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
                                     ),
                                   ),
                                 ),

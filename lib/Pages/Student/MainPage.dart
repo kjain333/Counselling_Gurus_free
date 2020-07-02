@@ -1,5 +1,5 @@
 //import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/Fragments/ChatBoxPage.dart';
+//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/Fragments/ChatBoxPage.dart';
 import 'package:counselling_gurus/Pages/Student/Fragments/NewsPage.dart';
 import 'package:counselling_gurus/Pages/Student/Fragments/ProfilePage.dart';
 import 'package:counselling_gurus/Pages/Student/SideNav/feedback.dart';

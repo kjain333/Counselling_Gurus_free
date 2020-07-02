@@ -1,5 +1,5 @@
 //import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Mentor/Fragments/ChatBoxPageMentor.dart';
+//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Mentor/Fragments/ChatBoxPageMentor.dart';
 import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:titled_navigation_bar/titled_navigation_bar.dart';
@@ -27,7 +27,7 @@ class _MainPageMentorState extends State<MainPageMentor> {
     ProfilePageMentor(),
     HomePageMentor(),
     NewsPageMentor(),
-    ChatBoxPageMentor(),
+    //ChatBoxPageMentor(),
   ];
   var _pageController = new PageController();
 

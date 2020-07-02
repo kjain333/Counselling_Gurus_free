@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import '../../../Animations/FadeAnimation.dart';
 import '../../../Resources/Colors.dart' as color;
-import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Mentor/StartingPages/LogInMentor.dart';
+//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Mentor/StartingPages/LogInMentor.dart';
 //import 'LoginPage.dart';
 
 class ForgetPasswordPageMentor extends StatefulWidget {
@@ -125,7 +125,7 @@ class _ForgetPasswordPageMentorState extends State<ForgetPasswordPageMentor> {
                                       color: color.buttonsMain
                                   ),
                                   child: InkWell(
-                                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LogInMentor()),),
+                                    //onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LogInMentor()),),
                                     child: Center(
                                       child: Text("Reset Password", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
