@@ -6,9 +6,9 @@ import '../../../Resources/Colors.dart' as color;
 import 'package:counselling_gurus/Pages/Mentor/StartingPages/StreamMentor.dart';
 class StreamSelectPageMentor extends StatefulWidget {
   @override
-  _StreamSelectPageMentorState createState() => _StreamSelectPageMentorState();
+  _StreamSelectPageStateMentor createState() => _StreamSelectPageStateMentor();
 }
-class _StreamSelectPageMentorState extends State<StreamSelectPageMentor> {
+class _StreamSelectPageStateMentor extends State<StreamSelectPageMentor> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -40,7 +40,7 @@ class _StreamSelectPageMentorState extends State<StreamSelectPageMentor> {
                     FadeAnimation(
                         1,
                         Text(
-                          "Select Stream",
+                          "I am",
                           style: TextStyle(color: Colors.white, fontSize: 40),
                         )),
                     SizedBox(
@@ -85,7 +85,7 @@ class _StreamSelectPageMentorState extends State<StreamSelectPageMentor> {
                                           builder: (context) => MainPageMentor()));
                                     },
                                     child: Center(
-                                      child: Text("As an Engineering Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                      child: Text("An Engineering Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
                                   ),
                                 ),
@@ -106,7 +106,7 @@ class _StreamSelectPageMentorState extends State<StreamSelectPageMentor> {
                                       Navigator.push(context,MaterialPageRoute(builder: (context)=> MainPageMentor()));
                                     },
                                     child: Center(
-                                      child: Text("As a Medical Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                                      child: Text("A Medical Aspirant", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                                     ),
                                   ),
                                 ),

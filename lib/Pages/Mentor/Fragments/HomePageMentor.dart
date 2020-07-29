@@ -10,8 +10,11 @@ import 'package:counselling_gurus/Pages/Mentor/HomePageSources/BranchNameMentor.
 import 'package:counselling_gurus/Pages/Mentor/HomePageSources/CollegePredictorMentor.dart';
 import 'package:counselling_gurus/Pages/Mentor/HomePageSources/CollegeblogMentor.dart';
 import 'package:counselling_gurus/Pages/Mentor/HomePageSources/CompleteNewsMentor.dart';
+import 'package:counselling_gurus/Pages/Mentor/HomePageSources/Counselling.dart';
 import 'package:counselling_gurus/Pages/Mentor/HomePageSources/FAQMentor.dart';
+import 'package:counselling_gurus/Pages/Mentor/HomePageSources/Mistakes.dart';
 import 'package:counselling_gurus/Pages/Mentor/HomePageSources/RankPredictorMentor.dart';
+import 'package:counselling_gurus/Pages/Mentor/HomePageSources/Scholarships.dart';
 import 'package:counselling_gurus/Pages/Mentor/Medical/MedicalBranchNameMentor.dart';
 //import 'package:counselling_gurus/Pages/Student/Medical/MedicalBranchblogMentor.dart';
 import 'package:counselling_gurus/Pages/Mentor/Medical/MedicalCollegeBlogMentor.dart';
@@ -62,7 +65,10 @@ List<String> cardHeadings = [
   "Get your Rank",
   "Colleges",
   "Branches",
-  "Frequently Asked Questions"
+  "Frequently Asked Questions",
+  "Mistakes",
+  "Scholarships and Loans",
+  "Counselling"
 ];
 //   "Mock Counselling",
 //  "Aptitude Test",
@@ -74,6 +80,9 @@ List<String> buttonHeadings = [
   "Know About Your College",
   "Explore Branches",
   "Know More",
+  "Protect Yourself",
+  "Avail Them",
+  "Consult"
 ];
 
 //   "Experience Counselling",
@@ -81,11 +90,14 @@ List<String> buttonHeadings = [
 //  "Verify Documents"
 
 List<IconData> icon = [
-  Icons.school,
+  Icons.business,
   Icons.score,
   Icons.home,
   Icons.library_books,
   Icons.question_answer,
+  Icons.mode_comment,
+  Icons.school,
+  Icons.record_voice_over,
 ];
 //   Icons.note_add,
 //   Icons.supervisor_account,
@@ -99,8 +111,11 @@ final paragraph =
   "Get your rank calculated based on your percentile with utmost accuracy.These ranks are calculated with the help of complex formula similar to the one used by NTA to calculate AIRs and category ranks of lakhs of students.",
   "Get quick access to desired information about thousands of colleges across India.Different facts provided about various factors like placements, campus size,student strength,routes and distances are authentic and verified.",
   "Get each and every detail about every engineering branch that intrigues you.We have a collection of 50+ branches that are offered in colleges across India.",
-  "Tired of googling every single small question that comes to your mind? Then you are at a right place! Get answers to all the common(and uncommon :p)questions asked by aspirants and also get it answered if you have one!"];
-// Afraid and confused about the actual counselling process? Don't worry! We will get all your problems sorted with this one of its kind 'Mock Counselling'.You will be guided about everything that is important for JoSAA and NEET counselling,from choice filling to locking, freezing and floating,you will understand them all at once!
+  "Tired of googling every single small question that comes to your mind? Then you are at a right place! Get answers to all the common(and uncommon :p)questions asked by aspirants and also get it answered if you have one!",
+  "Learn what mistakes students usually commit and make sure you are not of them. Our team has carefully designed some common trends students follow during Counselling process and analysed major flaws they found to help you know what not to do",
+  "Afraid of high college fees. Finding it difficult to arrange for funds in this short period. Don't worry Counselling Gurus has got it all sorted with carefully picked Scholarships and loans just for you",
+  "Afraid and confused about the actual counselling process? Don't worry! We will get all your problems sorted with this one of its kind 'Mock Counselling'.You will be guided about everything that is important for JoSAA and NEET counselling,from choice filling to locking, freezing and floating,you will understand them all at once!"];
+
 // Not able to concentrate on studies?
 // Not able to sit for long study hours?
 // Now not a reason to worry! Get your personality test done!From your mental acumen to physical ability,We will examine everything about you and suggest some steps to improve without any help from others!
@@ -166,7 +181,7 @@ class _HomePageMentorState extends State<HomePageMentor>
             delegate:
             SliverChildBuilderDelegate((BuildContext context, int index) {
               return gridCard(index);
-            }, childCount: 5),
+            }, childCount: 8),
           )
         ],
       ),
@@ -449,7 +464,6 @@ class _HomePageMentorState extends State<HomePageMentor>
                     ),
                   ),
                   Container(
-                    key: keys[index],
                     width: MediaQuery.of(context).size.width,
                     //  height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
@@ -597,7 +611,6 @@ class _HomePageMentorState extends State<HomePageMentor>
                                       fontSize: 13),
                                 ),
                                 onPressed: () {
-                                  print(keys[index].currentContext.size.height.toString());
                                   if (index == 0)
                                     Navigator.push(
                                         context,
@@ -618,6 +631,12 @@ class _HomePageMentorState extends State<HomePageMentor>
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQMentor()));
                                   else if (index == 1)
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => (GetStreamMentor()==0?RankPredictorMentor():MedicalRankPredictorMentor())));
+                                  else if(index==5)
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Mistakes()));
+                                  else if(index==6)
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Scholarships()));
+                                  else if(index==7)
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Counselling()));
                                 }),
                           ),
                         ),

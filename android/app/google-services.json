@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "973547809666",
+    "firebase_url": "https://counsellinggurus-89efa.firebaseio.com",
+    "project_id": "counsellinggurus-89efa",
+    "storage_bucket": "counsellinggurus-89efa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973547809666:android:2c0cad036a4dad4ff73d9b",
+        "android_client_info": {
+          "package_name": "com.example.counselling_gurus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973547809666-5jk1obf2o0c6hiq1tjg3mhrmp24nthrp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.counselling_gurus",
+            "certificate_hash": "7074e12d0362327612bd06349505535e17b6268b"
+          }
+        },
+        {
+          "client_id": "973547809666-sc12cg8j8a5r2d1o1jkj7uq95ldppcpp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdWpNGIvDPNzKG-n4qg2BlrCrA2ZWp83M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973547809666-sc12cg8j8a5r2d1o1jkj7uq95ldppcpp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

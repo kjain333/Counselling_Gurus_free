@@ -27,6 +27,11 @@ dependencies:
   url_launcher: ^5.4.5
   flutter_plugin_pdf_viewer: ^1.0.7
   autocomplete_textfield: ^1.7.3
+  file_picker: ^1.13.0+1
+  firebase_storage: ^3.1.6
+  firebase_core: ^0.4.0+9
+  firebase_analytics: ^5.0.6
+  toast: ^0.1.5
   flutter:
     sdk: flutter
   simple_animations: ^2.2.0
@@ -40,6 +45,9 @@ dependencies:
   shared_preferences: ^0.5.7+1
   flip_card: ^0.4.4
   flutter_swiper: any
+  table_calendar: ^2.2.3
+  swipedetector: ^1.2.0
+
 
 dev_dependencies:
   flutter_launcher_icons: "^0.7.3"
@@ -86,7 +94,12 @@ flutter:
     - assets/images/new2.png
     - assets/images/new3.png
     - assets/images/new4.png
-  #  - images/a_dot_ham.jpeg
+    - assets/images/SplashScreen.png
+    - assets/images/LoginOptions.png
+
+
+
+      #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

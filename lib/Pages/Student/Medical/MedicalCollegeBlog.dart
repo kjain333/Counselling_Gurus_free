@@ -1,10 +1,8 @@
-
-
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:counselling_gurus/Resources/Colors.dart' as color;
+import '../../../Resources/Colors.dart' as color;
 import 'MedicalCollegeName.dart';
 List<Color> colorList = [
   color.yellow,
@@ -16,6 +14,7 @@ List<Color> colorList = [
   color.purple,
   color.blue7
 ];
+Set<int> a ={};
 final heading = ['IIT','NIT','IIIT','PC','State'];
 final colleges = ['Indian Institute of Technology','National Institute of Technology','Indian Institute of Information Technology','Private colleges','State Colleges'];
 final iit = ['IIT Jammu','IIT Mandi','IIT Ropar','IIT Roorkee','IIT Delhi','IIT Kanpur','IIT Varanasi','IIT Jodhpur','IIT Patna','IIT Guwahati','ISM Dhanbad','IIT Kharagpur','IIT Gandhinagar','IIT Indore','IIT Bhilai','IIT Bhubaneshwar','IIT Hyderabad','IIT Bombay','IIT Panjim','IIT Dharwad','IIT Tirupati','IIT Madras','IIT Pallakad'];
@@ -24,20 +23,20 @@ final iiit = ['IIIT Gwalior','IIIT Kanchipuram','IIIT Guwahati','IIIT Allahabad'
 final private = ['BITS Pilani','BITS Goa','BITS Hyderabad','VIT Vellore','VIT Chennai'];
 final state = ['State 1','State 2','State 3'];
 final String paragraph = "This contains few lines about each type of college category. Replace this with your own type of string list";
-Set<int> a={};
+
 class MedicalCollegeblog extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
     a.clear();
     var size = MediaQuery.of(context).size;
-    final double itemHeight = 310+(paragraph.length/55)*15*410.5/MediaQuery.of(context).size.width;
+    final double itemHeight = 220+(paragraph.length/55)*15*410.5/MediaQuery.of(context).size.width;
     final double itemWidth = size.width / 1;
     return Scaffold(
       body: Column(
         children: <Widget>[
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           Expanded(
             child: Padding(
@@ -45,12 +44,11 @@ class MedicalCollegeblog extends StatelessWidget{
               child: GridView(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1, childAspectRatio: (itemWidth / itemHeight),),
                 children: <Widget>[
-                    CollegeCard(0,context),
-                    CollegeCard(1,context),
-                    CollegeCard(2,context),
-                    CollegeCard(3,context),
-                    CollegeCard(4, context),
-
+                  CollegeCard(0,context),
+                  CollegeCard(1,context),
+                  CollegeCard(2,context),
+                  CollegeCard(3,context),
+                  CollegeCard(4, context),
                 ],
               ),
             ),
@@ -59,7 +57,6 @@ class MedicalCollegeblog extends StatelessWidget{
       ),
     );
   }
-
 }
 Widget CollegeCard(index,context)
 {
@@ -76,72 +73,69 @@ Widget CollegeCard(index,context)
   return Padding(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
       child: Card(
-      shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(20)),
-      //side: BorderSide(width: 1, color: Colors.black),
-      ),
-      color: Colors.white,
-      elevation: 10,
-      child: Container(
-      height: 330+(paragraph.length/55)*13,
-      decoration: BoxDecoration(
-      borderRadius: BorderRadius.all(Radius.circular(20)),
-      color: colorList[random]),
-      child: Column(
-      children: <Widget>[
-      SizedBox(
-      height: 40,
-      ),
-      Center(
-      child: Text(heading[index],style: TextStyle(fontFamily: 'icons',fontSize: 60,color: Colors.white,fontWeight: FontWeight.w900),),
-      ),
-      SizedBox(
-        height: 30,
-      ),
-      ListTile(
-          title: Center(
-          child: Text(
-                  colleges[index],
-                  style: GoogleFonts.aBeeZee(
-                  fontWeight: FontWeight.bold,
-                  fontSize: (index==2)?15:18,
-                  color: Colors.white),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            //side: BorderSide(width: 1, color: Colors.black),
           ),
-          ),
-          subtitle: Text(
+          color: Colors.white,
+          elevation: 10,
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                color: colorList[random]),
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: Text(heading[index],style: TextStyle(fontFamily: 'icons',fontSize: 30,color: Colors.white,fontWeight: FontWeight.w900),),
+                ),
+                ListTile(
+                  title: Center(
+                    child: Text(
+                      colleges[index],
+                      style: GoogleFonts.aBeeZee(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                          color: Colors.white),
+                    ),
+                  ),
+                  subtitle: Text(
                     paragraph,
-                     style: GoogleFonts.aBeeZee(
-                      fontWeight: FontWeight.w300,
-                      fontSize: 13,
-                      color: Colors.white),
-          ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: RaisedButton(
-            //elevation: 20,
-            color: Colors.purpleAccent,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+                    style: GoogleFonts.aBeeZee(
+                        fontWeight: FontWeight.w300,
+                        fontSize: 10,
+                        color: Colors.white),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: RaisedButton(
+                    //elevation: 20,
+                    color: Colors.purpleAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text('MORE DETAILS',style: GoogleFonts.aBeeZee(fontSize: 10,color: Colors.white),),
+                    onPressed: (){
+                      if(index==0)
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => MedicalCollegeName(iit)));
+                      else if(index==1)
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => MedicalCollegeName(nit)));
+                      else if(index==2)
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => MedicalCollegeName(iiit)));
+                      else if(index==3)
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => MedicalCollegeName(private)));
+                      else if(index==4)
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => MedicalCollegeName(state)));
+                    },
+                  ),
+                ),
+                SizedBox(height: 10,),
+              ],
             ),
-            child: Text('MORE DETAILS',style: GoogleFonts.aBeeZee(fontSize: 10,color: Colors.white),),
-            onPressed: (){
-              if(index==0)
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MedicalCollegeName(iit)));
-              else if(index==1)
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MedicalCollegeName(nit)));
-              else if(index==2)
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MedicalCollegeName(iiit)));
-              else if(index==3)
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MedicalCollegeName(private)));
-              else if(index==4)
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MedicalCollegeName(state)));
-            },
-          ),
-        )
-      ],
-      ),
-  )));
+          )));
   /*return Padding(
     padding: EdgeInsets.all(20),
     child: Container(
@@ -183,7 +177,6 @@ Widget CollegeCard(index,context)
             )
           ],
         )
-
     ),
   );*/
 }

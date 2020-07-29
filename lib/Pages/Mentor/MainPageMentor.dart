@@ -1,5 +1,6 @@
 //import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Mentor/Fragments/ChatBoxPageMentor.dart';
+import 'package:counselling_gurus/Pages/Mentor/Fragments/StudentsList.dart';
 import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:titled_navigation_bar/titled_navigation_bar.dart';
@@ -14,6 +15,7 @@ import 'SideNav/TermsAndConditionsMentor.dart';
 import 'SideNav/TopMentorsMentor.dart';
 import 'SideNav/feedbackMentor.dart';
 import 'StartingPages/ChangePassword.dart';
+import 'package:wiredash/wiredash.dart';
 
 class MainPageMentor extends StatefulWidget {
   @override
@@ -27,6 +29,7 @@ class _MainPageMentorState extends State<MainPageMentor> {
     ProfilePageMentor(),
     HomePageMentor(),
     NewsPageMentor(),
+    StudentsList(),
     //ChatBoxPageMentor(),
   ];
   var _pageController = new PageController();
@@ -38,17 +41,19 @@ class _MainPageMentorState extends State<MainPageMentor> {
         color: divider,
       );
     }
-
+    void showfeedback(context) {
+      Wiredash.of(context).show();
+    }
     Widget _buildRow(IconData icon, String title,int index, {bool showBadge = false}) {
       final TextStyle tStyle = TextStyle(color: active, fontSize: 16.0);
       return GestureDetector(
         onTap: (){
           if(index==1)
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>ScheduleMeeting()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>ScheduleMeetingMentor()));
           else if(index==2)
             Navigator.push(context,MaterialPageRoute(builder: (context)=>EditProfileMentor()));
           else if(index==3)
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>FeedbackPage()));
+           showfeedback(context);
           else if(index==4)
             Navigator.push(context,MaterialPageRoute(builder: (context)=>ChangePasswordMentor()));
           else if(index==5)
@@ -172,8 +177,8 @@ class _MainPageMentorState extends State<MainPageMentor> {
             items: [
               TitledNavigationBarItem(title: Text('Profile'), icon: Icons.person),
               TitledNavigationBarItem(title: Text('Home'), icon: Icons.home),
-              TitledNavigationBarItem(title: Text('News'), icon: Icons.call),
-              TitledNavigationBarItem(title: Text('Chat'), icon: Icons.question_answer),
+              TitledNavigationBarItem(title: Text('News'), icon: Icons.receipt),
+              TitledNavigationBarItem(title: Text('Students'), icon: Icons.question_answer),
             ]
         )
 //      bottomNavigationBar: BottomNavigationBar(

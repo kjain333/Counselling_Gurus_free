@@ -1,19 +1,15 @@
-//import 'package:counselling_gurus/Pages/Student/CollegeNameMentor.dart';
+
+import 'package:counselling_gurus/Pages/Mentor/DownloadFile.dart';
+import 'package:counselling_gurus/Pages/Mentor/Fragments/StudentsList.dart';
+import 'package:counselling_gurus/Pages/Mentor/ScheduleMeetingMentor.dart';
 import 'package:counselling_gurus/Pages/Student/Fragments/ProfilePage.dart';
-import 'package:counselling_gurus/Pages/Student/HomePageSources/BranchName.dart';
-import 'package:counselling_gurus/Pages/Student/HomePageSources/Branchblog.dart';
-import 'package:counselling_gurus/Pages/Student/HomePageSources/Collegeblog.dart';
-import 'package:counselling_gurus/Pages/Student/HomePageSources/RankPredictor.dart';
-import 'package:counselling_gurus/Pages/Student/SideNav/ScheduleMeeting.dart';
+import 'package:counselling_gurus/Pages/Student/UploadFile.dart';
 import 'package:counselling_gurus/Pages/referralpage.dart';
 import 'package:wiredash/wiredash.dart';
-
-//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Fragments/Students/ProfilePage.dart';
 import 'package:counselling_gurus/Pages/Student/SlideNav.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Pages/SplashScreen.dart';
-import 'Pages/Student/HomePageSources/FAQ.dart';
 import 'Pages/Student/StartingPages/IntroSlider.dart';
 import 'Pages/Student/StartingPages/LoginPage.dart';
 import 'Pages/Student/MainPage.dart';

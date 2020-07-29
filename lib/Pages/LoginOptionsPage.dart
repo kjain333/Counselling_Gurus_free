@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../Animations/FadeAnimation.dart';
 import 'Mentor/StartingPages/LogInMentor.dart';
 import '../Resources/Colors.dart' as color;
+import 'Mentor/Test.dart';
 import 'Student/StartingPages/LoginPage.dart';
 import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/scheduler.dart';
@@ -77,7 +78,7 @@ class _LoginOptionsPageState extends State<LoginOptionsPageStful> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     FadeAnimation(
-                        1,
+                        2,
                         DescribedFeatureOverlay(
                           featureId: "welcome",
                           tapTarget: Icon(Icons.lightbulb_outline),

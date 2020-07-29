@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:counselling_gurus/Animations/FadeAnimation.dart';
 import 'package:counselling_gurus/Pages/Mentor/StartingPages/IntroSlider.dart';
+import 'package:counselling_gurus/Pages/Mentor/TelephonicInterview.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -173,7 +174,7 @@ class _MentorInfoMentor extends State<MentorInfoMentor>{
                       Navigator.push(context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  IntroSliderMentor()));
+                                  TelephonicInterview()));
                     },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),

@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:counselling_gurus/Resources/Colors.dart' as color;
 //import 'package:http/http.dart' as http;
 //import 'package:shared_preferences/shared_preferences.dart';
 
@@ -83,11 +84,12 @@ class _ProfilePageMentorState extends State<ProfilePageMentor> {
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
                           colors: [
-                            Colors.deepOrangeAccent,
-                            Colors.orange,
-                            Colors.orangeAccent,
+                            color.bgGrad,
+                            color.bgGrad1,
+                            color.bgGrad2,
+                            color.bgGrad3
                           ],
-                          stops: [0.2,0.7,1],
+                          stops: [0.2,0.5,0.7,1],
                         )
                     ),
                   ),
@@ -153,10 +155,11 @@ class _ProfilePageMentorState extends State<ProfilePageMentor> {
                         .width / 3 ,
                     child: Container(
                       decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(50)),
                         shape: BoxShape.rectangle,
                         image: DecorationImage(
                             fit: BoxFit.fill,
-                            image: AssetImage('assets/images/splashpic.png')),
+                            image: AssetImage('assets/images/profile.png')),
                       ),
                     ),
                   )

@@ -34,6 +34,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:async';
 import '../../../Resources/Colors.dart' as color;
+import '../UploadFile.dart';
 
 final string = [
   'assets/images/background.png',
@@ -62,7 +63,8 @@ List<String> cardHeadings = [
   "Get your Rank",
   "Colleges",
   "Branches",
-  "Frequently Asked Questions"
+  "Frequently Asked Questions",
+  "Document Verification",
 ];
 //   "Mock Counselling",
 //  "Aptitude Test",
@@ -74,6 +76,7 @@ List<String> buttonHeadings = [
   "Know About Your College",
   "Explore Branches",
   "Know More",
+  "Verify",
 ];
 
 //   "Experience Counselling",
@@ -86,6 +89,7 @@ List<IconData> icon = [
   Icons.home,
   Icons.library_books,
   Icons.question_answer,
+  Icons.receipt
 ];
 //   Icons.note_add,
 //   Icons.supervisor_account,
@@ -99,7 +103,8 @@ final paragraph =
       "Get your rank calculated based on your percentile with utmost accuracy.These ranks are calculated with the help of complex formula similar to the one used by NTA to calculate AIRs and category ranks of lakhs of students.",
     "Get quick access to desired information about thousands of colleges across India.Different facts provided about various factors like placements, campus size,student strength,routes and distances are authentic and verified.",
     "Get each and every detail about every engineering branch that intrigues you.We have a collection of 50+ branches that are offered in colleges across India.",
-    "Tired of googling every single small question that comes to your mind? Then you are at a right place! Get answers to all the common(and uncommon :p)questions asked by aspirants and also get it answered if you have one!"];
+    "Tired of googling every single small question that comes to your mind? Then you are at a right place! Get answers to all the common(and uncommon :p)questions asked by aspirants and also get it answered if you have one!",
+    " Afraid and confused about the actual counselling process? Don't worry! We provide full document verification before the actual Counselling process so that lack of documents doesn't stop you from getting your dream college or branch"];
       // Afraid and confused about the actual counselling process? Don't worry! We will get all your problems sorted with this one of its kind 'Mock Counselling'.You will be guided about everything that is important for JoSAA and NEET counselling,from choice filling to locking, freezing and floating,you will understand them all at once!
       // Not able to concentrate on studies?
       // Not able to sit for long study hours?
@@ -166,7 +171,7 @@ class _HomePageState extends State<HomePage>
             delegate:
                 SliverChildBuilderDelegate((BuildContext context, int index) {
               return gridCard(index);
-            }, childCount: 5),
+            }, childCount: 6),
           )
         ],
       ),
@@ -449,7 +454,6 @@ class _HomePageState extends State<HomePage>
                     ),
                   ),
                   Container(
-                    key: keys[index],
                     width: MediaQuery.of(context).size.width,
                   //  height: 220+paragraph[index%2].length/55*13*410.5/MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
@@ -597,7 +601,7 @@ class _HomePageState extends State<HomePage>
                                       fontSize: 13),
                                 ),
                                 onPressed: () {
-                                  print(keys[index].currentContext.size.height.toString());
+                               //   print(keys[index].currentContext.size.height.toString());
                                   if (index == 0)
                                     Navigator.push(
                                         context,
@@ -614,6 +618,8 @@ class _HomePageState extends State<HomePage>
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => (GetStream()==0?BranchName():MedicalBranchName())));
+                                  else if (index==5)
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>UploadFile()));
                                   else if (index==4)
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQ()));
                                   else if (index == 1)
