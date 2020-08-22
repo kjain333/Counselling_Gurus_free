@@ -16,7 +16,7 @@ final myController = TextEditingController();
 
 class _MedicalCollegePredictorMentorState extends State<MedicalCollegePredictorMentor>{
 
-  List<String> categoryList = ["General", "St Sc", "OBC","EWS"];
+  List<String> categoryList = ["General", "Scheduled Castes","Scheduled Tribes", "OBC","EWS"];
   List<String> genderList = ["Male","Female","Others"];
   List<DropdownMenuItem<String>> categoryDropDown;
   List<DropdownMenuItem<String>> genderDropDown;

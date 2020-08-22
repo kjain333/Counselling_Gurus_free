@@ -47,7 +47,7 @@ class _CollegePredictorState extends State<CollegePredictor> {
   //   }
   // }
 
-  List<String> categoryList = ["General", "St Sc", "OBC", "EWS"];
+  List<String> categoryList = ["General", "Scheduled Tribes","Scheduled Castes", "OBC", "EWS"];
   List<String> genderList = ["Male", "Female", "Others"];
   List<DropdownMenuItem<String>> categoryDropDown;
   List<DropdownMenuItem<String>> genderDropDown;

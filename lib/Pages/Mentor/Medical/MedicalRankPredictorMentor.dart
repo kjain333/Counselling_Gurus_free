@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -73,6 +74,7 @@ class _MedicalRankpredictorMentor extends State<MedicalRankPredictorMentor>{
                       Padding(
                         padding: EdgeInsets.only(left: 40,right: 40,top: 5),
                         child: TextField(
+                          keyboardType: TextInputType.numberWithOptions(decimal: true),
                           decoration: InputDecoration(
                               hintText: 'PERCENTILE',
                               focusedBorder: OutlineInputBorder(

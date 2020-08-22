@@ -135,7 +135,7 @@ Widget InfoCard(int index, BuildContext context) {
             ),
             Positioned(
               top: 70,
-              left: MediaQuery.of(context).size.width / 3,
+              left: MediaQuery.of(context).size.width / 2-70,
               child: Container(
                 height: 100,
                 width: 100,
