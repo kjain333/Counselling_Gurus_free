@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'package:counselling_gurus/Animations/FadeAnimation1.dart';
-import 'package:counselling_gurus/Pages/LoginOptionsPage.dart';
+import 'package:counselling_gurus/Pages/Student/StartingPages/IntroSlider.dart';
 import 'package:counselling_gurus/Resources/SlideTransition.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'LoginOptionsPageNew.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -22,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 4),(){
-      Navigator.push(context, MySlide(builder: (context) => LoginOptionsNew(),),);
+      Navigator.push(context, MySlide(builder: (context) => IntroSlider(),),);
       print(animation.value);
     });
     controller = (AnimationController(duration: Duration(seconds: 1),vsync: this));

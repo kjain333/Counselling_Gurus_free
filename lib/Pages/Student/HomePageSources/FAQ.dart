@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'FAQAnswer.dart';
 final questions = ['Q1. Which degree is superior, B.E. or B. Tech. in terms of job scope and future?',
   'Q2. If two colleges hold equal status, then what should I prefer, B.E. or B. Tech?',
   'Q3. What is the difference between science and engineering?',

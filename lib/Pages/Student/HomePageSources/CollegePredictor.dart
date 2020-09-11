@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+import 'package:counselling_gurus/Pages/Student/Fragments/NewsPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:toast/toast.dart';
 import '../../../Resources/Colors.dart' as color;
 import '../StudentPlanPopup.dart';
 import 'package:http/http.dart' as http;
@@ -15,18 +17,72 @@ class CollegePredictor extends StatefulWidget {
   }
 }
 
+class MyCollege {
+  String a="";
+  String b="";
+  String c="";
+  String d="";
+  String e="";
+  String f="";
+  String g="";
+  String h="";
+  MyCollege({this.a,this.b,this.c,this.d,this.e,this.f,this.g,this.h});
+  factory MyCollege.fromJson(Map<String,dynamic> json){
+    return MyCollege(
+      a: json["Round No"],
+      b: json["Institute Name"],
+      c: json["Branch Name"],
+      d: json["Allotted Quota"],
+      e: json["Category"],
+      f: json["Seat Pool"],
+      g: json["Openning Rank"],
+      h: json["Closing Rank"],
+    );
+  }
+}
+var topColleges = [
+  {
+    "Round No": "7",
+    "Institute Name": "Indian Institute  of Technology Bombay",
+    "Branch Name": "Computer Science and Engineering (4 Years, Bachelor of Technology)",
+    "Allotted Quota": "AI",
+    "Category": "OPEN",
+    "Seat Pool": "Gender-Neutral",
+    "Openning Rank": "1",
+    "Closing Rank": "63"
+  },
+  {
+    "Round No": "7",
+    "Institute Name": "Indian Institute  of Technology Delhi",
+    "Branch Name": "Computer Science and Engineering (4 Years, Bachelor of Technology)",
+    "Allotted Quota": "AI",
+    "Category": "OPEN",
+    "Seat Pool": "Gender-Neutral",
+    "Openning Rank": "2",
+    "Closing Rank": "93"
+  },
+  {
+    "Round No": "7",
+    "Institute Name": "Indian Institute  of Technology Madras",
+    "Branch Name": "Computer Science and Engineering (4 Years, Bachelor of Technology)",
+    "Allotted Quota": "AI",
+    "Category": "OPEN",
+    "Seat Pool": "Gender-Neutral",
+    "Openning Rank": "90",
+    "Closing Rank": "188"
+  },
+];
 final myController = TextEditingController();
-
+List<MyCollege> availablecolleges = new List();
 String firstcollegename = "1st College Name";
 String secondcollegename = "2nd College Name";
 String thirdcollegename = "3rd College Name";
 bool isLoading = false;
-
+bool submitClicked = false;
 class _CollegePredictorState extends State<CollegePredictor> {
 
   JsonDecoder jsonDecoder = new JsonDecoder();
   Map<String, dynamic> jsonData;
-
   // getCollegePrefs() async {
   //   String rankentered = myController.text;
   //   Uri uri =
@@ -47,12 +103,12 @@ class _CollegePredictorState extends State<CollegePredictor> {
   //   }
   // }
 
-  List<String> categoryList = ["General", "Scheduled Tribes","Scheduled Castes", "OBC", "EWS"];
-  List<String> genderList = ["Male", "Female", "Others"];
+  List<String> categoryList = ["OBC-NCL", "GEN-EWS","OPEN", "OPEN (PwD)", "SC","ST"];
+  List<String> genderList = ["Gender-Neutral", "Female-Only"];
   List<DropdownMenuItem<String>> categoryDropDown;
   List<DropdownMenuItem<String>> genderDropDown;
   String selectedItem, selectedItem1;
-  bool submitClicked = false;
+
   bool checkbox = false;
 
   @override
@@ -64,7 +120,12 @@ class _CollegePredictorState extends State<CollegePredictor> {
     genderDropDown = buildDropDownMenuItems(genderList);
     super.initState();
   }
-
+  @override
+  void dispose() {
+    super.dispose();
+    myController.text='';
+    submitClicked=false;
+  }
   List<DropdownMenuItem<String>> buildDropDownMenuItems(categoryList) {
     List<DropdownMenuItem<String>> items = List();
     for (String category in categoryList) {
@@ -87,10 +148,34 @@ class _CollegePredictorState extends State<CollegePredictor> {
       selectedItem1 = item;
     });
   }
+  Future<MyCollege> createColleges(a,b,c) async {
+    print(a);
+    var map = new Map<String, dynamic>();
+    map['rank'] = a;
+    map['category'] = b;
+    map['seatPool'] = c;
 
+    await http.post(
+      'http://10.0.0.11:3001/app/predictor-advanced',
+       body: map,
+    ).then((response){
+
+     var mine = jsonDecode(response.body);
+     for(int i=0;i<mine.length;i++) {
+       var av = MyCollege.fromJson(mine[i]);
+       availablecolleges.add(av);
+     }
+
+     setState(() {
+       print(availablecolleges.length);
+       submitClicked = true;
+     });
+
+    })
+    .catchError(throw Exception('failed to load'));
+  }
   @override
   Widget build(BuildContext context) {
-    // TODO implement the isloading feature here to include the circular progress bar indicator 
     return Scaffold(
             body: GestureDetector(
             onTap: () {
@@ -104,7 +189,7 @@ class _CollegePredictorState extends State<CollegePredictor> {
                 innerDistance: -50,
                 children: <Widget>[
                   Container(
-                      height: 550,
+                      width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           gradient: LinearGradient(
@@ -140,7 +225,7 @@ class _CollegePredictorState extends State<CollegePredictor> {
                                       splashColor: Colors.transparent),
                                   child: Padding(
                                     padding:
-                                        EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                    EdgeInsets.fromLTRB(20, 10, 20, 10),
                                     child: TextField(
                                       keyboardType: TextInputType.number,
                                       controller: myController,
@@ -148,22 +233,22 @@ class _CollegePredictorState extends State<CollegePredictor> {
                                       style: GoogleFonts.aBeeZee(fontSize: 15),
                                       decoration: InputDecoration(
                                           hintText:
-                                              "Enter Your JEE Mains Rank Here",
+                                          "Enter Your JEE Mains Rank Here",
                                           filled: true,
                                           fillColor: Colors.white,
                                           contentPadding: EdgeInsets.only(
                                               left: 40, right: 40),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide:
-                                                BorderSide(color: Colors.white),
+                                            BorderSide(color: Colors.white),
                                             borderRadius:
-                                                BorderRadius.circular(15),
+                                            BorderRadius.circular(15),
                                           ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide:
-                                                BorderSide(color: Colors.white),
+                                            BorderSide(color: Colors.white),
                                             borderRadius:
-                                                BorderRadius.circular(15),
+                                            BorderRadius.circular(15),
                                           )),
                                     ),
                                   ),
@@ -180,7 +265,7 @@ class _CollegePredictorState extends State<CollegePredictor> {
                                     ),
                                     child: Padding(
                                       padding:
-                                          EdgeInsets.only(left: 40, right: 40),
+                                      EdgeInsets.only(left: 40, right: 40),
                                       child: DropdownButton(
                                         iconEnabledColor: Colors.black,
                                         iconDisabledColor: Colors.black,
@@ -205,7 +290,7 @@ class _CollegePredictorState extends State<CollegePredictor> {
                                     ),
                                     child: Padding(
                                       padding:
-                                          EdgeInsets.only(left: 40, right: 40),
+                                      EdgeInsets.only(left: 40, right: 40),
                                       child: DropdownButton(
                                         iconEnabledColor: Colors.black,
                                         iconDisabledColor: Colors.black,
@@ -218,346 +303,44 @@ class _CollegePredictorState extends State<CollegePredictor> {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal:
-                                          MediaQuery.of(context).size.width / 4,
-                                      vertical: 10),
-                                  child: CheckboxListTile(
-                                    title: Text(
-                                      'PWD',
-                                      style: GoogleFonts.aBeeZee(
-                                          color: Colors.white,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                    value: checkbox,
-                                    activeColor: Colors.orangeAccent,
-                                    checkColor: Colors.white,
-                                    onChanged: (bool value) {
-                                      setState(() {
-                                        checkbox = !checkbox;
-                                      });
-                                    },
-                                  ),
-                                ),
+
                                 Padding(
                                   padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
                                   child: RaisedButton(
                                     onPressed: () {
                                       setState(() {
-                                        submitClicked = true;
+                                        if(myController.text!=''&&selectedItem!=null&&selectedItem1!=null)
+                                        {
+                                          availablecolleges.clear();
+                                          submitClicked=loader;
+                                           createColleges(myController.text,selectedItem,selectedItem1);
+                                           print(availablecolleges.length);
+                                        }
+                                        else
+                                          {
+                                            Toast.show("Please sellect all fields for accurate results.", context,duration: Toast.LENGTH_LONG,gravity: Toast.BOTTOM);
+                                          }
                                       });
                                     },
                                     child: Text('SUBMIT'),
                                   ),
                                 ),
+                                SizedBox(
+                                  height: 50,
+                                )
                               ],
                             ),
                           )
                         ],
-                      )),
-                  Material(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(50),
-                            topRight: Radius.circular(50))),
-                    elevation: 20,
-                    color: Colors.white,
-                    child: submitClicked
-                        ? Container(child: Colleges())
-                        :  Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                          child: const SizedBox(
-                              height: 50,
-                              child: Center(
-                                child: Text('TOP COLLEGES',
-                                  style: TextStyle(color: Colors.lightBlueAccent,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500),),
-                              )
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                          child: Material(
-                            elevation: 30,
-                            borderRadius: BorderRadius.circular(25),
-                            color: Colors.white,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.white,
-                              ),
-                              width: double.infinity,
-                              height: 120,
-                              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      width: 80,
-                                      height: 80,
-                                      margin: EdgeInsets.only(right: 15,),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        border: Border.all(width: 3, color: color.secondary),
-                                        image: DecorationImage(
-                                            image: AssetImage("assets/images/app_logo.png",),
-                                            fit: BoxFit.fill),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                            'College Name',
-                                            style: TextStyle(
-                                                color: color.primary,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 18),
-                                          ),
-                                          SizedBox(
-                                            height: 6,
-                                          ),
-                                          Row(
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.location_on,
-                                                color: color.secondary,
-                                                size: 20,
-                                              ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
-                                              Text("Location",
-                                                  style: TextStyle(
-                                                      color: color.primary, fontSize: 13, letterSpacing: .3)),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 6,
-                                          ),
-                                          Row(
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.school,
-                                                color: color.secondary,
-                                                size: 20,
-                                              ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
-                                              Text("Branch Name",
-                                                  style: TextStyle(
-                                                      color: color.primary, fontSize: 13, letterSpacing: .3)),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                          child: Material(
-                            elevation: 30,
-                            borderRadius: BorderRadius.circular(25),
-                            color: Colors.white,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.white,
-                              ),
-                              width: double.infinity,
-                              height: 120,
-                              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      width: 80,
-                                      height: 80,
-                                      margin: EdgeInsets.only(right: 15,),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        border: Border.all(width: 3, color: color.secondary),
-                                        image: DecorationImage(
-                                            image: AssetImage("assets/images/app_logo.png",),
-                                            fit: BoxFit.fill),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                            'College Name',
-                                            style: TextStyle(
-                                                color: color.primary,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 18),
-                                          ),
-                                          SizedBox(
-                                            height: 6,
-                                          ),
-                                          Row(
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.location_on,
-                                                color: color.secondary,
-                                                size: 20,
-                                              ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
-                                              Text("Location",
-                                                  style: TextStyle(
-                                                      color: color.primary, fontSize: 13, letterSpacing: .3)),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 6,
-                                          ),
-                                          Row(
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.school,
-                                                color: color.secondary,
-                                                size: 20,
-                                              ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
-                                              Text("Branch Name",
-                                                  style: TextStyle(
-                                                      color: color.primary, fontSize: 13, letterSpacing: .3)),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                          child: Material(
-                            elevation: 30,
-                            borderRadius: BorderRadius.circular(25),
-                            color: Colors.white,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.white,
-                              ),
-                              width: double.infinity,
-                              height: 120,
-                              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      width: 80,
-                                      height: 80,
-                                      margin: EdgeInsets.only(right: 15,),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        border: Border.all(width: 3, color: color.secondary),
-                                        image: DecorationImage(
-                                            image: AssetImage("assets/images/app_logo.png",),
-                                            fit: BoxFit.fill),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                            'College Name',
-                                            style: TextStyle(
-                                                color: color.primary,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 18),
-                                          ),
-                                          SizedBox(
-                                            height: 6,
-                                          ),
-                                          Row(
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.location_on,
-                                                color: color.secondary,
-                                                size: 20,
-                                              ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
-                                              Text("Location",
-                                                  style: TextStyle(
-                                                      color: color.primary, fontSize: 13, letterSpacing: .3)),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 6,
-                                          ),
-                                          Row(
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.school,
-                                                color: color.secondary,
-                                                size: 20,
-                                              ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
-                                              Text("Branch Name",
-                                                  style: TextStyle(
-                                                      color: color.primary, fontSize: 13, letterSpacing: .3)),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 50,
-                          child: ListTile(
-                            leading: Icon(Icons.arrow_drop_down),
-                            title: Text('READ MORE'),
-                            contentPadding: EdgeInsets.only(left: 100, right: 100),
-                            onTap: () {
-                              popup(context);
-                            },
-                          ),
-                        )
-                      ],
-                    ),
+                      )
                   ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(50),topRight: Radius.circular(50)),
+                      color: Colors.white
+                    ),
+                    child: Colleges(),
+                  )
                 ],
               ),
             ),
@@ -568,592 +351,169 @@ class _CollegePredictorState extends State<CollegePredictor> {
 class Colleges extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    if (myController.text == '')
+    if(submitClicked==loader&&submitClicked!=false)
+      {
+        print(submitClicked);
+        return Container(
+          height: 400,
+          width: MediaQuery.of(context).size.width,
+          child: Center(
+            child: Container(
+              height: 50,
+              width: 50,
+              child: CircularProgressIndicator(),
+            )
+          ),
+        );
+      }
+    else if (!submitClicked) {
       return Column(
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-            child: const SizedBox(
-                height: 50,
-                child: Center(
-                  child: Text('TOP COLLEGES',
-                    style: TextStyle(color: Colors.lightBlueAccent,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500),),
-                )
-            ),
+          SizedBox(
+            height: 10,
+            width: MediaQuery.of(context).size.width,
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: Material(
-              elevation: 30,
-              borderRadius: BorderRadius.circular(25),
-              color: Colors.white,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: Colors.white,
-                ),
-                width: double.infinity,
-                height: 120,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        width: 80,
-                        height: 80,
-                        margin: EdgeInsets.only(right: 15,),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(width: 3, color: color.secondary),
-                          image: DecorationImage(
-                              image: AssetImage("assets/images/app_logo.png",),
-                              fit: BoxFit.fill),
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'College Name',
-                              style: TextStyle(
-                                  color: color.primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.location_on,
-                                  color: color.secondary,
-                                  size: 20,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text("Location",
-                                    style: TextStyle(
-                                        color: color.primary, fontSize: 13, letterSpacing: .3)),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.school,
-                                  color: color.secondary,
-                                  size: 20,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text("Branch Name",
-                                    style: TextStyle(
-                                        color: color.primary, fontSize: 13, letterSpacing: .3)),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: Material(
-              elevation: 30,
-              borderRadius: BorderRadius.circular(25),
-              color: Colors.white,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: Colors.white,
-                ),
-                width: double.infinity,
-                height: 120,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        width: 80,
-                        height: 80,
-                        margin: EdgeInsets.only(right: 15,),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(width: 3, color: color.secondary),
-                          image: DecorationImage(
-                              image: AssetImage("assets/images/app_logo.png",),
-                              fit: BoxFit.fill),
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'College Name',
-                              style: TextStyle(
-                                  color: color.primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.location_on,
-                                  color: color.secondary,
-                                  size: 20,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text("Location",
-                                    style: TextStyle(
-                                        color: color.primary, fontSize: 13, letterSpacing: .3)),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.school,
-                                  color: color.secondary,
-                                  size: 20,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text("Branch Name",
-                                    style: TextStyle(
-                                        color: color.primary, fontSize: 13, letterSpacing: .3)),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: Material(
-              elevation: 30,
-              borderRadius: BorderRadius.circular(25),
-              color: Colors.white,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: Colors.white,
-                ),
-                width: double.infinity,
-                height: 120,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        width: 80,
-                        height: 80,
-                        margin: EdgeInsets.only(right: 15,),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(width: 3, color: color.secondary),
-                          image: DecorationImage(
-                              image: AssetImage("assets/images/app_logo.png",),
-                              fit: BoxFit.fill),
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'College Name',
-                              style: TextStyle(
-                                  color: color.primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.location_on,
-                                  color: color.secondary,
-                                  size: 20,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text("Location",
-                                    style: TextStyle(
-                                        color: color.primary, fontSize: 13, letterSpacing: .3)),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.school,
-                                  color: color.secondary,
-                                  size: 20,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text("Branch Name",
-                                    style: TextStyle(
-                                        color: color.primary, fontSize: 13, letterSpacing: .3)),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
+          Text("TOP COLLEGES AND BRANCHES", style: GoogleFonts.aBeeZee(
+              fontWeight: FontWeight.bold,
+              color: Colors.lightBlueAccent,
+              fontSize: 22),
           ),
           SizedBox(
-            height: 50,
-            child: ListTile(
-              leading: Icon(Icons.arrow_drop_down),
-              title: Text('READ MORE'),
-              contentPadding: EdgeInsets.only(left: 100, right: 100),
-              onTap: () {
-                popup(context);
-              },
-            ),
-          )
-        ],
-      );
-    else {
-      return Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-            child: const SizedBox(
-                height: 50,
-                child: Center(
-                  child: Text(
-                    'HERE ARE OPTIONS AVAILABLE FOR YOU',
-                    style: TextStyle(
-                        color: Colors.lightBlueAccent,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500),
-                  ),
-                )),
+            height: 20,
+            width: MediaQuery.of(context).size.width,
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: Material(
-              elevation: 30,
-              borderRadius: BorderRadius.circular(25),
-              color: Colors.white,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: Colors.white,
-                ),
-                width: double.infinity,
-                height: 120,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        width: 80,
-                        height: 80,
-                        margin: EdgeInsets.only(right: 15,),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(width: 3, color: color.secondary),
-                          image: DecorationImage(
-                              image: AssetImage("assets/images/app_logo.png",),
-                              fit: BoxFit.fill),
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'College Name',
-                              style: TextStyle(
-                                  color: color.primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.location_on,
-                                  color: color.secondary,
-                                  size: 20,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text("Location",
-                                    style: TextStyle(
-                                        color: color.primary, fontSize: 13, letterSpacing: .3)),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.school,
-                                  color: color.secondary,
-                                  size: 20,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text("Branch Name",
-                                    style: TextStyle(
-                                        color: color.primary, fontSize: 13, letterSpacing: .3)),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+          ListView(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            children: <Widget>[
+              ListView.builder(
+                  itemCount: topColleges.length,
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (context,index){
+                    return gridCard(index,context);
+                  }
               ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: Material(
-              elevation: 30,
-              borderRadius: BorderRadius.circular(25),
-              color: Colors.white,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: Colors.white,
-                ),
-                width: double.infinity,
-                height: 120,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        width: 80,
-                        height: 80,
-                        margin: EdgeInsets.only(right: 15,),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(width: 3, color: color.secondary),
-                          image: DecorationImage(
-                              image: AssetImage("assets/images/app_logo.png",),
-                              fit: BoxFit.fill),
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'College Name',
-                              style: TextStyle(
-                                  color: color.primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.location_on,
-                                  color: color.secondary,
-                                  size: 20,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text("Location",
-                                    style: TextStyle(
-                                        color: color.primary, fontSize: 13, letterSpacing: .3)),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.school,
-                                  color: color.secondary,
-                                  size: 20,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text("Branch Name",
-                                    style: TextStyle(
-                                        color: color.primary, fontSize: 13, letterSpacing: .3)),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: Material(
-              elevation: 30,
-              borderRadius: BorderRadius.circular(25),
-              color: Colors.white,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: Colors.white,
-                ),
-                width: double.infinity,
-                height: 120,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        width: 80,
-                        height: 80,
-                        margin: EdgeInsets.only(right: 15,),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(width: 3, color: color.secondary),
-                          image: DecorationImage(
-                              image: AssetImage("assets/images/app_logo.png",),
-                              fit: BoxFit.fill),
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'College Name',
-                              style: TextStyle(
-                                  color: color.primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.location_on,
-                                  color: color.secondary,
-                                  size: 20,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text("Location",
-                                    style: TextStyle(
-                                        color: color.primary, fontSize: 13, letterSpacing: .3)),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.school,
-                                  color: color.secondary,
-                                  size: 20,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text("Branch Name",
-                                    style: TextStyle(
-                                        color: color.primary, fontSize: 13, letterSpacing: .3)),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 50,
-            child: ListTile(
-              leading: Icon(Icons.arrow_drop_down),
-              title: Text('READ MORE'),
-              contentPadding: EdgeInsets.only(left: 100, right: 100),
-              onTap: () {
-                popup(context);
-              },
-            ),
+            ],
           )
         ],
       );
     }
+    else {
+      return Column(
+        children: <Widget>[
+           SizedBox(
+              height: 10,
+             width: MediaQuery.of(context).size.width,
+            ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Text("HERE ARE OPTIONS AVAILABLE FOR YOU", style: GoogleFonts.aBeeZee(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.lightBlueAccent,
+                  fontSize: 18),
+              ),
+            ),
+           SizedBox(
+              height: 20,
+             width: MediaQuery.of(context).size.width,
+            ),
+            ListView(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              children: <Widget>[
+                ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: availablecolleges.length,
+                    itemBuilder: (context,index){
+                      return gridCard1(index,context);
+                    }
+                ),
+              ],
+            )
+        ],
+      );
+    }
+  }
+
+
+  Widget gridCard(int index,BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(20),
+      child: Material(
+        elevation: 20,
+        borderRadius: BorderRadius.circular(10),
+        child: Container(
+          width: MediaQuery.of(context).size.width-40,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white
+          ),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Text(topColleges[index]['Institute Name'],style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.bold),),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child:  Text(topColleges[index]['Branch Name'],style: GoogleFonts.aBeeZee(fontSize: 16,fontWeight: FontWeight.w300),),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Text('Opening Rank- '+topColleges[index]['Openning Rank'],style: GoogleFonts.aBeeZee(fontSize: 16,fontWeight: FontWeight.w300),),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Text('Closing Rank- '+topColleges[index]['Closing Rank'],style: GoogleFonts.aBeeZee(fontSize: 16,fontWeight: FontWeight.w300),),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+  Widget gridCard1(int index,BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(20),
+      child: Material(
+        elevation: 20,
+        borderRadius: BorderRadius.circular(10),
+        child: Container(
+          width: MediaQuery.of(context).size.width-40,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.white
+          ),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Text(availablecolleges[index].b,style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.bold),),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child:  Text(availablecolleges[index].c,style: GoogleFonts.aBeeZee(fontSize: 16,fontWeight: FontWeight.w300),),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Text('Opening Rank- '+availablecolleges[index].g,style: GoogleFonts.aBeeZee(fontSize: 16,fontWeight: FontWeight.w300),),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Text('Closing Rank- '+availablecolleges[index].h,style: GoogleFonts.aBeeZee(fontSize: 16,fontWeight: FontWeight.w300),),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

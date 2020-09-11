@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../Resources/Colors.dart' as color;
-import 'SelectStreamPage.dart';
+import '../MainPage.dart';
+import 'SignUpPage.dart';
 
 class IntroSlider extends StatefulWidget {
   @override
@@ -63,7 +64,7 @@ class _IntroSliderState extends State<IntroSlider> {
                   alignment: Alignment.centerRight,
                   child: FlatButton(
                     onPressed: () =>
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => StreamSelectPage())),
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage())),
                     child: Text(
                       'Skip',
                       style: TextStyle(
@@ -202,14 +203,14 @@ class _IntroSliderState extends State<IntroSlider> {
       bottomSheet: _currentPage == _numPages - 1
           ?GestureDetector(
           onTap: () =>
-              Navigator.push(context, MaterialPageRoute(builder: (context) => StreamSelectPage())),
+              Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage())),
              child: Container(
               height: 60.0,
               width: double.infinity,
               color: Colors.white,
               child: GestureDetector(
                 onTap: () =>
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => StreamSelectPage())),
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage())),
                 child: Center(
                   child: Padding(
                     padding: EdgeInsets.all(0),

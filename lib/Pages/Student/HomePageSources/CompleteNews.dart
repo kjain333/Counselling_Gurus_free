@@ -2,7 +2,6 @@ import 'package:counselling_gurus/Pages/Student/Fragments/News.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -84,7 +83,9 @@ class CompleteNews extends StatelessWidget{
                             padding: EdgeInsets.only(left: 50,right: 50),
                             child: Text(news.link,style: GoogleFonts.aBeeZee(color: Colors.amber,fontWeight: FontWeight.w300,fontSize: 13),),
                           ),
-                          onTap: () => launch(news.link),
+                          onTap: (){
+                            launch(news.link);
+                          },
                         ),
                         SizedBox(
                           height: 30,

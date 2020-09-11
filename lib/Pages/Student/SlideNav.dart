@@ -1,9 +1,10 @@
+import 'package:counselling_gurus/Pages/Student/Fragments/Dashboard.dart';
 import 'package:counselling_gurus/Pages/Student/Fragments/NewsPage.dart';
-import 'package:counselling_gurus/Pages/Student/Fragments/ProfilePage.dart';
 import 'package:counselling_gurus/components/navigation_drawer.dart';
 import 'package:counselling_gurus/models/themes.dart';
 import 'package:flutter/material.dart';
 import 'Fragments/HomePage.dart';
+import 'Fragments/MorePage.dart';
 
 
 class SlideNav extends StatefulWidget {
@@ -17,11 +18,11 @@ class _SlideNavState extends State<SlideNav> {
   //For nav
   int _selectedPage = 0;
   var _pageOptions = [
-    ProfilePage(),
+    MorePage(),
     HomePage(),
-    NewsPage(),
+    Dashboard(),
   ];
-  var _pageController = new PageController();
+  var _pageController = new PageController(initialPage: 1);
 
   @override
   Widget build(BuildContext context) {

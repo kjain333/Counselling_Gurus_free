@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wiredash/wiredash.dart';
 
 class MorePage extends StatefulWidget {
   @override
   _MorePageState createState() => _MorePageState();
 }
-
+void showFeedback(context) {
+  Wiredash.of(context).show();
+}
 class _MorePageState extends State<MorePage> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -41,29 +45,6 @@ class _MorePageState extends State<MorePage> {
                   border: Border(
                       bottom: BorderSide(color: Colors.grey),
                       top: BorderSide(color: Colors.grey)),
-
-              ),
-            ),
-            Container(
-              child: ListTile(
-                contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
-                title: Center(
-                  child: Text("Change Password", style: GoogleFonts.aBeeZee()),
-                ),
-                leading: Icon(
-                  Icons.lock,
-                  color: Colors.black,
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward,
-                  color: Colors.black,
-                ),
-                onTap: () {
-                  return null;
-                },
-              ),
-              decoration: BoxDecoration(
-                  border: Border(bottom: BorderSide(color: Colors.grey)),
 
               ),
             ),
@@ -105,7 +86,7 @@ class _MorePageState extends State<MorePage> {
                   color: Colors.black,
                 ),
                 onTap: () {
-                  Navigator.pushReplacementNamed(context, "/FeedbackPage");
+                  showFeedback(context);
                 },
               ),
               decoration: BoxDecoration(
@@ -140,10 +121,10 @@ class _MorePageState extends State<MorePage> {
               child: ListTile(
                 contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
                 title: Center(
-                  child: Text("Log Out", style: GoogleFonts.aBeeZee()),
+                  child: Text("Terms and Conditions", style: GoogleFonts.aBeeZee()),
                 ),
                 leading: Icon(
-                  Icons.exit_to_app,
+                  Icons.notifications_active,
                   color: Colors.black,
                 ),
                 trailing: Icon(
@@ -155,7 +136,7 @@ class _MorePageState extends State<MorePage> {
                 },
               ),
               decoration: BoxDecoration(
-                  border: Border(bottom: BorderSide(color: Colors.grey)),
+                border: Border(bottom: BorderSide(color: Colors.grey)),
 
               ),
             ),

@@ -56,7 +56,7 @@ class _PdfViewer extends State<PdfViewer1>{
       _isLoading = true;
       c=1;
     });
-    document = await PDFDocument.fromURL('https://docs.google.com/presentation/d/1mSrWMefaIkErR6pG5w42JgDMn_8K4S6CE1QnU0QQWeY/export/pdf');
+    document = await PDFDocument.fromURL('http://www.africau.edu/images/default/sample.pdf');//'https://docs.google.com/presentation/d/1mSrWMefaIkErR6pG5w42JgDMn_8K4S6CE1QnU0QQWeY/export/pdf');
     setState(() {
       _isLoading = false;
     });

@@ -1,7 +1,6 @@
-//import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-//import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/Fragments/ChatBoxPage.dart';
+
+import 'package:counselling_gurus/Pages/Student/Fragments/Dashboard.dart';
 import 'package:counselling_gurus/Pages/Student/Fragments/NewsPage.dart';
-import 'package:counselling_gurus/Pages/Student/Fragments/ProfilePage.dart';
 import 'package:counselling_gurus/Pages/Student/SideNav/feedback.dart';
 import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,6 +8,7 @@ import 'package:titled_navigation_bar/titled_navigation_bar.dart';
 import 'package:wiredash/wiredash.dart';
 import 'Fragments/HomePage.dart';
 import 'package:flutter/material.dart';
+import 'Fragments/MorePage.dart';
 import 'SideNav/ScheduleMeeting.dart';
 import 'SideNav/ContactUs.dart';
 import 'SideNav/EditProfile.dart';
@@ -23,14 +23,13 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   //For bottom nav
-  int _selectedPage = 0;
+  int _selectedPage = 1;
   var _pageOptions = [
-    ProfilePage(),
+    MorePage(),
     HomePage(),
-    NewsPage(),
-    //ChatBoxPage(),
+    Dashboard(),
   ];
-  var _pageController = new PageController();
+  var _pageController = new PageController(initialPage: 1);
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +167,7 @@ class _MainPageState extends State<MainPage> {
                 fontWeight: FontWeight.w300, color: Colors.white, fontSize: 18),
           ),
         ),
-        drawer: buildDrawer(),
+       // drawer: buildDrawer(),
         body: PageView(
           children: _pageOptions,
           onPageChanged: (index) {
@@ -193,7 +192,7 @@ class _MainPageState extends State<MainPage> {
               TitledNavigationBarItem(
                   title: Text('Profile'), icon: Icons.person),
               TitledNavigationBarItem(title: Text('Home'), icon: Icons.home),
-              TitledNavigationBarItem(title: Text('News'), icon: Icons.call),
+              TitledNavigationBarItem(title: Text('DashBoard'), icon: Icons.call),
 //              TitledNavigationBarItem(
 //                  title: Text('Chat'), icon: Icons.question_answer),
             ])

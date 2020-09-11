@@ -11,12 +11,10 @@ import 'package:counselling_gurus/Pages/Student/HomePageSources/CollegePredictor
 import 'package:counselling_gurus/Pages/Student/HomePageSources/Collegeblog.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/CompleteNews.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/FAQ.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/Mistakes.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/NotesPage.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/RankPredictor.dart';
-import 'package:counselling_gurus/Pages/Student/Medical/MedicalBranchName.dart';
-//import 'package:counselling_gurus/Pages/Student/Medical/MedicalBranchblogMentor.dart';
-import 'package:counselling_gurus/Pages/Student/Medical/MedicalCollegeBlog.dart';
-import 'package:counselling_gurus/Pages/Student/Medical/MedicalCollegePredictor.dart';
-import 'package:counselling_gurus/Pages/Student/Medical/MedicalRankPredictor.dart';
+import 'package:url_launcher/url_launcher.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/HomePageSources/RankPredictorMentor.dart';
 //import 'package:counselling_gurus/Pages/Student/ScheduleMeetingMentor.dart';
 //import 'package:counselling_gurus/Pages/Student/SideNav/ContactUsMentor.dart';
@@ -25,39 +23,19 @@ import 'package:counselling_gurus/Pages/Student/Medical/MedicalRankPredictor.dar
 //import 'package:counselling_gurus/Pages/Student/SideNav/TopMentorsMentor.dart';
 //import 'package:counselling_gurus/Pages/Student/SideNav/feedbackMentor.dart';
 //import 'package:counselling_gurus/Pages/Student/StartingPages/ChangePassword.dart';
-import 'package:counselling_gurus/Pages/Student/StartingPages/Stream.dart';
 //import 'file:///C:/Users/Ralex/Desktop/Counselling_Gurus/lib/Pages/Student/SideNav/TermsAndConditionsMentor.dart';
 //import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:async';
-import '../../../Resources/Colors.dart' as color;
 import '../UploadFile.dart';
-
-final string = [
-  'assets/images/background.png',
-  'assets/images/background2.png'
-];
 double width;
-int _timerCounter = 0;
 Set<int> a= {};
 Set<int> b= {};
-ScrollController controller = ScrollController(initialScrollOffset: 0);
-List<Color> colorList = [
-  color.yellow,
-  color.orange,
-  color.orange10,
-  color.orange3,
-  color.dark2,
-  color.pink4,
-  color.purple,
-  color.dark6
-];
 
-List<Color> background1 = [Colors.indigoAccent,Colors.deepOrangeAccent,Colors.greenAccent,Colors.deepPurpleAccent,Colors.blueAccent,Colors.red,Colors.brown,Colors.black,Colors.blueGrey];
-List<Color> background=[Colors.lightBlueAccent,Colors.orangeAccent,Colors.lightGreenAccent,Colors.purpleAccent,Colors.greenAccent,Colors.pinkAccent,Colors.amberAccent,Colors.grey,Colors.blueAccent];
+List<Color> background1 = [Colors.indigoAccent,Colors.deepOrangeAccent,Colors.greenAccent,Colors.deepPurpleAccent,Colors.blueAccent,Colors.red,Colors.brown,Colors.black,Colors.blueGrey,Colors.lightBlueAccent,Colors.orangeAccent,Colors.lightGreenAccent,Colors.purpleAccent,Colors.greenAccent,Colors.pinkAccent,Colors.amberAccent,Colors.grey,Colors.blueAccent];
+List<Color> background=[Colors.lightBlueAccent,Colors.orangeAccent,Colors.lightGreenAccent,Colors.purpleAccent,Colors.greenAccent,Colors.pinkAccent,Colors.amberAccent,Colors.grey,Colors.blueAccent,Colors.indigoAccent,Colors.deepOrangeAccent,Colors.greenAccent,Colors.deepPurpleAccent,Colors.blueAccent,Colors.red,Colors.brown,Colors.black,Colors.blueGrey];
 List<String> cardHeadings = [
   "College Predictor",
   "Get your Rank",
@@ -65,6 +43,10 @@ List<String> cardHeadings = [
   "Branches",
   "Frequently Asked Questions",
   "Document Verification",
+  "Preparations Notes",
+  "Mistakes",
+  "Post Queries",
+  "Last Year Stats"
 ];
 //   "Mock Counselling",
 //  "Aptitude Test",
@@ -77,6 +59,10 @@ List<String> buttonHeadings = [
   "Explore Branches",
   "Know More",
   "Verify",
+  "Notes",
+  "Mistakes",
+  "Post",
+  "Stats",
 ];
 
 //   "Experience Counselling",
@@ -89,7 +75,11 @@ List<IconData> icon = [
   Icons.home,
   Icons.library_books,
   Icons.question_answer,
-  Icons.receipt
+  Icons.receipt,
+  Icons.note,
+  Icons.clear,
+  Icons.launch,
+  Icons.graphic_eq
 ];
 //   Icons.note_add,
 //   Icons.supervisor_account,
@@ -104,7 +94,11 @@ final paragraph =
     "Get quick access to desired information about thousands of colleges across India.Different facts provided about various factors like placements, campus size,student strength,routes and distances are authentic and verified.",
     "Get each and every detail about every engineering branch that intrigues you.We have a collection of 50+ branches that are offered in colleges across India.",
     "Tired of googling every single small question that comes to your mind? Then you are at a right place! Get answers to all the common(and uncommon :p)questions asked by aspirants and also get it answered if you have one!",
-    " Afraid and confused about the actual counselling process? Don't worry! We provide full document verification before the actual Counselling process so that lack of documents doesn't stop you from getting your dream college or branch"];
+    " Afraid and confused about the actual counselling process? Don't worry! We provide full document verification before the actual Counselling process so that lack of documents doesn't stop you from getting your dream college or branch",
+    "Don't know if you are still prepared for the upcoming exams. Relax our mentors have specially design handwritten notes to help you with last minute revision and get an extra edge over others.",
+    "Wait Wait Wait! Don't just scroll over this we have examined over thousand brains combined with our experience found the top mistakes which student commit during the counselling procedure. Do have a look at this.",
+    "Still have some unanswered queries? We hope not but our mentors are there to help you further post whatever query you have and we will try to help as soon as possible",
+    "Not satisfied with what all you have already. Get detailed past year counselling analysis, where you stand after each counselling round and possibilities of improving in further upcoming rounds"];
       // Afraid and confused about the actual counselling process? Don't worry! We will get all your problems sorted with this one of its kind 'Mock Counselling'.You will be guided about everything that is important for JoSAA and NEET counselling,from choice filling to locking, freezing and floating,you will understand them all at once!
       // Not able to concentrate on studies?
       // Not able to sit for long study hours?
@@ -112,17 +106,6 @@ final paragraph =
 
       // final backparagraph = []
 
-Timer _timer;
-News news = News("Trending news heading","Here we will displaying few lines about our trending news.","","assets/images/background.png");
-
-void _incrementTimerCounter(Timer t) {
-  _timerCounter++;
-  if (_timerCounter == 6) _timerCounter = 0;
-  // if (controller.hasClients) controller.jumpTo(_timerCounter.toDouble() * 410);
-  if (controller.hasClients)
-    controller.animateTo(_timerCounter.toDouble() * width,
-        duration: Duration(milliseconds: 1000), curve: Curves.easeOut);
-}
 
 class HomePage extends StatefulWidget {
   @override
@@ -132,13 +115,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
-  List<GlobalKey<ScaffoldState>> keys = new List(5);
+  List<GlobalKey<ScaffoldState>> keys = new List(10);
 
   //final GlobalKey<ScaffoldState> _containerkey = GlobalKey<ScaffoldState>();
   @override
   void initState(){
     super.initState();
-    for(int i=0;i<5;i++)
+    for(int i=0;i<10;i++)
     {
         keys[i]= new GlobalKey<ScaffoldState>();
     }
@@ -146,8 +129,6 @@ class _HomePageState extends State<HomePage>
   @override
   void dispose() {
     super.dispose();
-    _timer.cancel();
-    _timerCounter = 0;
   }
 
   @override
@@ -161,17 +142,14 @@ class _HomePageState extends State<HomePage>
         slivers: <Widget>[
           SliverToBoxAdapter(
             child: SizedBox(
-              height: 10,
+              height: 30,
             ),
-          ),
-          SliverToBoxAdapter(
-            child: trendingNews(),
           ),
           SliverList(
             delegate:
                 SliverChildBuilderDelegate((BuildContext context, int index) {
               return gridCard(index);
-            }, childCount: 6),
+            }, childCount: 10),
           )
         ],
       ),
@@ -292,102 +270,16 @@ class _HomePageState extends State<HomePage>
     );
   }
 */
-  Widget trendingNews() {
 
-    if(_timer!=null)
-      _timer.cancel();
-    var size = MediaQuery.of(context).size;
-    /*24 is for notification bar on Android*/
-    //final double itemHeight = ((size.height - kToolbarHeight - 24) / 2) - 20;
-    //final double itemWidth = size.width / 2;
-    width = size.width;
-    _timer = new Timer.periodic(
-        new Duration(milliseconds: 5000), _incrementTimerCounter);
-    return Container(
-        color: Colors.transparent,
-        height: 120,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          controller: controller,
-          itemCount: 6,
-          itemBuilder: (context, index) {
-            int random;
-            random = Random().nextInt(8);
-            if(b.contains(random)&&b.length<=8)
-            {
-              while(b.contains(random))
-              {
-                random=Random().nextInt(8);
-              }
-            }
-            b.add(random);
-            return Container(
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.only(left: 20, right: 20),
-                height: 120,
-                color: Colors.transparent,
-                child: Center(
-                  child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          color: colorList[random]),
-                      width: MediaQuery.of(context).size.width,
-                      height: 100,
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            width: 20,
-                          ),
-                          Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                  image: AssetImage(news.image),
-                                  fit: BoxFit.fill,
-                                )),
-                          ),
-                          Expanded(
-                            child: Container(
-                              child: ListTile(
-                                title: Text(
-                                  news.heading + index.toString(),
-                                  style: GoogleFonts.aBeeZee(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
-                                subtitle: Text(
-                                  news.subheading,
-                                  style: GoogleFonts.aBeeZee(
-                                      fontSize: 12, color: Colors.white),
-                                ),
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              CompleteNews(news)));
-                                },
-                              ),
-                            ),
-                          )
-                        ],
-                      )),
-                ));
-          },
-        ));
-  }
 
   Widget gridCard(index) {
     int random;
-    random = Random().nextInt(8);
-    if(a.contains(random)&&a.length<=8)
+    random = Random().nextInt(16);
+    if(a.contains(random)&&a.length<=10)
     {
       while(a.contains(random))
       {
-        random=Random().nextInt(8);
+        random=Random().nextInt(16);
       }
     }
     a.add(random);
@@ -607,23 +499,29 @@ class _HomePageState extends State<HomePage>
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                            (GetStream()==0?CollegePredictor():MedicalCollegePredictor())));
+                                            CollegePredictor()));
                                   else if (index == 2)
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => (GetStream()==0)?Collegeblog():MedicalCollegeblog()));
+                                            builder: (context) => Collegeblog()));
                                   else if (index == 3)
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => (GetStream()==0?BranchName():MedicalBranchName())));
+                                            builder: (context) => BranchName()));
                                   else if (index==5)
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>UploadFile()));
+                                  else if (index==6)
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>NotesPage()));
+                                  else if (index==7)
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>AllMistakes()));
+                                  else if (index==9)
+                                    _launchURL();
                                   else if (index==4)
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQ()));
                                   else if (index == 1)
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => (GetStream()==0?RankPredictor():MedicalRankPredictor())));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => RankPredictor()));
                                 }),
                           ),
                         ),
@@ -632,6 +530,14 @@ class _HomePageState extends State<HomePage>
                   )
                 ],),
             )));
+  }
+  _launchURL() async {
+    const url = 'https://josaa.nic.in/Result/Result/OpeningClosingRankArchieve.aspx';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
 

@@ -7,9 +7,11 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
+        android:usesCleartextTraffic="true"
         android:name="io.flutter.app.FlutterApplication"
         android:label="Counselling Gurus"
         android:icon="@mipmap/app_logo">
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

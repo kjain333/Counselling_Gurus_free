@@ -32,6 +32,7 @@ dependencies:
   firebase_core: ^0.4.0+9
   firebase_analytics: ^5.0.6
   toast: ^0.1.5
+  pie_chart: ^3.1.1
   flutter:
     sdk: flutter
   simple_animations: ^2.2.0
@@ -47,6 +48,9 @@ dependencies:
   flutter_swiper: any
   table_calendar: ^2.2.3
   swipedetector: ^1.2.0
+  youtube_player_flutter: ^7.0.0+7
+  scoped_model: ^1.0.1
+  flutter_socket_io: ^0.6.0
 
 
 dev_dependencies:
@@ -96,6 +100,7 @@ flutter:
     - assets/images/new4.png
     - assets/images/SplashScreen.png
     - assets/images/LoginOptions.png
+    - assets/images/Notes.png
 
 
 

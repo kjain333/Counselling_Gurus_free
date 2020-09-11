@@ -5,6 +5,7 @@ import '../../../Animations/FadeAnimation.dart';
 import 'package:http/http.dart' as http;
 import '../../../models/UserModelSignUp.dart';
 import '../../../Resources/Colors.dart' as color;
+import '../MainPage.dart';
 import 'IntroSlider.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -302,7 +303,7 @@ class _SignUpPageState extends State<SignUpPage>
                                         isLoading ? Center(
                                             child: CircularProgressIndicator()
                                         ) : Container();
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
 //                                        setState(() {
 //                                          name = nameController.text.toString();
 //                                          email =
