@@ -4,6 +4,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 final questions = ['Q1. Which degree is superior, B.E. or B. Tech. in terms of job scope and future?',
   'Q2. If two colleges hold equal status, then what should I prefer, B.E. or B. Tech?',
@@ -24,6 +25,13 @@ class FAQ extends StatefulWidget{
   }
 }
 class _FAQ extends State<FAQ>{
+  _launchURL(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,10 +66,29 @@ class _FAQ extends State<FAQ>{
             SliverChildBuilderDelegate((BuildContext context, int index) {
               return QuestionCard(index,context);
             }, childCount: questions.length),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.all(30),
+              child: Container(
+                height: 40,
+                child: RaisedButton(
+                  color: Colors.purple,
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text("Ask a question",style: GoogleFonts.aBeeZee(fontSize: 16,fontWeight: FontWeight.w300,color: Colors.white),),
+                  ),
+                  onPressed: (){
+                    _launchURL("https://forms.gle/8Z7Vu8FDkQLnEAGT7");
+                  },
+                ),
+              )
+            ),
           )
         ],
       )
     );
+
   }
 
 

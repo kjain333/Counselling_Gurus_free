@@ -6,6 +6,91 @@ import 'package:google_fonts/google_fonts.dart';
 import '../PdfViewer.dart';
 var title = ["PHYSICS for IIT-JEE","MATHS for IIT-JEE","CHEMISTRY for IIT-JEE"];
 var subt = ["electromagnetism,optics,mechanics,kinematics and much more.","Trigonometry,Calculus,Probability,Determinants and Matrices and much more.","Stoichiometry,Reaction Kinematics,Organic Chemistry,Periodic Analysis and much more"];
+var heading = ["Physics","Maths","Chemistry"];
+var chapters = [
+  [
+    "Alternating Currents",
+    "Atomic Structure",
+    "Capacitors and Condensor",
+    "Conductors",
+    "Current Electricity",
+    "Diffraction",
+    "Electromagnetic wave",
+    "Electrostatic",
+    "Gravitation",
+    "Metrology and Error Analysis",
+    "Modern Physics",
+    "Nuclear Physics",
+    "Polarization",
+    "Radioactivity",
+    "Ray Optics",
+    "Semi-Conductors",
+    "Simple Harmonic Motion",
+    "Wave Optics",
+    "X-Ray"
+  ],
+  [
+    "3-D Vectors and Motion",
+    "Application of Derivatives",
+    "Area under the curve",
+    "Basic Maths",
+    "Continuity",
+    "Circles",
+    "Complex Numbers",
+    "Definite Integration",
+    "Determinant",
+    "Differentiability",
+    "Ellipse and Hyperbola",
+    "Indefinite Integrals",
+    "Inverse Trigonometry Function",
+    "Limits",
+    "Linear Programming",
+    "Mathematical Reasoning",
+    "Matrices",
+    "Maxima-Minima",
+    "Method of Differentiation",
+    "Permutation and Combination",
+    "Conic Sections",
+    "Probability",
+    "Statistics",
+    "Straight Line",
+    "Vector",
+  ],
+  [
+    "Chemical Reactions",
+    "Carboxylic acid and derivatives",
+    "Carboanion",
+    "Chemical Bonding",
+    "Chemical Equilibrium",
+    "Chemical Kinetics",
+    "Coordinate Chemistry",
+    "d-Block",
+    "Electrochemistry",
+    "Elimination reaction",
+    "General Organic Chemistry",
+    "Halogen Derivative",
+    "Hydrocarbon",
+    "Ionic Equilibrium",
+    "Isomerism",
+    "Solutions",
+    "Metallurgy",
+    "Mole Concept",
+    "Optical Isomerism",
+    "Aldehyde and Ketone",
+    "Radioactivity",
+    "Redox Reaction",
+    "Reduction",
+    "Salt Analysis",
+    "s-Block",
+    "Solid State",
+    "Surface Chemistry",
+    "Test of Anions",
+    "Thermochemical reactions",
+    "Thermochemistry",
+    "Thermodynamics-1",
+    "Thermodynamics-2"
+  ]
+];
 class NotesPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -43,7 +128,7 @@ class NotesPage extends StatelessWidget{
                 trailing: Icon(Icons.arrow_forward),
               ),
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>SubjectNote("Physics")));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>SubjectNote(0)));
               },
             ),
             GestureDetector(
@@ -54,7 +139,7 @@ class NotesPage extends StatelessWidget{
                 trailing: Icon(Icons.arrow_forward),
               ),
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>SubjectNote("Maths")));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>SubjectNote(1)));
               },
             ),
             GestureDetector(
@@ -65,7 +150,7 @@ class NotesPage extends StatelessWidget{
                 trailing: Icon(Icons.arrow_forward),
               ),
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>SubjectNote("Chemistry")));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>SubjectNote(2)));
               },
             ),
           ],
@@ -75,9 +160,10 @@ class NotesPage extends StatelessWidget{
   }
 
 }
+var sub = ["Physics","Maths","Chemistry"];
 class SubjectNote extends StatelessWidget{
   SubjectNote(this.subject);
-  final String subject;
+  final int subject;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,10 +173,7 @@ class SubjectNote extends StatelessWidget{
             SizedBox(
               height: 50,
             ),
-            Text(subject,style: GoogleFonts.aBeeZee(fontSize: 22,fontWeight: FontWeight.bold),),
-            SizedBox(
-              height: 10,
-            ),
+            Text(sub[subject],style: GoogleFonts.aBeeZee(fontSize: 22,fontWeight: FontWeight.bold),),
             ListView(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
@@ -98,8 +181,8 @@ class SubjectNote extends StatelessWidget{
                 ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    padding: EdgeInsets.all(20),
-                    itemCount: 5,
+                 //   padding: EdgeInsets.all(20),
+                    itemCount: chapters[subject].length,
                     itemBuilder: (context,index){
                       return Padding(
                         padding: EdgeInsets.all(20),
@@ -107,65 +190,29 @@ class SubjectNote extends StatelessWidget{
                           elevation: 20,
                           child: Container(
                               width: MediaQuery.of(context).size.width-40,
-                              child: Stack(
-                                children: <Widget>[
-                                  Container(
-                                    width: MediaQuery.of(context).size.width-40,
-                                    child: Column(
-                                      children: <Widget>[
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.all(20),
-                                          child: Text('Chapter Name',style: GoogleFonts.aBeeZee(fontSize: 18,fontWeight: FontWeight.w300),),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.all(20),
-                                          child: Text('This is a short description about each chapter. Lets hope this is only a few lines 2-3 lines long',style: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w100),),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.all(20),
-                                          child: GestureDetector(
-                                            child: Container(
-                                              width: 80,
-                                              decoration: BoxDecoration(
-                                                color: Colors.blue,
-                                                borderRadius: BorderRadius.circular(20)
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.all(10),
-                                                child: Center(
-                                                  child: Text("View",style: GoogleFonts.aBeeZee(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.amber),),
-                                                ),
-                                              ),
-                                            ),
-                                            onTap: (){
-                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>PdfViewer1()));
-                                            },
-                                          )
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Positioned(
-                                    right: 20,
-                                    child: Container(
-                                      width: 30,
-                                      height: 50,
-                                      decoration: BoxDecoration(
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 20,right:20,top: 10,bottom: 10),
+                                child: GestureDetector(
+                                  child: ListTile(
+                                    leading: Container(
+                                        height: 20,
+                                        width: 20,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
                                           color: Colors.blue,
-                                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15),bottomRight: Radius.circular(15))
-                                      ),
+                                        ),
+                                        child: Center(
+                                          child: Icon(Icons.grade,color: Colors.amber,size: 15,),
+                                        )
                                     ),
+                                    title: Text(chapters[subject][index],style: GoogleFonts.aBeeZee(fontSize: 18,fontWeight: FontWeight.w300),),
+                                    trailing: Icon(Icons.arrow_forward_ios),
                                   ),
-                                  Positioned(
-                                      right: 20,
-                                      top: 10,
-                                      child: Icon(Icons.star,color: Colors.amber,size: 30,)
-                                  ),
-                                ],
-                              )
+                                  onTap: (){
+                                    return null;
+                                  },
+                                )
+                              ),
                           ),
                         ),
                       );

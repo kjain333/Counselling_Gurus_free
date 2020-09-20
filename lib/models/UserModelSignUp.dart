@@ -10,7 +10,7 @@ class UserSignUp{
       "name": name,
       "email": email,
       "password": password,
-      "contact": contact
+      "mobile": contact,
     };
   }
 

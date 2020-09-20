@@ -1,12 +1,13 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:toast/toast.dart';
 import '../../../Animations/FadeAnimation.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/io_client.dart';
 import '../../../models/UserModelSignUp.dart';
 import '../../../Resources/Colors.dart' as color;
 import '../MainPage.dart';
-import 'IntroSlider.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -21,12 +22,10 @@ class _SignUpPageState extends State<SignUpPage>
   TextEditingController contactController = new TextEditingController();
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
-
   bool passwordVisible, isLoading;
   String name, email, password, contact;
   UserSignUp user;
   JsonDecoder jsonDecoder = new JsonDecoder();
-
   @override
   void initState() {
     super.initState();
@@ -57,7 +56,6 @@ class _SignUpPageState extends State<SignUpPage>
       return null;
     }
   }
-
   String contactValidator(String value) {
     if (value.isEmpty) {
       return "Contact can't be empty";
@@ -82,19 +80,23 @@ class _SignUpPageState extends State<SignUpPage>
 
    signUpUser() async{
     print(user.toJson());
-    await http.post('http://134.209.158.239:4000/auth/signupapp', body: user.toJson(), headers: {"Accept": "application/json"}).then((http.Response response) {
-      final String res = response.body;
-      final int statusCode = response.statusCode;
-      if (statusCode < 200 || statusCode > 400 || json == null) {
-        throw new Exception("Error while fetching data");
-      }else{
-        Navigator.push(context, MaterialPageRoute(builder: (context) => IntroSlider()));
-      }
-      print(jsonDecoder.convert(res));
-      return jsonDecoder.convert(res);
-    });
-  }
+    final ioc = new HttpClient();
+    ioc.badCertificateCallback = (X509Certificate cert,String host,int port)=>true;
+    final http = new IOClient(ioc);
+    await http.post('https://counsellinggurus.in:3001/auth/signup', body: user.toJson(), headers: {"Accept": "application/json"}).then((response) {
+      print(response.body);
+      if(response.statusCode==500)
+        {
+          Toast.show("Internal Server Error. Please try again later.",context,duration: Toast.LENGTH_LONG,gravity: Toast.BOTTOM);
+        }
+      else
+        {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
+          addToSF();
+        }
 
+    }).catchError((error)=>Toast.show("Server Error! Please Check your Internet Connection", context,duration: Toast.LENGTH_LONG));
+  }
   addToSF() async{
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setString("email", emailController.text.toString());
@@ -158,7 +160,7 @@ class _SignUpPageState extends State<SignUpPage>
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 60),
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
@@ -171,7 +173,7 @@ class _SignUpPageState extends State<SignUpPage>
                       padding: EdgeInsets.all(30),
                       child: Column(
                         children: <Widget>[
-                          SizedBox(height: 60,),
+                          SizedBox(height: 20,),
                           FadeAnimation(1.2, Container(
                             decoration: BoxDecoration(
                                 color: Colors.white,
@@ -303,23 +305,23 @@ class _SignUpPageState extends State<SignUpPage>
                                         isLoading ? Center(
                                             child: CircularProgressIndicator()
                                         ) : Container();
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
-//                                        setState(() {
-//                                          name = nameController.text.toString();
-//                                          email =
-//                                              emailController.text.toString();
-//                                          password = passwordController.text
-//                                              .toString();
-//                                          contact =
-//                                              contactController.text.toString();
-//                                          user = new UserSignUp(name: name,
-//                                              email: email,
-//                                              password: password,
-//                                              contact: contact
-//                                          );
-//                                        });
-//                                        addToSF();
-//                                        signUpUser();
+
+                                        setState(() {
+                                          name = nameController.text.toString();
+                                          email =
+                                              emailController.text.toString();
+                                          password = passwordController.text
+                                              .toString();
+                                          contact =
+                                              contactController.text.toString();
+                                          user = new UserSignUp(name: name,
+                                              email: email,
+                                              password: password,
+                                              contact: contact,
+                                          );
+                                        });
+
+                                        signUpUser();
                                       }
                                     },
                                     child: Center(

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:counselling_gurus/Pages/Student/Fragments/NewsPage.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,8 +8,7 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:toast/toast.dart';
 import '../../../Resources/Colors.dart' as color;
-import '../StudentPlanPopup.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/io_client.dart';
 
 class CollegePredictor extends StatefulWidget {
   @override
@@ -78,7 +78,7 @@ String firstcollegename = "1st College Name";
 String secondcollegename = "2nd College Name";
 String thirdcollegename = "3rd College Name";
 bool isLoading = false;
-bool submitClicked = false;
+String submitClicked = 'false';
 class _CollegePredictorState extends State<CollegePredictor> {
 
   JsonDecoder jsonDecoder = new JsonDecoder();
@@ -108,6 +108,7 @@ class _CollegePredictorState extends State<CollegePredictor> {
   List<DropdownMenuItem<String>> categoryDropDown;
   List<DropdownMenuItem<String>> genderDropDown;
   String selectedItem, selectedItem1;
+  var mains=0,advanded=0;
 
   bool checkbox = false;
 
@@ -124,7 +125,7 @@ class _CollegePredictorState extends State<CollegePredictor> {
   void dispose() {
     super.dispose();
     myController.text='';
-    submitClicked=false;
+    submitClicked='false';
   }
   List<DropdownMenuItem<String>> buildDropDownMenuItems(categoryList) {
     List<DropdownMenuItem<String>> items = List();
@@ -154,9 +155,16 @@ class _CollegePredictorState extends State<CollegePredictor> {
     map['rank'] = a;
     map['category'] = b;
     map['seatPool'] = c;
-
+    final ioc = new HttpClient();
+    ioc.badCertificateCallback = (X509Certificate cert,String host,int port)=>true;
+    final http = new IOClient(ioc);
+    var url;
+    if(mains==0)
+     url = 'https://counsellinggurus.in:3001/app/predictor-advanced';
+    else
+      url = 'https://counsellinggurus.in:3001/app/predictor-mains';
     await http.post(
-      'http://10.0.0.11:3001/app/predictor-advanced',
+      url,
        body: map,
     ).then((response){
 
@@ -168,7 +176,7 @@ class _CollegePredictorState extends State<CollegePredictor> {
 
      setState(() {
        print(availablecolleges.length);
-       submitClicked = true;
+       submitClicked = 'true';
      });
 
     })
@@ -233,7 +241,7 @@ class _CollegePredictorState extends State<CollegePredictor> {
                                       style: GoogleFonts.aBeeZee(fontSize: 15),
                                       decoration: InputDecoration(
                                           hintText:
-                                          "Enter Your JEE Mains Rank Here",
+                                          "Enter Your Category Rank",
                                           filled: true,
                                           fillColor: Colors.white,
                                           contentPadding: EdgeInsets.only(
@@ -303,16 +311,49 @@ class _CollegePredictorState extends State<CollegePredictor> {
                                     ),
                                   ),
                                 ),
-
+                                Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text("Please choose which exam you are looking for",style: GoogleFonts.aBeeZee(fontSize: 16,fontWeight: FontWeight.w300,color: Colors.white),),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 10,right: 10),
+                                        child: ListTile(
+                                          onTap: (){
+                                            setState(() {
+                                              mains=1;
+                                              advanded=0;
+                                            });
+                                          },
+                                          leading: (mains==0)?Icon(Icons.radio_button_unchecked,color: Colors.white,):Icon(Icons.radio_button_checked,color: Colors.white,),
+                                          title: Text("JEE MAINS",style: GoogleFonts.aBeeZee(fontSize: 14,color: Colors.white)),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 10,right: 10),
+                                        child: ListTile(
+                                          onTap: (){
+                                            setState(() {
+                                              mains=0;
+                                              advanded=1;
+                                            });
+                                          },
+                                          leading: (advanded==0)?Icon(Icons.radio_button_unchecked,color: Colors.white,):Icon(Icons.radio_button_checked,color: Colors.white,),
+                                          title: Text("JEE ADVANCED",style: GoogleFonts.aBeeZee(fontSize: 14,color: Colors.white)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                                 Padding(
                                   padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
                                   child: RaisedButton(
                                     onPressed: () {
                                       setState(() {
-                                        if(myController.text!=''&&selectedItem!=null&&selectedItem1!=null)
+                                        if(myController.text!=''&&selectedItem!=null&&selectedItem1!=null&&(mains==1||advanded==1))
                                         {
                                           availablecolleges.clear();
-                                          submitClicked=loader;
+                                          submitClicked='loader';
                                            createColleges(myController.text,selectedItem,selectedItem1);
                                            print(availablecolleges.length);
                                         }
@@ -351,7 +392,7 @@ class _CollegePredictorState extends State<CollegePredictor> {
 class Colleges extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    if(submitClicked==loader&&submitClicked!=false)
+    if(submitClicked=='loader')
       {
         print(submitClicked);
         return Container(
@@ -366,11 +407,11 @@ class Colleges extends StatelessWidget {
           ),
         );
       }
-    else if (!submitClicked) {
+    else if (submitClicked=='false') {
       return Column(
         children: <Widget>[
           SizedBox(
-            height: 10,
+            height: 40,
             width: MediaQuery.of(context).size.width,
           ),
           Text("TOP COLLEGES AND BRANCHES", style: GoogleFonts.aBeeZee(
@@ -403,14 +444,14 @@ class Colleges extends StatelessWidget {
       return Column(
         children: <Widget>[
            SizedBox(
-              height: 10,
+              height: 30,
              width: MediaQuery.of(context).size.width,
             ),
             Padding(
               padding: EdgeInsets.all(10),
               child: Text("HERE ARE OPTIONS AVAILABLE FOR YOU", style: GoogleFonts.aBeeZee(
                   fontWeight: FontWeight.bold,
-                  color: Colors.lightBlueAccent,
+                  color: Colors.redAccent,
                   fontSize: 18),
               ),
             ),

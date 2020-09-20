@@ -13,7 +13,7 @@ class IntroSlider extends StatefulWidget {
 }
 
 class _IntroSliderState extends State<IntroSlider> {
-  final int _numPages = 3;
+  final int _numPages = 4;
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
 
@@ -85,6 +85,29 @@ class _IntroSliderState extends State<IntroSlider> {
                       });
                     },
                     children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Center(
+                              child: Image(
+                                image: AssetImage(
+                                  'assets/images/first.png',
+                                ),
+                                height: MediaQuery.of(context).size.height-420,
+                                width: MediaQuery.of(context).size.width-100,
+                              ),
+                            ),
+                            SizedBox(height: 20.0),
+                            Center(
+                              child:  Text("An MNNIT Startup",style: GoogleFonts.aBeeZee(color: Colors.indigo,fontSize: 28,fontWeight: FontWeight.bold),),
+                            ),
+                            SizedBox(height: 10,),
+                            Text("Fully Developed under Institute Innovation Council. MNNIT Allahabad to ease the admission process",style: GoogleFonts.aBeeZee(color: Colors.white,fontWeight: FontWeight.w200,fontSize: 18),),
+                          ],
+                        ),
+                      ),
                       Padding(
                         padding: EdgeInsets.all(20.0),
                         child: Column(

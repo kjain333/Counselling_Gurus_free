@@ -28,9 +28,6 @@ dependencies:
   flutter_plugin_pdf_viewer: ^1.0.7
   autocomplete_textfield: ^1.7.3
   file_picker: ^1.13.0+1
-  firebase_storage: ^3.1.6
-  firebase_core: ^0.4.0+9
-  firebase_analytics: ^5.0.6
   toast: ^0.1.5
   pie_chart: ^3.1.1
   flutter:
@@ -51,6 +48,7 @@ dependencies:
   youtube_player_flutter: ^7.0.0+7
   scoped_model: ^1.0.1
   flutter_socket_io: ^0.6.0
+  giffy_dialog: ^1.8.0
 
 
 dev_dependencies:
@@ -101,6 +99,14 @@ flutter:
     - assets/images/SplashScreen.png
     - assets/images/LoginOptions.png
     - assets/images/Notes.png
+    - assets/images/giphy.gif
+    - assets/images/m-blog-1.png
+    - assets/images/m-blog-2.jpg
+    - assets/images/m-blog-3.jpg
+    - assets/images/m-blog-4.jpg
+    - assets/images/m-blog-5.jpg
+    - assets/images/m-blog-6.jpg
+    - assets/images/first.png
 
 
 

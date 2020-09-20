@@ -18,11 +18,10 @@ class _SlideNavState extends State<SlideNav> {
   //For nav
   int _selectedPage = 0;
   var _pageOptions = [
-    MorePage(),
     HomePage(),
     Dashboard(),
   ];
-  var _pageController = new PageController(initialPage: 1);
+  var _pageController = new PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {

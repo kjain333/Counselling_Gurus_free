@@ -1,7 +1,6 @@
 
 import 'package:counselling_gurus/Pages/Student/Fragments/Dashboard.dart';
-import 'package:counselling_gurus/Pages/Student/Fragments/NewsPage.dart';
-import 'package:counselling_gurus/Pages/Student/SideNav/feedback.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/Disclaimer.dart';
 import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:titled_navigation_bar/titled_navigation_bar.dart';
@@ -9,12 +8,6 @@ import 'package:wiredash/wiredash.dart';
 import 'Fragments/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'Fragments/MorePage.dart';
-import 'SideNav/ScheduleMeeting.dart';
-import 'SideNav/ContactUs.dart';
-import 'SideNav/EditProfile.dart';
-import 'SideNav/TermsAndConditions.dart';
-import 'SideNav/TopMentors.dart';
-import 'StartingPages/ChangePassword.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -23,13 +16,12 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   //For bottom nav
-  int _selectedPage = 1;
+  int _selectedPage = 0;
   var _pageOptions = [
-    MorePage(),
     HomePage(),
     Dashboard(),
   ];
-  var _pageController = new PageController(initialPage: 1);
+  var _pageController = new PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -38,36 +30,15 @@ class _MainPageState extends State<MainPage> {
         color: divider,
       );
     }
-
-    void showfeedback(context) {
-      Wiredash.of(context).show();
-    }
-
-    Widget _buildRow(IconData icon, String title, int index,
-        {bool showBadge = false}) {
-      final TextStyle tStyle = TextStyle(color: active, fontSize: 16.0);
+    Widget _buildRow(IconData icon, String title,int index, {bool showBadge = false}) {
+      final TextStyle tStyle = GoogleFonts.aBeeZee(fontSize: 16,fontWeight: FontWeight.w200);
       return GestureDetector(
-        onTap: () {
-          if (index == 1)
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ScheduleMeeting()));
-          else if (index == 2)
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => EditProfile()));
-          else if (index == 3) {
-            showfeedback(context);
-          } else if (index == 4)
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ChangePassword()));
-          else if (index == 5)
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => TopMentors()));
-          else if (index == 6)
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => ContactUs()));
-          else if (index == 7)
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => TermsAndConditions()));
+        onTap: (){
+          if(index==2)
+            showFeedback(context);
+          else if(index==4)
+            Navigator.push(context,MaterialPageRoute(builder: (context)=>Disclaimer()));
+
         },
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -85,8 +56,7 @@ class _MainPageState extends State<MainPage> {
         ),
       );
     }
-
-    buildDrawer() {
+    buildDrawer(){
       return ClipPath(
         clipper: OvalRightBorderClipper(),
         child: Drawer(
@@ -99,15 +69,8 @@ class _MainPageState extends State<MainPage> {
               child: SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
-                    Container(
-                      alignment: Alignment.centerRight,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.power_settings_new,
-                          color: active,
-                        ),
-                        onPressed: () {},
-                      ),
+                    SizedBox(
+                      height: 30,
                     ),
                     Container(
                       height: 90,
@@ -118,38 +81,29 @@ class _MainPageState extends State<MainPage> {
                               colors: [Colors.orange, Colors.deepOrange])),
                       child: CircleAvatar(
                         radius: 40,
-                        backgroundImage:
-                            AssetImage("assets/images/app_logo.png"),
+                        backgroundImage: AssetImage("assets/images/app_logo.png"),
                       ),
                     ),
+                    Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Text("@counsellinggurus",style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 16),),
+                    ),
                     SizedBox(height: 5.0),
-                    Text(
-                      "erika costell",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      "@erika07",
-                      style: TextStyle(color: active, fontSize: 16.0),
-                    ),
-                    SizedBox(height: 30.0),
-                    _buildRow(Icons.schedule, "Schedule Meeting", 1),
-                    _buildDivider(),
-                    _buildRow(Icons.person_pin, "Edit profile", 2),
-                    _buildDivider(),
-                    _buildRow(Icons.message, "Feedback", 3, showBadge: true),
-                    _buildDivider(),
-                    _buildRow(Icons.notifications, "Change Password", 4,
-                        showBadge: true),
-                    _buildDivider(),
-                    _buildRow(Icons.person, "Mentor", 5),
-                    _buildDivider(),
-                    _buildRow(Icons.email, "Contact us", 6),
-                    _buildDivider(),
-                    _buildRow(Icons.info_outline, "Terms and Conditions", 7),
-                    _buildDivider(),
+                    SizedBox(height: 70.0),
+                    Center(
+                      child: Column(
+                        children: <Widget>[
+                          _buildRow(Icons.share, "Share App",1),
+                          _buildDivider(),
+                          _buildRow(Icons.message, "Feedback",2, showBadge: true),
+                          _buildDivider(),
+                          _buildRow(Icons.star, "Rate Us",3,showBadge: true),
+                          _buildDivider(),
+                          _buildRow(Icons.info_outline,"Disclaimer",4),
+                          _buildDivider(),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -159,6 +113,15 @@ class _MainPageState extends State<MainPage> {
       );
     }
 
+
+
+    void showfeedback(context) {
+      Wiredash.of(context).show();
+    }
+
+
+
+
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -167,7 +130,7 @@ class _MainPageState extends State<MainPage> {
                 fontWeight: FontWeight.w300, color: Colors.white, fontSize: 18),
           ),
         ),
-       // drawer: buildDrawer(),
+        drawer: buildDrawer(),
         body: PageView(
           children: _pageOptions,
           onPageChanged: (index) {
@@ -189,10 +152,8 @@ class _MainPageState extends State<MainPage> {
               });
             },
             items: [
-              TitledNavigationBarItem(
-                  title: Text('Profile'), icon: Icons.person),
-              TitledNavigationBarItem(title: Text('Home'), icon: Icons.home),
-              TitledNavigationBarItem(title: Text('DashBoard'), icon: Icons.call),
+              TitledNavigationBarItem(title: Text('Home',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 16),), icon: Icons.home),
+              TitledNavigationBarItem(title: Text('Dashboard',style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w300,fontSize: 16),), icon: Icons.dashboard),
 //              TitledNavigationBarItem(
 //                  title: Text('Chat'), icon: Icons.question_answer),
             ])

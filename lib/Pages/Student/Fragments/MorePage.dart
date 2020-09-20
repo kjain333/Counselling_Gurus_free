@@ -1,3 +1,6 @@
+
+
+import 'package:counselling_gurus/Pages/Student/HomePageSources/Disclaimer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wiredash/wiredash.dart';
@@ -24,29 +27,9 @@ class _MorePageState extends State<MorePage> {
               ),
             ),
             Container(
-              child: ListTile(
-                contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
-                title: Center(
-                  child: Text("Edit Profile", style: GoogleFonts.aBeeZee()),
-                ),
-                leading: Icon(
-                  Icons.account_circle,
-                  color: Colors.black,
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward,
-                  color: Colors.black,
-                ),
-                onTap: () {
-                  return null;
-                },
-              ),
-              decoration: BoxDecoration(
-                  border: Border(
-                      bottom: BorderSide(color: Colors.grey),
-                      top: BorderSide(color: Colors.grey)),
-
-              ),
+              width: MediaQuery.of(context).size.width,
+              color: Colors.grey,
+              height: 1,
             ),
             Container(
               child: ListTile(
@@ -121,7 +104,7 @@ class _MorePageState extends State<MorePage> {
               child: ListTile(
                 contentPadding: EdgeInsets.fromLTRB(40, 0, 10, 0),
                 title: Center(
-                  child: Text("Terms and Conditions", style: GoogleFonts.aBeeZee()),
+                  child: Text("Disclaimer", style: GoogleFonts.aBeeZee()),
                 ),
                 leading: Icon(
                   Icons.notifications_active,
@@ -132,7 +115,7 @@ class _MorePageState extends State<MorePage> {
                   color: Colors.black,
                 ),
                 onTap: () {
-                  return null;
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Disclaimer()));
                 },
               ),
               decoration: BoxDecoration(

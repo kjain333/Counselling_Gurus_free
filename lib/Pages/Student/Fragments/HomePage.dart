@@ -8,7 +8,11 @@ import 'package:counselling_gurus/Pages/Student/Fragments/News.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/BranchName.dart';
 //import 'package:counselling_gurus/Pages/Student/HomePageSources/BranchblogMentor.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/CollegePredictor.dart';
-import 'package:counselling_gurus/Pages/Student/HomePageSources/Collegeblog.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/NewCollegesList.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/Progress.dart';
+import 'package:counselling_gurus/Pages/Student/HomePageSources/UploadFile.dart';
+import 'package:counselling_gurus/Pages/Student/PdfViewer.dart';
+import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/CompleteNews.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/FAQ.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/Mistakes.dart';
@@ -29,7 +33,6 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../UploadFile.dart';
 double width;
 Set<int> a= {};
 Set<int> b= {};
@@ -46,7 +49,8 @@ List<String> cardHeadings = [
   "Preparations Notes",
   "Mistakes",
   "Post Queries",
-  "Last Year Stats"
+  "Last Year Stats",
+  "Progress and Deadlines",
 ];
 //   "Mock Counselling",
 //  "Aptitude Test",
@@ -63,6 +67,7 @@ List<String> buttonHeadings = [
   "Mistakes",
   "Post",
   "Stats",
+  "View Progress",
 ];
 
 //   "Experience Counselling",
@@ -79,7 +84,8 @@ List<IconData> icon = [
   Icons.note,
   Icons.clear,
   Icons.launch,
-  Icons.graphic_eq
+  Icons.graphic_eq,
+  Icons.timeline,
 ];
 //   Icons.note_add,
 //   Icons.supervisor_account,
@@ -98,8 +104,9 @@ final paragraph =
     "Don't know if you are still prepared for the upcoming exams. Relax our mentors have specially design handwritten notes to help you with last minute revision and get an extra edge over others.",
     "Wait Wait Wait! Don't just scroll over this we have examined over thousand brains combined with our experience found the top mistakes which student commit during the counselling procedure. Do have a look at this.",
     "Still have some unanswered queries? We hope not but our mentors are there to help you further post whatever query you have and we will try to help as soon as possible",
-    "Not satisfied with what all you have already. Get detailed past year counselling analysis, where you stand after each counselling round and possibilities of improving in further upcoming rounds"];
-      // Afraid and confused about the actual counselling process? Don't worry! We will get all your problems sorted with this one of its kind 'Mock Counselling'.You will be guided about everything that is important for JoSAA and NEET counselling,from choice filling to locking, freezing and floating,you will understand them all at once!
+    "Not satisfied with what all you have already. Get detailed past year counselling analysis, where you stand after each counselling round and possibilities of improving in further upcoming rounds",
+    "Afraid of missing out on important deadlines. Don't worry we manage it all here. Have a look at a personalised timeline designed just for you with all important details to help in the counselling procedure"];
+// Afraid and confused about the actual counselling process? Don't worry! We will get all your problems sorted with this one of its kind 'Mock Counselling'.You will be guided about everything that is important for JoSAA and NEET counselling,from choice filling to locking, freezing and floating,you will understand them all at once!
       // Not able to concentrate on studies?
       // Not able to sit for long study hours?
       // Now not a reason to worry! Get your personality test done!From your mental acumen to physical ability,We will examine everything about you and suggest some steps to improve without any help from others!
@@ -115,13 +122,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
-  List<GlobalKey<ScaffoldState>> keys = new List(10);
+  List<GlobalKey<ScaffoldState>> keys = new List(11);
 
   //final GlobalKey<ScaffoldState> _containerkey = GlobalKey<ScaffoldState>();
   @override
   void initState(){
     super.initState();
-    for(int i=0;i<10;i++)
+    for(int i=0;i<11;i++)
     {
         keys[i]= new GlobalKey<ScaffoldState>();
     }
@@ -138,6 +145,12 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       key: _key,
      // drawer: buildDrawer(),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.message),
+        onPressed: (){
+          _launchURL("https://t.me/joinchat/AAAAAFcS7GP9ys7r7q-iVw");
+        },
+      ),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(
@@ -149,7 +162,7 @@ class _HomePageState extends State<HomePage>
             delegate:
                 SliverChildBuilderDelegate((BuildContext context, int index) {
               return gridCard(index);
-            }, childCount: 10),
+            }, childCount: 11),
           )
         ],
       ),
@@ -273,6 +286,10 @@ class _HomePageState extends State<HomePage>
 
 
   Widget gridCard(index) {
+    if(index==6||index==8)
+      {
+        return Container();
+      }
     int random;
     random = Random().nextInt(16);
     if(a.contains(random)&&a.length<=10)
@@ -504,7 +521,7 @@ class _HomePageState extends State<HomePage>
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Collegeblog()));
+                                            builder: (context) => CollegesList()));
                                   else if (index == 3)
                                     Navigator.push(
                                         context,
@@ -512,12 +529,16 @@ class _HomePageState extends State<HomePage>
                                             builder: (context) => BranchName()));
                                   else if (index==5)
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>UploadFile()));
-                                  else if (index==6)
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>NotesPage()));
                                   else if (index==7)
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>AllMistakes()));
+                                  else if(index==8)
+                                    {
+                                      _launchURL("https://forms.gle/8Z7Vu8FDkQLnEAGT7");
+                                    }
                                   else if (index==9)
-                                    _launchURL();
+                                    _launchURL('https://josaa.nic.in/Result/Result/OpeningClosingRankArchieve.aspx');
+                                  else if (index==10)
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Progress()));
                                   else if (index==4)
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQ()));
                                   else if (index == 1)
@@ -531,8 +552,7 @@ class _HomePageState extends State<HomePage>
                 ],),
             )));
   }
-  _launchURL() async {
-    const url = 'https://josaa.nic.in/Result/Result/OpeningClosingRankArchieve.aspx';
+  _launchURL(url) async {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -560,3 +580,102 @@ class CustomClipperPath extends CustomClipper<Path>{
   }
 }
 
+Widget QueryPage(context){
+  showDialog(context: context,builder: (_){
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: MediaQuery.of(context).size.height/4,
+            ),
+            Center(
+              child: Container(
+                height: 200,
+                width: MediaQuery.of(context).size.width-100,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/giphy.gif'),
+                      fit: BoxFit.fill,
+                    )
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                width:  MediaQuery.of(context).size.width-100,
+                color: Colors.white,
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                        height: 10
+                    ),
+                    Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text("Post Your Query Here and our mentor will contact you over email",style: GoogleFonts.aBeeZee(fontWeight: FontWeight.w400,fontSize: 16),)
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: TextField(
+                        maxLines: 5,
+                        decoration: InputDecoration(
+                          hintStyle: GoogleFonts.aBeeZee(fontSize: 15,fontWeight: FontWeight.w200),
+                          hintText: "Enter your Query",
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: Colors.black45)
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: Colors.black45)
+                          ),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: <Widget>[
+                        SizedBox(
+                            width: 20
+                        ),
+                        RaisedButton(
+                          color: Colors.black45,
+                          textColor: Colors.white,
+                          child: Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Text('Cancel'),
+                          ),
+                          onPressed: (){
+                            Navigator.pop(context);
+                          },
+                        ),
+                        Expanded(
+                          child: SizedBox(),
+                        ),
+                        RaisedButton(
+                          color: Colors.green,
+                          textColor: Colors.white,
+                          child: Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Text('Submit'),
+                          ),
+                          onPressed: (){
+                            Navigator.pop(context);
+                          },
+                        ),
+                        SizedBox(
+                            width: 20
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      )
+    );
+  });
+
+}

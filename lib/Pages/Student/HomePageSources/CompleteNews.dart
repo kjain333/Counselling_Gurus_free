@@ -50,7 +50,6 @@ class CompleteNews extends StatelessWidget{
                           title: Center(
                            child: Text(news.heading,style: GoogleFonts.aBeeZee(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 17),),
                           ),
-                          subtitle: Text("\n20/06/2020 10:00 IST\n",style: GoogleFonts.aBeeZee(color: Colors.white,fontWeight: FontWeight.w300,fontSize: 13),),
                             trailing: Wrap(
 
                               children: <Widget>[
