@@ -145,12 +145,6 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       key: _key,
      // drawer: buildDrawer(),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.message),
-        onPressed: (){
-          _launchURL("https://t.me/joinchat/AAAAAFcS7GP9ys7r7q-iVw");
-        },
-      ),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(

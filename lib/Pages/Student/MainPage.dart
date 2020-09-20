@@ -4,6 +4,7 @@ import 'package:counselling_gurus/Pages/Student/HomePageSources/Disclaimer.dart'
 import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:titled_navigation_bar/titled_navigation_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wiredash/wiredash.dart';
 import 'Fragments/HomePage.dart';
 import 'package:flutter/material.dart';
@@ -120,9 +121,21 @@ class _MainPageState extends State<MainPage> {
     }
 
 
-
+    _launchURL(url) async {
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
 
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.message),
+          onPressed: (){
+            _launchURL("https://t.me/joinchat/AAAAAFcS7GP9ys7r7q-iVw");
+          },
+        ),
         appBar: AppBar(
           title: Text(
             'COUNSELLING GURUS',

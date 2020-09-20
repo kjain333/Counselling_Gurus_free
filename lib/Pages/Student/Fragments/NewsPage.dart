@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:share/share.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'News.dart';
 
@@ -73,10 +74,22 @@ class _NewsPageState extends State<NewsPage> {
 //  }
 
 
-
+  _launchURL(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.message),
+        onPressed: (){
+          _launchURL("https://t.me/joinchat/AAAAAFcS7GP9ys7r7q-iVw");
+        },
+      ),
       body:loader ? Center(
         child: CircularProgressIndicator(
           backgroundColor: Colors.orangeAccent,
