@@ -199,7 +199,9 @@ class _BranchNameState extends State<BranchName> {
   final key = new GlobalKey<AutoCompleteTextFieldState<String>>();
   @override
   void initState(){
-
+    stringfinal.clear();
+    pptlinks.clear();
+    string.clear();
     for(int i=0;i<branchdata.length;i++)
       {
         print(branchdata[i]['PPT Link'].toString());
