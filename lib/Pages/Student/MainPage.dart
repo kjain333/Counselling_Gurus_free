@@ -3,7 +3,9 @@ import 'package:counselling_gurus/Pages/Student/Fragments/Dashboard.dart';
 import 'package:counselling_gurus/Pages/Student/HomePageSources/Disclaimer.dart';
 import 'package:counselling_gurus/components/oval_right_clipper.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:share/share.dart';
 import 'package:titled_navigation_bar/titled_navigation_bar.dart';
+import 'package:toast/toast.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wiredash/wiredash.dart';
 import 'Fragments/HomePage.dart';
@@ -31,14 +33,31 @@ class _MainPageState extends State<MainPage> {
         color: divider,
       );
     }
+    _launchURL(url) async {
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
     Widget _buildRow(IconData icon, String title,int index, {bool showBadge = false}) {
       final TextStyle tStyle = GoogleFonts.aBeeZee(fontSize: 16,fontWeight: FontWeight.w200);
       return GestureDetector(
         onTap: (){
           if(index==2)
             showFeedback(context);
+          else if(index==1)
+            Share.share(
+                'https://play.google.com/store/apps/details?id=com.counselling_gurus_eng.counselling_gurus',//heading[index-1]
+                subject: 'Counselling Gurus JOSAA Counselling App');
+          else if(index==3)
+            _launchURL("https://play.google.com/store/apps/details?id=com.counselling_gurus_eng.counselling_gurus");
           else if(index==4)
             Navigator.push(context,MaterialPageRoute(builder: (context)=>Disclaimer()));
+          else if(index==5)
+            _launchURL("https://counsellinggurus.in/");
+          else
+            Toast.show("Feature Coming Soon!",context,gravity: Toast.BOTTOM,duration: Toast.LENGTH_LONG);
 
         },
         child: Container(
@@ -102,6 +121,8 @@ class _MainPageState extends State<MainPage> {
                           _buildDivider(),
                           _buildRow(Icons.info_outline,"Disclaimer",4),
                           _buildDivider(),
+                          _buildRow(Icons.explore,"Explore More",5),
+                          _buildDivider(),
                         ],
                       ),
                     )
@@ -121,13 +142,6 @@ class _MainPageState extends State<MainPage> {
     }
 
 
-    _launchURL(url) async {
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    }
 
     return Scaffold(
         floatingActionButton: FloatingActionButton(

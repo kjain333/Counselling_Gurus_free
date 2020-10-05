@@ -193,7 +193,7 @@ class _NewsPageState extends State<NewsPage> {
                                           ),
                                           onPressed: () {
                                             Share.share(
-                                                newsfinal[index-1].heading+'\nDOWNLOAD OUR APP',//heading[index-1]
+                                                newsfinal[index-1].heading+'\nDOWNLOAD OUR APP https://play.google.com/store/apps/details?id=com.counselling_gurus_eng.counselling_gurus',//heading[index-1]
                                                 subject: newsfinal[index-1].heading);
                                           })
                                     ],

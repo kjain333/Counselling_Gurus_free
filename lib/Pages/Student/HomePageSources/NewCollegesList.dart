@@ -37,7 +37,7 @@ class _CollegesList extends State<CollegesList>{
     final ioc = new HttpClient();
     ioc.badCertificateCallback = (X509Certificate cert,String host,int port)=>true;
     final http = new IOClient(ioc);
-    http.get("https://counsellinggurus.in:3001/s?search=IIT").then((response){
+    http.get("https://counsellinggurus.in:3001/s/enginerring/all").then((response){
       var data = jsonDecode(response.body);
       print(response.body);
       for(int i=0;i<data.length;i++)
@@ -47,7 +47,7 @@ class _CollegesList extends State<CollegesList>{
           CollegesId.add(mydata.b.toString());
         }
       setState(() {
-
+        loading = false;
       });
     }).catchError(throw Exception('failed to load'));
 
@@ -131,10 +131,6 @@ class _CollegesList extends State<CollegesList>{
   @override
   void initState() {
     getColleges();
-    getColleges1();
-    getColleges2();
-    getColleges3();
-    getColleges4();
     _controller  = ScrollController();
     super.initState();
   }

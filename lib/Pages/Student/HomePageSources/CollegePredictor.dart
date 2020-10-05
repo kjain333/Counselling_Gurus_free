@@ -109,7 +109,7 @@ class _CollegePredictorState extends State<CollegePredictor> {
   List<DropdownMenuItem<String>> genderDropDown;
   String selectedItem, selectedItem1;
   var mains=0,advanded=0;
-
+  var home=1,other=0;
   bool checkbox = false;
 
   @override
@@ -155,6 +155,10 @@ class _CollegePredictorState extends State<CollegePredictor> {
     map['rank'] = a;
     map['category'] = b;
     map['seatPool'] = c;
+    if(home==0)
+      map['quota'] = "OS";
+    else
+      map['quota'] = "HS";
     final ioc = new HttpClient();
     ioc.badCertificateCallback = (X509Certificate cert,String host,int port)=>true;
     final http = new IOClient(ioc);
@@ -340,6 +344,40 @@ class _CollegePredictorState extends State<CollegePredictor> {
                                           },
                                           leading: (advanded==0)?Icon(Icons.radio_button_unchecked,color: Colors.white,):Icon(Icons.radio_button_checked,color: Colors.white,),
                                           title: Text("JEE ADVANCED",style: GoogleFonts.aBeeZee(fontSize: 14,color: Colors.white)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text("Please choose if home state or other state if applicable",style: GoogleFonts.aBeeZee(fontSize: 16,fontWeight: FontWeight.w300,color: Colors.white),),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 10,right: 10),
+                                        child: ListTile(
+                                          onTap: (){
+                                            setState(() {
+                                              home=1;
+                                              other=0;
+                                            });
+                                          },
+                                          leading: (home==0)?Icon(Icons.radio_button_unchecked,color: Colors.white,):Icon(Icons.radio_button_checked,color: Colors.white,),
+                                          title: Text("Home State",style: GoogleFonts.aBeeZee(fontSize: 14,color: Colors.white)),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 10,right: 10),
+                                        child: ListTile(
+                                          onTap: (){
+                                            setState(() {
+                                              home=0;
+                                              other=1;
+                                            });
+                                          },
+                                          leading: (other==0)?Icon(Icons.radio_button_unchecked,color: Colors.white,):Icon(Icons.radio_button_checked,color: Colors.white,),
+                                          title: Text("Other State",style: GoogleFonts.aBeeZee(fontSize: 14,color: Colors.white)),
                                         ),
                                       ),
                                     ],
